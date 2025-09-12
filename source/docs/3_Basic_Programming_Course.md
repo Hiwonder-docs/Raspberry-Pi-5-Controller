@@ -58,59 +58,59 @@ Scientific Computing and Numerical Analysis: C++ finds application in developing
 
 (1) Start the Raspberry Pi, and open VNC.
 
-(2) Use short-cut ‘**Ctrl+Alt+T**’ or click-on terminal icon at the upper left corner to navigate to the terminal interface.
+(2) Use short-cut '**Ctrl+Alt+T**' or click-on terminal icon at the upper left corner to navigate to the terminal interface.
 
 (3) To create a new C++ file in the interface, append "**.cpp**" after the file name. For example, to demonstrate, let's create a new file named "**helloHiwonder.cpp**". Type "**vi helloHiwonder.cpp**" and press the "ENTER" key.
 
-```py
+```bash
 vi helloHiwonder.cpp
 ```
 
-(4) In the opened Vim editor, press the "i" key on the keyboard to enter "input mode", and then enter the following C++ code:
+(4) In the opened Vim editor, press the "**i**" key on the keyboard to enter "**input mode**", and then enter the following C++ code:
 
-“std::cout\<\<”helloHiwonder”\<\<std::endl;”
+"std::cout\<\<"helloHiwonder"\<\<std::endl;"
 
-This line of code outputs the string "helloHiwonder" and then breaks the line.
+This line of code outputs the string "**helloHiwonder**" and then breaks the line.
 
-```py
-std::cout\<\<”helloHiwonder”\<\<std::endl;
+```bash
+std::cout\<\<"helloHiwonder"\<\<std::endl;
 ```
 
-<img class="common_img" src="../_static/media/chapter_3\section_1-0\media\image3.png"  />
+<img class="common_img" src="../_static/media/chapter_3/section_1-0/media/image3.png"  />
 
-(5) After inputting the command, hit ‘**Esc**’ key to exit the ‘**input mode**’, then execute the command ‘**:wq**’, and finally hit ‘**ENTER**’ key.
+(5) After inputting the command, hit '**Esc**' key to exit the '**input mode**', then execute the command '**:wq**', and finally hit '**ENTER**' key.
 
-<img class="common_img" src="../_static/media/chapter_3\section_1-0\media\image4.png"  />
+<img class="common_img" src="../_static/media/chapter_3/section_1-0/media/image4.png"  />
 
-(6) Run the command ‘**ls**’ to confirm whether the file ‘**hellopHiwonder.cpp**’ is created successfully.
+(6) Run the command '**ls**' to confirm whether the file '**hellopHiwonder.cpp**' is created successfully.
 
-<img class="common_img" src="../_static/media/chapter_3\section_1-0\media\image5.png"  />
+<img class="common_img" src="../_static/media/chapter_3/section_1-0/media/image5.png"  />
 
 * **Run C++ Program**
 
 Python is an interpreted language, allowing us to directly execute Python programs by calling the interpreter (Python3). However, C++ programs necessitate a compiler to transform source code into an executable program. Therefore, prior to running a C++ program, we must install the compilation system and convert the source code. In the following steps, we will detail how to install the compiler.
 
-(1) Execute the command ‘**sudo apt-get install build-essential**’, and hit ‘**Enter**’ key to install the compilation system automatically.
+(1) Execute the command '**sudo apt-get install build-essential**', and hit '**Enter**' key to install the compilation system automatically.
 
-```py
+```bash
 sudo apt-get install build-essential
 ```
 
 (2) Once you've ensured the presence of a compilation system, proceed to convert the source program into an executable file. As an example, let's consider the conversion of the previously written **helloHiwonder.cpp** file. Firstly, enter "**g++ helloHiwonder.cpp -o helloHiwonder2**", press the "**ENTER**" key, and wait momentarily for the compilation to conclude. This process will yield an executable file named "**helloHiwonder2**".
 
-```py
+```bash
 g++ helloHiwonder.cpp -o helloHiwonder2
 ```
 
-(3) Execute the command ‘**ls**’, and hit Enter key to generate the ‘**helloHiwonder2**’ file.
+(3) Execute the command '**ls**', and hit Enter key to generate the '**helloHiwonder2**' file.
 
-<img class="common_img" src="../_static/media/chapter_3\section_1-0\media\image8.png"  />
+<img class="common_img" src="../_static/media/chapter_3/section_1-0/media/image8.png"  />
 
-(4) Run the command ‘**./helloHiwonder2**’, and hit Enter key to execute this file.
+(4) Run the command '**./helloHiwonder2**', and hit Enter key to execute this file.
 
-<img class="common_img" src="../_static/media/chapter_3\section_1-0\media\image9.png"  />
+<img class="common_img" src="../_static/media/chapter_3/section_1-0/media/image9.png"  />
 
-For a comprehensive understanding of the C++ language, you can refer to "**http://www.cplusplus.com/**" for learning resources.
+For a comprehensive understanding of the C++ language, you can refer to "**<http://www.cplusplus.com/>**" for learning resources.
 
 ## 3.2 Python Programming
 
@@ -143,11 +143,10 @@ Thanks to its syntax, dynamic typing and nature of interpreted language, Python 
 
 large-scale project.
 
-:::{Note}
-
-**Python2.0 is no longer maintained by the official since 2020, so it is recommended to use Python3.0 or above.**
-
-:::
+> [!Note]
+>
+> **Python2.0 is no longer maintained by the official since 2020, so it is recommended to use Python3.0 or above.**
+>
 
 (3) **Python Feature**
 
@@ -169,29 +168,28 @@ various platforms, such as Linux and Windows.
 
 * **Python Installation**
 
-:::{Note}
-
-**the following operations are based on Ubuntu18.04. As Ubuntu18.04 comes with Python 3.6.9, users who use this system can skip Python installation.**
-
-:::
+> [!Note]
+>
+> **the following operations are based on Ubuntu18.04. As Ubuntu18.04 comes with Python 3.6.9, users who use this system can skip Python installation.**
+>
 
 (1) Install Python with Ubuntu official apt tool package.
 
-(2) Start virtual machine, and click <img class="common_img" src="../_static/media/chapter_3\section_1-2\media\image2.png"  /> , and then click <img class="common_img" src="../_static/media/chapter_3\section_1-2\media\image3.png"  /> or  press **“Ctrl+Alt+T”** to open command line terminal.
+(2) Start virtual machine, and click <img src="../_static/media/chapter_3/section_1-2/media/image2.png"  /> , and then click <img src="../_static/media/chapter_3/section_1-2/media/image3.png"  /> or  press **"Ctrl+Alt+T"** to open command line terminal.
 
-(3) Take installing python3.8 for example. Input command “**sudo apt-get install python3.8**” command, and then input the password and press Enter to install.
+(3) Take installing python3.8 for example. Input command "**sudo apt-get install python3.8**" command, and then input the password and press Enter to install.
 
-```py
+```bash
 sudo apt-get install python3.8
 ```
 
-(4) If the prompt about whether to continue execution, please input “Y”
+(4) If the prompt about whether to continue execution, please input "**Y**"
 
 and press Enter. If no error is reported, it means that Python3.8 is installed successfully.
 
-(5) Input “**python3.8 -V**” command and press Enter to check whether the version is Python3.8.
+(5) Input "**python3.8 -V**" command and press Enter to check whether the version is Python3.8.
 
-```py
+```bash
 python3.8 -V
 ```
 
@@ -199,21 +197,21 @@ python3.8 -V
 
 (1) **Download pyCharm**
 
-① Input command “sudo apt install snapd snapd-xdg-open” to install snap installation package.
+① Input command "**sudo apt install snapd snapd-xdg-open**" to install snap installation package.
 
-```py
+```bash
 sudo apt install snapd snapd-xdg-open
 ```
 
-② Input command “snap refresh” to refresh snap.
+② Input command "snap refresh" to refresh snap.
 
-```py
+```bash
 snap refresh
 ```
 
-③ Input command “**sudo snap install pycharm-community --classic**” to install pyCharm
+③ Input command "**sudo snap install pycharm-community --classic**" to install pyCharm
 
-```py
+```bash
 sudo snap install pycharm-community --classic
 ```
 
@@ -221,123 +219,122 @@ sudo snap install pycharm-community --classic
 
 ① Open menu and find pyCharm
 
-<img class="common_img" src="../_static/media/chapter_3\section_1-1\media\image9.jpeg"  />**
+<img class="common_img" src="../_static/media/chapter_3/section_1-1/media/image9.jpeg"  />
 
-**<img class="common_img" src="../_static/media/chapter_3\section_1-1\media\image10.jpeg"  />**
+<img class="common_img" src="../_static/media/chapter_3/section_1-1/media/image10.jpeg"  />
 
-② Create new pyCharm project and configure. Click “New Project” .
+② Create new pyCharm project and configure. Click "New Project" .
 
-**<img class="common_img" src="../_static/media/chapter_3\section_1-1\media\image11.jpeg"  />**
+<img class="common_img" src="../_static/media/chapter_3/section_1-1/media/image11.jpeg"  />
 
-③ Select “**Previously configured interpreter**” and click <img class="common_img" src="../_static/media/chapter_3\section_1-1\media\image12.jpeg"  /> .
+③ Select "**Previously configured interpreter**" and click <img src="../_static/media/chapter_3/section_1-1/media/image12.jpeg"  /> .
 
-**<img class="common_img" src="../_static/media/chapter_3\section_1-1\media\image13.jpeg"  />**
+<img class="common_img" src="../_static/media/chapter_3/section_1-1/media/image13.jpeg"  />
 
-④ Select “**System interpreter**”
+④ Select "**System interpreter**"
 
-**<img class="common_img" src="../_static/media/chapter_3\section_1-1\media\image14.jpeg"  />**
+<img class="common_img" src="../_static/media/chapter_3/section_1-1/media/image14.jpeg"  />
 
-⑤ Click “**create**”
+⑤ Click "**create**"
 
-**<img class="common_img" src="../_static/media/chapter_3\section_1-1\media\image15.jpeg"  />**
+<img class="common_img" src="../_static/media/chapter_3/section_1-1/media/image15.jpeg"  />
 
 ⑥**Lastly, you will enter this interface.**
 
-**<img class="common_img" src="../_static/media/chapter_3\section_1-1\media\image16.jpeg"  />**
+<img class="common_img" src="../_static/media/chapter_3/section_1-1/media/image16.jpeg"  />
 
 (3) **Usage of pyCharm**
 
 ① The user interface of pyCharm is as follow.
 
-**<img class="common_img" src="../_static/media/chapter_3\section_1-1\media\image17.jpeg"  />**
+<img class="common_img" src="../_static/media/chapter_3/section_1-1/media/image17.jpeg"  />
 
 ② Create a .py file. Right click the project folder.
 
-**<img class="common_img" src="../_static/media/chapter_3\section_1-1\media\image18.jpeg"  />**
+<img class="common_img" src="../_static/media/chapter_3/section_1-1/media/image18.jpeg"  />
 
-③ Click “**New\>Python file**”
+③ Click "**New\>Python file**"
 
-**<img class="common_img" src="../_static/media/chapter_3\section_1-1\media\image19.jpeg"  />**
+<img class="common_img" src="../_static/media/chapter_3/section_1-1/media/image19.jpeg"  />
 
 ④ Name python file you created.
 
-**<img class="common_img" src="../_static/media/chapter_3\section_1-1\media\image20.jpeg"  />**
+<img class="common_img" src="../_static/media/chapter_3/section_1-1/media/image20.jpeg"  />
 
 ⑤ The python is created.
 
-**<img class="common_img" src="../_static/media/chapter_3\section_1-1\media\image21.jpeg"  />**
+<img class="common_img" src="../_static/media/chapter_3/section_1-1/media/image21.jpeg"  />
 
-⑥ Right click coding area to select “**run**” . You can check the output result on the output terminal.
+⑥ Right click coding area to select "**run**" . You can check the output result on the output terminal.
 
-**<img class="common_img" src="../_static/media/chapter_3\section_1-1\media\image22.jpeg"  />**
+<img class="common_img" src="../_static/media/chapter_3/section_1-1/media/image22.jpeg"  />
 
-**<img class="common_img" src="../_static/media/chapter_3\section_1-1\media\image23.jpeg"  />**
+<img class="common_img" src="../_static/media/chapter_3/section_1-1/media/image23.jpeg"  />
 
 **To learn more information, please visit pyCharm official website: <https://www.jetbrains.com/zh-cn/pycharm/>**
 
-### 3.2.2 First Program-“Hello World”
+### 3.2.2 First Program-"Hello World"
 
 String is a collection of multiple characters and enclosed by single or double quotation mark. String includes alphabet, Arabic numeral, Chinese or various symbols.
 
-For example, we can print “**Hello World**” string on the screen.
+For example, we can print "**Hello World**" string on the screen.
 
 * **Operation Steps**
 
-:::{Note}
+> [!Note]
+>
+> **Note: please strictly distinguish lower case and upper case, and the keywords can be complemented by Tab key.**
+>
 
-**Note: please strictly distinguish lower case and upper case, and the keywords can be complemented by Tab key.**
+(1) Start virtual machine, and click <img src="../_static/media/chapter_3/section_1-2/media/image2.png"  /> , and then click <img src="../_static/media/chapter_3/section_1-2/media/image3.png"  /> or press "**Ctrl+Alt+T**" to open command line terminal.
 
-:::
+(2) Input "**sudo apt install vim**" command to install vim editor. During installation, if the prompt about whether to continue execution occurs, just input "**y**" and press Enter.
 
-(1) Start virtual machine, and click <img class="common_img" src="../_static/media/chapter_3\section_1-2\media\image2.png"  /> , and then click <img class="common_img" src="../_static/media/chapter_3\section_1-2\media\image3.png"  /> or press “**Ctrl+Alt+T**” to open command line terminal.
-
-(2) Input “**sudo apt install vim**” command to install vim editor. During installation, if the prompt about whether to continue execution occurs, just input “**y**” and press Enter.
-
-```py
+```bash
 sudo apt install vim
 ```
 
-(3) Input “**mkdir test**” command and press Enter to build a folder named “**test**” under the current directory.
+(3) Input "**mkdir test**" command and press Enter to build a folder named "**test**" under the current directory.
 
-```py
+```bash
 mkdir test
 ```
 
-<img class="common_img" src="../_static/media/chapter_3\section_1-2\media\image6.png"  />
+<img class="common_img" src="../_static/media/chapter_3/section_1-2/media/image6.png"  />
 
-(4) Input command “**cd test/**” and press Enter to enter “**test**” folder.
+(4) Input command "**cd test/**" and press Enter to enter "**test**" folder.
 
-```py
+```bash
 cd test/
 ```
 
-(5) Input “**touch hello.py**” command and press Enter to create a program file named “**hello**” .
+(5) Input "**touch hello.py**" command and press Enter to create a program file named "**hello**" .
 
-```py
+```bash
 touch hello.py
 ```
 
-(6) Input “**vim hello.py**” command and press Enter to open program file.
+(6) Input "**vim hello.py**" command and press Enter to open program file.
 
-```py
+```bash
 vim hello.py
 ```
 
-(7) Press “**I**” key to enter editing mode and then input “**print("Hello World")**” .
+(7) Press "**I**" key to enter editing mode and then input "**print("Hello World")**" .
 
 ```py
 print("Hello World")
 ```
 
-(8) Press “**Esc**” and input “ **:wq**” and press Enter to save and exit the editing.
+(8) Press "**Esc**" and input " **:wq**" and press Enter to save and exit the editing.
 
-```py
+```bash
 :wq
 ```
 
-(9) Input “**python3 hello.py**” command and press Enter to run the program file. Then the string will be printed on the terminal.
+(9) Input "**python3 hello.py**" command and press Enter to run the program file. Then the string will be printed on the terminal.
 
-```py
+```bash
 python3 hello.py
 ```
 
@@ -345,53 +342,52 @@ python3 hello.py
 
 Besides the string, print() function can be also used to output the result of mathematical expression. Take adding print() function of mathematical expression to the program file for example.
 
-(1) Start virtual machine,and click <img class="common_img" src="../_static/media/chapter_3\section_1-2\media\image2.png"  /> , and then click <img class="common_img" src="../_static/media/chapter_3\section_1-2\media\image3.png"  /> or  press “**Ctrl+Alt+T**” to open command line terminal.  
+(1) Start virtual machine,and click <img src="../_static/media/chapter_3/section_1-2/media/image2.png"  /> , and then click <img src="../_static/media/chapter_3/section_1-2/media/image3.png"  /> or  press "**Ctrl+Alt+T**" to open command line terminal.  
 
-(2) Input command “**cd test/**” and press **Enter** to enter “**cd test/**” folder.
+(2) Input command "**cd test/**" and press **Enter** to enter "**cd test/**" folder.
 
-```py
+```bash
 cd test/
 ```
 
-(3) Input “**vim hello.py**” command, and press Enter to open program file.
+(3) Input "**vim hello.py**" command, and press Enter to open program file.
 
-```py
+```bash
 vim hello.py
 ```
 
-(4) Press “**I**” key to enter the editing mode and input “**print(100+100)**” .
+(4) Press "**I**" key to enter the editing mode and input "**print(100+100)**" .
 
-<img class="common_img" src="../_static/media/chapter_3\section_1-2\media\image17.png"  />
+<img class="common_img" src="../_static/media/chapter_3/section_1-2/media/image17.png"  />
 
-:::{Note}
+> [!Note]
+>
+> **there is no need to enclose the mathematical expression with double quotation mark.**
+>
 
-**there is no need to enclose the mathematical expression with double quotation mark.**
+(5) Press "**Esc**" and input " **:wq**" and press **Enter** to save and exit the editing.
 
-:::
+(6) Input "**python3 hello.py**" command and press Enter to run the program file. Then the result of the mathematical expression will be printed on the terminal.
 
-(5) Press “**Esc**” and input “ **:wq**” and press **Enter** to save and exit the editing.
-
-(6) Input “**python3 hello.py**” command and press Enter to run the program file. Then the result of the mathematical expression will be printed on the terminal.
-
-<img class="common_img" src="../_static/media/chapter_3\section_1-2\media\image18.png"  />
+<img class="common_img" src="../_static/media/chapter_3/section_1-2/media/image18.png"  />
 
 * **Function Explanation**
 
 print() function is used to print output in the format below.
 
 ```py
-print(*objects, sep=’ ’, end=’\n’ , file=sys.stdout, flush=False)
+print(*objects, sep=' ', end='\n' , file=sys.stdout, flush=False)
 ```
 
-The first parameter “**objects**” is the output object. When output several objects, they should be separately with “**,**” in between.
+The first parameter "**objects**" is the output object. When output several objects, they should be separately with "**,**" in between.
 
-The second parameter “**sep**” is used to put string between the output objects, ’ ’ by default.
+The second parameter "**sep**" is used to put string between the output objects, ' ' by default.
 
-The third parameter “**end**” is used to add string at the end of output, ’\n’ by default.
+The third parameter "**end**" is used to add string at the end of output, '\n' by default.
 
-The fourth parameter “**file**” is the object with a write function, the default value is “sys.stdout”, that is screen.
+The fourth parameter "**file**" is the object with a write function, the default value is "sys.stdout", that is screen.
 
-The fifth parameter “**flush**” is used to output cache and the default value is “**False**”.
+The fifth parameter "**flush**" is used to output cache and the default value is "**False**".
 
 ### 3.2.3 Python Basic Syntax
 
@@ -403,17 +399,17 @@ Comments are used to explain Python code. Python support two types of comments, 
 
 (1) Single Line Comment
 
-Comment starts with “#” and its format is as follow.
+Comment starts with "#" and its format is as follow.
 
-<img class="common_img" src="../_static/media/chapter_3\section_1-3\media\image1.png"  />
+<img class="common_img" src="../_static/media/chapter_3/section_1-3/media/image1.png"  />
 
 (2) Multi Line Comments
 
-Insert three single quotation marks “**'''**” or three double quotation marks “**"""**” at the beginning and the end of the comment to comment multiple lines, and the format is as follow.
+Insert three single quotation marks "**'''**" or three double quotation marks "**"""**" at the beginning and the end of the comment to comment multiple lines, and the format is as follow.
 
-<img class="common_img" src="../_static/media/chapter_3\section_1-3\media\image2.jpeg"  />
+<img class="common_img" src="../_static/media/chapter_3/section_1-3/media/image2.jpeg"  />
 
-<img class="common_img" src="../_static/media/chapter_3\section_1-3\media\image3.jpeg"  />
+<img class="common_img" src="../_static/media/chapter_3/section_1-3/media/image3.jpeg"  />
 
 * **Indentation Rules**
 
@@ -427,39 +423,38 @@ code block. And when indentation ends, a block of code ends.
 
 Each red frame in the picture below represents one block of code.
 
-<img class="common_img" src="../_static/media/chapter_3\section_1-3\media\image4.png"  />
+<img class="common_img" src="../_static/media/chapter_3/section_1-3/media/image4.png"  />
 
-:::{Note}
-
-* block of code at the same level should be indented consistently. We can use “**Tab**” key or input 4 spaces to indent.
-
-* Python uses 4 spaces as indentation by default. In general, one “Tab” is equal to 4 spaces.
-
-:::
+> [!Note]
+>
+> * block of code at the same level should be indented consistently. We can use "**Tab**" key or input 4 spaces to indent.
+>
+> * Python uses 4 spaces as indentation by default. In general, one "**Tab**" is equal to 4 spaces.
+>
 
 * **Coding Standard**
 
-Python adopts PEP8 as coding standard. “**PEP**” represents Python Enhancement Proposal, and “**8**” indicates style guide of Python code.
+Python adopts PEP8 as coding standard. "**PEP**" represents Python Enhancement Proposal, and "**8**" indicates style guide of Python code.
 
 Please strictly follow the coding standard when coding to make the code neater, which will enhance the readability.
 
-(1) One “import” is for one module. Please don’t import multiple modules for one time.
+(1) One "import" is for one module. Please don't import multiple modules for one time.
 
-|     Recommend     | <img class="common_img" src="../_static/media/chapter_3\section_1-3\media\image5.png" /> |
+|     Recommend     | <img src="../_static/media/chapter_3/section_1-3/media/image5.png" /> |
 | :---------------: | ------------------------------------------------------------ |
-| **Not Recommend** | <img class="common_img" src="../_static/media/chapter_3\section_1-3\media\image6.png" /> |
+| **Not Recommend** | <img src="../_static/media/chapter_3/section_1-3/media/image6.png" /> |
 
-(2) Please don’t put semicolon “ ;” at the end of the line, and don’t put two commands at the same line
+(2) Please don't put semicolon " ;" at the end of the line, and don't put two commands at the same line
 
-|     Recommend     | <img class="common_img" src="../_static/media/chapter_3\section_1-3\media\image7.png" /> |
+|     Recommend     | <img src="../_static/media/chapter_3/section_1-3/media/image7.png" /> |
 | :---------------: | ------------------------------------------------------------ |
-| **Not Recommend** | <img class="common_img" src="../_static/media/chapter_3\section_1-3\media\image8.png" /> |
+| **Not Recommend** | <img src="../_static/media/chapter_3/section_1-3/media/image8.png" /> |
 
-(3) The length of line should not be greater than 80 characters, and you can separate a command into several lines, and put the command inside “**()**” , as the example shown below. It is not recommended to use backslash “**\\**” to connect the lines of contents.
+(3) The length of line should not be greater than 80 characters, and you can separate a command into several lines, and put the command inside "**()**" , as the example shown below. It is not recommended to use backslash "**\\**" to connect the lines of contents.
 
-|     Recommend     | <img class="common_img" src="../_static/media/chapter_3\section_1-3\media\image9.png" /> |
+|     Recommend     | <img src="../_static/media/chapter_3/section_1-3/media/image9.png" /> |
 | :---------------: | ------------------------------------------------------------ |
-| **Not Recommend** | <img class="common_img" src="../_static/media/chapter_3\section_1-3\media\image10.png" /> |
+| **Not Recommend** | <img src="../_static/media/chapter_3/section_1-3/media/image10.png" /> |
 
 (4) When necessary, we can input space to improve the readability of the code.
 
@@ -473,23 +468,23 @@ In Python, naming identifier should be consistent with the naming rules.
 
 (1) Identifier names in Python can contain letters (A~Z, a-z), underscore (\_) and number, and the name should always start with a non-numeric character.
 
-(2) Identifier must be different from keywords/ reserved words in Python. For the definition of keywords/ reserved, please move to “**[keyword/ reserved word]()**” .
+(2) Identifier must be different from keywords/ reserved words in Python. For the definition of keywords/ reserved, please move to "**[keyword/ reserved word](#keyword_reserved_word)**" .
 
 (3) Identifier cannot contain **space**, **@, % , \$** and other special characters.
 
  Examples of valid and invalid identifier are listed below.
 
-| Valid Identifier   | <img class="common_img" src="../_static/media/chapter_3\section_1-3\media\image11.jpeg"/> |
+| Valid Identifier   | <img src="../_static/media/chapter_3/section_1-3/media/image11.jpeg"/> |
 | ------------------ | ------------------------------------------------------------ |
-| Invalid Identifier | <img class="common_img" src="../_static/media/chapter_3\section_1-3\media\image12.png" /> |
+| Invalid Identifier | <img src="../_static/media/chapter_3/section_1-3/media/image12.png" /> |
 
-(4) Identifier is case sensitive. For example, “num” , “Num” and “NUM” are three independent variables.
+(4) Identifier is case sensitive. For example, "num" , "Num" and "NUM" are three independent variables.
 
-(5) Identifier starting with underscore “**\_**” has special meaning. Please avoid using identifier starting with “**\_**” if not necessary.
+(5) Identifier starting with underscore "**\_**" has special meaning. Please avoid using identifier starting with "**\_**" if not necessary.
 
 | Identifier                           | Meaning                                                      | Example  |
 | ------------------------------------ | ------------------------------------------------------------ | -------- |
-| Start with single underscore         | Class properties that cannot be accessed directly through“from...import*” | _width   |
+| Start with single underscore         | Class properties that cannot be accessed directly through"from...import*" | _width   |
 | Start with double underscore         | Exclusive member of class                                    | __add    |
 | Start and end with double underscore | Special identifier                                           | __init__ |
 
@@ -497,19 +492,21 @@ In Python, naming identifier should be consistent with the naming rules.
 
 Besides the rules mentioned above, there are corresponding rules in identifier naming under different situation.
 
-(1) When used as module name, identifier should be short and composed of lower case letters. And underscore “\_” can be used for separation.
+(1) When used as module name, identifier should be short and composed of lower case letters. And underscore "\_" can be used for separation.
 
 (2) When used as package name, identifier should be short and
 
-composed of lower case letters, but it is not recommended to use full stop “ .”, such as “com.mr” and “com.mr.book” .
+composed of lower case letters, but it is not recommended to use full stop " .", such as "com.mr" and "com.mr.book" .
 
-(3) When used as class name, identifier should start with upper case letters, for example “Book” which defines a book class.
+(3) When used as class name, identifier should start with upper case letters, for example "Book" which defines a book class.
 
-(4) When used as class name inside module, identifier can start with “\_” and upper case letters, for example “\_Book” .
+(4) When used as class name inside module, identifier can start with "**\_**" and upper case letters, for example "**\_Book**" .
 
 (5) When used as function name, property name and method name in classes, identifier should be composed of lower case letters and underscore can be used to separate different words.
 
-(6) When used as constant name, identifier should consist of upper case letters and different words can be separated by underscore “\_” .
+(6) When used as constant name, identifier should consist of upper case letters and different words can be separated by underscore "**\_**" .
+
+<p id="keyword_reserved_word"></p>
 
 * **Keyword/ Reserved Word**
 
@@ -519,31 +516,30 @@ Python. And they cannot be used as variable names, function names, class names, 
 
 In Python interactive programming environment, we can check the reserved words according to the steps below.
 
-(1) Start virtual machine, and click <img class="common_img" src="../_static/media/chapter_3\section_1-3\media\image13.png"  /> , and then click <img class="common_img" src="../_static/media/chapter_3\section_1-3\media\image14.png"  /> or press “**Ctrl+Alt+T**” to open command line terminal.
+(1) Start virtual machine, and click <img src="../_static/media/chapter_3/section_1-3/media/image13.png"  /> , and then click <img src="../_static/media/chapter_3/section_1-3/media/image14.png"  /> or press "**Ctrl+Alt+T**" to open command line terminal.
 
-(2) Input “**python3**” command and press Enter to enter Python interactive programming environment.
+(2) Input "**python3**" command and press Enter to enter Python interactive programming environment.
 
-```py
+```bash
 python3
 ```
 
-(3) Input “**import keyword**” command and press Enter to import “**keyword**” module.
+(3) Input "**import keyword**" command and press Enter to import "**keyword**" module.
 
-```py
+```bash
 import keyword
 ```
 
-(4) Input “**keyword.kwlist**” commend and press Enter to view all reserved words in Python.
+(4) Input "**keyword.kwlist**" commend and press Enter to view all reserved words in Python.
 
 ```py
 keyword.kwlist
 ```
 
-:::{Note}
-
-**Reserved words are also case sensitive. For example, “if” is reserved word, while “IF”, “iF” and “If” are not.**
-
-:::
+> [!Note]
+>
+> **Reserved words are also case sensitive. For example, "if" is reserved word, while "IF", "iF" and "If" are not.**
+>
 
 * **Data Type**
 
@@ -553,11 +549,10 @@ And Number, String and Tuple are immutable, while List, Dictionary and
 
 Set are mutable.
 
-:::{Note}
-
- In Python, type() function can be used to check the type of variable.
-
-:::
+> [!Note]
+>
+> In Python, type() function can be used to check the type of variable.
+>
 
 (1) **Number**
 
@@ -571,21 +566,20 @@ Number includes three numeric types to represent numbers or value.
 
 components. Both real and imaginary components belong to floating type.
 
-④ bool: Only has “**True**” and “**False**” values.  “**True**” corresponds to “ **1**” and “False” corresponds to “**0**”
+④ bool: Only has "**True**" and "**False**" values.  "**True**" corresponds to " **1**" and "False" corresponds to "**0**"
 
 (2) **String**
 
 A string is a collection of multiple characters. Strings in Python are
 
-surrounded by either single quotation marks “**'**”, or double quotation marks “**"**” and triple quotation marks “**'''**” or “**"""**” .
+surrounded by either single quotation marks "**'**", or double quotation marks "**"**" and triple quotation marks "**'''**" or "**"""**" .
 
 Strings with single quotation marks and double quotation marks are equivalent, and return the objects of the same type.
 
-:::{Note}
-
-**when there is quotation marks inside the strings, we need to escape them through adding backslash “\” in front of the quotation marks to avoid syntax error.**
-
-:::
+> [!Note]
+>
+> when there is quotation marks inside the strings, we need to escape them through adding backslash "\" in front of the quotation marks to avoid syntax error.**
+>
 
 (3) **List**
 
@@ -633,6 +627,8 @@ variable name = {element 1, element 2,..., element n}
 
 Set can only store immutable data type, including integer, float type, string and tuple, but cannot store mutable data type, including List, dictionary and set.
 
+<p id="anchor_3_2_4"></p>
+
 ### 3.2.4 Python Conditional Statement
 
 * **Conditional Statement Introduction**
@@ -641,12 +637,13 @@ Conditional statement controls the execution of different blocks of code through
 
 (1) **Conditional Expression**
 
-Conditional expression consists of operator and operand. Take “**a\<4**” for example. “**a**” and “**4**” are operand ，and “**\<**” is operator.
+Conditional expression consists of operator and operand. Take "**a\<4**" for example. "**a**" and "**4**" are operand ，and "**\<**" is operator.
 
-Judgment conditions can be any element with Boolean properties, including data, variables, and expressions composed of variables and operators. If its Boolean property is "True", the condition holds; if it is "False", the condition doesn’t hold.
+Judgment conditions can be any element with Boolean properties, including data, variables, and expressions composed of variables and operators. If its Boolean property is "**True**", the condition holds; if it is "**False**", the condition doesn't hold.
 
 The table lists the commonly used operators by conditional expression.
-<table>
+
+<table class="docutils-nobg" border="1">
   <thead>
     <tr>
       <th>Type</th>
@@ -737,19 +734,19 @@ The table lists the commonly used operators by conditional expression.
   </tbody>
 </table>
 
-Python is able to combine the judgement condition logically through the reserved words “not” , “and” and “or” .
+Python is able to combine the judgement condition logically through the reserved words "**not**" , "**and**" and "**or**" .
 
-① not: it represents the “**not**” relationship for an individual condition. If the Boolean property of the “**condition**” is “**True**” , the Boolean property of the “**not condition**” is “**False**”. If Boolean property of the “**condition**” is “**False**”, the
+① not: it represents the "**not**" relationship for an individual condition. If the Boolean property of the "**condition**" is "**True**" , the Boolean property of the "**not condition**" is "**False**". If Boolean property of the "**condition**" is "**False**", the
 
-Boolean property of the “**not condition**” is “**True**”
+Boolean property of the "**not condition**" is "**True**"
 
-② and: it represents “**and**” relationship between several conditions. Only when the Boolean properties of the conditions connected by “and” are **all**
+② and: it represents "**and**" relationship between several conditions. Only when the Boolean properties of the conditions connected by "and" are **all**
 
-**“True”**, the Boolean property of the logic expression is “**True**”, otherwise “**False**”.
+**"True"**, the Boolean property of the logic expression is "**True**", otherwise "**False**".
 
-③ or: it represents “**or**” relationship between several conditions. Only when the Boolean properties of the conditions connected by “or” are **all**
+③ or: it represents "**or**" relationship between several conditions. Only when the Boolean properties of the conditions connected by "or" are **all**
 
-**“False”**, the Boolean property of the logic expression is “**False**”, otherwise “**True**”.
+**"False"**, the Boolean property of the logic expression is "**False**", otherwise "**True**".
 
 (2) **Selection Statement**
 
@@ -761,11 +758,11 @@ selection structure.
 
 The syntax and execution process of single-branch selection structure are as follow.
 
-|                          **Syntax**                          |                    **Execution Process**                     |
-| :----------------------------------------------------------: | :----------------------------------------------------------: |
-| <img class="common_img" src="../_static/media/chapter_3\section_1-4/media/image2.jpg" /> | <img class="common_img" src="../_static/media/chapter_3\section_1-4/media/image3.jpeg" /> |
+|                              **Syntax**                               |                         **Execution Process**                          |
+|:---------------------------------------------------------------------:|:----------------------------------------------------------------------:|
+| <img src="../_static/media/chapter_3/section_1-4/media/image2.jpg" /> | <img src="../_static/media/chapter_3/section_1-4/media/image3.jpeg" /> |
 
-If the condition of “if statement” is true, block of code 1 and 2 will be
+If the condition of "if statement" is true, block of code 1 and 2 will be
 
 executed in sequence. Otherwise, skip block of code 1 and directly execute block of code 2.
 
@@ -773,11 +770,11 @@ executed in sequence. Otherwise, skip block of code 1 and directly execute block
 
 The syntax and execution process of double-branch selection structure are as follow.
 
-|                          **Syntax**                          |                        **Execution**                         |
-| :----------------------------------------------------------: | :----------------------------------------------------------: |
-| <img class="common_img" src="../_static/media/chapter_3\section_1-4/media/image4.jpeg" /> | <img class="common_img" src="../_static/media/chapter_3\section_1-4/media/image5.jpeg" /> |
+|                               **Syntax**                               |                             **Execution**                              |
+|:----------------------------------------------------------------------:|:----------------------------------------------------------------------:|
+| <img src="../_static/media/chapter_3/section_1-4/media/image4.jpeg" /> | <img src="../_static/media/chapter_3/section_1-4/media/image5.jpeg" /> |
 
-If the condition of “if statement” is true, block of code 1 will be executed. Otherwise, block of code 2 will be executed.
+If the condition of "if statement" is true, block of code 1 will be executed. Otherwise, block of code 2 will be executed.
 
 ③ Multi-branch selection structure
 
@@ -785,39 +782,38 @@ The syntax and execution process of multi-branch selection structure are as foll
 
 |                            Syntax                            |                      Execution Process                       |
 | :----------------------------------------------------------: | :----------------------------------------------------------: |
-| <img class="common_img" src="../_static/media/chapter_3\section_1-4/media/image6.png" /> | <img class="common_img" src="../_static/media/chapter_3\section_1-4/media/image16.png" /> |
+| <img src="../_static/media/chapter_3/section_1-4/media/image6.png" /> | <img src="../_static/media/chapter_3/section_1-4/media/image16.png" /> |
 
-If the condition of “if statement” is true, block of code 1 will be executed.
+If the condition of "**if statement**" is true, block of code 1 will be executed.
 
-If the condition of “if statement” is false, conditions of elif statements will be judged in sequence. When the condition is true, the corresponding block of code will be executed.
+If the condition of "**if statement**" is false, conditions of elif statements will be judged in sequence. When the condition is true, the corresponding block of code will be executed.
 
-If neither conditions of “if statement” nor elif statement are false, block of code n+1 will be executed.
+If neither conditions of "**if statement**" nor elif statement are false, block of code n+1 will be executed.
 
 * **Operation Steps**
 
 In this routine, the program will calculate BMI value based on the input height and weight, and then perform health assessment.
 
-Before operation, please copy the routine “**conditional_statement.py**”
+Before operation, please copy the routine "**conditional_statement.py**"
 
-stored in “**[3.2 Python Programming->3.2.4 Python Conditional Statement]()”** to the shared folder.
+stored in "**[3.2 Python Programming->3.2.4 Python Conditional Statement](#anchor_3_2_4)"** to the shared folder.
 
-:::{Note}
+> [!Note]
+>
+> **the input command should be case sensitive and keywords can be complemented by "Tab" key.**
+>
 
-**the input command should be case sensitive and keywords can be complemented by “Tab” key.**
+(1) Start virtual machine, and click <img src="../_static/media/chapter_3/section_1-4/media/image7.png"  />, and then click <img src="../_static/media/chapter_3/section_1-4/media/image8.png"  /> or press "**Ctrl+Alt+T**" to open command line terminal.
 
-:::
+(2) Input "**cd /mnt/hgfs/Share/**" command and press Enter to enter the shared folder.
 
-(1) Start virtual machine, and click “ <img class="common_img" src="../_static/media/chapter_3\section_1-4\media\image7.png"  /> ”, and then click “ <img class="common_img" src="../_static/media/chapter_3\section_1-4\media\image8.png"  /> ” or press “**Ctrl+Alt+T**” to open command line terminal.
-
-(2) Input “**cd /mnt/hgfs/Share/**” command and press Enter to enter the shared folder.
-
-```py
+```bash
 cd /mnt/hgfs/Share/
 ```
 
-(3) Input “**python3 conditional_statement.py**” command and press Enter to run the routine.
+(3) Input "**python3 conditional_statement.py**" command and press Enter to run the routine.
 
-```py
+```bash
 python3 conditional_statement.py
 ```
 
@@ -825,57 +821,57 @@ python3 conditional_statement.py
 
 nput height and weight in sequence, and press Enter. Then the terminal will print the corresponding BMI and assessment result.
 
-<img class="common_img" src="../_static/media/chapter_3\section_1-4\media\image11.png"  />
+<img class="common_img" src="../_static/media/chapter_3/section_1-4/media/image11.png"  />
 
 * **Program Analysis**
 
-The routine can be found in “**[5. OpenCV Computer Vision Course->5.2 Basic Course->5.2.11 Image Processing--Morphological Processing->Routine Code]()**” .
+The routine can be found in "**[5. OpenCV Computer Vision Course->5.2 Basic Course->5.2.11 Image Processing--Morphological Processing->Routine Code](https://drive.google.com/drive/folders/1rrzxzM-UpsXkL6fp4Wz4M0C4ELZiKfEX?usp=sharing)**" .
 
-<img class="common_img" src="../_static/media/chapter_3\section_1-4\media\image12.jpeg"  />
+<img class="common_img" src="../_static/media/chapter_3/section_1-4/media/image12.jpeg"  />
 
 (1) Data input
 
 Call input() function to receive the input data. The hints are inside the parenthesis.
 
-<img class="common_img" src="../_static/media/chapter_3\section_1-4\media\image13.png"  />
+<img class="common_img" src="../_static/media/chapter_3/section_1-4/media/image13.png"  />
 
 (2) Data calculation
 
 Process the input data based on BMI calculation formula, and then print the result on the terminal through **print()** function.
 
-<img class="common_img" src="../_static/media/chapter_3\section_1-4\media\image14.jpeg"  />
+<img class="common_img" src="../_static/media/chapter_3/section_1-4/media/image14.jpeg"  />
 
 The format of print() function is as follow.
 
 ```py
-print(*objects, sep=’ ’, end=’\n’ , file=sys.stdout, flush=False)
+print(*objects, sep=' ', end='\n' , file=sys.stdout, flush=False)
 ```
 
-The first parameter “**objects**” is the output object. When several objects are output at one time, objects should be separated by comma “**,**” .
+The first parameter "**objects**" is the output object. When several objects are output at one time, objects should be separated by comma "**,**" .
 
-The second parameter “**sep**” is used to insert the string between the objects. The default value is a space.
+The second parameter "**sep**" is used to insert the string between the objects. The default value is a space.
 
-The third parameter “**end**” is used to add string at the end of the output.
+The third parameter "**end**" is used to add string at the end of the output.
 
 The default value is a line break.
 
-The fourth parameter “**file**” is the object with a write function, the default value is “sys.stdout”, that is screen.
+The fourth parameter "**file**" is the object with a write function, the default value is "sys.stdout", that is screen.
 
-The fifth parameter “**flush**” is used to control and output cache. The default value is “**False**”.
+The fifth parameter "**flush**" is used to control and output cache. The default value is "**False**".
 
 (3) Range Judgement
 
 As there are two or more judgement results, multi-branch structure should be adopted.
 
-<img class="common_img" src="../_static/media/chapter_3\section_1-4\media\image15.png"  />
+<img class="common_img" src="../_static/media/chapter_3/section_1-4/media/image15.png"  />
 
-① When BMI is less than 18.5, the corresponding BMI value and “underweight” will be printed.
+① When BMI is less than 18.5, the corresponding BMI value and "underweight" will be printed.
 
-② When BMI is less than 24.9 and greater than or equal to 18.5, the corresponding BMI value and “normal, please keep it” will be printed.
+② When BMI is less than 24.9 and greater than or equal to 18.5, the corresponding BMI value and "**normal, please keep it**" will be printed.
 
-③ When BMI is less than 29.9 and greater than or equal to 24.9, the corresponding BMI value and “overweight” will be printed.
+③ When BMI is less than 29.9 and greater than or equal to 24.9, the corresponding BMI value and "**overweight**" will be printed.
 
-④ When BMI is greater than 29.9, the corresponding BMI value and “obese” will be printed.
+④ When BMI is greater than 29.9, the corresponding BMI value and "obese" will be printed.
 
 ### 3.2.5 Python Loop Statement
 
@@ -885,17 +881,17 @@ statement will be explained combining with the related routines.
 
 * **Loop Statement Introduction**
 
-Loop statement includes “**while**” and “**for**”, which is used to repeat some steps.
+Loop statement includes "**while**" and "**for**", which is used to repeat some steps.
 
 (1) **while loop**
 
 The syntax and execution flow of the `while` loop are as follows:The format and execution process of while loop are as follow.
 
-| Syntax                                                       | Execution Process                                            |
-| ------------------------------------------------------------ | ------------------------------------------------------------ |
-| <img class="common_img" src="../_static/media/chapter_3\section_1-5\media\image2.jpeg"/> | <img class="common_img" src="../_static/media/chapter_3\section_1-5\media\image3.jpeg"/> |
+| Syntax                                                       | Execution Process                                                     |
+| ------------------------------------------------------------ |-----------------------------------------------------------------------|
+| <img src="../_static/media/chapter_3/section_1-5/media/image2.jpeg"/> | <img src="../_static/media/chapter_3/section_1-5/media/image3.jpeg"/> |
 
-When the loop condition is “**True**”, the block of code in while loop will be executed till the loop condition is “**False**” . When the loop condition is always “**True**”, it will fall into “**dead loop**” .
+When the loop condition is "**True**", the block of code in while loop will be executed till the loop condition is "**False**" . When the loop condition is always "**True**", it will fall into "**dead loop**" .
 
 (2) **for loop**
 
@@ -903,15 +899,15 @@ The syntax and execution process of for loop are as follow.
 
 | Syntax                                                       | Execution Process                                            |
 | ------------------------------------------------------------ | ------------------------------------------------------------ |
-| <img class="common_img" src="../_static/media/chapter_3\section_1-5\media\image4.jpeg"/> | <img class="common_img" src="../_static/media/chapter_3\section_1-5\media\image5.jpeg"/> |
+| <img src="../_static/media/chapter_3/section_1-5/media/image4.jpeg"/> | <img src="../_static/media/chapter_3/section_1-5/media/image5.jpeg"/> |
 
-”**Target**” can be string, list, tuple, dictionary and other sequence type, while “**loop variable**” is used to store the elements read from the variable of the sequence type
+"**Target**" can be string, list, tuple, dictionary and other sequence type, while "**loop variable**" is used to store the elements read from the variable of the sequence type
 
 After entering **for loop**, traverse the elements within target and execute the block of code within **for loop** till the traversal ends.
 
 * **Loop Control Statement Introduction**
 
-Loop control statement can be used to interrupt the loop, or skip the current loop to execute the next loop. Loop control statement contains “**break**”, “**continue**” and “**pass**”.
+Loop control statement can be used to interrupt the loop, or skip the current loop to execute the next loop. Loop control statement contains "**break**", "**continue**" and "**pass**".
 
 (1) **break Statement**
 
@@ -919,12 +915,12 @@ break statement is used to get out of the whole loop. The syntax and execution p
 
 |                            Syntax                            |                      Execution Process                       |
 | :----------------------------------------------------------: | :----------------------------------------------------------: |
-| <img class="common_img" src="../_static/media/chapter_3\section_1-5\media\image6.jpeg"/> | <img class="common_img" src="../_static/media/chapter_3\section_1-5\media\image7.jpeg"/> |
+| <img src="../_static/media/chapter_3/section_1-5/media/image6.jpeg"/> | <img src="../_static/media/chapter_3/section_1-5/media/image7.jpeg"/> |
 |                                                              |                                                              |
 
-When the judgement condition is executed and is “**True**”, the loop will end.
+When the judgement condition is executed and is "**True**", the loop will end.
 
-If the judgement condition is “False” , the block of code 2 will be executed and the loop will continue.
+If the judgement condition is "False" , the block of code 2 will be executed and the loop will continue.
 
 (2) **continue statement**
 
@@ -932,12 +928,12 @@ continue statement is used to get out of this round of loop and carry out the ne
 
 | Syntax                                                       | Execution Process                                            |
 | ------------------------------------------------------------ | ------------------------------------------------------------ |
-| <img class="common_img" src="../_static/media/chapter_3/section_1-5/media/image9.png"/> | <img class="common_img" src="../_static/media/chapter_3/section_1-5/media/image23.png"/> |
-| <img class="common_img" src="../_static/media/chapter_3/section_1-5/media/image24.png"/> | <img class="common_img" src="../_static/media/chapter_3/section_1-5/media/image25.png"/> |
+| <img src="../_static/media/chapter_3/section_1-5/media/image9.png"/> | <img src="../_static/media/chapter_3/section_1-5/media/image23.png"/> |
+| <img src="../_static/media/chapter_3/section_1-5/media/image24.png"/> | <img src="../_static/media/chapter_3/section_1-5/media/image25.png"/> |
 
-When the judgement statement is executed and is “**True**”, this round of loop is complete and next round of loop starts. If the judgement condition is
+When the judgement statement is executed and is "**True**", this round of loop is complete and next round of loop starts. If the judgement condition is
 
-“False” , the block of code 2 is executed and the second round of loop is done.
+"False" , the block of code 2 is executed and the second round of loop is done.
 
 (3) **pass statement**
 
@@ -947,27 +943,26 @@ pass statement is null statement and nothing will be executed. It is used to kee
 
 This routine will calculate the factorial of the integer and print the elements of the string.
 
-Before operation, we need to copy the routine “**loop_statement.py**”
+Before operation, we need to copy the routine "**loop_statement.py**"
 
-stored in “**[3. 2 Python Programming-\> 3.2.5 Python Loop Statement-\> Routine Code]()**” to the shared folder.
+stored in "**[3. 2 Python Programming-\> 3.2.5 Python Loop Statement-\> Routine Code](https://drive.google.com/drive/folders/1xhq4RuQxiIlNRjMviSk_WGxE8QeJQoKm?usp=sharing)**" to the shared folder.
 
-:::{Note}
+> [!Note]
+>
+> **the input command should be case sensitive, and the keywords can be complemented by "Tab" key.**
+>
 
-**the input command should be case sensitive, and the keywords can be complemented by “Tab” key.**
+(1) Start virtual machine, and click "<img src="../_static/media/chapter_3/section_1-5/media/image11.jpeg"  /> ", and then click "<img src="../_static/media/chapter_3/section_1-5/media/image12.png"  /> " or press "**Ctrl+Alt+T**" to open command line terminal.
 
-:::
+(2) Input command "**cd /mnt/hgfs/Share/**" and press Enter to enter the shared folder.
 
-(1) Start virtual machine, and click “<img class="common_img" src="../_static/media/chapter_3/section_1-5/media/image11.jpeg"  /> ”, and then click “<img class="common_img" src="../_static/media/chapter_3/section_1-5/media/image12.png"  /> ” or press “**Ctrl+Alt+T**” to open command line terminal.
-
-(2) Input command “**cd /mnt/hgfs/Share/**” and press Enter to enter the shared folder.
-
-```py
+```bash
 cd /mnt/hgfs/Share/
 ```
 
-(3) Input the command “**python3 loop_statement.py**” and press Enter to run the routine.
+(3) Input the command "**python3 loop_statement.py**" and press Enter to run the routine.
 
-```py
+```bash
 python3 loop_statement.py
 ```
 
@@ -983,7 +978,7 @@ Input a string and press Enter, and then the terminal will print the elements of
 
 * **Program Analysis**
 
-The used routine “**loop_statement.py**” is stored in “[**3.2 Python Programming-\>3.2.5 Python Loop Statement-\>Routine Code**]()” .
+The used routine "**loop_statement.py**" is stored in "[**3.2 Python Programming-\>3.2.5 Python Loop Statement-\>Routine Code**](https://drive.google.com/drive/folders/1xhq4RuQxiIlNRjMviSk_WGxE8QeJQoKm?usp=sharing)" .
 
 <img class="common_img" src="../_static/media/chapter_3/section_1-5/media/image17.png"  />
 
@@ -997,7 +992,7 @@ Call input() function to receive the input data. The hints are inside the parent
 
 ② Create variable
 
-Create two variables for later calculation. “**fact**” is used to store the current factorial.
+Create two variables for later calculation. "**fact**" is used to store the current factorial.
 
 <img class="common_img" src="../_static/media/chapter_3/section_1-5/media/image19.png"  />
 
@@ -1005,27 +1000,27 @@ Create two variables for later calculation. “**fact**” is used to store the 
 
 Use while loop statement to calculate the factorial of the designated
 
-integer. During loop, “**i**” value will keep adding up. When this value is greater than the input integer, the loop will end. Then, call print() function to print the result on the terminal.
+integer. During loop, "**i**" value will keep adding up. When this value is greater than the input integer, the loop will end. Then, call print() function to print the result on the terminal.
 
 <img class="common_img" src="../_static/media/chapter_3/section_1-5/media/image20.png"  />
 
 The syntax of print() function is as follow.
 
 ```py
-print(*objects, sep=’ ’, end=’\n’ , file=sys.stdout, flush=False)
+print(*objects, sep=' ', end='\n' , file=sys.stdout, flush=False)
 ```
 
-The first parameter “**objects**” is the output object. When output several objects for one time, objects should be separated by “**,**” .
+The first parameter "**objects**" is the output object. When output several objects for one time, objects should be separated by "**,**" .
 
-The second parameter “**sep**” is used to insert the string between the objects. The default value is a space.
+The second parameter "**sep**" is used to insert the string between the objects. The default value is a space.
 
-The third parameter “**end**” is used to add string at the end of the output.
+The third parameter "**end**" is used to add string at the end of the output.
 
 The default value is a line break.
 
-The fourth parameter “**file**” is the object with a write function, the default value is “**sys.stdout**”, that is screen.
+The fourth parameter "**file**" is the object with a write function, the default value is "**sys.stdout**", that is screen.
 
-The fifth parameter “**flush**” is used to control and output cache. The default value is “**False**”.
+The fifth parameter "**flush**" is used to control and output cache. The default value is "**False**".
 
 (2) **Print String Elements**
 
@@ -1064,27 +1059,26 @@ User-defined function will define a piece of regular and reusable code as functi
 
 In Python, function generally is composed of function name, parameter list and function body consisting of series of statements. And the format is as follow.
 
-<img class="common_img" src="../_static/media/chapter_3\section_1-6\media\image2.jpeg"  />
+<img class="common_img" src="../_static/media/chapter_3/section_1-6/media/image2.jpeg"  />
 
-① A block of code starts with keyword “**def**”, and function identifier name and parameter list follows.
+① A block of code starts with keyword "**def**", and function identifier name and parameter list follows.
 
 ② For the convenience of future maintenance, it is better to reflect the function of the **function** on function identifier name.
 
-③ Parameter list is used to set the parameters that can be received by the function, and the parameters can be separated by “**,**” .
+③ Parameter list is used to set the parameters that can be received by the function, and the parameters can be separated by "**,**" .
 
 ④ Any passed in parameters and variables should be inserted inside the parenthesis.
 
-⑤ Functions should start with colon “ **:**” and are indented strictly.
+⑤ Functions should start with colon " **:**" and are indented strictly.
 
 ⑥ The first line of statement in function can be docstring, i.e. function description.
 
-⑦ Functions have returned value which is “**None**” by default.
+⑦ Functions have returned value which is "**None**" by default.
 
-:::{Note}
-
-**when building function, the parenthesis behind the function name cannot be omitted though there is no parameter in the function.**
-
-:::
+> [!Note]
+>
+> **when building function, the parenthesis behind the function name cannot be omitted though there is no parameter in the function.**
+>
 
 (2) **Parameter and Argument**
 
@@ -1102,35 +1096,35 @@ Arguments are the parameters passed to the function when calling the function. T
 
 Regardless of the types, all arguments must have certain values when calling the function so that these values can be sent to parameter.
 
-Take the code below for example. “**width**” and “**height**” are parameters, while “**w**” and “**h**” defined outside the function body are arguments.
+Take the code below for example. "**width**" and "**height**" are parameters, while "**w**" and "**h**" defined outside the function body are arguments.
 
-<img class="common_img" src="../_static/media/chapter_3\section_1-6\media\image3.jpeg"  />
+<img class="common_img" src="../_static/media/chapter_3/section_1-6/media/image3.jpeg"  />
 
 ```py
 with=4 height=9 area=36
 ```
 
-After parameter “**w**” and “**h**” are passed into the function body, “**width**” and “**height**” parameters are assigned to the corresponding values.
+After parameter "**w**" and "**h**" are passed into the function body, "**width**" and "**height**" parameters are assigned to the corresponding values.
 
 (3) **Return Value**
 
 After the function is executed, system will feed back some value to external caller, and these values are considered as return values of functions.
 
-In Python, when function runs to return statement, it means that the function completes running and designated values will be returned. If there is no return statement inside the function, function will return “**None**” by default.
+In Python, when function runs to return statement, it means that the function completes running and designated values will be returned. If there is no return statement inside the function, function will return "**None**" by default.
 
-Take the code below for example. After **add()** function is called, this function will return the result of “**x+y**”, and assign variable “**result**” to this value.
+Take the code below for example. After **add()** function is called, this function will return the result of "**x+y**", and assign variable "**result**" to this value.
 
-<img class="common_img" src="../_static/media/chapter_3\section_1-6\media\image5.jpeg"  />
+<img class="common_img" src="../_static/media/chapter_3/section_1-6/media/image5.jpeg"  />
 
-<img class="common_img" src="../_static/media/chapter_3\section_1-6\media\image6.png"  />
+<img class="common_img" src="../_static/media/chapter_3/section_1-6/media/image6.png"  />
 
 Pay attention, in Python, there can be multiple return values in one function as the picture below shown.
 
-<img class="common_img" src="../_static/media/chapter_3\section_1-6\media\image7.jpeg"  />
+<img class="common_img" src="../_static/media/chapter_3/section_1-6/media/image7.jpeg"  />
 
-<img class="common_img" src="../_static/media/chapter_3\section_1-6\media\image8.png"  />
+<img class="common_img" src="../_static/media/chapter_3/section_1-6/media/image8.png"  />
 
-There are two return values inside the **calculate()** function, including “**x+y**”and “**x\*y**” . After this function is called, “**a**” and “**b**” variables will be assigned to these two return values.
+There are two return values inside the **calculate()** function, including "**x+y**"and "**x\*y**" . After this function is called, "**a**" and "**b**" variables will be assigned to these two return values.
 
 **2. Function Passing**
 
@@ -1140,11 +1134,11 @@ There are two types of function parameters, including mutable and immutable, who
 
 The calling of mutable parameter is similar to pass-by-reference in C++. If the mutable parameter is passed, such as list and dictionary, modification of the passed in parameters inside the function will affect the external variables.
 
-For example, after the passed in list “**list_01**” is changed inside **change_int()** function, the external variable will also be changed.
+For example, after the passed in list "**list_01**" is changed inside **change_int()** function, the external variable will also be changed.
 
-<img class="common_img" src="../_static/media/chapter_3\section_1-6\media\image9.jpeg"  />
+<img class="common_img" src="../_static/media/chapter_3/section_1-6/media/image9.jpeg"  />
 
-<img class="common_img" src="../_static/media/chapter_3\section_1-6\media\image10.png"  />
+<img class="common_img" src="../_static/media/chapter_3/section_1-6/media/image10.png"  />
 
 **2.2 Immutable Parameter**
 
@@ -1152,11 +1146,11 @@ Calling immutable parameters is similar to C++ pass-by-value. If immutable param
 
 Take code below for example. The variable "**b**" points to the int object "**2**". When passed to the **unchange_int()** function, the variable "**b**" is copied by value, that is, the variable "**a**" and the variable "**b**" both point to the same int object "**2**" .
 
-However, when execute “**a = 10**”, variable “**a**” points to newly generated int object “ **10**”. Therefore, the external variable doesn’t change, and the printed value is “**2**” .
+However, when execute "**a = 10**", variable "**a**" points to newly generated int object " **10**". Therefore, the external variable doesn't change, and the printed value is "**2**" .
 
-<img class="common_img" src="../_static/media/chapter_3\section_1-6\media\image11.png"  />
+<img class="common_img" src="../_static/media/chapter_3/section_1-6/media/image11.png"  />
 
-<img class="common_img" src="../_static/media/chapter_3\section_1-6\media\image12.png"  />
+<img class="common_img" src="../_static/media/chapter_3/section_1-6/media/image12.png"  />
 
 * **Parameter Type**
 
@@ -1164,11 +1158,11 @@ However, when execute “**a = 10**”, variable “**a**” points to newly gen
 
 When calling function, each argument is associated with the corresponding parameter in positional order, and this association is called a positional parameter.
 
-Take the code below for example. When calling **describe_student()** function, name and age parameters should be offered in sequence. “**Jack**” and “ **18**” are respectively stored in “**person_name**” and “**student_age**” .
+Take the code below for example. When calling **describe_student()** function, name and age parameters should be offered in sequence. "**Jack**" and " **18**" are respectively stored in "**person_name**" and "**student_age**" .
 
-<img class="common_img" src="../_static/media/chapter_3\section_1-6\media\image13.png"  />
+<img class="common_img" src="../_static/media/chapter_3/section_1-6/media/image13.png"  />
 
-<img class="common_img" src="../_static/media/chapter_3\section_1-6\media\image14.png"  />
+<img class="common_img" src="../_static/media/chapter_3/section_1-6/media/image14.png"  />
 
 (2) **Default Parameter**
 
@@ -1176,55 +1170,54 @@ When defining functions, we can specify the default value of each
 
 parameter. When calling function, if arguments are provided to parameters, adopt the designated argument. Otherwise, the default value of parameter should be adopted.
 
-For example, set the default value of “**student_age**” parameter as “ **18**”.
+For example, set the default value of "**student_age**" parameter as " **18**".
 
-When argument is offered to “**student_age**” parameter during calling describe_student() function, adopt the designated argument. And the designated argument of this example is “**20**”.
+When argument is offered to "**student_age**" parameter during calling describe_student() function, adopt the designated argument. And the designated argument of this example is "**20**".
 
-<img class="common_img" src="../_static/media/chapter_3\section_1-6\media\image15.png"  />
+<img class="common_img" src="../_static/media/chapter_3/section_1-6/media/image15.png"  />
 
-<img class="common_img" src="../_static/media/chapter_3\section_1-6\media\image16.png"  />
+<img class="common_img" src="../_static/media/chapter_3/section_1-6/media/image16.png"  />
 
 (3) **Variable-length Parameter**
 
-In Python, function can also be defined as variable-length parameter which is also called mutable parameter. By adding “**\***” in front of the identifier, the corresponding parameter can be defined as variable-length parameter.
+In Python, function can also be defined as variable-length parameter which is also called mutable parameter. By adding "**\***" in front of the identifier, the corresponding parameter can be defined as variable-length parameter.
 
-Take the codes below for example. After parameter “**number**” is defined as variable-length parameter, the called **calculate()** function can be directly used even though the passed in parameters are neither list nor tuple.
+Take the codes below for example. After parameter "**number**" is defined as variable-length parameter, the called **calculate()** function can be directly used even though the passed in parameters are neither list nor tuple.
 
-<img class="common_img" src="../_static/media/chapter_3\section_1-6\media\image17.png"  />
+<img class="common_img" src="../_static/media/chapter_3/section_1-6/media/image17.png"  />
 
-<img class="common_img" src="../_static/media/chapter_3\section_1-6\media\image18.png"  />
+<img class="common_img" src="../_static/media/chapter_3/section_1-6/media/image18.png"  />
 
 (4) **Keyword Parameter**
 
-Keyword parameter will be passed by “**parameter name-value**” pair. In this way, when designating the argument of function, the position of argument and parameter can be different and we just need to ensure the parameter name is correct.
+Keyword parameter will be passed by "**parameter name-value**" pair. In this way, when designating the argument of function, the position of argument and parameter can be different and we just need to ensure the parameter name is correct.
 
 Check the code below. When passing the parameter, the function can output normally though the parameter order is adjusted.
 
-<img class="common_img" src="../_static/media/chapter_3\section_1-6\media\image19.png"  />
+<img class="common_img" src="../_static/media/chapter_3/section_1-6/media/image19.png"  />
 
-<img class="common_img" src="../_static/media/chapter_3\section_1-6\media\image20.png"  />
+<img class="common_img" src="../_static/media/chapter_3/section_1-6/media/image20.png"  />
 
 (5) **Named Keyword Argument**
 
 Named keyword arguments can be used when it is necessary to restrict parameters to be passed only by keyword. In user-defined function,
 
-parameters are separated by “**\***” and the parameters following “**\***” are named keyword parameter.
+parameters are separated by "**\***" and the parameters following "**\***" are named keyword parameter.
 
-Take the codes below for example. “**live_city” following** “**\***” is named keyword parameter. Therefore, the parameters must be passed by keyword, otherwise the program will throw error.
+Take the codes below for example. "**live_city" following** "**\***" is named keyword parameter. Therefore, the parameters must be passed by keyword, otherwise the program will throw error.
 
-<img class="common_img" src="../_static/media/chapter_3\section_1-6\media\image21.png"  />
+<img class="common_img" src="../_static/media/chapter_3/section_1-6/media/image21.png"  />
 
-<img class="common_img" src="../_static/media/chapter_3\section_1-6\media\image22.png"  />
+<img class="common_img" src="../_static/media/chapter_3/section_1-6/media/image22.png"  />
 
-:::{Note}
-
-**Note: In Python, the parameters should be defined in order that is positional parameter, default parameter, mutable parameter, named keyword parameter and keyword parameter.**
-
-:::
+> [!Note]
+>
+> **Note: In Python, the parameters should be defined in order that is positional parameter, default parameter, mutable parameter, named keyword parameter and keyword parameter.**
+>
 
 * **Module Introduction**
 
-In general, module is a file suffixed by “ **.py**” . In addition, there is other file type of module, such as “ **.pyo**” , “ **.pyc**”, “ **.pyd**” , “ **.so**” and “ **.dll**” . If you are
+In general, module is a file suffixed by " **.py**" . In addition, there is other file type of module, such as " **.pyo**" , " **.pyc**", " **.pyd**" , " **.so**" and " **.dll**" . If you are
 
 Python novice, you can skip these types.
 
@@ -1254,11 +1247,10 @@ module, this module name should be used as the prefix of the member name.
 
 When the import statement in this syntax is adopted, only the designated member of the module will be imported but not all members. At the same time, when this member is used in the program, there is no need to add any prefix to the member name.
 
-:::{Note}
-
-**“from module name import \*” can also be used to import all the members of the designated members, but it is not recommended to use this.**
-
-:::
+> [!Note]
+>
+> **"from module name import \*" can also be used to import all the members of the designated members, but it is not recommended to use this.**
+>
 
 ### 3.2.7 Python Container Type and Related Operation
 
@@ -1266,7 +1258,7 @@ When the import statement in this syntax is adopted, only the designated member 
 
 Object is the abstract of data in Python. All the data in Python program is represented by object or the relationship between objects. A Container is an object that contains the references to other objects, such as Tuple, List,Dictionary,etc. These referenced objects compose the object value of the container.
 
-There are two common types of containers, including sequence (List,Tuple, etc.) and map (Dictionary). In sequence, each element has subscript and they are organized. In map, each element has its name (key), and they are unordered. Apart from sequence and map, “**Set**” is also a container.
+There are two common types of containers, including sequence (List,Tuple, etc.) and map (Dictionary). In sequence, each element has subscript and they are organized. In map, each element has its name (key), and they are unordered. Apart from sequence and map, "**Set**" is also a container.
 
 * **Container Introduction**
 
@@ -1278,17 +1270,17 @@ There are two common types of containers, including sequence (List,Tuple, etc.) 
 
 ③ Feature: There is no unified type of the elements in List, and they can be added, deleted, modified and searched. We can delete (pop) the elements based on subscript, remove elements based on value, insert elements into some position and append the elements to the end of List.
 
-<img class="common_img" src="../_static/media/chapter_3\section_1-7\media\image2.png"  />
+<img class="common_img" src="../_static/media/chapter_3/section_1-7/media/image2.png"  />
 
 (2) **Tuple**
 
-① Syntax：（123 ，456 ，789 ，100）。Syntax: (123 ，456 ，789 ，100)
+① Syntax：(123 ，456 ，789 ，100)。Syntax: (123 ，456 ，789 ，100)
 
 ② Format: surrounded by bracket and the elements are separated by comma. The elements can be nested, but the type of elements must be unified. They can be read by subscript, but cannot be written, added or deleted.
 
 ③ Feature: it is considered as immutable list and all the operations on it are similar to List. The only difference is that Tuple can only be searched. It cannot be added(append and insert), delete(remove and pop) and modify (assign value to elements). In other words, Tuple is a list whose elements should be unified and immutable, and content can only be read.
 
-<img class="common_img" src="../_static/media/chapter_3\section_1-7\media\image3.png"  />
+<img class="common_img" src="../_static/media/chapter_3/section_1-7/media/image3.png"  />
 
 (3) **Set**
 
@@ -1298,22 +1290,23 @@ There are two common types of containers, including sequence (List,Tuple, etc.) 
 
 ③ Feature: apart from automatic deduplication and not supporting sorting, others are the same as list.
 
-<img class="common_img" src="../_static/media/chapter_3\section_1-7\media\image4.png"  />
+<img class="common_img" src="../_static/media/chapter_3/section_1-7/media/image4.png"  />
 
 (4) **Dictionary**
 
-① Syntax: {"name" : "zhangsan" ， "age" ：50}
+① Syntax: `{"name" : "zhangsan" ， "age" ：50}`
 
 ②Format: it is surrounded by curly bracket and the elements are separated by comma. The elements should be in unified format (When the elements are separated by semicolon, the front part should be string and the latter part can be any types.) and Key must be string. If there is no semicolon within some element, dictionary will be considered as Set.
 
-③ Feature: dictionary is the most flexible container. It doesn’t support sorting, but support nesting. Access the elements through \[ \] and get and the elements cannot use subscript. Delete the elements by pop key. (without remove)
+③ Feature: dictionary is the most flexible container. It doesn't support sorting, but support nesting. Access the elements through \[ \] and get and the elements cannot use subscript. Delete the elements by pop key. (without remove)
 
-<img class="common_img" src="../_static/media/chapter_3\section_1-7\media\image5.png"  />
+<img class="common_img" src="../_static/media/chapter_3/section_1-7/media/image5.png"  />
 
 * **Basic Operation of Container**
 
 (1) **Basic Operation of List**
-<table>
+
+<table class="docutils-nobg" border="1">
   <thead>
     <tr>
       <th>Type</th>
@@ -1377,7 +1370,6 @@ There are two common types of containers, including sequence (List,Tuple, etc.) 
     </tr>
   </tbody>
 </table>
-​    
 
 ① append: Add the elements to the end of the list
 
@@ -1387,23 +1379,23 @@ There are two common types of containers, including sequence (List,Tuple, etc.) 
 
 ④ remove: Delete the designated elements
 
-<img class="common_img" src="../_static/media/chapter_3\section_1-7\media\image6.png"  />
+<img class="common_img" src="../_static/media/chapter_3/section_1-7/media/image6.png"  />
 
-<img class="common_img" src="../_static/media/chapter_3\section_1-7\media\image7.jpeg"  />
+<img class="common_img" src="../_static/media/chapter_3/section_1-7/media/image7.jpeg"  />
 
 ⑤ index: Check the position of the designated elements
 
 ⑥ sort: Sort the content in ascending order, or in descending order.
 
-<img class="common_img" src="../_static/media/chapter_3\section_1-7\media\image8.png"  />
+<img class="common_img" src="../_static/media/chapter_3/section_1-7/media/image8.png"  />
 
-<img class="common_img" src="../_static/media/chapter_3\section_1-7\media\image9.jpeg"  />
+<img class="common_img" src="../_static/media/chapter_3/section_1-7/media/image9.jpeg"  />
 
 (2) **Basic Operation of Tuple**
 
 The operations on tuple are similar to those on list, but they are still different.
 
-① Tuple doesn’t have append(), extend(), insert(), etc., therefore we cannot add element to the tuple.
+① Tuple doesn't have append(), extend(), insert(), etc., therefore we cannot add element to the tuple.
 
 ② remove() and pop() are also not contained, hence we cannot delete elements from the tuple.
 
@@ -1423,7 +1415,7 @@ The operations on tuple are similar to those on list, but they are still differe
 
 ③ values: Return all the values of the dictionary
 
-<img class="common_img" src="../_static/media/chapter_3\section_1-7\media\image10.jpeg"  />
+<img class="common_img" src="../_static/media/chapter_3/section_1-7/media/image10.jpeg"  />
 
 <img class="common_img" src="../_static/media/chapter_3/section_1-7/media/image11.jpeg"  />
 
@@ -1431,9 +1423,9 @@ The operations on tuple are similar to those on list, but they are still differe
 
 ⑤ items: Return an array of key-value tuples that can be traversed as a list
 
-<img class="common_img" src="../_static/media/chapter_3\section_1-7\media\image12.jpeg"  />
+<img class="common_img" src="../_static/media/chapter_3/section_1-7/media/image12.jpeg"  />
 
-<img class="common_img" src="../_static/media/chapter_3\section_1-7/media/image13.jpeg"  />
+<img class="common_img" src="../_static/media/chapter_3/section_1-7/media/image13.jpeg"  />
 
 ### 3.2.8 Python Class and File Operation
 
@@ -1455,7 +1447,7 @@ Two core definitions: classes and objects
 
 Class is used to describes the object sets with the same properties and methods. And it defines the properties and methods shared by all the objects of this set. Object is the instance of class.
 
-For example, create a “cat” class, and define the name, color, age, etc., as well as the way to eat, drink, sound, etc. And instantiated object “ginger cat” will have these defined properties and methods.
+For example, create a "cat" class, and define the name, color, age, etc., as well as the way to eat, drink, sound, etc. And instantiated object "ginger cat" will have these defined properties and methods.
 
 (2) **Object**
 
@@ -1473,7 +1465,7 @@ user-defined. User-defined object data type is equal to class in object-oriented
 
 (4) Properties correspond to member variables.
 
-<img class="common_img" src="../_static/media/chapter_3\section_1-8\media\image2.png"  />
+<img class="common_img" src="../_static/media/chapter_3/section_1-8/media/image2.png"  />
 
 * **Instance Creating**
 
@@ -1481,15 +1473,15 @@ user-defined. User-defined object data type is equal to class in object-oriented
 
 (2) These properties and methods can be called directly.
 
-<img class="common_img" src="../_static/media/chapter_3\section_1-8\media\image3.png"  />
+<img class="common_img" src="../_static/media/chapter_3/section_1-8/media/image3.png"  />
 
-<img class="common_img" src="../_static/media/chapter_3\section_1-8\media\image4.jpeg"  />
+<img class="common_img" src="../_static/media/chapter_3/section_1-8/media/image4.jpeg"  />
 
 * **Property of Class and Instance**
 
 (1) Instance property are defined within **\_\_init\_\_** of a class, and class property are defined outside \_\_init\_\_ of a class. An instance of a class created outside the class can define its own properties.
 
-(2) Personal variable: if don’t want the external to access some properties, we can start the property name with double subscripts (\_\_). Therefore, these properties will not be accessed by original variable name, that is, they can not be called from an instance.
+(2) Personal variable: if don't want the external to access some properties, we can start the property name with double subscripts (\_\_). Therefore, these properties will not be accessed by original variable name, that is, they can not be called from an instance.
 
 * **Class Inheritance and Polymorphism**
 
@@ -1499,9 +1491,9 @@ user-defined. User-defined object data type is equal to class in object-oriented
 
 (3) Polymorphism: the behaviors of multiple child classes derived from one parent class are different, which is called polymorphism. In other words, child class rewrite the methods of parent class to let it has methods different from the parent class. When child class have the same method as parent class, the priority will be given to the method of child class, that is, the child class overrides the parent class.
 
-<img class="common_img" src="../_static/media/chapter_3\section_1-8\media\image5.png"  />
+<img class="common_img" src="../_static/media/chapter_3/section_1-8/media/image5.png"  />
 
-<img class="common_img" src="../_static/media/chapter_3\section_1-8\media\image6.jpeg"  />
+<img class="common_img" src="../_static/media/chapter_3/section_1-8/media/image6.jpeg"  />
 
 After execution, the instance of child class will automatically call the
 
@@ -1511,23 +1503,23 @@ construction method of parent class, and the child class will override the paren
 
 (1) **File and File Path**
 
-① Two key properties: “file name” and “path”
+① Two key properties: "file name" and "path"
 
-② Absolute path and relative path: “**Absolute Path**” always starts with root folder. “**Relative Path**” corresponds to the current working directory of the program. For example, the relative path of “**test.py**” file under the current working directory is “**/test.py**” and its absolute path is “**python/scripts/test.py**”.
+② Absolute path and relative path: "**Absolute Path**" always starts with root folder. "**Relative Path**" corresponds to the current working directory of the program. For example, the relative path of "**test.py**" file under the current working directory is "**/test.py**" and its absolute path is "**python/scripts/test.py**".
 
 ③ (.) and (..) folder: Not real folders, they are the special name that can be used in the path. When a single period (".") is used as a folder directory name, it is an abbreviation for this directory. Two periods ("..") mean the parent folder.
 
 (2) **File Reading Operation**
 
-① Open and close file: call open function to pass in file name and identifier. Open file to return a file object, and then call close() method of File object to close this file. “with” statement can also be used to close the file automatically when ending.
+① Open and close file: call open function to pass in file name and identifier. Open file to return a file object, and then call close() method of File object to close this file. "with" statement can also be used to close the file automatically when ending.
 
 ② File reading: call read function to read the file content to the object. Use read line function to read one line at a time or read all lines at a time, and save them in one list.
 
 ③ File writing：When opening a file, you can add designation parameters: read mode ("r"), write mode ("w") \[write from the beginning\], append mode ("a") \[write at the end of the file\], read at the same time and write the mode of file ("r+"). You can also write directly.
 
-<img class="common_img" src="../_static/media/chapter_3\section_1-8\media\image7.png"  />
+<img class="common_img" src="../_static/media/chapter_3/section_1-8/media/image7.png"  />
 
-<img class="common_img" src="../_static/media/chapter_3\section_1-8\media\image8.jpeg"  />
+<img class="common_img" src="../_static/media/chapter_3/section_1-8/media/image8.jpeg"  />
 
 After execution, the first line of data just written will be read.
 
@@ -1535,7 +1527,7 @@ After execution, the first line of data just written will be read.
 
 * **Exception and Error**
 
-Program error refers to syntax error (wrong command) and logic error (wrong result of program execution), while program exception is an accidence taking place during program execution and affecting the normal execution of the program. For example, the file to be opened doesn’t exist, dividend is 0, wrong data type of the operation, storage error, internet request error.
+Program error refers to syntax error (wrong command) and logic error (wrong result of program execution), while program exception is an accidence taking place during program execution and affecting the normal execution of the program. For example, the file to be opened doesn't exist, dividend is 0, wrong data type of the operation, storage error, internet request error.
 
 In normal case, exception occurs when the program cannot be processed normally in Python. Exception is the Python object representing a error. When there is exception in Python script, we need to catch and handle it, otherwise the program will stop execution.
 
@@ -1585,11 +1577,11 @@ Built-in function is one part of compiler and takes effect as compiler starts.
 
 Standard library function is the external expansion of the compiler, and takes effect after the module is imported. In general, the execution efficiency of built-in function is higher than that of standard library function.
 
-The amount of built-in functions must be strictly controlled, otherwise Python compiler will be “overstaffed” . Generally speaking, only the functions that are frequently used and are tightly bound to the language itself will be promoted as built-in function.
+The amount of built-in functions must be strictly controlled, otherwise Python compiler will be "overstaffed" . Generally speaking, only the functions that are frequently used and are tightly bound to the language itself will be promoted as built-in function.
 
 * **Built-in Function List**
 
-<img class="common_img" src="../_static/media/chapter_3\section_1-10\media\image2.jpeg"  />
+<img class="common_img" src="../_static/media/chapter_3/section_1-10/media/image2.jpeg"  />
 
 (1) **Operation Type**
 
@@ -1603,7 +1595,7 @@ designating the key parameter. If there are multiple maximum values, the first v
 
 ③ min(x,key=None) ：The usage of min function is the same as that of max function. min function will return the minimum value of an iterable object or multiple parameters.
 
-<img class="common_img" src="../_static/media/chapter_3\section_1-10\media\image3.png"  />
+<img class="common_img" src="../_static/media/chapter_3/section_1-10/media/image3.png"  />
 
 ④ pow(x,y, mod): When pow function only has x and y parameters, its function is to return x to the y power. When the third parameter mod exits, the pow function takes the remainder of mod on the basis of x raised to the y power.
 
@@ -1613,7 +1605,7 @@ designating the key parameter. If there are multiple maximum values, the first v
 
 ⑦ divmod(a, b): divmod function takes a and b as arguments, and return the quotient and remainder of a/b.
 
-<img class="common_img" src="../_static/media/chapter_3\section_1-10\media\image4.png"  />
+<img class="common_img" src="../_static/media/chapter_3/section_1-10/media/image4.png"  />
 
 (2) **Convert the Type**
 
@@ -1621,11 +1613,11 @@ designating the key parameter. If there are multiple maximum values, the first v
 
 ② float(x): If x is a number or string, the floating point number of x will be returned. If x is empty, 0 will be returned.
 
-③ complex(real, imag): It will return the complex form of **real + imag\*1j**, or converts a string or number to the complex form. If the first parameter “real” is a string, the second parameter “**imag**” should be omitted.
+③ complex(real, imag): It will return the complex form of **real + imag\*1j**, or converts a string or number to the complex form. If the first parameter "real" is a string, the second parameter "**imag**" should be omitted.
 
-<img class="common_img" src="../_static/media/chapter_3\section_1-10\media\image5.png"  />
+<img class="common_img" src="../_static/media/chapter_3/section_1-10/media/image5.png"  />
 
-<img class="common_img" src="../_static/media/chapter_3\section_1-10\media\image6.jpeg"  />
+<img class="common_img" src="../_static/media/chapter_3/section_1-10/media/image6.jpeg"  />
 
 ④ bool(x): Determine parameter x is true or false, and return **True** or **False**.
 
@@ -1637,15 +1629,14 @@ designating the key parameter. If there are multiple maximum values, the first v
 
 ⑧ memoryview(x): it returns the memory view object of the parameter x, and the memory view object allows the data that supports the buffer protocol to be packaged, and the returned object is a list of tuples.
 
- :::{Note}
+> [!Note]
+>
+> the incoming parameter x must be bytes.
+>
 
-the incoming parameter x must be bytes.
+<img class="common_img" src="../_static/media/chapter_3/section_1-10/media/image7.jpeg"  />
 
-:::
-
-<img class="common_img" src="../_static/media/chapter_3\section_1-10\media\image7.jpeg"  />
-
-<img class="common_img" src="../_static/media/chapter_3\section_1-10\media\image8.jpeg"  />
+<img class="common_img" src="../_static/media/chapter_3/section_1-10/media/image8.jpeg"  />
 
 (3) **Base Conversion**
 
@@ -1659,9 +1650,9 @@ the incoming parameter x must be bytes.
 
 ⑤ chr(x): The chr function is the inverse of the ord function, and is used to return the corresponding single Unicode character for the input integer x.
 
-<img class="common_img" src="../_static/media/chapter_3\section_1-10\media\image9.jpeg"  />
+<img class="common_img" src="../_static/media/chapter_3/section_1-10/media/image9.jpeg"  />
 
-<img class="common_img" src="../_static/media/chapter_3\section_1-10\media\image10.jpeg"  />
+<img class="common_img" src="../_static/media/chapter_3/section_1-10/media/image10.jpeg"  />
 
 (4) **Numerical Operations**
 
@@ -1673,9 +1664,9 @@ the incoming parameter x must be bytes.
 
 ④ frozenset(x): frozenset function can also complete the function of the set function, but the frozenset object is immutable. Therefore it is not possible to insert values into the frozenset object.
 
-<img class="common_img" src="../_static/media/chapter_3\section_1-10\media\image11.jpeg"  />
+<img class="common_img" src="../_static/media/chapter_3/section_1-10/media/image11.jpeg"  />
 
-<img class="common_img" src="../_static/media/chapter_3\section_1-10\media\image12.jpeg"  />
+<img class="common_img" src="../_static/media/chapter_3/section_1-10/media/image12.jpeg"  />
 
 ⑤ tuple(x): tuple function changes the incoming parameter x into a new tuple object and returns it. The tuple object is immutable.
 
@@ -1685,9 +1676,9 @@ the incoming parameter x must be bytes.
 
 ⑧ iter(x): The iter function generates an iterable object based on the input parameter x and returns the iterable object.
 
-<img class="common_img" src="../_static/media/chapter_3\section_1-10\media\image13.jpeg"  />
+<img class="common_img" src="../_static/media/chapter_3/section_1-10/media/image13.jpeg"  />
 
-<img class="common_img" src="../_static/media/chapter_3\section_1-10\media\image14.jpeg"  />
+<img class="common_img" src="../_static/media/chapter_3/section_1-10/media/image14.jpeg"  />
 
 ⑨ slice(x): The slice function is mainly used as flexible constructed slices, and it also returns a slice object.
 
@@ -1695,9 +1686,9 @@ the incoming parameter x must be bytes.
 
 ⑪super(): The super function is often used in Python class objects. In the inheritance of child classes from the parent class, the child class is used to refer to the objects and methods in the parent class without explicitly specifying the name of the parent class.
 
-<img class="common_img" src="../_static/media/chapter_3\section_1-10\media\image15.jpeg"  />
+<img class="common_img" src="../_static/media/chapter_3/section_1-10/media/image15.jpeg"  />
 
-<img class="common_img" src="../_static/media/chapter_3\section_1-10\media\image16.jpeg"  />
+<img class="common_img" src="../_static/media/chapter_3/section_1-10/media/image16.jpeg"  />
 
 (5) **Sorting Operation**
 
@@ -1705,7 +1696,7 @@ the incoming parameter x must be bytes.
 
 ② reversed(seq ): Reverse the input sequence seq to generate a new iterable object and return.
 
-<img class="common_img" src="../_static/media/chapter_3\section_1-10\media\image17.jpeg"  />
+<img class="common_img" src="../_static/media/chapter_3/section_1-10/media/image17.jpeg"  />
 
 (6) **Sequence Operation**
 
@@ -1719,21 +1710,21 @@ the incoming parameter x must be bytes.
 
 ⑤ next(iter): The next function returns the next element in the iterable object.
 
-<img class="common_img" src="../_static/media/chapter_3\section_1-10\media\image18.jpeg"  />
+<img class="common_img" src="../_static/media/chapter_3/section_1-10/media/image18.jpeg"  />
 
-<img class="common_img" src="../_static/media/chapter_3\section_1-10\media\image19.jpeg"  />
+<img class="common_img" src="../_static/media/chapter_3/section_1-10/media/image19.jpeg"  />
 
 ⑥ zip(\*iter): According to multiple different iterators, the aggregation of elements in corresponding position is performed, and a new iterator is returned.
 
-<img class="common_img" src="../_static/media/chapter_3\section_1-10\media\image20.jpeg"  />
+<img class="common_img" src="../_static/media/chapter_3/section_1-10/media/image20.jpeg"  />
 
-<img class="common_img" src="../_static/media/chapter_3\section_1-10\media\image21.jpeg"  />
+<img class="common_img" src="../_static/media/chapter_3/section_1-10/media/image21.jpeg"  />
 
 ⑦ reduce(func,sequence\[,initial\]): Python3.x 中需要从functools中导入reduce函数再使用。The two-argument function func is applied iteratively to each element in the sequence seq from left to right, and finally returns a single value as the result. It is a built-in function in Python2.x, and in Python3.x, you need to import the reduce function from functools first.
 
-<img class="common_img" src="../_static/media/chapter_3\section_1-10\media\image22.jpeg"  />
+<img class="common_img" src="../_static/media/chapter_3/section_1-10/media/image22.jpeg"  />
 
-<img class="common_img" src="../_static/media/chapter_3\section_1-10\media\image23.jpeg"  />
+<img class="common_img" src="../_static/media/chapter_3/section_1-10/media/image23.jpeg"  />
 
 (7) **Object Element Operation**
 
@@ -1741,11 +1732,11 @@ the incoming parameter x must be bytes.
 
 ② id(object): Returns the identity value of the object, which is an integer and remains unique in the object's life cycle.
 
-<img class="common_img" src="../_static/media/chapter_3\section_1-10\media\image24.jpeg"  />
+<img class="common_img" src="../_static/media/chapter_3/section_1-10/media/image24.jpeg"  />
 
-<img class="common_img" src="../_static/media/chapter_3\section_1-10\media\image25.jpeg"  />
+<img class="common_img" src="../_static/media/chapter_3/section_1-10/media/image25.jpeg"  />
 
-<img class="common_img" src="../_static/media/chapter_3\section_1-10\media\image26.jpeg"  />
+<img class="common_img" src="../_static/media/chapter_3/section_1-10/media/image26.jpeg"  />
 
 ③ hash(object): If the object has a corresponding hash value, the corresponding hash value is returned.
 
@@ -1755,9 +1746,9 @@ the incoming parameter x must be bytes.
 
 ⑥ len(object): Return the length of the object or the number of elements it contains.
 
-<img class="common_img" src="../_static/media/chapter_3\section_1-10\media\image27.jpeg"  />
+<img class="common_img" src="../_static/media/chapter_3/section_1-10/media/image27.jpeg"  />
 
-<img class="common_img" src="../_static/media/chapter_3\section_1-10\media\image28.jpeg"  />
+<img class="common_img" src="../_static/media/chapter_3/section_1-10/media/image28.jpeg"  />
 
 ⑦ repr(object): The repr function returns a string containing a printable representation of an object.
 
@@ -1769,7 +1760,7 @@ However unlike the repr function, ascii() escape non-ASCII encoded characters.
 
 ⑩ vars(object): The function returns objects with a **\_dict\_\_** attribute, such as modules, classes, instances, etc.
 
-<img class="common_img" src="../_static/media/chapter_3\section_1-10\media\image29.jpeg"  />
+<img class="common_img" src="../_static/media/chapter_3/section_1-10/media/image29.jpeg"  />
 
 (8) **Property Operation**
 
@@ -1777,9 +1768,9 @@ However unlike the repr function, ascii() escape non-ASCII encoded characters.
 
 ② issubclass(class, classinfo): If class is a child class of classinfo class, the function returns True, otherwise it returns False.
 
-<img class="common_img" src="../_static/media/chapter_3\section_1-10\media\image30.jpeg"  />
+<img class="common_img" src="../_static/media/chapter_3/section_1-10/media/image30.jpeg"  />
 
-<img class="common_img" src="../_static/media/chapter_3\section_1-10\media\image31.jpeg"  />
+<img class="common_img" src="../_static/media/chapter_3/section_1-10/media/image31.jpeg"  />
 
 ③ hasattr(object, name): Return True if the name string is the name of one of the properties of the object object, False otherwise.
 
@@ -1795,9 +1786,9 @@ property of the object. If the deleting property is allowed by object, the delat
 
 ⑧ callable(object): If object can be called, True will be returned, otherwise False.
 
-<img class="common_img" src="../_static/media/chapter_3\section_1-10\media\image32.jpeg"  />
+<img class="common_img" src="../_static/media/chapter_3/section_1-10/media/image32.jpeg"  />
 
-<img class="common_img" src="../_static/media/chapter_3\section_1-10\media\image33.jpeg"  />
+<img class="common_img" src="../_static/media/chapter_3/section_1-10/media/image33.jpeg"  />
 
 (9) **Variable Operation**
 
@@ -1805,13 +1796,13 @@ property of the object. If the deleting property is allowed by object, the delat
 
 ② locals(): Return a dictionary consisting of local variables and their values in the current scope.
 
-<img class="common_img" src="../_static/media/chapter_3\section_1-10\media\image34.jpeg"  />
+<img class="common_img" src="../_static/media/chapter_3/section_1-10/media/image34.jpeg"  />
 
-<img class="common_img" src="../_static/media/chapter_3\section_1-10\media\image35.jpeg"  />
+<img class="common_img" src="../_static/media/chapter_3/section_1-10/media/image35.jpeg"  />
 
-<img class="common_img" src="../_static/media/chapter_3\section_1-10\media\image36.jpeg"  />
+<img class="common_img" src="../_static/media/chapter_3/section_1-10/media/image36.jpeg"  />
 
-<img class="common_img" src="../_static/media/chapter_3\section_1-10\media\image37.jpeg"  />
+<img class="common_img" src="../_static/media/chapter_3/section_1-10/media/image37.jpeg"  />
 
 (10) **Human-computer Operation**
 
@@ -1821,9 +1812,9 @@ property of the object. If the deleting property is allowed by object, the delat
 
 ③ open(file, mode='r'): Open the file and return the corresponding file object, mode corresponds to the operation of reading or writing to the file. If the file cannot be opened, the program will throw OSError.
 
-<img class="common_img" src="../_static/media/chapter_3\section_1-10\media\image38.jpeg"  />
+<img class="common_img" src="../_static/media/chapter_3/section_1-10/media/image38.jpeg"  />
 
-<img class="common_img" src="../_static/media/chapter_3\section_1-10\media\image39.jpeg"  />
+<img class="common_img" src="../_static/media/chapter_3/section_1-10/media/image39.jpeg"  />
 
 (11) **Compilation Operation**
 
@@ -1833,9 +1824,9 @@ property of the object. If the deleting property is allowed by object, the delat
 
 ③ eval(expression): The eval function evaluates the string expression as a valid expression and returns the result. The eval function can only evaluate a single expression, not complex code logic or assignment operation.
 
-<img class="common_img" src="../_static/media/chapter_3\section_1-10\media\image40.jpeg"  />
+<img class="common_img" src="../_static/media/chapter_3/section_1-10/media/image40.jpeg"  />
 
-<img class="common_img" src="../_static/media/chapter_3\section_1-10\media\image41.jpeg"  />
+<img class="common_img" src="../_static/media/chapter_3/section_1-10/media/image41.jpeg"  />
 
 (12) **Decorator Function**
 
@@ -1845,9 +1836,9 @@ property of the object. If the deleting property is allowed by object, the delat
 
 ③ property(): As a decorator, property can convert class methods into class properties for use.
 
-<img class="common_img" src="../_static/media/chapter_3\section_1-10\media\image42.jpeg"  />
+<img class="common_img" src="../_static/media/chapter_3/section_1-10/media/image42.jpeg"  />
 
-<img class="common_img" src="../_static/media/chapter_3\section_1-10/media/image43.jpeg"  />
+<img class="common_img" src="../_static/media/chapter_3/section_1-10/media/image43.jpeg"  />
 
 ### 3.2.11 Python Multithreading
 
@@ -1867,11 +1858,11 @@ The process provides the pre-requirements for the thread to execute the program.
 
 thread module has been abandoned, which can be replaced by threading.
 
-Therefore “thread” module cannot be used in Python3. For compatibility, thread is renamed as “\_thread” by Python3.
+Therefore "thread" module cannot be used in Python3. For compatibility, thread is renamed as "\_thread" by Python3.
 
 * **Thread Object**
 
-<img class="common_img" src="../_static/media/chapter_3\section_1-11\media\image2.png"  />
+<img class="common_img" src="../_static/media/chapter_3/section_1-11/media/image2.png"  />
 
 (1) group: it should be None, and is reserved for ThreadGroup class extension in the future.
 
@@ -1901,17 +1892,17 @@ Therefore “thread” module cannot be used in Python3. For compatibility, thre
 
 Pass a function object from the class constructor, which is the callback function used to handle the task.
 
-<img class="common_img" src="../_static/media/chapter_3\section_1-11\media\image3.png"  />
+<img class="common_img" src="../_static/media/chapter_3/section_1-11/media/image3.png"  />
 
-<img class="common_img" src="../_static/media/chapter_3\section_1-11\media\image4.jpeg"  />
+<img class="common_img" src="../_static/media/chapter_3/section_1-11/media/image4.jpeg"  />
 
 (2) **Inherit Thread Class**
 
 Write a custom class to inherit Thread, then rewrite the run() method, that is write the task processing code in it, and then create a child class of this Thread.
 
-<img class="common_img" src="../_static/media/chapter_3\section_1-11\media\image5.png"  />
+<img class="common_img" src="../_static/media/chapter_3/section_1-11/media/image5.png"  />
 
-<img class="common_img" src="../_static/media/chapter_3\section_1-11\media\image4.jpeg"  />
+<img class="common_img" src="../_static/media/chapter_3/section_1-11/media/image4.jpeg"  />
 
 * **Multithreading**
 
@@ -1919,9 +1910,9 @@ Multithreading is similar to workshop production where the efficiency of product
 
 For example, create 7 threads to execute tasks, and then call join method to wait for the thread execution to end, which is faster than a single main thread execution.
 
-![](../_static/media/chapter_3\section_1-11\media\image6.jpeg)
+<img class="common_img" src="../_static/media/chapter_3/section_1-11/media/image6.jpeg"  />
 
-<img class="common_img" src="../_static/media/chapter_3\section_1-11\media\image7.jpeg"  />
+<img class="common_img" src="../_static/media/chapter_3/section_1-11/media/image7.jpeg"  />
 
 * **Thread Synchronization**
 
@@ -1937,9 +1928,9 @@ In order to ensure the accuracy of data, multiple threads need to be synchronize
 
 release() is only called under the locked state. It changes the state to unlocked and returns immediately. A RuntimeError exception will be triggered if an attempt is made to release a non-locking lock. For the Lock object, if a thread releases twice in a row, it will cause deadlock. Therefore, Lock is not commonly used, while Rlock is generally used to set thread locks.
 
-<img class="common_img" src="../_static/media/chapter_3\section_1-11\media\image8.png"  />
+<img class="common_img" src="../_static/media/chapter_3/section_1-11/media/image8.png"  />
 
-<img class="common_img" src="../_static/media/chapter_3\section_1-11\media\image9.jpeg"  />
+<img class="common_img" src="../_static/media/chapter_3/section_1-11/media/image9.jpeg"  />
 
 After execution, t1 first obtains the lock, and then releases the lock after the execution ends. t2 obtains the lock again, and continues to execute before releasing the lock, so as to avoid simultaneous processing and data errors.
 
@@ -1951,9 +1942,9 @@ Once the lock is unlocked (not owned by any thread), grab ownership, set the rec
 
 ② release(): Release the lock and decrement the recursion level. If it is reduced to zero, the lock is reset to the unlocked state (not owned by any thread). And, if other threads are blocked waiting for unlocking, only one of the threads is allowed to continue. If the recursion level is still non-zero after the decrement, the lock remains locked, still owned by the calling thread.
 
-<img class="common_img" src="../_static/media/chapter_3\section_1-11\media\image10.png"  />
+<img class="common_img" src="../_static/media/chapter_3/section_1-11/media/image10.png"  />
 
-<img class="common_img" src="../_static/media/chapter_3\section_1-11\media\image11.jpeg"  />
+<img class="common_img" src="../_static/media/chapter_3/section_1-11/media/image11.jpeg"  />
 
 RLock (reentrant lock) is a synchronous instruction that can be requested multiple times by the same thread. RLock uses the concepts of "owned thread" and "recursion level". When in the locked state, RLock is owned by a thread. The thread that owns the RLock can call acquire() again, and call release() the same number of times when releasing the lock.
 
@@ -1965,37 +1956,37 @@ pip is a management tool for Python package offering searching, downloading, ins
 
 * **Download and Install**
 
-Open command line terminal, and then input “pip” . When the following message pops up, pip has been installed already.
+Open command line terminal, and then input "pip" . When the following message pops up, pip has been installed already.
 
-<img class="common_img" src="../_static/media/chapter_3\section_1-12\media\image2.jpeg"  />
+<img class="common_img" src="../_static/media/chapter_3/section_1-12/media/image2.jpeg"  />
 
-If pip is not installed, input command “**sudo apt install python-pip**” to install. After the command is executed, you will be required to input the password, and then select “y” to continue installation.
+If pip is not installed, input command "**sudo apt install python-pip**" to install. After the command is executed, you will be required to input the password, and then select "y" to continue installation.
 
-<img class="common_img" src="../_static/media/chapter_3\section_1-12\media\image3.jpeg"  />
+<img class="common_img" src="../_static/media/chapter_3/section_1-12/media/image3.jpeg"  />
 
 * **Common Command**
 
-(1) install: Install the command package, and the complete command is “**pip install packagename**”
+(1) install: Install the command package, and the complete command is "**pip install packagename**"
 
-```py
+```bash
 pip install packagename
 ```
 
-(2) uninstall: Uninstall the designated package, and the complete command is “**pip uninstall packagename**”
+(2) uninstall: Uninstall the designated package, and the complete command is "**pip uninstall packagename**"
 
-```py
+```bash
 pip uninstall packagename
 ```
 
-(3) list: List the installed package, and the complete command is “**pip list**”
+(3) list: List the installed package, and the complete command is "**pip list**"
 
-```py
+```bash
 pip list
 ```
 
-(4) show: View the information about the installed packages, and the complete command is “**pip show packagename**”.
+(4) show: View the information about the installed packages, and the complete command is "**pip show packagename**".
 
-```py
+```bash
 pip show packagename
 ```
 
@@ -2017,7 +2008,7 @@ that the type of the data contained in the former should be the same, but there 
 
 Numpy is a third-party library that needs to be installed first. Open the command line terminal and enter the command to install "pip install numpy".
 
-```py
+```bash
 pip install numpy
 ```
 
@@ -2027,27 +2018,27 @@ Then we need to import it in python with "import numpy". We can use "import nump
 
 (1) np.array(): Create directly
 
-<img class="common_img" src="../_static/media/chapter_3\section_1-13\media\image3.jpeg"  />
+<img class="common_img" src="../_static/media/chapter_3/section_1-13/media/image3.jpeg"  />
 
 (1) **Take Fixed Value**
 
 ① np.zeros(n, dtype=int): Create a one-dimensional array of integers of length n and all zeros
 
-② np.ones((a,b), dtype=float): Create a two-dimensional floating-point array with “**a”** row and “**b”** column, and all 1.
+② np.ones((a,b), dtype=float): Create a two-dimensional floating-point array with "**a"** row and "**b"** column, and all 1.
 
-③ np.full((a,b),x, dtype=int/float): Create a two-dimensional array with “**a”** row and “**b”** column, and all **x**.
+③ np.full((a,b),x, dtype=int/float): Create a two-dimensional array with "**a"** row and "**b"** column, and all **x**.
 
-<img class="common_img" src="../_static/media/chapter_3\section_1-13\media\image4.jpeg"  />
+<img class="common_img" src="../_static/media/chapter_3/section_1-13/media/image4.jpeg"  />
 
 (2) **Regular Distribution**
 
 ① np.arange(): arithmetic progression
 
-<img class="common_img" src="../_static/media/chapter_3\section_1-13\media\image5.jpeg"  />
+<img class="common_img" src="../_static/media/chapter_3/section_1-13/media/image5.jpeg"  />
 
 ② np.random.rand int(): Random integer
 
-<img class="common_img" src="../_static/media/chapter_3\section_1-13\media\image6.jpeg"  />
+<img class="common_img" src="../_static/media/chapter_3/section_1-13/media/image6.jpeg"  />
 
 ③ np.random.random(10) : A one-dimensional array with a length of 10 and distributed uniformly from 0 to 1.
 
@@ -2065,7 +2056,7 @@ Then we need to import it in python with "import numpy". We can use "import nump
 
 View with the element subscript.
 
-<img class="common_img" src="../_static/media/chapter_3\section_1-13\media\image7.jpeg"  />
+<img class="common_img" src="../_static/media/chapter_3/section_1-13/media/image7.jpeg"  />
 
 (3) **Slice Takes Subset**
 
@@ -2077,33 +2068,33 @@ represents the subset from index0 to index4, and the step size is 1 by default.
 
 ③ When the step size is negative, it represents take subset in reversed order.
 
-<img class="common_img" src="../_static/media/chapter_3\section_1-13\media\image8.jpeg"  />
+<img class="common_img" src="../_static/media/chapter_3/section_1-13/media/image8.jpeg"  />
 
 (4) **Multiple Index of the List Take Subset**
 
 Take the subset in sequence according to the index.
 
-<img class="common_img" src="../_static/media/chapter_3\section_1-13\media\image9.jpeg"  />
+<img class="common_img" src="../_static/media/chapter_3/section_1-13/media/image9.jpeg"  />
 
 (5) **Logical Boolean Takes Subset**
 
-<img class="common_img" src="../_static/media/chapter_3\section_1-13\media\image10.jpeg"  />
+<img class="common_img" src="../_static/media/chapter_3/section_1-13/media/image10.jpeg"  />
 
 (6) **Create Unrelated Subset Replicas**
 
 copy() can create unrelated subset replicas
 
-<img class="common_img" src="../_static/media/chapter_3\section_1-13\media\image11.jpeg"  />
+<img class="common_img" src="../_static/media/chapter_3/section_1-13/media/image11.jpeg"  />
 
 * **Array Dimension Transforming**
 
 (1) Transpose matrix with T()：Transform row and column
 
-<img class="common_img" src="../_static/media/chapter_3\section_1-13\media\image12.jpeg"  />
+<img class="common_img" src="../_static/media/chapter_3/section_1-13/media/image12.jpeg"  />
 
 (2) Transform dimension with reshaple(): transform the dimension according to your desire.
 
-<img class="common_img" src="../_static/media/chapter_3\section_1-13\media\image13.jpeg"  />
+<img class="common_img" src="../_static/media/chapter_3/section_1-13/media/image13.jpeg"  />
 
 * **Arrays Merging and Splitting**
 
@@ -2111,23 +2102,23 @@ copy() can create unrelated subset replicas
 
 ① concatenate() : Connect two one-dimensional array or merge two two-dimensional arrays according to row and column.
 
-<img class="common_img" src="../_static/media/chapter_3\section_1-13\media\image14.jpeg"  />
+<img class="common_img" src="../_static/media/chapter_3/section_1-13/media/image14.jpeg"  />
 
 ② vstack(): Merge two arrays vertically, as long as these two arrays have the same number of columns.
 
-<img class="common_img" src="../_static/media/chapter_3\section_1-13\media\image15.jpeg"  />
+<img class="common_img" src="../_static/media/chapter_3/section_1-13/media/image15.jpeg"  />
 
 ③ hstack(): Merge two arrays horizontally, as long as these two arrays have the same number of rows.
 
-<img class="common_img" src="../_static/media/chapter_3\section_1-13\media\image16.jpeg"  />
+<img class="common_img" src="../_static/media/chapter_3/section_1-13/media/image16.jpeg"  />
 
 (2)**Split Array**
 
 ① split(): Split one-dimensional array. Where to split will be designated by the index of the parameter. When the function returns multiple objects, we need to set the corresponding numbers of object names in front of the equal sign. When the function result returns multiple objects, set the corresponding number of object names before the equal sign
 
-<img class="common_img" src="../_static/media/chapter_3\section_1-13\media\image17.jpeg"  />
+<img class="common_img" src="../_static/media/chapter_3/section_1-13/media/image17.jpeg"  />
 
 ② vsplit(): Split a two-dimensional array horizontally. And hsplit() splits a two-dimensional array vertically.
 
-<img class="common_img" src="../_static/media/chapter_3\section_1-13/media/image18.jpeg"  />
+<img class="common_img" src="../_static/media/chapter_3/section_1-13/media/image18.jpeg"  />
 

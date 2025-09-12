@@ -4,7 +4,7 @@
 
 > [!Note]
 >
->If you lack peripheral devices such as a monitor, keyboard, and mouse, you can reference the "Lesson 2 Remote Access and Remote File Transfer" course within this chapter to establish a remote connection.
+> If you lack peripheral devices such as a monitor, keyboard, and mouse, you can reference the "Lesson 2 Remote Access and Remote File Transfer" course within this chapter to establish a remote connection.
 >
 
 ### 2.1.1 Preparation Before Startup

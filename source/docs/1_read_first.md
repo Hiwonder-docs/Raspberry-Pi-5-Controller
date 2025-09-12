@@ -463,4 +463,4 @@ Raspberry Pi 5 inherits the Ethernet port from Raspberry Pi 4B and supports PoE 
 
 Moreover, PoE support adheres to IEEE standards, ensuring compatibility with existing PoE infrastructure and enhancing system reliability by mitigating potential failures stemming from power supply issues. In essence, PoE lays the groundwork for the widespread commercial application of Raspberry Pi 5 in the realm of the Internet of Things (IoT). Not only does it streamline installation processes, but it also reduces overall costs and enhances system stability—a crucial consideration for edge computing applications.
 
-For further development and learning, please consult the official tutorial at: **<https://www.raspberrypi.com/documentation/computers/raspberry-
+For further development and learning, please consult the official tutorial at: **<https://www.raspberrypi.com/documentation/computers/raspberry-pi-5.html>**

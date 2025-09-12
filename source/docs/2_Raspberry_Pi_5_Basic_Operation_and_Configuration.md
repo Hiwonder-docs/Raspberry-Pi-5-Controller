@@ -49,19 +49,19 @@ Prepare a laptop computer. If you're using a desktop computer, please ensure you
 
 MobaXterm is a software that integrates various remote computing tools and offers a graphical interface. By connecting to the Raspberry Pi's Wi-Fi hotspot, we can directly control the Raspberry Pi from the computer. Next, we will provide a step-by-step explanation of how to install the software.
 
-(1) Double-click the ‘**[MobaXterm_installer_22.1.msi]()**’ file saved in the folder ‘**[Appendix]()**’.
+(1) Double-click the '**[MobaXterm_installer_22.1.msi]()**' file saved in the folder '**[Appendix]()**'.
 
 <img class="common_img" src="../_static/media/chapter_2/section_2/media/image2.png"  />
 
-(2) Click-on ‘**Next**’ and tick ‘**I accept the terms in the License Agreement**’.
+(2) Click-on '**Next**' and tick '**I accept the terms in the License Agreement**'.
 
 <img class="common_img" src="../_static/media/chapter_2/section_2/media/image3.png"  />
 
-(3) Select the storage path, then click-on ‘**Next**’.
+(3) Select the storage path, then click-on '**Next**'.
 
 <img class="common_img" src="../_static/media/chapter_2/section_2/media/image4.png"  />
 
-(4) Click-on ‘**Next**’.
+(4) Click-on '**Next**'.
 
 <img class="common_img" src="../_static/media/chapter_2/section_2/media/image5.png"  />
 
@@ -85,11 +85,11 @@ MobaXterm is a software that integrates various remote computing tools and offer
 
 ### 2.2.2 Connect to Raspberry Pi 5 Using MobaXterm
 
-(1) Click-on ‘**Session**’ button located on the upper left corner to create a new session.
+(1) Click-on '**Session**' button located on the upper left corner to create a new session.
 
 <img class="common_img" src="../_static/media/chapter_2/section_2/media/image10.png"  />
 
-(2) Choose '**SSH**', then input the robot’s IP, which is **192.168.11.199**. Next, check '**Specify username**', and input the username '**pi**'. Finally, click the '**OK**' button.
+(2) Choose '**SSH**', then input the robot's IP, which is **192.168.11.199**. Next, check '**Specify username**', and input the username '**pi**'. Finally, click the '**OK**' button.
 
 <img class="common_img" src="../_static/media/chapter_2/section_2/media/image11.png"  />
 
@@ -139,7 +139,7 @@ If you're not accustomed to command-line control and the official system image b
 
 <img class="common_img" src="../_static/media/chapter_2/section_2/media/image19.png"  />
 
-(4) Choose ‘**Yes**’, and hit Enter key to enable the VNC connection.
+(4) Choose '**Yes**', and hit Enter key to enable the VNC connection.
 
 <img class="common_img" src="../_static/media/chapter_2/section_2/media/image20.png"  />
 
@@ -151,11 +151,11 @@ VNC is remote control software that provides a graphical desktop interface, simi
 
 * **VNC Installation**
 
-(1) Double-click ‘**[VNC-Viewer-6.17.731-Windows]()**’ application saved in the ‘**[Appendix]()**’ folder, select ‘English’ to use, then click-on ‘OK’ button.
+(1) Double-click '**[VNC-Viewer-6.17.731-Windows]()**' application saved in the '**[Appendix]()**' folder, select 'English' to use, then click-on 'OK' button.
 
 <img class="common_img" src="../_static/media/chapter_2/section_2/media/image21.png"  />
 
-(2) Click-on ‘**Next**’ button in the pop-up interface.
+(2) Click-on '**Next**' button in the pop-up interface.
 
 <img class="common_img" src="../_static/media/chapter_2/section_2/media/image22.png"  />
 
@@ -163,11 +163,11 @@ VNC is remote control software that provides a graphical desktop interface, simi
 
 <img class="common_img" src="../_static/media/chapter_2/section_2/media/image23.png"  />
 
-(4) Click-on ‘**Install**’ on the pop-up interface.
+(4) Click-on '**Install**' on the pop-up interface.
 
 <img class="common_img" src="../_static/media/chapter_2/section_2/media/image24.png"  />
 
-(5) When the installation is complete, click-on ‘**Finish**’ button.
+(5) When the installation is complete, click-on '**Finish**' button.
 
 <img class="common_img" src="../_static/media/chapter_2/section_2/media/image25.png"  />
 
@@ -226,25 +226,25 @@ deb https://security.debian.org/debian-security bookworm-security main contrib
 
 <img class="common_img" src="../_static/media/chapter_2\section_3\media\image6.png"  />
 
-(5) Use short-cut ‘**Ctrl+O**’ to save the change. When you receive the below prompt, hit Enter key.
+(5) Use short-cut '**Ctrl+O**' to save the change. When you receive the below prompt, hit Enter key.
 
 <img class="common_img" src="../_static/media/chapter_2\section_3\media\image7.png"  />
 
-(6) Having saved the change, use short-cut ‘**Ctrl+X**’ to exit.
+(6) Having saved the change, use short-cut '**Ctrl+X**' to exit.
 
 ### 2.3.2 Revise raspi.list File
 
-(1) Press ‘**Ctrl+Alt+T**’ to open the command-line terminal, and execute the command ‘**sudo nano /etc/apt/sources.list.d/raspi.list**’ to edit the ‘**raspi.list**’ file, then hit Enter key.
+(1) Press '**Ctrl+Alt+T**' to open the command-line terminal, and execute the command '**sudo nano /etc/apt/sources.list.d/raspi.list**' to edit the '**raspi.list**' file, then hit Enter key.
 
 ```PY
 sudo nano /etc/apt/sources.list.d/raspi.list
 ```
 
-(2) Use arrow keys ‘← →’ to move the cursor to the position as pictured.
+(2) Use arrow keys '← →' to move the cursor to the position as pictured.
 
 <img class="common_img" src="../_static/media/chapter_2\section_3\media\image9.png"  />
 
-(3) Hit ‘**\#**’ key to comment out all contents of the original file.
+(3) Hit '**\#**' key to comment out all contents of the original file.
 
 <img class="common_img" src="../_static/media/chapter_2\section_3\media\image10.png"  />
 
@@ -256,11 +256,11 @@ deb https://mirrors.tuna.tsinghua.edu.cn/raspberrypi/ bookworm main
 
 <img class="common_img" src="../_static/media/chapter_2\section_3\media\image11.png"  />
 
-(5) Use short-cut ‘**Ctrl+O**’ to save the change. When the following prompt appears, hit Enter key.
+(5) Use short-cut '**Ctrl+O**' to save the change. When the following prompt appears, hit Enter key.
 
 <img class="common_img" src="../_static/media/chapter_2\section_3\media\image7.png"  />
 
-(6) Having saved the file, use short-cut ‘**Ctrl+X**’ to exit the file.
+(6) Having saved the file, use short-cut '**Ctrl+X**' to exit the file.
 
 ## 2.4 Lesson 4 Operating System Update
 
@@ -292,11 +292,11 @@ Raspi-config is a pre-installed configuration tool in Raspberry Pi OS. It offers
 
 ### 2.5.1 Launch raspi-config Tool
 
-(1) Use short-cut ‘**Ctrl+Alt+T**’ to open the command-line terminal, execute the command ‘**sudo raspi-config**’, then hit Enter key.
+(1) Use short-cut '**Ctrl+Alt+T**' to open the command-line terminal, execute the command '**sudo raspi-config**', then hit Enter key.
 
 <img class="common_img" src="../_static/media/chapter_2/section_5/media/image2.png"  />
 
-(2) Use ‘↑↓’ arrow keys to choose the option, and hit Enter key to confirm the selection. Then hit Esc key to navigate to the previous level.
+(2) Use '↑↓' arrow keys to choose the option, and hit Enter key to confirm the selection. Then hit Esc key to navigate to the previous level.
 
 <img class="common_img" src="../_static/media/chapter_2/section_5/media/image3.png"  />
 
@@ -354,15 +354,15 @@ About raspi-config info.
 
 ### 2.5.3 Set WiFi Country
 
-(1) Choose ‘**5 Localisation Options Configure language and regional settings**’, then hit Enter key.
+(1) Choose '**5 Localisation Options Configure language and regional settings**', then hit Enter key.
 
 <img class="common_img" src="../_static/media/chapter_2/section_5/media/image12.png"  />
 
-(2) Choose ‘**L4 WLAN Country Set legal wireless channels for your country**’, then hit Enter key.
+(2) Choose '**L4 WLAN Country Set legal wireless channels for your country**', then hit Enter key.
 
 <img class="common_img" src="../_static/media/chapter_2/section_5/media/image13.png"  />
 
-(3) Select ‘**HK Hong Kong**’, then hit Enter key to save the change.
+(3) Select '**HK Hong Kong**', then hit Enter key to save the change.
 
 <img class="common_img" src="../_static/media/chapter_2/section_5/media/image14.png"  />
 
@@ -420,7 +420,7 @@ The network configuration methods for Raspberry Pi 5 encompass three modes: Acce
 
 * **AP Mode**
 
-(1) Use shortcut ‘**Ctrl+Alt+T**’ to open the command-line terminal. Execute the command ‘**sudo vim /etc/NetworkManager/system-connections/pi5.nmconnection**’, then hit Enter key to create and edit **pi5.nmconnection** file.
+(1) Use shortcut '**Ctrl+Alt+T**' to open the command-line terminal. Execute the command '**sudo vim /etc/NetworkManager/system-connections/pi5.nmconnection**', then hit Enter key to create and edit **pi5.nmconnection** file.
 
 <img class="common_img" src="../_static/media/chapter_2\section_7\media\image2.png"  />
 
@@ -432,11 +432,11 @@ The network configuration methods for Raspberry Pi 5 encompass three modes: Acce
 
 <img class="common_img" src="../_static/media/chapter_2\section_7\media\image4.png"  />
 
-(4) Execute the command ‘**sudo systemctl restart NetworkManager**’ to restart the network configuration.
+(4) Execute the command '**sudo systemctl restart NetworkManager**' to restart the network configuration.
 
 <img class="common_img" src="../_static/media/chapter_2\section_7\media\image5.png"  />
 
-(5) Run the command ‘**sudo reboot**’ to restart the system and complete the AP mode configuration.
+(5) Run the command '**sudo reboot**' to restart the system and complete the AP mode configuration.
 
 ```py
 sudo reboot
@@ -444,7 +444,7 @@ sudo reboot
 
 * **STA Mode**
 
-(1) Use short-cut ‘**Ctrl+Alt+T**’ to open the command-line terminal, and execute the command ‘**sudo vim /etc/NetworkManager/system-connections/hiwonder.nmconnection**’, then hit Enter key to create and edit the hiwonder.nmconnection file.
+(1) Use short-cut '**Ctrl+Alt+T**' to open the command-line terminal, and execute the command '**sudo vim /etc/NetworkManager/system-connections/hiwonder.nmconnection**', then hit Enter key to create and edit the hiwonder.nmconnection file.
 
 <img class="common_img" src="../_static/media/chapter_2\section_7\media\image7.png"  />
 
@@ -456,7 +456,7 @@ sudo reboot
 
 <img class="common_img" src="../_static/media/chapter_2\section_7\media\image4.png"  />
 
-(4) Run the command ‘**sudo systemctl restart NetworkManager**’ to restart the network configuration file.
+(4) Run the command '**sudo systemctl restart NetworkManager**' to restart the network configuration file.
 
 <img class="common_img" src="../_static/media/chapter_2\section_7\media\image5.png"  />
 
@@ -480,7 +480,7 @@ sudo reboot
 
 <img class="common_img" src="../_static/media/chapter_2\section_7\media\image11.png"  />
 
-(4) Type the command ‘**sudo /etc/init.d/networking restart**’ to relaunch the network configuration file.
+(4) Type the command '**sudo /etc/init.d/networking restart**' to relaunch the network configuration file.
 
 <img class="common_img" src="../_static/media/chapter_2\section_7\media\image12.png"  />
 
@@ -604,7 +604,7 @@ vi abc
 
 <img class="common_img" src="../_static/media/chapter_2\section_18\media\image7.png"   />
 
-(6) Type the following characters ‘**hello raspberry!**’.
+(6) Type the following characters '**hello raspberry!**'.
 
 <img class="common_img" src="../_static/media/chapter_2\section_18\media\image8.png"   />
 
@@ -642,7 +642,7 @@ If the display resolution is incorrectly selected, it may result in a distorted 
 
 ### 2.8.1 Display Settings of External Display
 
-(1) Click-on the Logo in the upper left corner, select ‘**Preference →Screen Configuration**’.
+(1) Click-on the Logo in the upper left corner, select '**Preference →Screen Configuration**'.
 
 <img class="common_img" src="../_static/media/chapter_2\section_8\media\image2.png"  />
 
@@ -666,7 +666,7 @@ The system defaults to enter sleep mode if there is no operation on it within 10
 
 ### 2.9.1 Graphical Interface Settings
 
-(1) Click-on the Raspberry Pi logo at the upper left corner, then select ‘**Preference →Raspberry Pi Configuration**’.
+(1) Click-on the Raspberry Pi logo at the upper left corner, then select '**Preference →Raspberry Pi Configuration**'.
 
 <img class="common_img" src="../_static/media/chapter_2/section_9/media/image2.png"  />
 
@@ -676,9 +676,9 @@ The system defaults to enter sleep mode if there is no operation on it within 10
 
 ### 2.9.2 Command-Line Terminal Settings
 
-To set the screen sleep, users can change the file ‘**lightdm.conf**’.
+To set the screen sleep, users can change the file '**lightdm.conf**'.
 
-(1) Use short-cut ‘**Ctrl+Alt+T**’ to open the command-line terminal. Then run the command ‘**sudo nano /etc/lightdm/lightdm.conf’ to access the ‘lightdm.conf**’ file.
+(1) Use short-cut '**Ctrl+Alt+T**' to open the command-line terminal. Then run the command '**sudo nano /etc/lightdm/lightdm.conf' to access the 'lightdm.conf**' file.
 
 <img class="common_img" src="../_static/media/chapter_2/section_9/media/image4.png"  />
 
@@ -686,7 +686,7 @@ To set the screen sleep, users can change the file ‘**lightdm.conf**’.
 
 <img class="common_img" src="../_static/media/chapter_2/section_9/media/image5.png"  />
 
-(3) After modification, use short-cut ‘**Ctrl+X**’, input ‘**Y**’ and hit Enter to save the file.
+(3) After modification, use short-cut '**Ctrl+X**', input '**Y**' and hit Enter to save the file.
 
 <img class="common_img" src="../_static/media/chapter_2/section_9/media/image6.png"  />
 
@@ -717,7 +717,7 @@ Take playing demo.mp4 file as example. The table below outlines commonly used co
 
 (1) Initiate VLC through command
 
-Use short-cut ‘**Ctrl+Alt+T**’ to open the command-line terminal, then run the command ‘**vlc /home/pi/demo.mp4**’ to play the video file ‘**demo.mp4**’. This file is saved to ‘**/home/pi**’.
+Use short-cut '**Ctrl+Alt+T**' to open the command-line terminal, then run the command '**vlc /home/pi/demo.mp4**' to play the video file '**demo.mp4**'. This file is saved to '**/home/pi**'.
 
 <img class="common_img" src="../_static/media/chapter_2\section_10\media\image3.png"  />
 
@@ -727,7 +727,7 @@ Click on the logo in the upper-left corner, then select "**Sound & Video**" and 
 
 <img class="common_img" src="../_static/media/chapter_2\section_10\media\image4.png"  />
 
-Open and play the file ‘demo.mp4’.
+Open and play the file 'demo.mp4'.
 
 <img class="common_img" src="../_static/media/chapter_2\section_10/media/image5.png"  />
 
@@ -749,11 +749,11 @@ Press "**Ctrl+Alt+T**" to open the command line terminal, then type "**cat /sys/
 
 ### 2.11.3 Real-time Monitoring through Status Bar
 
-(1) Right-click the status bar, and choose ‘**Add/Remove Plugins**’ option.
+(1) Right-click the status bar, and choose '**Add/Remove Plugins**' option.
 
 <img class="common_img" src="../_static/media/chapter_2/section_11/media/image4.png"  />
 
-(2) Choose ‘**CPU Temp**’, then click-on ‘**Add to right**’, lastly activate ‘**OK**’ button.
+(2) Choose '**CPU Temp**', then click-on '**Add to right**', lastly activate '**OK**' button.
 
 <img class="common_img" src="../_static/media/chapter_2/section_11/media/image5.png"  />
 
@@ -793,7 +793,7 @@ By default, the Raspberry Pi automatically mounts some popular file systems, suc
 
 <img class="common_img" src="../_static/media/chapter_2\section_13\media\image3.png"  />
 
-(3) Run the command ‘**sudo mkdir /home/pi/test**’, and create the mounting point to the directory ‘**/home/pi/test**’.
+(3) Run the command '**sudo mkdir /home/pi/test**', and create the mounting point to the directory '**/home/pi/test**'.
 
 <img class="common_img" src="../_static/media/chapter_2\section_13\media\image4.png"  />
 
@@ -807,19 +807,19 @@ The host name, username and password have already been configured when writing t
 
 <img class="common_img" src="../_static/media/chapter_2\section_14\media\image16.png" />
 
-(1) Press ‘**Ctrl+Alt+T**’ to open the command-line terminal, input the command ‘**sudo vim /etc/hosts**’ to access the hosts file.
+(1) Press '**Ctrl+Alt+T**' to open the command-line terminal, input the command '**sudo vim /etc/hosts**' to access the hosts file.
 
 <img class="common_img" src="../_static/media/chapter_2\section_14\media\image3.png"  />
 
-(2) Locate this line of code ‘**127.0.1.1 raspberrypi**’.
+(2) Locate this line of code '**127.0.1.1 raspberrypi**'.
 
 <img class="common_img" src="../_static/media/chapter_2\section_14\media\image4.png"  />
 
-(3) Press ‘i’ key to enter the editing mode. Then replace ‘raspberrypi’ with a new name. For example, Hiwonder.
+(3) Press 'i' key to enter the editing mode. Then replace 'raspberrypi' with a new name. For example, Hiwonder.
 
 <img class="common_img" src="../_static/media/chapter_2\section_14\media\image5.png"  />
 
-(4) Press ‘Esc’ key, and type ‘:wq’ to save the change.
+(4) Press 'Esc' key, and type ':wq' to save the change.
 
 <img class="common_img" src="../_static/media/chapter_2\section_14\media\image6.png"  />
 
@@ -837,7 +837,7 @@ The Raspberry Pi 5 is equipped with 2 USB2.0 (black) and 2 USB3.0 (blue) ports. 
 
 FSWebcam is a command line tool designed for Linux systems, offering an open-source solution for capturing camera images and saving them as image files. It operates by interfacing with the camera through the Video4Linux interface, allowing users to adjust various settings such as image quality, resolution, and more using available options and parameters. To begin using FSWebcam, simply install the tool through the command line interface.
 
-(1) Press ‘**Ctrl+Alt+T**’ to open the command-line terminal, and run the command ‘**sudo apt install fswebcam**’ to install FSWebcam.
+(1) Press '**Ctrl+Alt+T**' to open the command-line terminal, and run the command '**sudo apt install fswebcam**' to install FSWebcam.
 
 <img class="common_img" src="../_static/media/chapter_2\section_15\media\image3.png"  />
 
@@ -845,13 +845,13 @@ FSWebcam is a command line tool designed for Linux systems, offering an open-sou
 
 <img class="common_img" src="../_static/media/chapter_2\section_15\media\image4.png"  />
 
-(3) Type ‘groups’ to check whether users are added to the video group.
+(3) Type 'groups' to check whether users are added to the video group.
 
 <img class="common_img" src="../_static/media/chapter_2\section_15\media\image5.png"  />
 
 ### 2.15.2 USB Camera Testing
 
-Press ‘**Ctrl+Alt+T**’ to open the command-line terminal, then execute the command ‘**fswebcam /dev/video0 /home/pi/img1.jpg**’ to capture pictures, and pictures are named as ‘**img1.jpg**’ and stored to the directory ‘**/home/pi**’. (**‘/dev/video0'** is the default device file path for video devices in Linux systems. Typically, it represents the first detected video device.)
+Press '**Ctrl+Alt+T**' to open the command-line terminal, then execute the command '**fswebcam /dev/video0 /home/pi/img1.jpg**' to capture pictures, and pictures are named as '**img1.jpg**' and stored to the directory '**/home/pi**'. (**'/dev/video0'** is the default device file path for video devices in Linux systems. Typically, it represents the first detected video device.)
 
 <img class="common_img" src="../_static/media/chapter_2\section_15\media\image6.png"  />
 
@@ -901,7 +901,7 @@ Generally, there are three ways to backup the system. The table below lists the 
 
 :::
 
-(1) First, create a blank .img file locally on the computer. (Select '**Yes’**)
+(1) First, create a blank .img file locally on the computer. (Select '**Yes'**)
 
 <img class="common_img" src="../_static/media/chapter_2\section_17\media\image2.png"  />
 
@@ -969,4 +969,4 @@ sh backup.sh
 
 (3) In the **/dev/mmcblk0** path, select the SD card containing the image under “Copy From Device.” Then, in the **dev/sda** path, select the new SD card under “Copy To Device.”
 
-(4) "New Partition UUIDs" below is the option for creating a new partition. Check it if you need it; uncheck it does not affect the outcome.   
+(4) "New Partition UUIDs" below is the option for creating a new partition. Check it if you need it; uncheck it does not affect the outcome.

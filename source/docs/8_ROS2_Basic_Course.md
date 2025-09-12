@@ -45,7 +45,7 @@ ROS1 primarily uses Python 2, whereas ROS2 requires Python version 3.5 or higher
 
 In ROS1, it is necessary to start roscore before initiating, which acts as master node managing communication between all nodes. However, in ROS2, there is no equivalent to roscore; instead, there is only an abstract intermediate interface for data transmission. Currently, all implements of this interface are based on the DDS (Data Distribution Service) standard. This allows ROS2 to provide various high-quality QoS service strategies, improving communication in different network environments.
 
-<img class="common_img" src="../_static/media/chapter_9\section_1\media\image2.png"   />
+<img class="common_img" src="../_static/media/chapter_9/section_1/media/image2.png"   />
 
 (4) **Compilation Command** 
 
@@ -53,7 +53,7 @@ The compilation command for ROS1 is "**catkin_make**," while for ROS2, the compi
 
 If any further development learning is required, please refer to the official tutorial via the following link.
 
-**https://docs.ros.org/en/rolling/index.html**
+**<https://docs.ros.org/en/rolling/index.html>**
 
 ## 8.2 ROS2 Installation
 
@@ -65,105 +65,105 @@ If any further development learning is required, please refer to the official tu
 
 **This lesson takes the example of humble (requires Internet connection)**
 
-(1) Press “**Ctrl+Alt+T**” to open a command line terminal and enter the command “**docker pull ros:humble**” to download ROS2 image. The download needs to take a while. Please wait patiently.
+(1) Press "**Ctrl+Alt+T**" to open a command line terminal and enter the command "**docker pull ros:humble**" to download ROS2 image. The download needs to take a while. Please wait patiently.
 
-```py
+```bash
 docker pull ros:humble
 ```
 
-(1) After the image is downloaded, enter the command “**docker run -it --network=host -d -v=/dev:/dev -v /tmp/.X11-unix:/tmp/.X11-unix --name humble -e DISPLAY=\${DISPLAY} --restart=always ros:humble /bin/bash**” in the terminal to run the container and specify the name as “humble”.
+(1) After the image is downloaded, enter the command "**docker run -it --network=host -d -v=/dev:/dev -v /tmp/.X11-unix:/tmp/.X11-unix --name humble -e DISPLAY=\${DISPLAY} --restart=always ros:humble /bin/bash**" in the terminal to run the container and specify the name as "humble".
 
-```py
+```bash
 docker run -it --network=host -d -v=/dev:/dev -v /tmp/.X11-unix:/tmp/.X11-unix --name humble -e DISPLAY=\${DISPLAY} --restart=always ros:humble /bin/bash
 ```
 
-(1) Enter “**xhost +**” to start the access control for X Sever.
+(1) Enter "**xhost +**" to start the access control for X Sever.
 
-```py
+```bash
 xhost +
 ```
 
-(2) Enter “**docker ps**” to view the ID of the newly created container.
+(2) Enter "**docker ps**" to view the ID of the newly created container.
 
-```py
+```bash
 docker ps
 ```
 
 <img class="common_img" src="../_static/media/chapter_9/section_2/media/image5.png"  />
 
-(3) Enter the command “**docker exec -it 55ce /bin/bash**” to enter the container (the container’s ID can be abbreviated as long as it uniquely identifies the container).
+(3) Enter the command "**docker exec -it 55ce /bin/bash**" to enter the container (the container’s ID can be abbreviated as long as it uniquely identifies the container).
 
-```py
+```bash
 docker exec -it 55ce /bin/bash
 ```
 
-(4) Enter the command “**useradd -m -s /bin/bash ubuntu**” to create a new user.
+(4) Enter the command "**useradd -m -s /bin/bash ubuntu**" to create a new user.
 
-```py
+```bash
 useradd -m -s /bin/bash ubuntu
 ```
 
-(5) In the terminal, enter “**passwd ubuntu**” to set the password for “ubuntu”. Here, “ubuntu” is set as the password, you will prompted to re-enter the password.
+(5) In the terminal, enter "**passwd ubuntu**" to set the password for "ubuntu". Here, "ubuntu" is set as the password, you will prompted to re-enter the password.
 
-```py
+```bash
 passwd ubuntu
 ```
 
-(6) Enter “**usermod -aG sudo ubuntu**” to add the new user “ubuntu” to the sudo group, granting it the superuser permission.
+(6) Enter "**usermod -aG sudo ubuntu**" to add the new user "ubuntu" to the sudo group, granting it the superuser permission.
 
-```py
+```bash
 usermod -aG sudo ubuntu
 ```
 
-(7) Enter “**sudo apt-get update -y && sudo apt-get upgrade -y**” to update the list of available software packages and upgrade the installed software packages on the system.
+(7) Enter "**sudo apt-get update -y && sudo apt-get upgrade -y**" to update the list of available software packages and upgrade the installed software packages on the system.
 
-```py
+```bash
 sudo apt-get update -y && sudo apt-get upgrade -y
 ```
 
-(8) Enter “**sudo apt-get install vim -y**” to install Vim text editor.
+(8) Enter "**sudo apt-get install vim -y**" to install Vim text editor.
 
-```py
+```bash
 sudo apt-get install vim -y
 ```
 
-(9) Enter “**sudo apt-get install ros-humble-desktop-full -y**”to install the complete desktop environment of ROS Humble version.
+(9) Enter "**sudo apt-get install ros-humble-desktop-full -y**"to install the complete desktop environment of ROS Humble version.
 
-```py
+```bash
 sudo apt-get install ros-humble-desktop-full -y
 ```
 
 ### 8.2.1 Test ROS2 Environment
 
-(1) Enter “**docker exec -it -u ubuntu -w /home/ubuntu 55ce /bin/bash**” to enter the container. (Note: 55ce is the container ID with the ROS2 environment installed.)
+(1) Enter "**docker exec -it -u ubuntu -w /home/ubuntu 55ce /bin/bash**" to enter the container. (Note: 55ce is the container ID with the ROS2 environment installed.)
 
-```py
+```bash
 docker exec -it -u ubuntu -w /home/ubuntu 55ce /bin/bash
 ```
 
-(2) Enter “**source /opt/ros/humble/setup.bash**” to manually set up ROS2 environment.
+(2) Enter "**source /opt/ros/humble/setup.bash**" to manually set up ROS2 environment.
 
-```py
+```bash
 source /opt/ros/humble/setup.bash
 ```
 
 <img class="common_img" src="../_static/media/chapter_9/section_2/media/image14.png"  />
 
-(3) The step 2 needs to be executed every time to load the workspace when you open the terminal, you can enter “**echo “source /opt/ros/humble/setup.bash” \>\> ~/.bashrc**” to write this command into the .bashrc file.
+(3) The step 2 needs to be executed every time to load the workspace when you open the terminal, you can enter "**echo "source /opt/ros/humble/setup.bash" \>\> ~/.bashrc**" to write this command into the .bashrc file.
 
-```py
-echo “source /opt/ros/humble/setup.bash” \>\> ~/.bashrc
+```bash
+echo "source /opt/ros/humble/setup.bash" \>\> ~/.bashrc
 ```
 
-(4) Enter “**source ~/.bashrc**” to make the **.bashrc** file take effect. In this way, there is no need to load the workspace environment for each operation.
+(4) Enter "**source ~/.bashrc**" to make the **.bashrc** file take effect. In this way, there is no need to load the workspace environment for each operation.
 
-```py
+```bash
 source ~/.bashrc
 ```
 
-(5) Enter “**ros2 run turtlesim turtlesim_node**” to start the TurtleSim GUI interface. If it launches successfully, it indicates that ROS2 has been installed successfully.
+(5) Enter "**ros2 run turtlesim turtlesim_node**" to start the TurtleSim GUI interface. If it launches successfully, it indicates that ROS2 has been installed successfully.
 
-```py
+```bash
 ros2 run turtlesim turtlesim_node
 ```
 
@@ -249,7 +249,7 @@ The following table will provide explanations for the commonly used files in ROS
 |    **Term**    |                       **Instruction**                        |
 | :------------: | :----------------------------------------------------------: |
 |   Urdf file    | A model file describing robot’s entire elements, including link, joint, kinematics parameters, dynamics parameters, visual models and collision detection models. |
-|    Srv file    | It is stored in the srv folder used to define ROS service messages, consisting of two parts: request and respond. The request and respond are separated by the “---” symbol. |
+|    Srv file    | It is stored in the srv folder used to define ROS service messages, consisting of two parts: request and respond. The request and respond are separated by the "---" symbol. |
 |    Msg file    | It is stored in the msg folder used to define ROS topic messages. |
 |  package.xml   | Description of the package attributes, including the package name, version number, authorship and other information. |
 | CmakeLists.txt |         Compile the configuration file using Cmake.          |
@@ -271,9 +271,9 @@ The ros2 pkg has a total of five commands: create, executables, list, prefix, xm
 
 * **Node Running Tool** 
 
-The function of ros2 run is allow you to run nodes within ROS2 package. The basic syntax is “**ros2 run <package_name> <node_name>” as pictured.**
+The function of ros2 run is allow you to run nodes within ROS2 package. The basic syntax is "**ros2 run <package_name> <node_name>" as pictured.**
 
-<img class="common_img" src="../_static/media/chapter_9\section_3\media\image2.png"  />
+<img class="common_img" src="../_static/media/chapter_9\section_3/media/image2.png"  />
 
 * **Command-line Tool**
 
@@ -324,23 +324,23 @@ During the subsequent learning and development processes, users can improve thei
 
 ### 8.4.1 Adjust Resolution
 
-(1) Press “**Ctrl+Alt+T**” to open a command-line terminal and input the command “**sudo raspi-config**”, then press Enter.
+(1) Press "**Ctrl+Alt+T**" to open a command-line terminal and input the command "**sudo raspi-config**", then press Enter.
 
-```py
+```bash
 sudo raspi-config
 ```
 
-(2) Select “2. Display Options” using “↑↓” keys and press “Enter” to confirm. “Esc” key can be used to go back to the previous level.
+(2) Select "2. Display Options" using "↑↓" keys and press "Enter" to confirm. "Esc" key can be used to go back to the previous level.
 
 <img class="common_img" src="../_static/media/chapter_9/section_4/media/image3.png"  />
 
 <img class="common_img" src="../_static/media/chapter_9/section_4/media/image4.png"  />
 
-(3) Select “**D3 VNC Resolution**”, and then press “**Enter**” to confirm.
+(3) Select "**D3 VNC Resolution**", and then press "**Enter**" to confirm.
 
 <img class="common_img" src="../_static/media/chapter_9/section_4/media/image5.png"  />
 
-(4) Select “**1920\*1080**” and “**\<Select\>**” in sequence, then press “Enter” to confirm.
+(4) Select "**1920\*1080**" and "**\<Select\>**" in sequence, then press "Enter" to confirm.
 
 <img class="common_img" src="../_static/media/chapter_9/section_4/media/image6.png"  />
 
@@ -354,15 +354,15 @@ During the subsequent ROS development, it is necessary to open multiple terminal
 
 <img class="common_img" src="../_static/media/chapter_9/section_4/media/image8.png"  />
 
-(2) Enter “**docker exec -it -u ubuntu -w /home/ubuntu 1318 /bin/bash**” to enter the container.
+(2) Enter "**docker exec -it -u ubuntu -w /home/ubuntu 1318 /bin/bash**" to enter the container.
 
-```py
+```bash
 docker exec -it -u ubuntu -w /home/ubuntu 1318 /bin/bash
 ```
 
 Every time before entering the container, it is inconvenient to enter command in the terminator terminal. You can set the command to enter the container in the terminator tool.
 
-(3) Right-click on the terminator window, and then select “Preference”.
+(3) Right-click on the terminator window, and then select "Preference".
 
 <img class="common_img" src="../_static/media/chapter_9/section_4/media/image10.png"  />
 
@@ -370,11 +370,11 @@ Every time before entering the container, it is inconvenient to enter command in
 
 <img class="common_img" src="../_static/media/chapter_9/section_4/media/image11.png"  />
 
-(5) Check the “Run a custom command instead of my deal” option, and then enter the accessible command of container “**docker exec -it -u ubuntu -w /home/ubuntu 1318 /bin/bash**”. (Note: 1318 is the container ID containing ROS2 environment.)
+(5) Check the "Run a custom command instead of my deal" option, and then enter the accessible command of container "**docker exec -it -u ubuntu -w /home/ubuntu 1318 /bin/bash**". (Note: 1318 is the container ID containing ROS2 environment.)
 
 <img class="common_img" src="../_static/media/chapter_9/section_4/media/image12.png"  />
 
-(6) Click “Close”. This way, every time you open the terminal, you can directly enter the container with ROS2 environment.
+(6) Click "Close". This way, every time you open the terminal, you can directly enter the container with ROS2 environment.
 
 <img class="common_img" src="../_static/media/chapter_9/section_4/media/image13.png"  />
 
@@ -386,25 +386,25 @@ The Tree is a command-line tool, used to list the hierarchical structure of dire
 
 <img class="common_img" src="../_static/media/chapter_9/section_4/media/image8.png"  />
 
-(2) Enter “**sudo apt-get install tree**” to install Tree tool.
+(2) Enter "**sudo apt-get install tree**" to install Tree tool.
 
-```py
+```bash
 sudo apt-get install tree
 ```
 
-(3) After installation, enter “**tree -L 1**” to display the first-level directories structure of the current folder.
+(3) After installation, enter "**tree -L 1**" to display the first-level directories structure of the current folder.
 
-```py
+```bash
 tree -L 1
 ```
 
 ### 8.4.4 pip Package Installation
 
-Python-pip is a package for Python3’s package management tool “pip”. pip is the official package management tool for Python, used to install, upgrade and manage Python package .
+Python-pip is a package for Python3’s package management tool "pip". pip is the official package management tool for Python, used to install, upgrade and manage Python package .
 
-Enter the command “**sudo apt-get install python3-pip**” to install pip.
+Enter the command "**sudo apt-get install python3-pip**" to install pip.
 
-```py
+```bash
 sudo apt-get install python3-pip
 ```
 
@@ -412,9 +412,9 @@ sudo apt-get install python3-pip
 
 Transforms3d is a Python library used for 3D transformations and rotation matrices. It provides a set of functions and classes for performing various transformation operations in three-dimensional space, such as rotation, translation and scaling. The traforms3d library has a simple and user-friendly interface that can be used for handling 3D graphics, robot kinematics, computer vision, and other fields. It supports various common presentation of rotations, such as Euler angles, quaternions, and rotation matrices, and provides conversion functions for converting between these representations.
 
-Enter the command “**sudo pip3 install transforms3d**” to install Python library.
+Enter the command "**sudo pip3 install transforms3d**" to install Python library.
 
-```py
+```bash
 sudo pip3 install transforms3d
 ```
 
@@ -432,9 +432,9 @@ turtle-tf2-py provides a lightweight TF2 client library for Python, enabling eas
 
 tf2-tools provides some TF-related practical tools. It includes commonly used functionalities such as interpolation of coordinate transformations, publishing and listening to coordinate transformations, and visualization of coordinate frames.
 
-Enter “**sudo apt install ros-humble-turtle-tf2-py ros-humble-tf2-tools**” to install turtle-tf2-py and tf2-tools libraries (humble is a version number for ROS2.)
+Enter "**sudo apt install ros-humble-turtle-tf2-py ros-humble-tf2-tools**" to install turtle-tf2-py and tf2-tools libraries (humble is a version number for ROS2.)
 
-```py
+```bash
 sudo apt install ros-humble-turtle-tf2-py ros-humble-tf2-tools
 ```
 
@@ -442,9 +442,9 @@ sudo apt install ros-humble-turtle-tf2-py ros-humble-tf2-tools
 
 Gazebo is a powerful open-source 3D robot simulation software that helps us quickly create and test various real-world scenarios on a computer. It comes with a built-in precise physics engine to simulate the interactions of dynamic objects in the scene, such as gravitational forces and friction. It also provides excellent 3D visualization effects, allowing us to clearly see the simulation process through a visual client. Most importantly, Gazebo integrates seamlessly with ROS, allowing us to develop and test ROS nodes directly within it. This enables us to easily transfer simulation code to physical robots.
 
-Enter “**sudo apt-get install ros-humble-ros-gz**” to install Gazebo (humble is a ROS number for ROS2.)
+Enter "**sudo apt-get install ros-humble-ros-gz**" to install Gazebo (humble is a ROS number for ROS2.)
 
-```py
+```bash
 sudo apt-get install ros-humble-ros-gz
 ```
 
@@ -456,81 +456,81 @@ In ROS robot development, when we develop specific functionalities for robots, v
 
 ### 8.5.2 **Create & Compile Workspace**
 
-(1) Click<img class="common_img" src="../_static/media/chapter_9\section_5\media\image2.png"  /> in the upper left corner, then select **System Tools and Terminator** in sequence.
+(1) Click<img class="common_img" src="../_static/media/chapter_9\section_5/media/image2.png"  /> in the upper left corner, then select **System Tools and Terminator** in sequence.
 
-<img class="common_img" src="../_static/media/chapter_9\section_5\media\image3.png"  />
+<img class="common_img" src="../_static/media/chapter_9\section_5/media/image3.png"  />
 
-(2) Enter “**docker ps**” to list the currently running containers
+(2) Enter "**docker ps**" to list the currently running containers
 
-```py
+```bash
 docker ps
 ```
 
-<img class="common_img" src="../_static/media/chapter_9\section_5\media\image4.png"  />
+<img class="common_img" src="../_static/media/chapter_9\section_5/media/image4.png"  />
 
-(3) Enter “**docker exec -it -u ubuntu -w /home/ubuntu 55ce /bin/bash**” (the container ID can be abbreviated as long as it uniquely identifies the container) to enter the contain with ROS2 installed.
+(3) Enter "**docker exec -it -u ubuntu -w /home/ubuntu 55ce /bin/bash**" (the container ID can be abbreviated as long as it uniquely identifies the container) to enter the contain with ROS2 installed.
 
-```py
+```bash
 docker exec -it -u ubuntu -w /home/ubuntu 55ce /bin/bash
 ```
 
-<img class="common_img" src="../_static/media/chapter_9\section_5\media\image5.png"  />
+<img class="common_img" src="../_static/media/chapter_9\section_5/media/image5.png"  />
 
-(4) Enter “**mkdir -p ~/hiwonder_ws/src**” to create a workspace called “**mkdir -p ~/hiwonder_ws/src**”.
+(4) Enter "**mkdir -p ~/hiwonder_ws/src**" to create a workspace called "**mkdir -p ~/hiwonder_ws/src**".
 
-```py
+```bash
 mkdir -p ~/hiwonder_ws/src
 ```
 
-<img class="common_img" src="../_static/media/chapter_9\section_5\media\image6.png"  />
+<img class="common_img" src="../_static/media/chapter_9\section_5/media/image6.png"  />
 
-(5) Enter “**cd hiwonder_ws**” to switch to the workspace named “**hiwonder_ws**”.
+(5) Enter "**cd hiwonder_ws**" to switch to the workspace named "**hiwonder_ws**".
 
-```py
+```bash
 cd hiwonder_ws
 ```
 
-<img class="common_img" src="../_static/media/chapter_9\section_5\media\image7.png"  />
+<img class="common_img" src="../_static/media/chapter_9\section_5/media/image7.png"  />
 
-(6) Enter “**colcon build**” to compile the workspace.
+(6) Enter "**colcon build**" to compile the workspace.
 
-```py
+```bash
 colcon build
 ```
 
-<img class="common_img" src="../_static/media/chapter_9\section_5\media\image8.png"  />
+<img class="common_img" src="../_static/media/chapter_9\section_5/media/image8.png"  />
 
-(7) Enter “**source ~/hiwonder_ws/install/setup.bash**” to load the workspace environment in ROS2.
+(7) Enter "**source ~/hiwonder_ws/install/setup.bash**" to load the workspace environment in ROS2.
 
-```py
+```bash
 source ~/hiwonder_ws/install/setup.bash
 ```
 
-<img class="common_img" src="../_static/media/chapter_9\section_5\media\image9.png"  />
+<img class="common_img" src="../_static/media/chapter_9\section_5/media/image9.png"  />
 
-(8) Every time yon open a nrew terminal, step 7) will be executed to load the workspace. However, you can enter the command “**echo “source ~/hiwonder_ws/install/setup.bash” >> ~/.bashrc**” to append the specified command to the .bashrc file.
+(8) Every time yon open a nrew terminal, step 7) will be executed to load the workspace. However, you can enter the command "**echo "source ~/hiwonder_ws/install/setup.bash" >> ~/.bashrc**" to append the specified command to the .bashrc file.
 
-```py
-echo “source ~/hiwonder_ws/install/setup.bash” >> ~/.bashrc
+```bash
+echo "source ~/hiwonder_ws/install/setup.bash" >> ~/.bashrc
 ```
 
-(9) Then enter “**source ~/.bashrc**” to make the .bashrc file take effect, thereby there is no need to load the workspace environment for each operation.
+(9) Then enter "**source ~/.bashrc**" to make the .bashrc file take effect, thereby there is no need to load the workspace environment for each operation.
 
-```py
+```bash
 source ~/.bashrc
 ```
 
 ### 8.5.3 Introduction to Workspace
 
-After compilation, enter the command “**tree -L 1**” to view the root directory of the workspace.
+After compilation, enter the command "**tree -L 1**" to view the root directory of the workspace.
 
-```py
+```bash
 tree -L 1
 ```
 
-<img class="common_img" src="../_static/media/chapter_9\section_5\media\image12.png"  />
+<img class="common_img" src="../_static/media/chapter_9\section_5/media/image12.png"  />
 
-A typical workspace structure in ROS system is shown as above. The “hiwonder_ws” is the root directory of the workspace, which contains four sub-directories, or sub-spaces.
+A typical workspace structure in ROS system is shown as above. The "hiwonder_ws" is the root directory of the workspace, which contains four sub-directories, or sub-spaces.
 
 | **Name** |      **Meaning**       |                       **Instruction**                        |
 | :------: | :--------------------: | :----------------------------------------------------------: |
@@ -539,7 +539,7 @@ A typical workspace structure in ROS system is shown as above. The “hiwonder_w
 |   log    |     Log workspace      | Save various logs including warnings, errors, and information during the compilation and execution processes |
 |   src    |     Code workspace     | The subsequent code and scripts need to be manually placed here. |
 
-All in all,most of operations are performed within the “src” folder among these four spaces. After successful compilation, the results will be executed from the “install” folder. The “build” and “folder” are rarely used.
+All in all,most of operations are performed within the "src" folder among these four spaces. After successful compilation, the results will be executed from the "install" folder. The "build" and "folder" are rarely used.
 
 Moreover, the name of the workspace can be customized, and there can be multiple workspaces. For example:
 
@@ -561,51 +561,51 @@ The principle of packages addresses this issue. The code of different function i
 
 ### 8.6.2 Create and Compile Package
 
-(1) Click<img class="common_img" src="../_static/media/chapter_9/section_6/media/image2.png"  /> in the upper-left corner, then select “**System Tools and Terminator**” in sequence.
+(1) Click<img class="common_img" src="../_static/media/chapter_9/section_6/media/image2.png"  /> in the upper-left corner, then select "**System Tools and Terminator**" in sequence.
 
 <img class="common_img" src="../_static/media/chapter_9/section_6/media/image3.png"  />
 
-(2) Enter the command “**cd hiwonder_ws/src/**” to switch to the src folder within the workspace named **hiwonder_ws**.
+(2) Enter the command "**cd hiwonder_ws/src/**" to switch to the src folder within the workspace named **hiwonder_ws**.
 
-```py
+```bash
 cd hiwonder_ws/src/
 ```
 
-(3) Enter “**ros2 pkg create hello_world_demo --build-type ament_python --dependencies rclpy --node-name hello_world**” and press Enter to create a package named **hello_world_demo**. Add the dependency “rclpy” and generate an executable program named “**hello_world**”.
+(3) Enter "**ros2 pkg create hello_world_demo --build-type ament_python --dependencies rclpy --node-name hello_world**" and press Enter to create a package named **hello_world_demo**. Add the dependency "rclpy" and generate an executable program named "**hello_world**".
 
-```py
+```bash
 ros2 pkg create hello_world_demo --build-type ament_python --dependencies rclpy --node-name hello_world
 ```
 
-(4) Enter “**cd ~/hiwonder_ws**” to switch to the root directory of the workspace.
+(4) Enter "**cd ~/hiwonder_ws**" to switch to the root directory of the workspace.
 
-```py
+```bash
 cd ~/hiwonder_ws
 ```
 
-(5) Enter “**colcon build**” to compile packages in workspace.
+(5) Enter "**colcon build**" to compile packages in workspace.
 
-```py
+```bash
 colcon build
 ```
 
-(6) After successful compilation, enter “**cd src/hello_world_demo/**” to enter the directory where the package is located, and press Enter to verify whether the package is created successfully.
+(6) After successful compilation, enter "**cd src/hello_world_demo/**" to enter the directory where the package is located, and press Enter to verify whether the package is created successfully.
 
-```py
+```bash
 cd src/hello_world_demo/
 ```
 
 ### 8.6.3 Package Instruction
 
-After compilation, enter the command “**tree -L 1**” to view the root directory of the workspace.
+After compilation, enter the command "**tree -L 1**" to view the root directory of the workspace.
 
-```py
+```bash
 tree -L 1
 ```
 
 <img class="common_img" src="../_static/media/chapter_9/section_6/media/image9.png"  />
 
-In ROS system, the structure of a typical package is shown above. The “hello_world_demo” is the root directory of the package, there will be 6 files or subdirectories inside.
+In ROS system, the structure of a typical package is shown above. The "hello_world_demo" is the root directory of the package, there will be 6 files or subdirectories inside.
 
 |     **Name**     |                       **Instruction**                        |
 | :--------------: | :----------------------------------------------------------: |
@@ -624,23 +624,23 @@ During communication, regardless of the method used, the construction of communi
 
 ### 8.7.2 Create Node
 
-(1) Click<img class="common_img" src="../_static/media/chapter_9\section_7\media\image2.png"  /> in the upper left corner, and then select “**System Tools and Terminator**” in sequence.
+(1) Click<img class="common_img" src="../_static/media/chapter_9\section_7/media/image2.png"  /> in the upper left corner, and then select "**System Tools and Terminator**" in sequence.
 
-<img class="common_img" src="../_static/media/chapter_9\section_7\media\image3.png"  />
+<img class="common_img" src="../_static/media/chapter_9\section_7/media/image3.png"  />
 
-(2) Enter the command “**cd hiwonder_ws/src/hello_world_demo/hello_world_demo**” and press Enter to switch to the path of the “**hello_world_demo**” package.
+(2) Enter the command "**cd hiwonder_ws/src/hello_world_demo/hello_world_demo**" and press Enter to switch to the path of the "**hello_world_demo**" package.
 
-```py
+```bash
 cd hiwonder_ws/src/hello_world_demo/hello_world_demo
 ```
 
-(3) Enter command “package” to edit program. Copy the below program. You can press “i” to edit the program. After modification, press “Esc” and enter “:wq” to save and exit the program.
+(3) Enter command "package" to edit program. Copy the below program. You can press "i" to edit the program. After modification, press "Esc" and enter ":wq" to save and exit the program.
 
-```py
+```bash
 vim hello_world.py
 ```
 
-```py
+```bash
 import rclpy
 from rclpy.node import Node
 import time
@@ -651,7 +651,7 @@ super().__init__('hello_world_demo')
 def run(self):
 # Execute a loop when the ROS2 system is running normally.
 while rclpy.ok():
-# Print “Hello World” to the node’s log.
+# Print "Hello World" to the node’s log.
 self.get_logger().info('Hello World')
 # Sleep for 0.5s to control the loop time.
 time.sleep(0.5)
@@ -675,61 +675,61 @@ if __name__ == '__main__':
 main()
 ```
 
-```py
+```bash
 :wq
 ```
 
-(4) Enter the command “**chmod +x hello_world.py**” and press Enter to grant the executable permission to the saved hello_world.py file.
+(4) Enter the command "**chmod +x hello_world.py**" and press Enter to grant the executable permission to the saved hello_world.py file.
 
-```py
+```bash
 chmod +x hello_world.py
 ```
 
 ### 8.7.3 Compilation and Execution
 
-(1) After granting the executable permission, enter the command “**cd ~/hiwonder_ws/**” to switch to the directory of the workspace.
+(1) After granting the executable permission, enter the command "**cd ~/hiwonder_ws/**" to switch to the directory of the workspace.
 
-```py
+```bash
 cd ~/hiwonder_ws/
 ```
 
-(2) Enter the command “**colcon build**” and press Enter to compile the package within the workspace.
+(2) Enter the command "**colcon build**" and press Enter to compile the package within the workspace.
 
-```py
+```bash
 colcon build
 ```
 
-(3) Enter the command “**colcon build**” and press Enter to make the environment variables take effect.
+(3) Enter the command "**colcon build**" and press Enter to make the environment variables take effect.
 
-<img class="common_img" src="../_static/media/chapter_9\section_7\media\image10.png"  />
+<img class="common_img" src="../_static/media/chapter_9\section_7/media/image10.png"  />
 
-(4) Enter command “**ros2 run hello_world_demo hello_world**” and press Enter to start hello_world node.
+(4) Enter command "**ros2 run hello_world_demo hello_world**" and press Enter to start hello_world node.
 
-```py
+```bash
 ros2 run hello_world_demo hello_world
 ```
 
-<img class="common_img" src="../_static/media/chapter_9\section_7\media\image11.png"  />
+<img class="common_img" src="../_static/media/chapter_9\section_7/media/image11.png"  />
 
 ### 8.7.4 Program Analysis
 
 According to the realization result, the logic progress for the program is shown as pictured:
 
-<img class="common_img" src="../_static/media/chapter_9\section_7\media\image12.png"   />
+<img class="common_img" src="../_static/media/chapter_9\section_7/media/image12.png"   />
 
-Create a node named HelloWorldNode, and print “Hello World” to the node’s log every 0.5 seconds in the main loop of the node. During program execution, the ROS2 Python interface is initialized first, then a node instance is created and its main loop is run. When the program is interrupted, the node object is destroyed, and the ROS2 Python interface is shut down.
+Create a node named HelloWorldNode, and print "Hello World" to the node’s log every 0.5 seconds in the main loop of the node. During program execution, the ROS2 Python interface is initialized first, then a node instance is created and its main loop is run. When the program is interrupted, the node object is destroyed, and the ROS2 Python interface is shut down.
 
 (1) **Main function**
 
-<img class="common_img" src="../_static/media/chapter_9\section_7\media\image13.png"  />
+<img class="common_img" src="../_static/media/chapter_9\section_7/media/image13.png"  />
 
 First, invoke the rclpy.init() function to initialize ROS2 Python interface. Then instantiate the HelloWorkdNode file. Finally, execute the node.run() function.
 
 (2) **HelloWorldNode Class**
 
-<img class="common_img" src="../_static/media/chapter_9\section_7\media\image14.png"  />
+<img class="common_img" src="../_static/media/chapter_9\section_7/media/image14.png"  />
 
-First, create a node named HelloWorldNode, then print “Hello World” to the node’s log at intervals of 0.5 seconds in the node’s main loop.
+First, create a node named HelloWorldNode, then print "Hello World" to the node’s log at intervals of 0.5 seconds in the node’s main loop.
 
 ## 8.8 ROS2 Topic
 
@@ -739,7 +739,7 @@ Topic communication is the most common way of communication in ROS2. Publishers 
 
 Topic communication is based on publish and subscribe models as pictured:
 
-<img class="common_img" src="../_static/media/chapter_9\section_8\media\image2.GIF"   />
+<img class="common_img" src="../_static/media/chapter_9\section_8/media/image2.GIF"   />
 
 The characteristic of the topic data transmission is from one node to another. The object sending data is called the publisher, while the object receiving data is called the subscriber. Each topic requires a name, and the transmitted data also requires a fixed data type.
 
@@ -747,35 +747,35 @@ The characteristic of the topic data transmission is from one node to another. T
 
 * **Create Publisher**
 
-(1) Click<img class="common_img" src="../_static/media/chapter_9\section_8\media\image3.png"  /> and select “System Tools -\>Terminator” in sequence.
+(1) Click<img class="common_img" src="../_static/media/chapter_9\section_8/media/image3.png"  /> and select "System Tools -\>Terminator" in sequence.
 
-<img class="common_img" src="../_static/media/chapter_9\section_8\media\image4.png"  />
+<img class="common_img" src="../_static/media/chapter_9\section_8/media/image4.png"  />
 
-(2) Enter the command “**cd hiwonder_ws/src/**” to switch to the src folder within hiwonder_ws workspace.
+(2) Enter the command "**cd hiwonder_ws/src/**" to switch to the src folder within hiwonder_ws workspace.
 
-```py
+```bash
 cd hiwonder_ws/src/
 ```
 
-(3) Enter the command “**ros2 pkg create topic_demo --build-type ament_python --dependencies rclpy**” and press Enter to create a package named “**topic_demo**” with rclpy dependency.
+(3) Enter the command "**ros2 pkg create topic_demo --build-type ament_python --dependencies rclpy**" and press Enter to create a package named "**topic_demo**" with rclpy dependency.
 
-```py
+```bash
 ros2 pkg create topic_demo --build-type ament_python --dependencies rclpy
 ```
 
-(4) Enter the command “**rclpy dependency**” to switch to the “topic_demo” package.
+(4) Enter the command "**rclpy dependency**" to switch to the "topic_demo" package.
 
-```py
+```bash
 rclpy dependency
 ```
 
-```py
+```bash
 cd topic_demo/topic_demo
 ```
 
-(5) Enter the command “**vim topic_pub.py**” to edit the program, copy the following program. If modification is required, you can press “i” to modify the program. After modification, press “Esc” and eneter “**:wq**” to save and exit.
+(5) Enter the command "**vim topic_pub.py**" to edit the program, copy the following program. If modification is required, you can press "i" to modify the program. After modification, press "Esc" and eneter "**:wq**" to save and exit.
 
-```py
+```bash
 vim topic_pub.py
 ```
 
@@ -787,9 +787,9 @@ from std_msgs.msg import String
 class MinimalPublisher(Node):
 # The initialization method of the Class
 def \_\_init\_\_(self):
-# Call the initialize method of the Node class to set the node name as “minimal_publisher”.
+# Call the initialize method of the Node class to set the node name as "minimal_publisher".
 super().\_\_init\_\_('minimal_publisher')
-# Create a publisher to publish messages of String type to “topic”, with a queue size of 10.
+# Create a publisher to publish messages of String type to "topic", with a queue size of 10.
 self.publisher\_ = self.create_publisher(String, 'topic', 10)
 # Create a timer to trigger the time_callback method every 0.5 seconds.
 timer_period = 0.5 \# second
@@ -800,7 +800,7 @@ self.i = 0
 def timer_callback(self):
 # Create a message of type String
 msg = String()
-# Set the message data as “Hello World: number”
+# Set the message data as "Hello World: number"
 msg.data = 'Hello World: %d' % self.i
 # Publish message
 self.publisher\_.publish(msg)
@@ -823,21 +823,21 @@ if \_\_name\_\_ == '\_\_main\_\_':
 main()
 ```
 
-```py
+```bash
 :wq
 ```
 
-(6) Enter the command “**chmod +x topic_pub.py**” and press Enter to grant the executable permission to the saved topic_pub.py file.
+(6) Enter the command "**chmod +x topic_pub.py**" and press Enter to grant the executable permission to the saved topic_pub.py file.
 
-```py
+```bash
 chmod +x topic_pub.py
 ```
 
 * **Create Subscriber**
 
-(1) Enter the command “**vim topic_sub.py**” to edit the program. Copy the following program. If modification is required, you can press “i” to modify the program. After modification, press “Esc” and eneter “**:wq**” to save and exit.
+(1) Enter the command "**vim topic_sub.py**" to edit the program. Copy the following program. If modification is required, you can press "i" to modify the program. After modification, press "Esc" and eneter "**:wq**" to save and exit.
 
-```py
+```bash
 vim topic_sub.py
 ```
 
@@ -851,7 +851,7 @@ class MinimalSubscriber(Node):
 def \_\_init\_\_(self):
 # Call the initialization method of the Node class
 super().\_\_init\_\_('minimal_subscriber')
-# Create a subscriber to subscribe to the messages of String type on the “topic”, Set the callback function to listener_callback and the queue size to 10.
+# Create a subscriber to subscribe to the messages of String type on the "topic", Set the callback function to listener_callback and the queue size to 10.
 self.subscription = self.create_subscription(String, 'topic', self.listener_callback, 10)
 # Define message callback function
 def listener_callback(self, msg):
@@ -874,13 +874,13 @@ if \_\_name\_\_ == '\_\_main\_\_':
 main()
 ```
 
-```py
+```bash
 :wq
 ```
 
-(7) Enter the command “**chmod +x topic_sub.py**” and press Enter to grant the executable permission to the saved topic_sub.py file.
+(7) Enter the command "**chmod +x topic_sub.py**" and press Enter to grant the executable permission to the saved topic_sub.py file.
 
-```py
+```bash
 chmod +x topic_sub.py
 ```
 
@@ -888,63 +888,63 @@ chmod +x topic_sub.py
 
 The setup.py file defines the metadata and build configuration for a ROS2 package, providing information such as package metadata, dependencies, build configuration, and installation logic. It helps developers correctly build, install, and use ROS2 packages. It is necessary to write the program entry points for topic_pub.py and topic_sub.py into the setup.py file.
 
-(1) Enter the command “**cd ..**” to switch to the parent directory.
+(1) Enter the command "**cd ..**" to switch to the parent directory.
 
-```py
+```bash
 cd ..
 ```
 
-(2) Enter the command “**vim setup.py**” and press Enter to open the setup.py file.
+(2) Enter the command "**vim setup.py**" and press Enter to open the setup.py file.
 
-```py
+```bash
 vim setup.py
 ```
 
-(3) Press “i” to enter the editing mode, and then enter the following code to the corresponding position.
+(3) Press "i" to enter the editing mode, and then enter the following code to the corresponding position.
 
 'topic_pub = topic_demo.topic_pub:main',
 
 'topic_sub = topic_demo.topic_sub:main'
 
-<img class="common_img" src="../_static/media/chapter_9\section_8\media\image15.png"  />
+<img class="common_img" src="../_static/media/chapter_9\section_8/media/image15.png"  />
 
-(4) Enter “**:wq**” to save and exit the file.
+(4) Enter "**:wq**" to save and exit the file.
 
-<img class="common_img" src="../_static/media/chapter_9\section_8\media\image16.png"  />
+<img class="common_img" src="../_static/media/chapter_9\section_8/media/image16.png"  />
 
 ### 8.8.4 Compilation and Execution
 
-(1) After granting the executable permission, enter the command “**cd ~/hiwonder_ws/**” to switch to the directory of the workspace.
+(1) After granting the executable permission, enter the command "**cd ~/hiwonder_ws/**" to switch to the directory of the workspace.
 
-```py
+```bash
 cd ~/hiwonder_ws/
 ```
 
-(2) Enter the command “**colcon build**” and press Enter to compile the packages within the workspace.
+(2) Enter the command "**colcon build**" and press Enter to compile the packages within the workspace.
 
-```py
+```bash
 colcon build
 ```
 
-(3) Enter the command “**source ./install/setup.bash**” and press Enter to make the environment variables take effect.
+(3) Enter the command "**source ./install/setup.bash**" and press Enter to make the environment variables take effect.
 
-```py
+```bash
 source ./install/setup.bash
 ```
 
-(4) Enter the command “**ros2 run topic_demo topic_pub**” and press Enter to start topic_pub topic publishing node.
+(4) Enter the command "**ros2 run topic_demo topic_pub**" and press Enter to start topic_pub topic publishing node.
 
-```py
+```bash
 ros2 run topic_demo topic_pub
 ```
 
-(5) Right click to select “**Split Vertically**” to create a new terminal window.
+(5) Right click to select "**Split Vertically**" to create a new terminal window.
 
-<img class="common_img" src="../_static/media/chapter_9\section_8\media\image21.png"  />
+<img class="common_img" src="../_static/media/chapter_9\section_8/media/image21.png"  />
 
-(6) Enter the command “**ros2 run topic_demo topic_sub**” and press Enter to start the topic_sub topic publishing node.
+(6) Enter the command "**ros2 run topic_demo topic_sub**" and press Enter to start the topic_sub topic publishing node.
 
-```py
+```bash
 ros2 run topic_demo topic_sub
 ```
 
@@ -954,39 +954,39 @@ ros2 run topic_demo topic_sub
 
 According to the realization result, the logic progress for the program is shown as pictured:
 
-<img class="common_img" src="../_static/media/chapter_9\section_8\media\image23.png"   />
+<img class="common_img" src="../_static/media/chapter_9\section_8/media/image23.png"   />
 
-Create a publisher named as minimal_publisher. This publisher publishes a message with an incremental number every to the “topic” topic every 0.5 seconds. During program execution, ROS 2 node is initialized first. Then, a MinimalPublisher object is created, and the program enters the ROS 2 node's event loop. When the program is interrupted, the node object is destroyed, and the ROS 2 node is shut down.
+Create a publisher named as minimal_publisher. This publisher publishes a message with an incremental number every to the "topic" topic every 0.5 seconds. During program execution, ROS 2 node is initialized first. Then, a MinimalPublisher object is created, and the program enters the ROS 2 node's event loop. When the program is interrupted, the node object is destroyed, and the ROS 2 node is shut down.
 
 ① **Main Function**
 
-<img class="common_img" src="../_static/media/chapter_9\section_8\media\image24.png"  />
+<img class="common_img" src="../_static/media/chapter_9\section_8/media/image24.png"  />
 
 First, invoke the rclpy.init() function to initialize ROS2 Python interface. Then instantiate the MinimalPublisher() file. Finally, execute the minimal_publisher within the event loop of the ROS2 node.
 
 ② MinimalPublisher Class
 
-<img class="common_img" src="../_static/media/chapter_9\section_8\media\image25.png"  />
+<img class="common_img" src="../_static/media/chapter_9\section_8/media/image25.png"  />
 
-First, create a node named minimal_publisher, then create a publisher named “publisher\_”. The timier_callback() callback function prints a message with an incremental number to the node’s log at intervals of 0.5 second.
+First, create a node named minimal_publisher, then create a publisher named "publisher\_". The timier_callback() callback function prints a message with an incremental number to the node’s log at intervals of 0.5 second.
 
 (2) **Subscribe to Topic**
 
 According to the realization result, the logic progress for the program is shown as pictured:
 
-<img class="common_img" src="../_static/media/chapter_9\section_8\media\image26.png"   />
+<img class="common_img" src="../_static/media/chapter_9\section_8/media/image26.png"   />
 
 Create a subscriber named as minimal_sublisher. This subscriber prints the subscribed messages to logger. During program execution, ROS 2 node is initialized first. Then, a MinimalPublisher object is created, and the program enters the ROS 2 node's event loop. When the program is interrupted, the node object is destroyed, and the ROS 2 node is shut down.
 
 ① **Main Function**
 
-<img class="common_img" src="../_static/media/chapter_9\section_8\media\image27.png"  />
+<img class="common_img" src="../_static/media/chapter_9\section_8/media/image27.png"  />
 
 First, invoke the rclpy.init() function to initialize ROS2 Python interface. Then instantiate the MinimalPublisher() file. Finally, execute the minimal_publisher within the event loop of the ROS2 node.
 
 ② MinimalSublisher Class
 
-<img class="common_img" src="../_static/media/chapter_9\section_8\media\image28.png"  />
+<img class="common_img" src="../_static/media/chapter_9\section_8/media/image28.png"  />
 
 First create a node named minimal_sublisher. Then create a subscriber named subscription. In the listener_callback() callback function, the received message content is printed to the logger.
 
@@ -994,51 +994,51 @@ First create a node named minimal_sublisher. Then create a subscriber named subs
 
 Both topic_pub.py and topic_pub.py utilizes ROS official interfaces.
 
-<img class="common_img" src="../_static/media/chapter_9\section_8\media\image29.png"  />
+<img class="common_img" src="../_static/media/chapter_9\section_8/media/image29.png"  />
 
-<img class="common_img" src="../_static/media/chapter_9\section_8\media\image30.png"  />
+<img class="common_img" src="../_static/media/chapter_9\section_8/media/image30.png"  />
 
 Though it is a way good practice to use a pre-defined interfaces, it may necessary to define custom messages and services. The following will demonstrate how to create custom interface definitions.
 
-(1) Enter the command “**cd ~/hiwonder_ws/src/**” to switch to the src folder wthin the **hiwonder_ws** workspace.
+(1) Enter the command "**cd ~/hiwonder_ws/src/**" to switch to the src folder wthin the **hiwonder_ws** workspace.
 
-```py
+```bash
 cd ~/hiwonder_ws/src/
 ```
 
-(2) Enter the command “**ros2 pkg create demo_interfaces --build-type ament_cmake --dependencies rclcpp**” and press Enter to create a package named “**demo_interfaces**”.
+(2) Enter the command "**ros2 pkg create demo_interfaces --build-type ament_cmake --dependencies rclcpp**" and press Enter to create a package named "**demo_interfaces**".
 
-```py
+```bash
 ros2 pkg create demo_interfaces --build-type ament_cmake --dependencies rclcpp
 ```
 
-(3) Enter the command “**demo_interfaces**” to enter the custom interface package.
+(3) Enter the command "**demo_interfaces**" to enter the custom interface package.
 
-```py
+```bash
 cd demo_interfaces
 ```
 
-(4) Enter the command “**mkdir msg**” to create a folder.
+(4) Enter the command "**mkdir msg**" to create a folder.
 
-```py
+```bash
 mkdir msg
 ```
 
-(5) Enter the command “**cd msg**” to enter the msg folder.
+(5) Enter the command "**cd msg**" to enter the msg folder.
 
-```py
+```bash
 cd msg
 ```
 
-(6) Enter the command “**vim String.msg**” to edit the program. Enter “**string data**”. If you need to make modifications, you can press “**i**”. After modification, enter “**:wq**” to save and exit.
+(6) Enter the command "**vim String.msg**" to edit the program. Enter "**string data**". If you need to make modifications, you can press "**i**". After modification, enter "**:wq**" to save and exit.
 
-<img class="common_img" src="../_static/media/chapter_9\section_8\media\image36.png"  /><img class="common_img" src="../_static/media/chapter_9\section_8\media\image37.png"  />
+<img class="common_img" src="../_static/media/chapter_9\section_8/media/image36.png"  /><img class="common_img" src="../_static/media/chapter_9\section_8/media/image37.png"  />
 
-```py
+```bash
 :wq
 ```
 
-(7) Enter “**cd ..”** to navigate back to the parent directory, then enter “**vim CMakeLists.txt**” to open the file using the Vim text editor. Copy the following program and paste it into the specific location as pictured.If you need to make modifications, press "i" to enter insert mode. Once you've finished editing, press "**Esc**", then type "**:wq**" to save and exit.
+(7) Enter "**cd .."** to navigate back to the parent directory, then enter "**vim CMakeLists.txt**" to open the file using the Vim text editor. Copy the following program and paste it into the specific location as pictured.If you need to make modifications, press "i" to enter insert mode. Once you've finished editing, press "**Esc**", then type "**:wq**" to save and exit.
 
 ```py
 find_package(rosidl_default_generators REQUIRED)
@@ -1047,21 +1047,21 @@ rosidl_generate_interfaces( \${PROJECT_NAME}
 )
 ```
 
-<img class="common_img" src="../_static/media/chapter_9\section_8\media\image39.png"  />
+<img class="common_img" src="../_static/media/chapter_9\section_8/media/image39.png"  />
 
-(8) Enter the command “**vim package.xml**” again to open the file using the Vim text editor. If you need to make modifications, press "i" to enter insert mode. Once you've finished editing, press "**Esc**", then type "**:wq**" to save and exit.
+(8) Enter the command "**vim package.xml**" again to open the file using the Vim text editor. If you need to make modifications, press "i" to enter insert mode. Once you've finished editing, press "**Esc**", then type "**:wq**" to save and exit.
 
-```py
+```xml
 \<build_depend\>rosidl_default_generators\</build_depend\>
 \<exec_depend\>rosidl_default_runtime\</exec_depend\>
 \<member_of_group\>rosidl_interface_packages\</member_of_group\>
 ```
 
-<img class="common_img" src="../_static/media/chapter_9\section_8\media\image40.png"  />
+<img class="common_img" src="../_static/media/chapter_9\section_8/media/image40.png"  />
 
-(9) Reference the step 1), 2) and 3) in “**[9.8.4. Compilation and Execution]()**” to compile the workspace.
+(9) Reference the step 1), 2) and 3) in "**[9.8.4. Compilation and Execution]()**" to compile the workspace.
 
-(10) Modify the code inside the red box below, replace it with the statement “**from demo_interfaces.msg import String**”. This change enables the use of custom messages and maintains the same functionality as before.
+(10) Modify the code inside the red box below, replace it with the statement "**from demo_interfaces.msg import String**". This change enables the use of custom messages and maintains the same functionality as before.
 
 <img class="common_img" src="../_static/media/chapter_9\section_8/media/image30.png"  />
 
@@ -1071,7 +1071,7 @@ rosidl_generate_interfaces( \${PROJECT_NAME}
 
 Service communication is a communication model based on request and respond. During the mutual communication, the client sends request data to the server, and the server responds with results to the client.
 
-<img class="common_img" src="../_static/media/chapter_9\section_9\media\image2.GIF"   />
+<img class="common_img" src="../_static/media/chapter_9\section_9/media/image2.GIF"   />
 
 From the perspective of service implementation, the request- respond form is called the client/server model, abbreviated as CS mode. In this model, when the client requires certain data, aiming at a specified service, a request message targeting a specific service will be sent. Upon receiving the request, the server processes it and provides a respond.
 
@@ -1079,52 +1079,52 @@ This communication mechanism is common in our daily life. For example, when we b
 
 ### 8.9.2 Create Interface 
 
-(1) Click<img class="common_img" src="../_static/media/chapter_9\section_9\media\image3.png"  /> and select “System Tools -\>Terminator” in sequence.
+(1) Click<img class="common_img" src="../_static/media/chapter_9\section_9/media/image3.png"  /> and select "System Tools -\>Terminator" in sequence.
 
-<img class="common_img" src="../_static/media/chapter_9\section_9\media\image4.png"  />
+<img class="common_img" src="../_static/media/chapter_9\section_9/media/image4.png"  />
 
-(2) Enter the command “**cd hiwonder_ws/src/**” to switch to the **demo_interfaces** package.
+(2) Enter the command "**cd hiwonder_ws/src/**" to switch to the **demo_interfaces** package.
 
-```py
+```bash
 cd hiwonder_ws/src/demo_interfaces
 ```
 
-(3) Enter the command “**demo_interfaces**” to create the srv folder.
+(3) Enter the command "**demo_interfaces**" to create the srv folder.
 
-```py
+```bash
 demo_interfaces
 mkdir src
 ```
 
-(4) Enter the command “**cd srv**” to enter the srv folder.
+(4) Enter the command "**cd srv**" to enter the srv folder.
 
-```py
+```bash
 cd src
 ```
 
-(5) Enter the command “**vim AddInts.srv**” to edit the program. Enter the code below. If you need to make modifications, press “i” to enter insert mode. Once you've finished editing, press "**Esc**", then type "**:wq**" to save and exit.
+(5) Enter the command "**vim AddInts.srv**" to edit the program. Enter the code below. If you need to make modifications, press "i" to enter insert mode. Once you've finished editing, press "**Esc**", then type "**:wq**" to save and exit.
 
-```py
+```bash
 vim AddInts.srv
 vim String.msg
 ```
 
-```py
+```bash
 int32 num1
 int32 num2
 ---
 int32 sum
 ```
 
-<img class="common_img" src="../_static/media/chapter_9\section_9\media\image9.png"  />
+<img class="common_img" src="../_static/media/chapter_9\section_9/media/image9.png"  />
 
-```py
+```bash
 :wq
 ```
 
-(6) Enter “**cd ..”** to navigate back to the parent directory, then enter “**vim CMakeLists.txt**” to open the file using the Vim text editor. Copy the following program and paste it into the specific location as pictured.If you need to make modifications, press "i" to enter insert mode. Once you've finished editing, press "**Esc**", then type "**:wq**" to save and exit.
+(6) Enter "**cd .."** to navigate back to the parent directory, then enter "**vim CMakeLists.txt**" to open the file using the Vim text editor. Copy the following program and paste it into the specific location as pictured.If you need to make modifications, press "i" to enter insert mode. Once you've finished editing, press "**Esc**", then type "**:wq**" to save and exit.
 
-```py
+```bash
 find_package(rosidl_default_generators REQUIRED)
 rosidl_generate_interfaces( \${PROJECT_NAME}
 "msg/String.msg"
@@ -1132,35 +1132,35 @@ rosidl_generate_interfaces( \${PROJECT_NAME}
 )
 ```
 
-<img class="common_img" src="../_static/media/chapter_9\section_9\media\image11.png"  />
+<img class="common_img" src="../_static/media/chapter_9\section_9/media/image11.png"  />
 
 ### 8.9.3 Create Service 
 
 * **Create Server**
 
-(1) Click<img class="common_img" src="../_static/media/chapter_9\section_9\media\image3.png"  /> and select “System Tools -\>Terminator” in sequence.
+(1) Click<img class="common_img" src="../_static/media/chapter_9\section_9/media/image3.png"  /> and select "System Tools -\>Terminator" in sequence.
 
-<img class="common_img" src="../_static/media/chapter_9\section_9\media\image4.png"  />
+<img class="common_img" src="../_static/media/chapter_9\section_9/media/image4.png"  />
 
-(2) Enter the command “**cd hiwonder_ws/src/**” to switch to the src folder within hiwonder_ws workspace.
+(2) Enter the command "**cd hiwonder_ws/src/**" to switch to the src folder within hiwonder_ws workspace.
 
-<img class="common_img" src="../_static/media/chapter_9\section_9\media\image12.png"  />
+<img class="common_img" src="../_static/media/chapter_9\section_9/media/image12.png"  />
 
-(3) Enter the command “**ros2 pkg create service_demo --build-type ament_python --dependencies rclpy**” and press Enter to create a package named “**service_demo**” with rclpy dependency.
+(3) Enter the command "**ros2 pkg create service_demo --build-type ament_python --dependencies rclpy**" and press Enter to create a package named "**service_demo**" with rclpy dependency.
 
-```py
+```bash
 ros2 pkg create service_demo --build-type ament_python --dependencies rclpy
 ```
 
-(4) Enter the command “**cd service_demo/service_demo/**” to switch to the “**service_demo**” package.
+(4) Enter the command "**cd service_demo/service_demo/**" to switch to the "**service_demo**" package.
 
-```py
+```bash
 cd service_demo/service_demo/
 ```
 
-(5) Enter the command “**vim service_server.py**” to edit the program, copy the program below. If modification is required, you can press “i” to modify the program. After modification, press “Esc” and eneter “**:wq**” to save and exit.
+(5) Enter the command "**vim service_server.py**" to edit the program, copy the program below. If modification is required, you can press "i" to modify the program. After modification, press "Esc" and eneter "**:wq**" to save and exit.
 
-```py
+```bash
 vim service_server.py
 ```
 
@@ -1172,7 +1172,7 @@ from demo_interfaces.srv import AddInts
 class MinimalService(Node):
 # The initialization method of the Class
 def \_\_init\_\_(self):
-# Call the initialize method of the Node class to set the node name as “minimal_service”
+# Call the initialize method of the Node class to set the node name as "minimal_service"
 super().\_\_init\_\_('minimal_service')
 # Create a service that provides a service of type AddInts. Set the service name as ‘add_two_ints’, and the callback function as ‘add_two_ints_callback’.
 self.srv = self.create_service(AddInts, 'add_two_ints', self.add_two_ints_callback)
@@ -1199,21 +1199,21 @@ if \_\_name\_\_ == '\_\_main\_\_':
 main()
 ```
 
-```py
+```bash
 :wq
 ```
 
-(6) Enter the command “**chmod +x service_server.py**” and press Enter to grant the executable permission to the saved **service_server.py**.
+(6) Enter the command "**chmod +x service_server.py**" and press Enter to grant the executable permission to the saved **service_server.py**.
 
-```py
+```bash
 chmod +x service_server.py
 ```
 
 * **Create Client**
 
-(1) Enter the command “**vim service_client.py**” to edit the program. Copy the following program. If you need to make modifications, you can press “i” to modify the program. After modification, press “Esc” and eneter “**:wq**” to save and exit.
+(1) Enter the command "**vim service_client.py**" to edit the program. Copy the following program. If you need to make modifications, you can press "i" to modify the program. After modification, press "Esc" and eneter "**:wq**" to save and exit.
 
-```py
+```bash
 vim service_client.py
 ```
 
@@ -1227,9 +1227,9 @@ from demo_interfaces.srv import AddInts
 class MinimalClient(Node):
 # The initialization method of the Class
 def \_\_init\_\_(self):
-# Call the initialization method of the Node class. Set the node name as “minimal_client”
+# Call the initialization method of the Node class. Set the node name as "minimal_client"
 super().\_\_init\_\_('minimal_client')
-# Create a server and connect to the **AddInts** service named as “add_two_ints”.
+# Create a server and connect to the **AddInts** service named as "add_two_ints".
 self.cli = self.create_client(AddInts, 'add_two_ints')
 # Wait for the service connection, with a maximum wait time of 1 second.
 while not self.cli.wait_for_service(timeout_sec=1.0):
@@ -1274,13 +1274,13 @@ if \_\_name\_\_ == '\_\_main\_\_':
 main()
 ```
 
-```py
+```bash
 :wq
 ```
 
-(2) Enter the command “**chmod +x service_client.py**” and press Enter to grant the executable permission to the saved **service_client.py** file.
+(2) Enter the command "**chmod +x service_client.py**" and press Enter to grant the executable permission to the saved **service_client.py** file.
 
-```py
+```bash
 chmod +x service_client.py
 ```
 
@@ -1288,73 +1288,73 @@ chmod +x service_client.py
 
 The setup.py file defines the metadata and build configuration for a ROS2 package, providing information such as package metadata, dependencies, build configuration, and installation logic. It helps developers correctly build, install, and use ROS2 packages. It is necessary to write the program entry points for service_client.py and service_server.py into the setup.py file.
 
-(1) Enter the command “**cd ..**” to switch to the parent directory.
+(1) Enter the command "**cd ..**" to switch to the parent directory.
 
-```py
+```bash
 cd ..
 ```
 
-(2) Enter the command “**vim setup.py**” and press Enter to open the setup.py file.
+(2) Enter the command "**vim setup.py**" and press Enter to open the setup.py file.
 
-```py
+```bash
 vim setup.py
 ```
 
-(3) Press “i” to enter the editing mode, and then enter the following code to the corresponding position.
+(3) Press "i" to enter the editing mode, and then enter the following code to the corresponding position.
 
 ```py
 'service_server = service_demo.service_server:main',
 'service_client = service_demo.service_client:main'
 ```
 
-<img class="common_img" src="../_static/media/chapter_9\section_9\media\image22.png"  />
+<img class="common_img" src="../_static/media/chapter_9\section_9/media/image22.png"  />
 
-(4) Enter “**:wq**” to save and exit the file.
+(4) Enter "**:wq**" to save and exit the file.
 
-```py
+```bash
 :wq
 ```
 
-<img class="common_img" src="../_static/media/chapter_9\section_9\media\image23.png"  />
+<img class="common_img" src="../_static/media/chapter_9\section_9/media/image23.png"  />
 
 ### 8.9.5 Compilation and Execution
 
-(1) After granting the executing permission, enter the command “**cd ~/hiwonder_ws/**” to switch to the directory of the workspace.
+(1) After granting the executing permission, enter the command "**cd ~/hiwonder_ws/**" to switch to the directory of the workspace.
 
-```py
+```bash
 cd ~/hiwonder_ws/
 ```
 
-(2) Enter the command “**colcon build**” and press Enter to compile the packages within the workspace.
+(2) Enter the command "**colcon build**" and press Enter to compile the packages within the workspace.
 
-```py
+```bash
 colcon build
 ```
 
-(3) Enter the command “**source ./install/setup.bash**” and press Enter to make the environment variables take effect.
+(3) Enter the command "**source ./install/setup.bash**" and press Enter to make the environment variables take effect.
 
-```py
+```bash
 source /opt/ros/humble/setup.bash
 source ./install/setup.bash
 ```
 
-(4) Enter the command “**ros2 run service_demo service_server**” and press Enter to start service_server server.
+(4) Enter the command "**ros2 run service_demo service_server**" and press Enter to start service_server server.
 
-```py
+```bash
 ros2 run service_demo service_server
 ```
 
-(5) Right click to select “**Split Vertically**” to create a new terminal window.
+(5) Right click to select "**Split Vertically**" to create a new terminal window.
 
-<img class="common_img" src="../_static/media/chapter_9\section_9\media\image28.png"  />
+<img class="common_img" src="../_static/media/chapter_9\section_9/media/image28.png"  />
 
-(6) Enter the command “**ros2 run service_demo service_client 1 2**” and press Enter to start the **service_client** client to send the calculation request for numbers 1 and 2. Once the server receives the calculation request for numbers 1 and 2, it will send back the result to the client.
+(6) Enter the command "**ros2 run service_demo service_client 1 2**" and press Enter to start the **service_client** client to send the calculation request for numbers 1 and 2. Once the server receives the calculation request for numbers 1 and 2, it will send back the result to the client.
 
-```py
+```bash
 ros2 run service_demo service_client 1 2
 ```
 
-<img class="common_img" src="../_static/media/chapter_9\section_9\media\image30.png"  />
+<img class="common_img" src="../_static/media/chapter_9\section_9/media/image30.png"  />
 
 ### 8.9.6 Program Analysis
 
@@ -1362,19 +1362,19 @@ ros2 run service_demo service_client 1 2
 
 According to the realization result, the logic progress for the program is shown as pictured:
 
-<img class="common_img" src="../_static/media/chapter_9\section_9\media\image31.png"   />
+<img class="common_img" src="../_static/media/chapter_9\section_9/media/image31.png"   />
 
 Create a server named "**minimal_service**" which will receive requests, perform calculations on them, and respond with the result. During program execution, ROS 2 node is initialized first. Then, a MinimalPublisher object is created, and the program enters the ROS 2 node's event loop. When the program is interrupted, the node object is destroyed, and the ROS 2 node is shut down.
 
 (1) **Main Function**
 
-<img class="common_img" src="../_static/media/chapter_9\section_9\media\image32.png"  />
+<img class="common_img" src="../_static/media/chapter_9\section_9/media/image32.png"  />
 
 First, invoke the **rclpy.init()** function to initialize ROS2 Python interface. Then instantiate the **MinimalService()**. Finally, execute the **minimal_service** within the event loop of the ROS2 node.
 
 (2) **MinimalService Class**
 
-<img class="common_img" src="../_static/media/chapter_9\section_9\media\image33.png"  />
+<img class="common_img" src="../_static/media/chapter_9\section_9/media/image33.png"  />
 
 First, a node named minimal_service is created. Then, a service is created to provide a service of type AddInts, with the service name 'add_two_ints'. Inside the add_two_ints_callback() callback function, the two data from the request are received, processed for calculation, and the result of the calculation is responded back.
 
@@ -1382,21 +1382,21 @@ First, a node named minimal_service is created. Then, a service is created to pr
 
 According to the realization result, the logic progress for the program is shown as pictured:
 
-<img class="common_img" src="../_static/media/chapter_9\section_9\media\image34.png"   />
+<img class="common_img" src="../_static/media/chapter_9\section_9/media/image34.png"   />
 
 A client named "**minimal_client**" is created, which connects to the AddInts service named '**add_two_ints**'. It sends the two requested data. During program execution, it initializes the ROS2 node, creates a MinimalClient object, sends the service request, prints the response result, and upon interruption, it destroys the node object and closes the ROS 2 node.
 
 (1) **Main Function**
 
-<img class="common_img" src="../_static/media/chapter_9\section_9\media\image35.png"  />
+<img class="common_img" src="../_static/media/chapter_9\section_9/media/image35.png"  />
 
 First, invoke the rclpy.init() function to initialize ROS2 Python interface. Then instantiate the MinimalClient() file and send the service request. Finally, process the respond data.
 
 (2) **MinimalClient Class**
 
-<img class="common_img" src="../_static/media/chapter_9\section_9\media\image36.png"  />
+<img class="common_img" src="../_static/media/chapter_9\section_9/media/image36.png"  />
 
-First, a node named “minimal_client” is created. Then, a service client is created to connect to the AddInts service named “add_two_ints”. In the send_request() function, the two command-line augments are used as the data for the request object, and the request is sent.
+First, a node named "minimal_client" is created. Then, a service client is created to connect to the AddInts service named "add_two_ints". In the send_request() function, the two command-line augments are used as the data for the request object, and the request is sent.
 
 ## 8.10 ROS2 Action
 
@@ -1406,39 +1406,39 @@ The action communication is a communication with continuous feedback. In this mo
 
 The action communication client/server model is as follow:
 
-<img class="common_img" src="../_static/media/chapter_9\section_10\media\image2.GIF"   />
+<img class="common_img" src="../_static/media/chapter_9/section_10/media/image2.GIF"   />
 
 ### 8.10.2 Create Interface 
 
-(1) Click<img class="common_img" src="../_static/media/chapter_9\section_10\media\image3.png"  /> and select “System Tools -\>Terminator” in sequence.
+(1) Click<img class="common_img" src="../_static/media/chapter_9/section_10/media/image3.png"  /> and select "System Tools -\>Terminator" in sequence.
 
-<img class="common_img" src="../_static/media/chapter_9\section_10\media\image4.png"  />
+<img class="common_img" src="../_static/media/chapter_9/section_10/media/image4.png"  />
 
-(2) Enter the command “**cd hiwonder_ws/src/demo_interfaces/**” to switch to the “**demo_interfaces**” package.
+(2) Enter the command "**cd hiwonder_ws/src/demo_interfaces/**" to switch to the "**demo_interfaces**" package.
 
-```py
+```bash
 cd hiwonder_ws/src/demo_interfaces/
 ```
 
-(3) Enter the command “**mkdir action**” to create an **action** folder.
+(3) Enter the command "**mkdir action**" to create an **action** folder.
 
-```py
+```bash
 mkdir action
 ```
 
-(4) Enter the command “**cd action**” to enter the action folder.
+(4) Enter the command "**cd action**" to enter the action folder.
 
-```py
+```bash
 cd action
 ```
 
-(5) Enter the command “**vim FileDownload.action**” to open the file with text editor, then enter the code below. If you need to make modifications, you can press “i” to modify. Once modifications are completed, press “Esc” and enter “:wq” to save and exit the program.
+(5) Enter the command "**vim FileDownload.action**" to open the file with text editor, then enter the code below. If you need to make modifications, you can press "i" to modify. Once modifications are completed, press "Esc" and enter ":wq" to save and exit the program.
 
-```py
+```bash
 vim FileDownload.action
 ```
 
-```py
+```bash
 int32 file_size
 
 ---
@@ -1450,13 +1450,13 @@ int32 current_size
 float32 completion_percentage
 ```
 
-<img class="common_img" src="../_static/media/chapter_9\section_10\media\image9.png"  />
+<img class="common_img" src="../_static/media/chapter_9/section_10/media/image9.png"  />
 
-```py
+```bash
 :wq
 ```
 
-(6) Enter “**cd ..”** to navigate back to the parent directory, then enter “**vim CMakeLists.txt**” to open the file using the Vim text editor. Copy the following program and paste it into the specific location as pictured.If you need to make modifications, press "i" to enter insert mode. Once you've finished editing, press "**Esc**", then type "**:wq**" to save and exit.
+(6) Enter "**cd .."** to navigate back to the parent directory, then enter "**vim CMakeLists.txt**" to open the file using the Vim text editor. Copy the following program and paste it into the specific location as pictured.If you need to make modifications, press "i" to enter insert mode. Once you've finished editing, press "**Esc**", then type "**:wq**" to save and exit.
 
 ```py
 find_package(rosidl_default_generators REQUIRED)
@@ -1467,39 +1467,39 @@ rosidl_generate_interfaces( \${PROJECT_NAME}
 )
 ```
 
-# <img class="common_img" src="../_static/media/chapter_9\section_10\media\image11.png"  />
+<img class="common_img" src="../_static/media/chapter_9/section_10/media/image11.png"  />
 
 ### 8.10.3 Create Action Communication
 
 * **Create Server**
 
-(1) Click<img class="common_img" src="../_static/media/chapter_9\section_10\media\image3.png"  /> and select “System Tools -\>Terminator” in sequence.
+(1) Click<img class="common_img" src="../_static/media/chapter_9/section_10/media/image3.png"  /> and select "System Tools -\>Terminator" in sequence.
 
-<img class="common_img" src="../_static/media/chapter_9\section_10\media\image4.png"  />
+<img class="common_img" src="../_static/media/chapter_9/section_10/media/image4.png"  />
 
-(2) Enter the command “**cd hiwonder_ws/src/**” to switch to the src folder within hiwonder_ws workspace.
+(2) Enter the command "**cd hiwonder_ws/src/**" to switch to the src folder within hiwonder_ws workspace.
 
-```py
+```bash
 cd hiwonder_ws/src/
 ```
 
-<img class="common_img" src="../_static/media/chapter_9\section_10\media\image12.png"  />
+<img class="common_img" src="../_static/media/chapter_9/section_10/media/image12.png"  />
 
-(3) Enter the command “**ros2 pkg create action_demo --build-type ament_python --dependencies rclpy**” and press Enter to create a package named “**action_demo**” with rclpy dependency.
+(3) Enter the command "**ros2 pkg create action_demo --build-type ament_python --dependencies rclpy**" and press Enter to create a package named "**action_demo**" with rclpy dependency.
 
-```py
+```bash
 ros2 pkg create action_demo --build-type ament_python --dependencies rclpy
 ```
 
-(4) Enter the command “**cd action_demo/action_demo/**” to switch to the “**action_demo**” package.
+(4) Enter the command "**cd action_demo/action_demo/**" to switch to the "**action_demo**" package.
 
-```py
+```bash
 cd action_demo/action_demo/
 ```
 
-(5) Enter the command “**vim action_server.py**” to edit the program, copy the program below. If you need to make modifications, press "i" to enter insert mode. Once you've finished editing, press "**Esc**", then type "**:wq**" to save and exit.
+(5) Enter the command "**vim action_server.py**" to edit the program, copy the program below. If you need to make modifications, press "i" to enter insert mode. Once you've finished editing, press "**Esc**", then type "**:wq**" to save and exit.
 
-```py
+```bash
 vim action_server.py
 ```
 
@@ -1547,21 +1547,21 @@ if \_\_name\_\_ == '\_\_main\_\_':
 main()
 ```
 
-```py
+```bash
 :wq
 ```
 
-(6) Enter the command “**chmod +x action_server.py**” and press Enter to grant the executable permission to the saved **action_server.py.**
+(6) Enter the command "**chmod +x action_server.py**" and press Enter to grant the executable permission to the saved **action_server.py.**
 
-```py
+```bash
 chmod +x action_server.py
 ```
 
 * **Create Client**
 
-(1) Enter the command “**vim action_client.py**” to edit the program. Copy the following program. If you need to make modifications, press “i” to enter insert mode. After modification, press “Esc” and eneter “**:wq**” to save and exit.
+(1) Enter the command "**vim action_client.py**" to edit the program. Copy the following program. If you need to make modifications, press "i" to enter insert mode. After modification, press "Esc" and eneter "**:wq**" to save and exit.
 
-```py
+```bash
 vim action_client.py
 ```
 
@@ -1605,13 +1605,13 @@ if \_\_name\_\_ == '\_\_main\_\_':
 main()
 ```
 
-```py
+```bash
 :wq
 ```
 
-(2) Enter the command “**chmod +x service_client.py**” and press Enter to grant the executable permission to the saved **action_client.py** file.
+(2) Enter the command "**chmod +x service_client.py**" and press Enter to grant the executable permission to the saved **action_client.py** file.
 
-```py
+```bash
 chmod +x service_client.py
 ```
 
@@ -1619,70 +1619,70 @@ chmod +x service_client.py
 
 The setup.py file defines the metadata and build configuration for a ROS2 package, providing information such as package metadata, dependencies, build configuration, and installation logic. It helps developers correctly build, install, and use ROS2 packages. It is necessary to write the program entry points for service_client.py and service_server.py into the setup.py file.
 
-(1) Enter the command “**cd ..**” to switch to the parent directory.
+(1) Enter the command "**cd ..**" to switch to the parent directory.
 
-```py
+```bash
 cd ..
 ```
 
-(2) Enter the command “**vim setup.py**” and press Enter to open the setup.py file.
+(2) Enter the command "**vim setup.py**" and press Enter to open the setup.py file.
 
-```py
+```bash
 vim setup.py
 ```
 
-(3) Press “i” to enter insert mode, and then enter the code below to the corresponding location.
+(3) Press "i" to enter insert mode, and then enter the code below to the corresponding location.
 
-```py
+```bash
 'action_server = action_demo.action_server:main',
 'action_client = action_demo.action_client:main'
 ```
 
-<img class="common_img" src="../_static/media/chapter_9\section_10\media\image22.png"  />
+<img class="common_img" src="../_static/media/chapter_9/section_10/media/image22.png"  />
 
-(4) Enter “**:wq**” to save and exit the file.
+(4) Enter "**:wq**" to save and exit the file.
 
-<img class="common_img" src="../_static/media/chapter_9\section_10\media\image23.png"  />
+<img class="common_img" src="../_static/media/chapter_9/section_10/media/image23.png"  />
 
 ### 8.10.5 Compilation and Execution
 
-(1) After granting the executing permission, enter the command “**cd ~/hiwonder_ws/**” to switch to the directory of the workspace.
+(1) After granting the executing permission, enter the command "**cd ~/hiwonder_ws/**" to switch to the directory of the workspace.
 
-```py
+```bash
 cd ~/hiwonder_ws/
 ```
 
-(2) Enter the command “**colcon build**” and press Enter to compile the packages within the workspace.
+(2) Enter the command "**colcon build**" and press Enter to compile the packages within the workspace.
 
-```py
+```bash
 colcon build
 ```
 
-(3) Enter the command “**source ./install/setup.bash**” and press Enter to make the environment variables take effect.
+(3) Enter the command "**source ./install/setup.bash**" and press Enter to make the environment variables take effect.
 
-```py
+```bash
 source ./install/setup.bash
 ```
 
-(4) Enter the command “**ros2 run action_demo action_server**” and press Enter to start the action server “action_server”.
+(4) Enter the command "**ros2 run action_demo action_server**" and press Enter to start the action server "action_server".
 
-```py
+```bash
 ros2 run action_demo action_server
 ```
 
-(5) Right click to select “**Split Vertically**” to create a new terminal window.
+(5) Right click to select "**Split Vertically**" to create a new terminal window.
 
-<img class="common_img" src="../_static/media/chapter_9\section_10\media\image28.png"  />
+<img class="common_img" src="../_static/media/chapter_9/section_10/media/image28.png"  />
 
-(6) Enter the command “**ros2 run action_demo action_client**” and press Enter to tart “action_client” action client. At this point, the server also receive the requests.
+(6) Enter the command "**ros2 run action_demo action_client**" and press Enter to tart "action_client" action client. At this point, the server also receive the requests.
 
-```py
+```bash
 ros2 run action_demo action_client
 ```
 
-<img class="common_img" src="../_static/media/chapter_9\section_10\media\image29.png"  />
+<img class="common_img" src="../_static/media/chapter_9/section_10/media/image29.png"  />
 
-<img class="common_img" src="../_static/media/chapter_9\section_10\media\image30.png"  />
+<img class="common_img" src="../_static/media/chapter_9/section_10/media/image30.png"  />
 
 ### 8.10.6 Program Analysis
 
@@ -1690,19 +1690,19 @@ ros2 run action_demo action_client
 
 According to the realization result, the logic progress for the program is shown as pictured:
 
-<img class="common_img" src="../_static/media/chapter_9\section_10\media\image31.png"   />
+<img class="common_img" src="../_static/media/chapter_9/section_10/media/image31.png"   />
 
 First, define a node named FileDownloadActionServer to construct an ActionServer of the FileDownload action type to provide task services. This execution callback function within ActionSeriver is responsible for simulating the process of executing real download tasks. It randomly increases the download progress to simulate file download while continuously publishing download feedback to the client through the goak_handle object. After the task is completed, the task status is set to success, and the download result is returned.
 
 (1) **Main Function**
 
-<img class="common_img" src="../_static/media/chapter_9\section_10\media\image32.png"  />
+<img class="common_img" src="../_static/media/chapter_9/section_10/media/image32.png"  />
 
 First, invoke the **rclpy.init()** function to initialize ROS2 Python interface. Then instantiate the FileDownloadActionServer(). Finally, execute the server within the event loop of the ROS2 node.
 
 (2) **FileDownloadActionServer Class**
 
-<img class="common_img" src="../_static/media/chapter_9\section_10\media\image33.png"  />
+<img class="common_img" src="../_static/media/chapter_9/section_10/media/image33.png"  />
 
 This callback function is invoked to execute the file download task. Within this function, a while loop is used to simulate the real-time file download process by randomly increasing the current download amount. During the download process, it continuously publishes the current download progress as feedback information through the goal_handle object. Once the task download is completed, it uses the goal_handle to set the task status to success and returns the final download result.
 
@@ -1710,21 +1710,21 @@ This callback function is invoked to execute the file download task. Within this
 
 According to the realization result, the logic progress for the program is shown as pictured:
 
-<img class="common_img" src="../_static/media/chapter_9\section_10\media\image34.png"   />
+<img class="common_img" src="../_static/media/chapter_9/section_10/media/image34.png"   />
 
 A FileDownloadActionClien class is defined, which creates an ActionClient object in the constructor and configures it for file download task type. The client provides a send_goal method to send the target file size as the action Goal. Additionally, it registers three callback functions to handle Goal status responses, task process feedback, and the final task. In the main function, an instance of the client is created, send_goal is called to send the download task, and rclpy.spin() to obtain the full process of task execution status changes.
 
 (1) **Main Function**
 
-<img class="common_img" src="../_static/media/chapter_9\section_10\media\image35.png"  />
+<img class="common_img" src="../_static/media/chapter_9/section_10/media/image35.png"  />
 
 First, invoke the **rclpy.init()** function to initialize ROS2 Python interface. Then instantiate the **FileDownloadActionClient()**. Finally, execute the client within the event loop of the ROS2 node.
 
 (2) **FileDownloadActionClient Class**
 
-<img class="common_img" src="../_static/media/chapter_9\section_10\media\image36.png"  />
+<img class="common_img" src="../_static/media/chapter_9/section_10/media/image36.png"  />
 
-A ActionClient object is created to communicate with the task service. The client provides a send_goal method to send the download target, and registers three callback functions to handle the status changes “feedback” at the different stages of the task. After sending the Goal, the send_goal method adds callback functions through the future object to wait for the ActionServer's response. These three callback functions are used to obtain the Goal reception result, update the task progress, and obtain the completion result, covering the entire lifecycle of the task.
+A ActionClient object is created to communicate with the task service. The client provides a send_goal method to send the download target, and registers three callback functions to handle the status changes "feedback" at the different stages of the task. After sending the Goal, the send_goal method adds callback functions through the future object to wait for the ActionServer's response. These three callback functions are used to obtain the Goal reception result, update the task progress, and obtain the completion result, covering the entire lifecycle of the task.
 
 ## 8.11 ROS2 Communication Interface
 
@@ -1736,7 +1736,7 @@ Communication isn't a monologue but rather an exchange between two or more parti
 
 Interfaces help reduce dependencies between programs, making it easier for us to use others' code and for others to use our code. This is the core goal of ROS, which is to reduce redundant efforts.
 
-<img class="common_img" src="../_static/media/chapter_9\section_11\media\image2.png"  />
+<img class="common_img" src="../_static/media/chapter_9/section_11/media/image2.png"  />
 
 ROS has three commonly used communication mechanisms, namely topics, services, and actions. Through the interfaces defined by each communication mechanism, various nodes can be interconnected.
 
@@ -1744,19 +1744,19 @@ ROS has three commonly used communication mechanisms, namely topics, services, a
 
 In the Lesson 8 ROS Topic, Lesson 9 Service Instruction, and Lesson 10 ROS Action, the custom interface package named demo_interfaces. Within this package, three custom interfaces are created, which are String.msg, FileDownload.action, and AddInts.srv.
 
-(1) Click<img class="common_img" src="../_static/media/chapter_9\section_11\media\image3.png"  /> and select “System Tools -\>Terminator” in sequence.
+(1) Click<img class="common_img" src="../_static/media/chapter_9/section_11/media/image3.png"  /> and select "System Tools -\>Terminator" in sequence.
 
-<img class="common_img" src="../_static/media/chapter_9\section_11\media\image4.png"  />
+<img class="common_img" src="../_static/media/chapter_9/section_11/media/image4.png"  />
 
-(2) Enter the command “**cd hiwonder_ws/src/demo_interfaces**” to switch to the “”demo_interfaces” custom interface package.
+(2) Enter the command "**cd hiwonder_ws/src/demo_interfaces**" to switch to the ""demo_interfaces" custom interface package.
 
-```py
+```bash
 cd hiwonder_ws/src/demo_interfaces
 ```
 
-(3) Enter “**tree -L 1**” and press Enter to view the root directory of the package.
+(3) Enter "**tree -L 1**" and press Enter to view the root directory of the package.
 
-<img class="common_img" src="../_static/media/chapter_9\section_11\media\image6.png"  />
+<img class="common_img" src="../_static/media/chapter_9/section_11/media/image6.png"  />
 
 The demo_interfaces package has action, msg and srv folders for storing custom interface files. Following provides an explanation for each folder:
 
@@ -1791,33 +1791,33 @@ Let’s fist get to know param parameter commands. The detailed instruction is a
 
 ### 8.12.3 Create A Parameter Example
 
-(1) Click<img class="common_img" src="../_static/media/chapter_9\section_12\media\image2.png"  /> and select “System Tools -\>Terminator” in sequence.
+(1) Click<img class="common_img" src="../_static/media/chapter_9/section_12/media/image2.png"  /> and select "System Tools -\>Terminator" in sequence.
 
-<img class="common_img" src="../_static/media/chapter_9\section_12\media\image3.png"  />
+<img class="common_img" src="../_static/media/chapter_9/section_12/media/image3.png"  />
 
-(2) Enter the command “Enter the command “**cd hiwonder_ws/src/demo_interfaces**” to switch to the src folder within the hiwonder_was workspace.
+(2) Enter the command "Enter the command "**cd hiwonder_ws/src/demo_interfaces**" to switch to the src folder within the hiwonder_was workspace.
 
-```py
+```bash
 cd hiwonder_ws/src/demo_interfaces
 ```
 
-<img class="common_img" src="../_static/media/chapter_9\section_12\media\image4.png"  />
+<img class="common_img" src="../_static/media/chapter_9/section_12/media/image4.png"  />
 
-(3) Enter the command “**ros2 pkg create param_demo --build-type ament_python --dependencies rclpy**” and press Enter to create a package named “param_demo” with rclpy dependency.
+(3) Enter the command "**ros2 pkg create param_demo --build-type ament_python --dependencies rclpy**" and press Enter to create a package named "param_demo" with rclpy dependency.
 
-```py
+```bash
 ros2 pkg create param_demo --build-type ament_python --dependencies rclpy
 ```
 
-(4) Enter the command “**cd param_demo/param_demo/**” to switch to the “param_demo” package.
+(4) Enter the command "**cd param_demo/param_demo/**" to switch to the "param_demo" package.
 
-```py
+```bash
 cd param_demo/param_demo/
 ```
 
-(5) Enter the command “**vim param_demo.py**” to open the file using VIM text editor. Copy the program below. If you need to make modifications, you can press “i” to enter the insert mode. If you’ve finishing the modification, press “Esc” and enter “:wq” to save and exit.
+(5) Enter the command "**vim param_demo.py**" to open the file using VIM text editor. Copy the program below. If you need to make modifications, you can press "i" to enter the insert mode. If you’ve finishing the modification, press "Esc" and enter ":wq" to save and exit.
 
-```py
+```bash
 vim param_demo.py
 ```
 
@@ -1828,7 +1828,7 @@ from rclpy.parameter import Parameter # Import Parameter class
 class MinimalParam(Node): # Define the MinimalParam class inhering from the Node class
 def \_\_init\_\_(self):
 super().\_\_init\_\_('minimal_param_node') # Call the constructor of the parent class to initialize the node.
-self.declare_parameter('my_parameter', 'hiwonder') # Declare a parameter named “my_parameter” and set its default value to “hiwonder”.
+self.declare_parameter('my_parameter', 'hiwonder') # Declare a parameter named "my_parameter" and set its default value to "hiwonder".
 self.timer = self.create_timer(1, self.timer_callback) # Create a time, set the callback function as timer_callback, with an interval of 1 second.
 def timer_callback(self):
 my_param = self.get_parameter('my_parameter').get_parameter_value().string_value #Retrieve the value of parameter 'my_parameter', and convert it to a string.
@@ -1848,73 +1848,73 @@ if \_\_name\_\_ == '\_\_main\_\_':
 main()
 ```
 
-```py
+```bash
 :wq
 ```
 
-(6) Enter the command “**chmod +x param_demo.py**” and press Enter to grant the executable permission to the saved **param_demo.py** file.
+(6) Enter the command "**chmod +x param_demo.py**" and press Enter to grant the executable permission to the saved **param_demo.py** file.
 
-```py
+```bash
 chmod +x param_demo.py
 ```
 
 ### 8.12.4 Compilation and Execution
 
-(1) After granting the executing permission, enter the command “**cd ~/hiwonder_ws/**” to switch to the directory of the workspace.
+(1) After granting the executing permission, enter the command "**cd ~/hiwonder_ws/**" to switch to the directory of the workspace.
 
-```py
+```bash
 cd ~/hiwonder_ws/
 ```
 
-(2) Enter the command “**colcon build**” and press Enter to compile the packages within the workspace.
+(2) Enter the command "**colcon build**" and press Enter to compile the packages within the workspace.
 
-```py
+```bash
 colcon build
 ```
 
-(3) Enter the command “**source ./install/setup.bash**” and press Enter to make the environment variables take effect.
+(3) Enter the command "**source ./install/setup.bash**" and press Enter to make the environment variables take effect.
 
-```py
+```bash
 source ./install/setup.bash
 ```
 
-(4) Enter the command “**ros2 run param_demo param_demo**” and press Enter to start the param_demo node.  
+(4) Enter the command "**ros2 run param_demo param_demo**" and press Enter to start the param_demo node.  
 
-```py
+```bash
 ros2 run param_demo param_demo
 ```
 
-(5) Right click to select “**Split Vertically**” to create a new terminal window.
+(5) Right click to select "**Split Vertically**" to create a new terminal window.
 
-<img class="common_img" src="../_static/media/chapter_9\section_12\media\image14.png"  />
+<img class="common_img" src="../_static/media/chapter_9/section_12/media/image14.png"  />
 
-(6) Enter the command “**ros2 param set minimal_param_node my_parameter world**” and press Enter to modify the parameter my_parameter of the node minimal_param_node to “world”.
+(6) Enter the command "**ros2 param set minimal_param_node my_parameter world**" and press Enter to modify the parameter my_parameter of the node minimal_param_node to "world".
 
-```py
+```bash
 ros2 param set minimal_param_node my_parameter world
 ```
 
-At this point, you can notice that the output from the param_demo node is “**Hello world!**”, indicating the parameter are modified successfully.
+At this point, you can notice that the output from the param_demo node is "**Hello world!**", indicating the parameter are modified successfully.
 
-<img class="common_img" src="../_static/media/chapter_9\section_12\media\image16.png"  />
+<img class="common_img" src="../_static/media/chapter_9/section_12/media/image16.png"  />
 
 ### 8.12.5 Program Analysis
 
 According to the realization result, the logic progress for the program is shown as pictured:
 
-<img class="common_img" src="../_static/media/chapter_9\section_12\media\image17.jpeg"   />
+<img class="common_img" src="../_static/media/chapter_9/section_12/media/image17.jpeg"   />
 
 Create a MinimalParam class, declare a string parameter "my_parameter" in the constructor, and create a timer with a 1-second interval. The timer callback function is called every 1 second. Inside the callback, it first retrieves the current value of the parameter, then prints a log, creates a new parameter object, sets a new value, and finally calls the set_parameters function to modify the parameter value in the parameter server.
 
 * **Main Function**
 
-<img class="common_img" src="../_static/media/chapter_9\section_12\media\image18.png"  />
+<img class="common_img" src="../_static/media/chapter_9/section_12/media/image18.png"  />
 
 First, invoke the **rclpy.init()** function to initialize ROS2 Python interface. Then instantiate the **MinimalParam**. Finally, execute the node.run() function**.**
 
 * **MinimalParam Class**
 
-<img class="common_img" src="../_static/media/chapter_9\section_12\media\image19.png"  />  
+<img class="common_img" src="../_static/media/chapter_9/section_12/media/image19.png"  />  
 First, a string parameter named "**my_parameter**" is declared, and a timer with a 1-second period is created. The timer callback function, timer_callback, is called every second. It first retrieves the current value of the "**my_parameter**" parameter and then prints a log output. Next, the callback function creates a new parameter object with the same name but with a value of "hiwonder". Afterward, it calls the set_parameters function to modify the parameter value.
 
 ## 8.13 Distributed Communication Instruction
@@ -1933,31 +1933,31 @@ ROS2 provides a mechanism called DOMAIN, similar to grouping, where terminals wi
 
 By default, all ROS2 nodes uses a domain ID of 0. To avoid messages confusion, devices from different groups running ROS2 within the same network should use different domain ID. It is recommended to use ID between 0-101.
 
-(1) Click<img class="common_img" src="../_static/media/chapter_9\section_13\media\image2.png"  /> and select “**System Tools -\>Terminator**” in sequence.
+(1) Click<img class="common_img" src="../_static/media/chapter_9/section_13/media/image2.png"  /> and select "**System Tools -\>Terminator**" in sequence.
 
-<img class="common_img" src="../_static/media/chapter_9\section_13\media\image3.png"  />
+<img class="common_img" src="../_static/media/chapter_9/section_13/media/image3.png"  />
 
-(2) Enter the command “**vim ~/.bashrc**” to open the bashrc file suing VIM text editor.
+(2) Enter the command "**vim ~/.bashrc**" to open the bashrc file suing VIM text editor.
 
-```py
+```bash
 vim ~/.bashrc
 ```
 
-(3) Press “i” to enter the insert mode, and enter “**export ROS_DOMAIN_ID=25**” in corresponding location. After you’ve finishing modifications, press “Esc” and enter “:wq” to save and exit.
+(3) Press "i" to enter the insert mode, and enter "**export ROS_DOMAIN_ID=25**" in corresponding location. After you’ve finishing modifications, press "Esc" and enter ":wq" to save and exit.
 
-```py
+```bash
 export ROS_DOMAIN_ID=25
 ```
 
-<img class="common_img" src="../_static/media/chapter_9\section_13\media\image5.png"  />
+<img class="common_img" src="../_static/media/chapter_9/section_13/media/image5.png"  />
 
-(4) Enter the command “**source ~/.bashrc**” to make the environment variables make effect.
+(4) Enter the command "**source ~/.bashrc**" to make the environment variables make effect.
 
-```py
+```bash
 source ~/.bashrc
 ```
 
-Add the statement “**export ROS_DOMAIN_ID=25**” to the barshrc files of other terminals to assign them to the same group (i.e., domain ID 25), enabling distributed communication. If different domain IDs are assigned, communication between them will not be possible.
+Add the statement "**export ROS_DOMAIN_ID=25**" to the barshrc files of other terminals to assign them to the same group (i.e., domain ID 25), enabling distributed communication. If different domain IDs are assigned, communication between them will not be possible.
 
 (5) **Comparison of ROS1 and ROS in Distributed Communication Mechanisms.**
 
@@ -1993,7 +1993,7 @@ The full name of DDS is Data Distribution Service, which means data distribution
 DDS emphasizes putting data at the center and can provide a rich set of quality of service policies to ensure real-time, efficient, and flexible data distribution. It can meet various requirements of distributed real-time communication applications.  
 In the previous courses, the topics, services, and actions learned are all implemented at the communication level through DDS. It can be considered as the neural network within the ROS system. The common communication models include the following four types:
 
-<img class="common_img" src="../_static/media/chapter_9\section_14\media\image2.jpeg"   />
+<img class="common_img" src="../_static/media/chapter_9/section_14/media/image2.jpeg"   />
 
 (1) In the point-to-point model, many clients connect to a single server, requiring the establishment of a connection each time communication occurs. A the number of communication nodes increases, so does the number of connections. Additionally, each client needs to know the specific address of the server and the services it provides. Once the server’s address changes, all clients are affected.
 
@@ -2007,7 +2007,7 @@ In the previous courses, the topics, services, and actions learned are all imple
 
 The position of DDS within the ROS 2 system is crucial, as all upper-level constructs are built upon it. In the architectural diagram of ROS 2, the blue and red sections represent DDS.
 
-<img class="common_img" src="../_static/media/chapter_9\section_14\media\image3.png"  />
+<img class="common_img" src="../_static/media/chapter_9/section_14/media/image3.png"  />
 
 In the four major components of ROS, the addition of DDS significantly improves the comprehensive capability of the distributed communication system. Consequently, in the process of developing robots, we are relieved from the burden of grappling with communication intricacies, enabling us to allocate more time to application development in other domains.
 
@@ -2027,55 +2027,55 @@ QoS is a network transmission strategy where applications specify the required q
 
 ### 8.14.4 DDS Configuration in Command-line
 
-(1) Click <img class="common_img" src="../_static/media/chapter_9\section_14\media\image4.png"  /> in the upper-left corner to select “System Tools→Terminator” in sequence.
+(1) Click <img class="common_img" src="../_static/media/chapter_9/section_14/media/image4.png"  /> in the upper-left corner to select "System Tools→Terminator" in sequence.
 
-<img class="common_img" src="../_static/media/chapter_9\section_14\media\image5.png"  />
+<img class="common_img" src="../_static/media/chapter_9/section_14/media/image5.png"  />
 
-(2) Enter the command “**ros2 topic pub /chatter std_msgs/msg/Int32 "data: 42" --qos-reliability best_effort**” to publish a topic named “/chatter” using the message type “**std_msgs/msg/Int32**”, sending an integer message with the data 42. Through adding the option of “--qos-reliability best_effort”, the publisher specifies the use of best effort reliability.
+(2) Enter the command "**ros2 topic pub /chatter std_msgs/msg/Int32 "data: 42" --qos-reliability best_effort**" to publish a topic named "/chatter" using the message type "**std_msgs/msg/Int32**", sending an integer message with the data 42. Through adding the option of "--qos-reliability best_effort", the publisher specifies the use of best effort reliability.
 
-<img class="common_img" src="../_static/media/chapter_9\section_14\media\image6.png"  />
+<img class="common_img" src="../_static/media/chapter_9/section_14/media/image6.png"  />
 
-(3) Right click on a blank area to select “**Split Vertically**” to create a new terminal window.
+(3) Right click on a blank area to select "**Split Vertically**" to create a new terminal window.
 
-<img class="common_img" src="../_static/media/chapter_9\section_14\media\image7.png"  />
+<img class="common_img" src="../_static/media/chapter_9/section_14/media/image7.png"  />
 
-(4) Enter the command “**ros2 topic echo /chatter --qos-reliability reliable**” to subscribe to a topic named "**/chatter**” and print the received messages. If the publisher uses the reliable QoS policy for publishing while the subscriber uses the best effort policy for subscribing, data communication cannot be achieve. Only when the publisher and receiver use the same QoS policy can the correct correct transmission of data be ensured.
+(4) Enter the command "**ros2 topic echo /chatter --qos-reliability reliable**" to subscribe to a topic named "**/chatter**" and print the received messages. If the publisher uses the reliable QoS policy for publishing while the subscriber uses the best effort policy for subscribing, data communication cannot be achieve. Only when the publisher and receiver use the same QoS policy can the correct correct transmission of data be ensured.
 
-<img class="common_img" src="../_static/media/chapter_9\section_14\media\image8.png"  />
+<img class="common_img" src="../_static/media/chapter_9/section_14/media/image8.png"  />
 
-(5) Enter the command “**ros2 topic echo /chatter --qos-reliability best_effort**” and subscribe to a topic named “**/chatter**” and print the received messages. By adding the “**--qos-reliability reliable**” option, modify it to the same “best_effort” in order to achieve data transmission
+(5) Enter the command "**ros2 topic echo /chatter --qos-reliability best_effort**" and subscribe to a topic named "**/chatter**" and print the received messages. By adding the "**--qos-reliability reliable**" option, modify it to the same "best_effort" in order to achieve data transmission
 
-<img class="common_img" src="../_static/media/chapter_9\section_14\media\image9.png"  />
+<img class="common_img" src="../_static/media/chapter_9/section_14/media/image9.png"  />
 
 ### 8.14.5 DDS Programming Example
 
 * **Create Publisher**
 
-(1) Click <img class="common_img" src="../_static/media/chapter_9\section_14\media\image4.png"  /> in the upper-left corner to select “System Tools→Terminator” in sequence.
+(1) Click <img class="common_img" src="../_static/media/chapter_9/section_14/media/image4.png"  /> in the upper-left corner to select "System Tools→Terminator" in sequence.
 
-<img class="common_img" src="../_static/media/chapter_9\section_14\media\image5.png"  />
+<img class="common_img" src="../_static/media/chapter_9/section_14/media/image5.png"  />
 
-(2) Enter command “**cd hiwonder_ws/src/**” to switch to the src folder within the hiwonder_ws workspace.
+(2) Enter command "**cd hiwonder_ws/src/**" to switch to the src folder within the hiwonder_ws workspace.
 
-```py
+```bash
 cd hiwonder_ws/src/
 ```
 
-(3) Enter the command “**ros2 pkg create DDS_qos_demo --build-type ament_python --dependencies rclpy**” and press Enter to create a package named **DDS_qos_demo,** adding a dependency on rclpy.
+(3) Enter the command "**ros2 pkg create DDS_qos_demo --build-type ament_python --dependencies rclpy**" and press Enter to create a package named **DDS_qos_demo,** adding a dependency on rclpy.
 
-```py
+```bash
 ros2 pkg create DDS_qos_demo --build-type ament_python --dependencies rclpy
 ```
 
-(4) Enter the command “**cd DDS_qos_demo/DDS_qos_demo/**” to switch to the “DDS_qos_demo” package directory.
+(4) Enter the command "**cd DDS_qos_demo/DDS_qos_demo/**" to switch to the "DDS_qos_demo" package directory.
 
-```py
+```bash
 cd DDS_qos_demo/DDS_qos_demo/
 ```
 
-(5) Enter the command “**vim DDS_qos_pub.py**” to edit the program using VIM editor, copy and paste the program below. If you need to make modifications, you can press “i” to enter the insert mode. Once you’ve finished the modifications, you can press “Esc” and enter “:wq” to save and exit.
+(5) Enter the command "**vim DDS_qos_pub.py**" to edit the program using VIM editor, copy and paste the program below. If you need to make modifications, you can press "i" to enter the insert mode. Once you’ve finished the modifications, you can press "Esc" and enter ":wq" to save and exit.
 
-```py
+```bash
 vim DDS_qos_pub.py
 ```
 
@@ -2113,21 +2113,21 @@ if __name__ == '__main__':
 main()
 ```
 
-```py
+```bash
 :wq
 ```
 
-(6) Enter the command “**chmod +x DDS_qos_pub.py**” and press Enter to grant the executable permission to the saved “topic_pub.py”.
+(6) Enter the command "**chmod +x DDS_qos_pub.py**" and press Enter to grant the executable permission to the saved "topic_pub.py".
 
-```py
+```bash
 chmod +x DDS_qos_pub.py
 ```
 
 * **Create Subscriber**
 
-(1) Enter the command “**vim DDS_qos_sub.py**” to edit the program using VIM editor, copy and paste the program below. If you need to make modifications, you can press “i” to enter the insert mode. Once you’ve finished the modifications, you can press “Esc” and enter “:wq” to save and exit.
+(1) Enter the command "**vim DDS_qos_sub.py**" to edit the program using VIM editor, copy and paste the program below. If you need to make modifications, you can press "i" to enter the insert mode. Once you’ve finished the modifications, you can press "Esc" and enter ":wq" to save and exit.
 
-```py
+```bash
 vim DDS_qos_sub.py
 ```
 
@@ -2158,13 +2158,13 @@ if __name__ == '__main__':
 main()
 ```
 
-```py
+```bash
 :wq
 ```
 
-(2) Enter the command “**chmod +x DDS_qos_sub.py**” and press Enter to grant the executable permission to the saved file topic_sub.py.
+(2) Enter the command "**chmod +x DDS_qos_sub.py**" and press Enter to grant the executable permission to the saved file topic_sub.py.
 
-```py
+```bash
 chmod +x DDS_qos_sub.py
 ```
 
@@ -2172,64 +2172,64 @@ chmod +x DDS_qos_sub.py
 
 The setup.py file defines the metadata and build configuration for a ROS2 package, providing information such as package metadata, dependencies, build configuration, and installation logic. It helps developers correctly build, install, and use ROS2 packages. It is necessary to write the program entry points for topic_pub.py and topic_sub.py into the setup.py file.
 
-(1) Enter the command “**cd ..**” to navigate to the parent directory.
+(1) Enter the command "**cd ..**" to navigate to the parent directory.
 
-```py
+```bash
 cd ..
 ```
 
-(2) Enter the command “**vim setup.py**” and press Enter to open the setup.py file.
+(2) Enter the command "**vim setup.py**" and press Enter to open the setup.py file.
 
-```py
+```bash
 vim setup.py
 ```
 
-(3) Press “i” to enter the insert mode, and then enter the following code to the corresponding position.
+(3) Press "i" to enter the insert mode, and then enter the following code to the corresponding position.
 
-```py
+```bash
 'DDS_qos_pub = DDS_qos_demo.DDS_qos_pub:main',
 'DDS_qos_sub = DDS_qos_demo.DDS_qos_sub:main'
 ```
 
-<img class="common_img" src="../_static/media/chapter_9\section_14\media\image20.png"  />
+<img class="common_img" src="../_static/media/chapter_9/section_14/media/image20.png"  />
 
-(4) Enter “**:wq**” to save and exit the file.
+(4) Enter "**:wq**" to save and exit the file.
 
-<img class="common_img" src="../_static/media/chapter_9\section_14\media\image21.png"  />
+<img class="common_img" src="../_static/media/chapter_9/section_14/media/image21.png"  />
 
 ### 8.14.7 Compilation and Execution
 
-(1) After granting the executable permission, enter the command “**cd ~/hiwonder_ws/**” to switch to the directory of the workspace.
+(1) After granting the executable permission, enter the command "**cd ~/hiwonder_ws/**" to switch to the directory of the workspace.
 
-```py
+```bash
 cd ~/hiwonder_ws/
 ```
 
-(2) Enter the command “**colcon build**” and press Enter to compile the packages within the workspace.
+(2) Enter the command "**colcon build**" and press Enter to compile the packages within the workspace.
 
-```py
+```bash
 colcon build
 ```
 
-(3) Enter the command “**source ./install/setup.bash**” and press Enter to make the environment variables take effect.
+(3) Enter the command "**source ./install/setup.bash**" and press Enter to make the environment variables take effect.
 
-```py
+```bash
 source ./install/setup.bash
 ```
 
-(4) Enter the command “**ros2 run topic_demo topic_pub**” and press Enter to start topic_pub topic publishing node.
+(4) Enter the command "**ros2 run topic_demo topic_pub**" and press Enter to start topic_pub topic publishing node.
 
-```py
+```bash
 ros2 run topic_demo topic_pub
 ```
 
-(5) Right click on a blank space to select “**Split Vertically**” to create a new terminal window.
+(5) Right click on a blank space to select "**Split Vertically**" to create a new terminal window.
 
-<img class="common_img" src="../_static/media/chapter_9\section_14\media\image7.png"  />
+<img class="common_img" src="../_static/media/chapter_9/section_14/media/image7.png"  />
 
-(6) Enter the command “**ros2 run topic_demo topic_sub**” and press Enter to start the topic_sub topic publishing node.
+(6) Enter the command "**ros2 run topic_demo topic_sub**" and press Enter to start the topic_sub topic publishing node.
 
-<img class="common_img" src="../_static/media/chapter_9\section_14\media\image26.png"  />
+<img class="common_img" src="../_static/media/chapter_9/section_14/media/image26.png"  />
 
 ### 8.14.8 Program Analysis
 
@@ -2237,7 +2237,7 @@ ros2 run topic_demo topic_pub
 
 According to the realization result, the logic progress for the program is shown as pictured:
 
-<img class="common_img" src="../_static/media/chapter_9\section_14\media\image27.jpeg"   />
+<img class="common_img" src="../_static/media/chapter_9/section_14/media/image27.jpeg"   />
 
 A MinimalPublisher node class is created. In its constructor, a QosProfile object is instantiated to configuring publishing as reliable mode, ensuring the delivery of the lats or the first message, with a buffer depth set to 1. Then, a timer object with 0.5-sccond period is created. In the timer callback function, a String message is constructed, and its content is modified as the loop counter i increases. The message string is then published using the publisher\_ object.
 
@@ -2245,32 +2245,32 @@ The main function first initializes the ROS node environment, then creates an in
 
 (1) Main Function
 
-<img class="common_img" src="../_static/media/chapter_9\section_14\media\image28.png"  />
+<img class="common_img" src="../_static/media/chapter_9/section_14/media/image28.png"  />
 
 First, invoke the rclpy.init() function to initialize ROS2 Python interface. Then instantiate the MinimalPublisher() file. Finally, execute the minimal_publisher within the event loop of the ROS2 node.
 
 (2) MinimalPublisher Class
 
-<img class="common_img" src="../_static/media/chapter_9\section_14\media\image29.png"  />  
+<img class="common_img" src="../_static/media/chapter_9/section_14/media/image29.png"  />  
 Firstly, a MinimalPublisher node class is created to achieve cyclic publishing in ROS 2 reliable mode. In the constructor init(), a QoSProfile object is created to configure the publishing quality to reliable mode. Then, the publisher\_ object is initialized using the QoSProfile. The constructor also sets the timer period to 0.5s and creates a timer object. The counter i is initialized to 0. The timer callback function timer_callback is defined, where a String message object msg is first constructed. The current value of the counter i is then written into the message content using string formatting. Finally, this message is published using the publisher\_ object defined earlier, and the counter i is incremented by 1.
 
 (2) **Subscribe to Topic**
 
 According to the realization result, the logic progress for the program is shown as pictured:
 
-<img class="common_img" src="../_static/media/chapter_9\section_14\media\image30.jpeg"   />
+<img class="common_img" src="../_static/media/chapter_9/section_14/media/image30.jpeg"   />
 
 A MinimalSubscriber node class is created to realize the reliable mode subscription in ROS2. In its constructor, it first utilizes a QosProfile object to configure the subscription quality, setting reliability to RELIABLE, retaining the most recent message in history, and setting the buffer depth to 1. Then, creates a subscriber object using the QoSProfile object, subscribes to the topic, and specifies the callback function. The callback function, listener_callback, simply prints the received message content. The main function initializes the node, creates an instance of the subscriber, enters the main loop to drive the callback function, and releases node resources. Through the configuration of QoSProfile, the subscriber ensures that the callback function receives the most recent correct message.
 
 (1) **Main Function**
 
-<img class="common_img" src="../_static/media/chapter_9\section_14\media\image31.png"  />
+<img class="common_img" src="../_static/media/chapter_9/section_14/media/image31.png"  />
 
 First, invoke the rclpy.init() function to initialize ROS2 Python interface. Then instantiate the MinimalSublisher() file. Finally, execute the minimal_sublisher within the event loop of the ROS2 node.
 
 (2) **MinimalSubscriber Class**
 
-<img class="common_img" src="../_static/media/chapter_9\section_14\media\image32.png"  />  
+<img class="common_img" src="../_static/media/chapter_9/section_14/media/image32.png"  />  
 A MinimalSubscriber node class is first created to implement reliable subscription functionality in ROS2. In its constructor init(), a QoSProfile object is initially created to configure the subscription quality to reliable mode (RELIABLE, KEEP_LAST, etc.). Then, using the QoSProfile object and the specified callback function, a subscription object is created to subscribe to a topic and specify the callback function. The subscription callback function listener_callback is defined to simply print the received message content msg.
 
 ## 8.15 ROS2 Launch Multiple Node Startup and Configuration Script
@@ -2300,43 +2300,43 @@ action_n
 
 * **Create single_node.launch.py**
 
-(1) Click on<img class="common_img" src="../_static/media/chapter_9/section_15/media/image2.png"  /> and select “**System Tools →Terminato**r” in sequence.
+(1) Click on<img class="common_img" src="../_static/media/chapter_9/section_15/media/image2.png"  /> and select "**System Tools →Terminato**r" in sequence.
 
 <img class="common_img" src="../_static/media/chapter_9/section_15/media/image3.png"  />
 
-(2) Enter command “**cd hiwonder_ws/src/**” to switch to the src folder within the hiwonder_ws workspace.
+(2) Enter command "**cd hiwonder_ws/src/**" to switch to the src folder within the hiwonder_ws workspace.
 
-```py
+```bash
 cd hiwonder_ws/src/
 ```
 
-(3) Enter the command “**ros2 pkg create DDS_qos_demo --build-type ament_python --dependencies rclpy**” and press Enter to create a function package named **launch_demo,** adding a dependency on rclpy.
+(3) Enter the command "**ros2 pkg create DDS_qos_demo --build-type ament_python --dependencies rclpy**" and press Enter to create a function package named **launch_demo,** adding a dependency on rclpy.
 
-```py
+```bash
 ros2 pkg create DDS_qos_demo --build-type ament_python --dependencies rclpy
 ```
 
-(4) Enter the command “**cd launch_demo/**” to switch the directory of the launch_demo package,
+(4) Enter the command "**cd launch_demo/**" to switch the directory of the launch_demo package,
 
-```py
+```bash
 cd launch_demo/
 ```
 
-(5) Enter the command “**mkdir launch**” to create the launch folder.
+(5) Enter the command "**mkdir launch**" to create the launch folder.
 
-```py
+```bash
 mkdir launch
 ```
 
-(6) Enter the command “**cd launch**” to switch to the launch folder.
+(6) Enter the command "**cd launch**" to switch to the launch folder.
 
-```py
+```bash
 cd launch
 ```
 
-(7) Enter the command “**vim single_node.launch.py**” to edit the program and copy the following program. If you need to make modifications, please press “i” to enter the insert mode. Once you’ve finished modifications, please press “Esc” and input “:wq” to save and exit.
+(7) Enter the command "**vim single_node.launch.py**" to edit the program and copy the following program. If you need to make modifications, please press "i" to enter the insert mode. Once you’ve finished modifications, please press "Esc" and input ":wq" to save and exit.
 
-```py
+```bash
 vim single_node.launch.py
 ```
 
@@ -2352,13 +2352,13 @@ executable='hello_world', \# Node executable files
 \])
 ```
 
-```py
+```bash
 :wq
 ```
 
-(8) Enter the command “**chmod +x single_node.launch.py**” and press Enter to grant the executable permission to the saved **single_node.launch.py** file.
+(8) Enter the command "**chmod +x single_node.launch.py**" and press Enter to grant the executable permission to the saved **single_node.launch.py** file.
 
-```py
+```bash
 chmod +x single_node.launch.py
 ```
 
@@ -2366,19 +2366,19 @@ chmod +x single_node.launch.py
 
 The setup.py file defines the metadata and build configuration for a ROS2 package, providing information such as package metadata, dependencies, build configuration, and installation logic. It helps developers correctly build, install, and use ROS2 packages. It is necessary to write the program entry points **single_node.launch.py** into the setup.py file.
 
-(1) Enter the command “**cd ..**” to navigate to the parent directory.
+(1) Enter the command "**cd ..**" to navigate to the parent directory.
 
-```py
+```bash
 cd ..
 ```
 
-(2) Enter the command “**vim setup.py**” and press Enter to open the setup.py file.
+(2) Enter the command "**vim setup.py**" and press Enter to open the setup.py file.
 
-```py
+```bash
 vim setup.py
 ```
 
-(3) Press “i” to enter the insert mode, and then enter the following code to the corresponding position.
+(3) Press "i" to enter the insert mode, and then enter the following code to the corresponding position.
 
 ```py
 from setuptools import find_packages, setup
@@ -2389,33 +2389,33 @@ from glob import glob
 
 <img class="common_img" src="../_static/media/chapter_9/section_15/media/image14.png"  />
 
-(4) Enter “**:wq**” to save and exit the file.
+(4) Enter "**:wq**" to save and exit the file.
 
 <img class="common_img" src="../_static/media/chapter_9/section_15/media/image15.png"  />
 
 * Compilation and Execution
 
-(1) After granting the executable permission, enter the command “**cd ~/hiwonder_ws/**” to switch to the directory of the workspace.
+(1) After granting the executable permission, enter the command "**cd ~/hiwonder_ws/**" to switch to the directory of the workspace.
 
-```py
+```bash
 cd ~/hiwonder_ws/
 ```
 
-(2) Enter the command “**colcon build**” and press Enter to compile the packages within the workspace.
+(2) Enter the command "**colcon build**" and press Enter to compile the packages within the workspace.
 
-```py
+```bash
 colcon build
 ```
 
-(3) Enter the command “**source ./install/setup.bash**” and press Enter to make the environment variables take effect.
+(3) Enter the command "**source ./install/setup.bash**" and press Enter to make the environment variables take effect.
 
-```py
+```bash
 source ./install/setup.bash
 ```
 
-(4) Enter the command “**ros2 launch launch_demo single_node.launch.py**” and press Enter to start single_node.launch.py file.
+(4) Enter the command "**ros2 launch launch_demo single_node.launch.py**" and press Enter to start single_node.launch.py file.
 
-```py
+```bash
 ros2 launch launch_demo single_node.launch.py
 ```
 
@@ -2431,15 +2431,15 @@ To describe a launch task for the "hello_world" node using a Node, including the
 
 * **Create multi_node.launch.py**
 
-(1) Enter the command “**cd hiwonder_ws/src/launch_demo/launch**” to switch the launch folder within the launch_demo workspace.
+(1) Enter the command "**cd hiwonder_ws/src/launch_demo/launch**" to switch the launch folder within the launch_demo workspace.
 
-```py
+```bash
 cd hiwonder_ws/src/launch_demo/launch
 ```
 
-(2) Enter the command “**vim multi_node.launch.py**” to edit the program and copy the following program. If you need to make modifications, please press “i” to enter the insert mode. Once you’ve finished modifications, please press “Esc” and input “:wq” to save and exit.
+(2) Enter the command "**vim multi_node.launch.py**" to edit the program and copy the following program. If you need to make modifications, please press "i" to enter the insert mode. Once you’ve finished modifications, please press "Esc" and input ":wq" to save and exit.
 
-```py
+```bash
 vim multi_node.launch.py
 ```
 
@@ -2458,43 +2458,43 @@ executable='topic_sub', # Node executable files ),
 \])
 ```
 
-```py
+```bash
 :wq
 ```
 
-(3) Enter the command “**chmod +x multi_node.launch.py**” and press Enter to grant the executable permission to the saved **multi_node.launch.py** file.
+(3) Enter the command "**chmod +x multi_node.launch.py**" and press Enter to grant the executable permission to the saved **multi_node.launch.py** file.
 
-```py
+```bash
 chmod +x multi_node.launch.py
 ```
 
 * **Compilation and Execution**
 
-(1) After granting the executable permission, enter the command “**cd ~/hiwonder_ws/**” to switch to the directory of the workspace.
+(1) After granting the executable permission, enter the command "**cd ~/hiwonder_ws/**" to switch to the directory of the workspace.
 
-```py
+```bash
 cd ~/hiwonder_ws/
 ```
 
-(2) Enter the command “**colcon build**” and press Enter to compile the packages within the workspace.
+(2) Enter the command "**colcon build**" and press Enter to compile the packages within the workspace.
 
-```py
+```bash
 colcon build
 ```
 
-(3) Enter the command “**source ./install/setup.bash**” and press Enter to make the environment variables take effect.
+(3) Enter the command "**source ./install/setup.bash**" and press Enter to make the environment variables take effect.
 
-```py
+```bash
 source ./install/setup.bash
 ```
 
-(4) Enter the command “**ros2 launch launch_demo multi_node.launch.py**” and press Enter to start single_node.launch.py file.
+(4) Enter the command "**ros2 launch launch_demo multi_node.launch.py**" and press Enter to start single_node.launch.py file.
 
-```py
+```bash
 ros2 launch launch_demo multi_node.launch.py
 ```
 
-```py
+```bash
 source ./install/setup.bash
 ```
 
@@ -2510,15 +2510,15 @@ In the ROS community, there are abundant resources. When using code from others,
 
 * **Create remapping.launch.py**
 
-(1) Enter the command “**cd hiwonder_ws/src/launch_demo/launch**” to switch the launch folder within the launch_demo workspace.
+(1) Enter the command "**cd hiwonder_ws/src/launch_demo/launch**" to switch the launch folder within the launch_demo workspace.
 
-```py
+```bash
 cd hiwonder_ws/src/launch_demo/launch
 ```
 
-(2) Enter the command “**vim remapping.launch.py**” to edit the program and copy the following program. If you need to make modifications, please press “i” to enter the insert mode. Once you’ve finished modifications, please press “Esc” and input “:wq” to save and exit.
+(2) Enter the command "**vim remapping.launch.py**" to edit the program and copy the following program. If you need to make modifications, please press "i" to enter the insert mode. Once you’ve finished modifications, please press "Esc" and input ":wq" to save and exit.
 
-```py
+```bash
 vim remapping.launch.py
 ```
 
@@ -2535,39 +2535,39 @@ remappings=[("/topic","topic_pub")]
 ])
 ```
 
-```py
+```bash
 :wq
 ```
 
-(3) Enter the command “**chmod +x remapping.launch.py**” and press Enter to grant the executable permission to the saved **remapping.launch.py** file.
+(3) Enter the command "**chmod +x remapping.launch.py**" and press Enter to grant the executable permission to the saved **remapping.launch.py** file.
 
-```py
+```bash
 chmod +x remapping.launch.py
 ```
 
 * **Compilation and Execution**
 
-(1) After granting the executable permission, enter the command “**cd ~/hiwonder_ws/**” to switch to the directory of the workspace.
+(1) After granting the executable permission, enter the command "**cd ~/hiwonder_ws/**" to switch to the directory of the workspace.
 
-```py
+```bash
 cd ~/hiwonder_ws/
 ```
 
-(2) Enter the command “**colcon build**” and press Enter to compile the packages within the workspace.
+(2) Enter the command "**colcon build**" and press Enter to compile the packages within the workspace.
 
-```py
+```bash
 colcon build
 ```
 
-(3) Enter the command “**source ./install/setup.bash**” and press Enter to make the environment variables take effect.
+(3) Enter the command "**source ./install/setup.bash**" and press Enter to make the environment variables take effect.
 
-```py
+```bash
 source ./install/setup.bash
 ```
 
-(4) Enter the command “**ros2 launch launch_demo multi_node.launch.py**” and press Enter to start **remapping.launch.py** file. The original topic name is "**/topic**", and after remapping, the topic name becomes "**/topic_pub**".
+(4) Enter the command "**ros2 launch launch_demo multi_node.launch.py**" and press Enter to start **remapping.launch.py** file. The original topic name is "**/topic**", and after remapping, the topic name becomes "**/topic_pub**".
 
-```py
+```bash
 ros2 launch launch_demo multi_node.launch.py
 ```
 
@@ -2589,15 +2589,15 @@ Through Node action, a launch task to execute the **topic_pub** node from the **
 
 * **Create param.launch.py**
 
-(1) Enter the command “**cd hiwonder_ws/src/launch_demo/launch**” to switch the launch folder within the launch_demo workspace.
+(1) Enter the command "**cd hiwonder_ws/src/launch_demo/launch**" to switch the launch folder within the launch_demo workspace.
 
-```py
+```bash
 cd hiwonder_ws/src/launch_demo/launch
 ```
 
-(2) Enter the command “**vim param.launch.py**” to edit the program and copy the following program. If you need to make modifications, please press “i” to enter the insert mode. Once you’ve finished modifications, please press “Esc” and input “:wq” to save and exit.
+(2) Enter the command "**vim param.launch.py**" to edit the program and copy the following program. If you need to make modifications, please press "i" to enter the insert mode. Once you’ve finished modifications, please press "Esc" and input ":wq" to save and exit.
 
-```py
+```bash
 vim param.launch.py
 ```
 
@@ -2633,39 +2633,39 @@ parameters=[{ # ROS parameter list
 ])
 ```
 
-```py
+```bash
 :wq
 ```
 
-(5) Enter the command “**chmod +x param.launch.py**” and press Enter to grant the executable permission to the saved **remapping.launch.py** file.
+(5) Enter the command "**chmod +x param.launch.py**" and press Enter to grant the executable permission to the saved **remapping.launch.py** file.
 
-```py
+```bash
 chmod +x param.launch.py
 ```
 
 * **Compilation and Execution**
 
-(1) After granting the executable permission, enter the command “**cd ~/hiwonder_ws/**” to switch to the directory of the workspace.
+(1) After granting the executable permission, enter the command "**cd ~/hiwonder_ws/**" to switch to the directory of the workspace.
 
-```py
+```bash
 cd ~/hiwonder_ws/
 ```
 
-(2) Enter the command “**colcon build**” and press Enter to compile the packages within the workspace.
+(2) Enter the command "**colcon build**" and press Enter to compile the packages within the workspace.
 
-```py
+```bash
 colcon build
 ```
 
-(3) Enter the command “**source ./install/setup.bash**” and press Enter to make the environment variables take effect.
+(3) Enter the command "**source ./install/setup.bash**" and press Enter to make the environment variables take effect.
 
-```py
+```bash
 source ./install/setup.bash
 ```
 
 (4) Enter the command "**ros2 launch launch_demo param.launch.py**" and press Enter to start the **param.launch.py** file.
 
-```py
+```bash
 ros2 launch launch_demo param.launch.py
 ```
 
@@ -2683,15 +2683,15 @@ Through DeclareLaunchArgument, three parameters, background_r, g, and b, were de
 
 * **Create param_yaml.launch.py**
 
-(1) Enter the command “**cd hiwonder_ws/src/launch_demo/launch**” to switch the launch folder within the launch_demo workspace.
+(1) Enter the command "**cd hiwonder_ws/src/launch_demo/launch**" to switch the launch folder within the launch_demo workspace.
 
-```py
+```bash
 cd hiwonder_ws/src/launch_demo/launch
 ```
 
-(2) Enter the command “**vim param_yaml.launch.py**” to edit the program and copy the following program. If you need to make modifications, please press “i” to enter the insert mode. Once you’ve finished modifications, please press “Esc” and input “:wq” to save and exit.
+(2) Enter the command "**vim param_yaml.launch.py**" to edit the program and copy the following program. If you need to make modifications, please press "i" to enter the insert mode. Once you’ve finished modifications, please press "Esc" and input ":wq" to save and exit.
 
-```py
+```bash
 vim param_yaml.launch.py
 ```
 
@@ -2717,13 +2717,13 @@ parameters=[config] # Load parameter file
 ])
 ```
 
-```py
+```bash
 :wq
 ```
 
-(6) Enter the command “**chmod +x param_yaml.launch.py**” and press Enter to grant the executable permission to the saved param_yaml.launch.py file.
+(6) Enter the command "**chmod +x param_yaml.launch.py**" and press Enter to grant the executable permission to the saved param_yaml.launch.py file.
 
-```py
+```bash
 chmod +x param_yaml.launch.py
 ```
 
@@ -2731,19 +2731,19 @@ chmod +x param_yaml.launch.py
 
 The setup.py file defines the metadata and build configuration for a ROS2 package, providing information such as package metadata, dependencies, build configuration, and installation logic. It helps developers correctly build, install, and use ROS2 packages. It is necessary to write the program entry points for **param_yaml.launch.p** into the setup.py file.
 
-(1) Enter the command “**cd ..**” to navigate to the parent directory.
+(1) Enter the command "**cd ..**" to navigate to the parent directory.
 
-```py
+```bash
 cd ..
 ```
 
-(2) Enter the command “**vim setup.py**” and press Enter to open the setup.py file.
+(2) Enter the command "**vim setup.py**" and press Enter to open the setup.py file.
 
-```py
+```bash
 vim setup.py
 ```
 
-(3) Press “i” to enter the insert mode, and then enter the following code to the corresponding position.
+(3) Press "i" to enter the insert mode, and then enter the following code to the corresponding position.
 
 ```py
 (os.path.join('share', package_name, 'config'), glob(os.path.join('config', '\*.\*'))),
@@ -2751,33 +2751,33 @@ vim setup.py
 
 <img class="common_img" src="../_static/media/chapter_9/section_15/media/image38.png"  />
 
-(4) Enter “**:wq**” to save and exit the file.
+(4) Enter "**:wq**" to save and exit the file.
 
 <img class="common_img" src="../_static/media/chapter_9/section_15/media/image15.png"  />
 
 * **Compilation and Execution**
 
-(1) After granting the executable permission, enter the command “**cd ~/hiwonder_ws/**” to switch to the directory of the workspace.
+(1) After granting the executable permission, enter the command "**cd ~/hiwonder_ws/**" to switch to the directory of the workspace.
 
-```py
+```bash
 cd ~/hiwonder_ws/
 ```
 
-(2) Enter the command “**colcon build**” and press Enter to compile the packages within the workspace.
+(2) Enter the command "**colcon build**" and press Enter to compile the packages within the workspace.
 
-```py
+```bash
 colcon build
 ```
 
-(3) Enter the command “**source ./install/setup.bash**” and press Enter to make the environment variables take effect.
+(3) Enter the command "**source ./install/setup.bash**" and press Enter to make the environment variables take effect.
 
-```py
+```bash
 source ./install/setup.bash
 ```
 
-(4) Enter the command “**ros2 launch launch_demo param_yaml.launch.py**” and press Enter to start **param_yaml.launch.py** file.
+(4) Enter the command "**ros2 launch launch_demo param_yaml.launch.py**" and press Enter to start **param_yaml.launch.py** file.
 
-```py
+```bash
 ros2 launch launch_demo param_yaml.launch.py
 ```
 
@@ -2795,15 +2795,15 @@ Through Node, describe a launch task for a turtlesim node, setting the package n
 
 * **Create launch_include.launch.py** 
 
-(1) Enter the command “**cd hiwonder_ws/src/launch_demo/launch**” to switch the launch folder within the launch_demo workspace.
+(1) Enter the command "**cd hiwonder_ws/src/launch_demo/launch**" to switch the launch folder within the launch_demo workspace.
 
-```py
+```bash
 cd hiwonder_ws/src/launch_demo/launch
 ```
 
-(2) Enter the command “**vim launch_include.launch.py**” to edit the program and copy the following program. If you need to make modifications, please press “i” to enter the insert mode. Once you’ve finished modifications, please press “Esc” and input “:wq” to save and exit.
+(2) Enter the command "**vim launch_include.launch.py**" to edit the program and copy the following program. If you need to make modifications, please press "i" to enter the insert mode. Once you’ve finished modifications, please press "Esc" and input ":wq" to save and exit.
 
-```py
+```bash
 vim launch_include.launch.py
 ```
 
@@ -2826,39 +2826,39 @@ hello_world
 \])
 ```
 
-```py
+```bash
 :wq
 ```
 
-(7) Enter the command “**chmod +x launch_include.launch.py**” and press Enter to grant the executable permission to the saved **launch_include.launch.py** file.
+(7) Enter the command "**chmod +x launch_include.launch.py**" and press Enter to grant the executable permission to the saved **launch_include.launch.py** file.
 
-```py
+```bash
 chmod +x launch_include.launch.py
 ```
 
 * Compilation and Execution
 
-(1) After granting the executable permission, enter the command “**cd ~/hiwonder_ws/**” to switch to the directory of the workspace.
+(1) After granting the executable permission, enter the command "**cd ~/hiwonder_ws/**" to switch to the directory of the workspace.
 
-```py
+```bash
 cd ~/hiwonder_ws/
 ```
 
-(2) Enter the command “**colcon build**” and press Enter to compile the packages within the workspace.
+(2) Enter the command "**colcon build**" and press Enter to compile the packages within the workspace.
 
-```py
+```bash
 colcon build
 ```
 
-(3) Enter the command “**source ./install/setup.bash**” and press Enter to make the environment variables take effect.
+(3) Enter the command "**source ./install/setup.bash**" and press Enter to make the environment variables take effect.
 
-```py
+```bash
 source ./install/setup.bash
 ```
 
-(4) Enter the command “**ros2 launch launch_demo launch_include.launch.py**” and press Enter to start **launch_include.launch.py** file.
+(4) Enter the command "**ros2 launch launch_demo launch_include.launch.py**" and press Enter to start **launch_include.launch.py** file.
 
-```py
+```bash
 ros2 launch launch_demo launch_include.launch.py
 ```
 
@@ -2868,7 +2868,7 @@ ros2 launch launch_demo launch_include.launch.py
 
 Using the IncludeLaunchDescription action, another launch file described by single_node.launch.py from the specified path is imported, and this task is added to the LaunchDescription object for return. This generates a main launch file to include and run the node tasks defined in the child launch file.
 
-<img class="common_img" src="../_static/media/chapter_9\section_15/media/image45.png"  />
+<img class="common_img" src="../_static/media/chapter_9/section_15/media/image45.png"  />
 
 ## 8.16 ROS2 TF2 Robot Coordinate System Manager
 
@@ -2886,31 +2886,31 @@ The underlying principle of the TF (Transform) functionality in ROS is to encaps
 
 ### 8.16.2 Operations
 
-(1) Click on<img class="common_img" src="../_static/media/chapter_9/section_16/media/image3.png"  /> and select “**System Tools →Terminator**” in sequence.
+(1) Click on<img class="common_img" src="../_static/media/chapter_9/section_16/media/image3.png"  /> and select "**System Tools →Terminator**" in sequence.
 
 <img class="common_img" src="../_static/media/chapter_9/section_16/media/image4.png"  />
 
-(2) Input the command “**ros2 launch turtle_tf2_py turtle_tf2_demo.launch.py**” to run the **turtle_tf2_demo.launch.py** file**.**
+(2) Input the command "**ros2 launch turtle_tf2_py turtle_tf2_demo.launch.py**" to run the **turtle_tf2_demo.launch.py** file**.**
 
-```py
+```bash
 ros2 launch turtle_tf2_py turtle_tf2_demo.launch.py
 ```
 
-(3) Right click on a black space and select “**Split Vertically**” to create a new terminal window.
+(3) Right click on a black space and select "**Split Vertically**" to create a new terminal window.
 
 <img class="common_img" src="../_static/media/chapter_9/section_16/media/image6.png"  />
 
-(4) Input the command “**ros2 run turtlesim turtle_teleop_key**” to run the turtle keyboard control node.
+(4) Input the command "**ros2 run turtlesim turtle_teleop_key**" to run the turtle keyboard control node.
 
 <img class="common_img" src="../_static/media/chapter_9/section_16/media/image7.png"  />
 
-(5) Press “**↑↓←→**” keys to control the movement of the turtle. Another turtlr will also move accordingly.
+(5) Press "**↑↓←→**" keys to control the movement of the turtle. Another turtlr will also move accordingly.
 
 <img class="common_img" src="../_static/media/chapter_9/section_16/media/image8.png"  />
 
-(6) Refer to step 3) to open a new terminal, and then input the command “**ros2 run tf2_ros tf2_echo turtle2 turtle1**” to view the specific relationship between the turtle1 and turtle2 coordinate frames.
+(6) Refer to step 3) to open a new terminal, and then input the command "**ros2 run tf2_ros tf2_echo turtle2 turtle1**" to view the specific relationship between the turtle1 and turtle2 coordinate frames.
 
-```py
+```bash
 ros2 run tf2_ros tf2_echo turtle2 turtle1
 ```
 
@@ -2922,31 +2922,31 @@ The transformation values of the coordinate frames are cyclically printed in the
 
 * **Create static_tf_broadcaster.py**
 
-(1) Click on<img class="common_img" src="../_static/media/chapter_9/section_16/media/image3.png"  /> and select “**System Tools →Terminator**” in sequence.
+(1) Click on<img class="common_img" src="../_static/media/chapter_9/section_16/media/image3.png"  /> and select "**System Tools →Terminator**" in sequence.
 
 <img class="common_img" src="../_static/media/chapter_9/section_16/media/image4.png"  />
 
-(2) Input the command “**cd hiwonder_ws/src/**” to switch to the src folder within the **hiwonder_ws** workspace.
+(2) Input the command "**cd hiwonder_ws/src/**" to switch to the src folder within the **hiwonder_ws** workspace.
 
-```py
+```bash
 cd hiwonder_ws/src/
 ```
 
-(3) Input the command “**ros2 pkg create tf_demo --build-type ament_python --dependencies rclpy**” and press Enter to create a package named “**tf_demo**” with dependency rclpy.
+(3) Input the command "**ros2 pkg create tf_demo --build-type ament_python --dependencies rclpy**" and press Enter to create a package named "**tf_demo**" with dependency rclpy.
 
-```py
+```bash
 ros2 pkg create tf_demo --build-type ament_python --dependencies rclpy
 ```
 
-(4) Input the command “**cd tf_demo/tf_demo/**” to switch to the directory of the tf_demo package.
+(4) Input the command "**cd tf_demo/tf_demo/**" to switch to the directory of the tf_demo package.
 
-```py
+```bash
 cd tf_demo/tf_demo/
 ```
 
-(5) Enter the command “**vim static_tf_broadcaster.py**” to edit the program, copy and paste the program below. If you need to make changes, press "i" to enter insert mode. Once you've finished editing, press "Esc", then type ":wq" to save and exit.
+(5) Enter the command "**vim static_tf_broadcaster.py**" to edit the program, copy and paste the program below. If you need to make changes, press "i" to enter insert mode. Once you've finished editing, press "Esc", then type ":wq" to save and exit.
 
-```py
+```bash
 vim static_tf_broadcaster.py
 ```
 
@@ -2983,21 +2983,21 @@ node.destroy_node() # Destroy node object
 rclpy.shutdown()
 ```
 
-```py
+```bash
 :wq
 ```
 
-(5) Input the command “**chmod +x static_tf_broadcaster.py**” and press Enter to grand the executable permissions to the saved **static_tf_broadcaster.py** file.
+(5) Input the command "**chmod +x static_tf_broadcaster.py**" and press Enter to grand the executable permissions to the saved **static_tf_broadcaster.py** file.
 
-```py
+```bash
 chmod +x static_tf_broadcaster.py
 ```
 
 * **Create tf_listener.py**
 
-(1) Enter the command “**vim tf_listener.py**” to edit the program, copy the following program. If need to make modifications, you can press “i” to enter the insert mode. After you’ve have finished the modifications, press “Esc” and input “:wq” to save and exit.
+(1) Enter the command "**vim tf_listener.py**" to edit the program, copy the following program. If need to make modifications, you can press "i" to enter the insert mode. After you’ve have finished the modifications, press "Esc" and input ":wq" to save and exit.
 
-```py
+```bash
 vim tf_listener.py
 ```
 
@@ -3046,13 +3046,13 @@ node.destroy_node() # Destroy node object
 rclpy.shutdown() # Close ROS2 Python interface
 ```
 
-```py
+```bash
 :wq
 ```
 
-(2) Enter the command “**chmod +x tf_listener.py**” and press Enter to grant the executable permissions to the saved **tf_listener.py** file.
+(2) Enter the command "**chmod +x tf_listener.py**" and press Enter to grant the executable permissions to the saved **tf_listener.py** file.
 
-```py
+```bash
 chmod +x tf_listener.py
 ```
 
@@ -3060,19 +3060,19 @@ chmod +x tf_listener.py
 
 the metadata and build configuration for a ROS2 package, providing information such as package metadata, dependencies, build configuration, and installation logic. It helps developers correctly build, install, and use ROS2 packages. It is necessary to write the program entry points for **static_tf_broadcaster.py** and **tf_listener.py** into the setup.py file.
 
-(1) Enter the command “**cd ..**” to switch to the parent directory.
+(1) Enter the command "**cd ..**" to switch to the parent directory.
 
-```py
+```bash
 cd ..
 ```
 
-(2) Enter the command “**vim setup.py**” and press Enter to open the setup.py file.
+(2) Enter the command "**vim setup.py**" and press Enter to open the setup.py file.
 
-```py
+```bash
 vim setup.py
 ```
 
-(3) Press “i” to enter the editing mode, and then enter the following code to the corresponding position.
+(3) Press "i" to enter the editing mode, and then enter the following code to the corresponding position.
 
 ```py
 'static_tf_broadcaster = tf_demo.static_tf_broadcaster:main',
@@ -3081,43 +3081,43 @@ vim setup.py
 
 <img class="common_img" src="../_static/media/chapter_9/section_16/media/image20.png"  />
 
-(4) Enter “**:wq**” to save and exit the file.
+(4) Enter "**:wq**" to save and exit the file.
 
 <img class="common_img" src="../_static/media/chapter_9/section_16/media/image21.png"  />
 
 * **Compilation and Execution**
 
-(1) After granting the executable permission, enter the command “**cd ~/hiwonder_ws/**” to switch to the directory of the workspace.
+(1) After granting the executable permission, enter the command "**cd ~/hiwonder_ws/**" to switch to the directory of the workspace.
 
-```py
+```bash
 cd ~/hiwonder_ws/
 ```
 
-(2) Enter the command “**colcon build**” and press Enter to compile the packages within the workspace.
+(2) Enter the command "**colcon build**" and press Enter to compile the packages within the workspace.
 
-```py
+```bash
 colcon build
 ```
 
-(3) Enter the command “**source ./install/setup.bash**” and press Enter make the environment variables make effect.
+(3) Enter the command "**source ./install/setup.bash**" and press Enter make the environment variables make effect.
 
-```py
+```bash
 source ./install/setup.bash
 ```
 
-(4) Enter the command “**ros2 run tf_demo static_tf_broadcaster**” and press Enter to start **static_tf_broadcaster** node.
+(4) Enter the command "**ros2 run tf_demo static_tf_broadcaster**" and press Enter to start **static_tf_broadcaster** node.
 
-```py
+```bash
 ros2 run tf_demo static_tf_broadcaster
 ```
 
-(5) Right click on a blank space, select “**Split Vertically**” to create a new terminal window.
+(5) Right click on a blank space, select "**Split Vertically**" to create a new terminal window.
 
 <img class="common_img" src="../_static/media/chapter_9/section_16/media/image6.png"  />
 
-(6) Enter the command “**ros2 run tf_demo tf_listener**” and press Enter to start tf_listener listener.
+(6) Enter the command "**ros2 run tf_demo tf_listener**" and press Enter to start tf_listener listener.
 
-```py
+```bash
 ros2 run tf_demo tf_listener
 ```
 
@@ -3147,19 +3147,19 @@ The TFListener node class was created, and during the initialization of the node
 
 * **Create turtle_tf_broadcaster.py**
 
-(1) Click on<img class="common_img" src="../_static/media/chapter_9/section_16/media/image3.png"  /> and select “**System Tools →Terminator**” in sequence.
+(1) Click on<img class="common_img" src="../_static/media/chapter_9/section_16/media/image3.png"  /> and select "**System Tools →Terminator**" in sequence.
 
 <img class="common_img" src="../_static/media/chapter_9/section_16/media/image4.png"  />
 
-(2) Enter the command “**cd hiwonder_ws/src/tf_demo/tf_demo/**” to switch to the tf_demo folder.
+(2) Enter the command "**cd hiwonder_ws/src/tf_demo/tf_demo/**" to switch to the tf_demo folder.
 
-```py
+```bash
 cd hiwonder_ws/src/tf_demo/tf_demo/
 ```
 
-(3) Enter the command **“vim turtle_tf_broadcaster.py”** to edit the program, copy and paste the program below. If you need to make changes, press "i" to enter insert mode. Once you've finished editing, press "Esc", then type ":wq" to save and exit.
+(3) Enter the command **"vim turtle_tf_broadcaster.py"** to edit the program, copy and paste the program below. If you need to make changes, press "i" to enter insert mode. Once you've finished editing, press "Esc", then type ":wq" to save and exit.
 
-```py
+```bash
 vim turtle_tf_broadcaster.py
 ```
 
@@ -3216,21 +3216,21 @@ def main(args=None):
     rclpy.shutdown()                                     # Close ROS2 Python interface 
 ```
 
-```py
+```bash
 :wq
 ```
 
-(3) Input the command “**chmod +x turtle_tf_broadcaster.py**”
+(3) Input the command "**chmod +x turtle_tf_broadcaster.py**"
 
-```py
+```bash
 chmod +x turtle_tf_broadcaster.py
 ```
 
 * **Create turtle_following.py**
 
-(1) Enter the command “**vim turtle_following.py**” to edit the program, then paste the following program. If you need to make modifications, you can press “i” to enter the insert mode. Once you’ve finished modifications, input “:wq” to save and exit the file.
+(1) Enter the command "**vim turtle_following.py**" to edit the program, then paste the following program. If you need to make modifications, you can press "i" to enter the insert mode. Once you’ve finished modifications, input ":wq" to save and exit the file.
 
-```py
+```bash
 vim turtle_following.py
 ```
 
@@ -3328,13 +3328,13 @@ node = TurtleFollowing("turtle_following")  # Create ROS2 node object and initia
     rclpy.shutdown()                            # Shut down ROS2 Python interface           
 ```
 
-```py
+```bash
 :wq
 ```
 
-(2) Enter the command “**chmod +x turtle_following.py**” and press Enter to grant the executable permission to the saved turtle_following.py file.
+(2) Enter the command "**chmod +x turtle_following.py**" and press Enter to grant the executable permission to the saved turtle_following.py file.
 
-```py
+```bash
 chmod +x turtle_following.py
 ```
 
@@ -3342,27 +3342,27 @@ chmod +x turtle_following.py
 
 In this example, we need to start four nodes: the Turtlebot simulator, coordinate frame broadcasting for Turtle 1, coordinate frame broadcasting for Turtle 2, and the turtle following control. You can write the commands to start these four nodes in the same launch file. Running the launch file will start all four nodes simultaneously.
 
-(1) Enter the command “cd..” to return to the parent directory.
+(1) Enter the command "cd.." to return to the parent directory.
 
-```py
+```bash
 cd ..
 ```
 
-(2) Then, input the command “**mkdir launch**” to create the launch folder.
+(2) Then, input the command "**mkdir launch**" to create the launch folder.
 
-```py
+```bash
 mkdir launch
 ```
 
-(3) Enter the command “**cd launch/**” to enter the launch folder.
+(3) Enter the command "**cd launch/**" to enter the launch folder.
 
-```py
+```bash
 cd launch/
 ```
 
-(4) Enter the command “**vim turtle_following.launch.py**” to edit the program, and then paste the following program. If you need to make modifications, you can press “i”. Once you’ve finished the modifications, press “Esc” and enter “:wq” to save and exit.
+(4) Enter the command "**vim turtle_following.launch.py**" to edit the program, and then paste the following program. If you need to make modifications, you can press "i". Once you’ve finished the modifications, press "Esc" and enter ":wq" to save and exit.
 
-```py
+```bash
 vim turtle_following.launch.py
 ```
 
@@ -3409,13 +3409,13 @@ def generate_launch_description():
     ])
 ```
 
-```py
+```bash
 :wq
 ```
 
-(5) Enter the command “**chmod +x turtle_following.launch.py**” and press Enter to grant the executable permission to the saved **turtle_following.launch.py** file.
+(5) Enter the command "**chmod +x turtle_following.launch.py**" and press Enter to grant the executable permission to the saved **turtle_following.launch.py** file.
 
-```py
+```bash
 chmod +x turtle_following.launch.py
 ```
 
@@ -3423,19 +3423,19 @@ chmod +x turtle_following.launch.py
 
 The setup.py file defines the metadata and build configuration for a ROS2 package, providing information such as package metadata, dependencies, build configuration, and installation logic. It helps developers correctly build, install, and use ROS2 packages. It is necessary to write the program entry points for **turtle_tf_broadcaster.py** and **turtle_following.py** into the setup.py file.
 
-(1) Enter the command “**cd ..**” to navigate to the parent directory.
+(1) Enter the command "**cd ..**" to navigate to the parent directory.
 
-```py
+```bash
 cd ..
 ```
 
-(2) Enter the command “**vim setup.py**” and press Enter to open the setup.py file.
+(2) Enter the command "**vim setup.py**" and press Enter to open the setup.py file.
 
-```py
+```bash
 vim setup.py
 ```
 
-(3) Press “i” to enter the insert mode, and then enter the following code to the corresponding position.
+(3) Press "i" to enter the insert mode, and then enter the following code to the corresponding position.
 
 ```py
 import os
@@ -3449,47 +3449,47 @@ from glob import glob
 
 <img class="common_img" src="../_static/media/chapter_9/section_16/media/image41.png"  />
 
-(4) Enter “**:wq**” to save and exit the file.
+(4) Enter "**:wq**" to save and exit the file.
 
-```py
+```bash
 :wq
 ```
 
 * **Compilation and Execution**
 
-(1) After granting the executable permission, enter the command “**cd ~/hiwonder_ws/**” to switch to the directory of the workspace.
+(1) After granting the executable permission, enter the command "**cd ~/hiwonder_ws/**" to switch to the directory of the workspace.
 
-```py
+```bash
 cd ~/hiwonder_ws/
 ```
 
-(2) Enter the command “**colcon build**” and press Enter to compile the packages within the workspace.
+(2) Enter the command "**colcon build**" and press Enter to compile the packages within the workspace.
 
-```py
+```bash
 colcon build
 ```
 
-(3) Enter the command “**source ./install/setup.bash**” and press Enter to make the environment variables take effect.
+(3) Enter the command "**source ./install/setup.bash**" and press Enter to make the environment variables take effect.
 
-```py
+```bash
 source ./install/setup.bash
 ```
 
-(4) Enter the command “**ros2 launch tf_demo turtle_fllowing.launch.py**” and press Enter to start **turtle_fllowing.launch.py** file.
+(4) Enter the command "**ros2 launch tf_demo turtle_fllowing.launch.py**" and press Enter to start **turtle_fllowing.launch.py** file.
 
-```py
+```bash
 ros2 launch tf_demo turtle_fllowing.launch.py
 ```
 
-(5) Right click on a blank space to select “**Split Vertically**” to create a new terminal window.
+(5) Right click on a blank space to select "**Split Vertically**" to create a new terminal window.
 
 <img class="common_img" src="../_static/media/chapter_9/section_16/media/image6.png"  />
 
-(6) Enter the command “**ros2 run turtlesim turtle_teleop_key**” and press Enter to start the turtle_teleop_key control node.
+(6) Enter the command "**ros2 run turtlesim turtle_teleop_key**" and press Enter to start the turtle_teleop_key control node.
 
 <img class="common_img" src="../_static/media/chapter_9/section_16/media/image43.png"  />
 
-Press “**↑↓←→**” to control the turtle to move.
+Press "**↑↓←→**" to control the turtle to move.
 
 <img class="common_img" src="../_static/media/chapter_9/section_16/media/image44.png"  />
 
@@ -3521,7 +3521,7 @@ The modeling method in ROS is called URDF, which stands for United Robot Descrip
 
 During the process of modeling and describing robots, it’s essential for us to familiarize with the components and parameters of the robot. For example, a robot typically consists of four major parts including hardware structure, drive system, sensor system, and control system. The robot. Whether it’s mobile robot or desktop robotic arm, common robot on the market can be decomposed into these four main components.
 
-<img class="common_img" src="../_static/media/chapter_9\section_17\media\image2.png"  />
+<img class="common_img" src="../_static/media/chapter_9/section_17/media/image2.png"  />
 
 (1) Hardware structure refers to tangible components such as chassis, casing, motors, etc.
 
@@ -3537,11 +3537,11 @@ During the process of modeling and describing robots, it’s essential for us to
 
 Tags are used to describe the appearance and physical properties of a specific rigid body part of a robot. Appearance includes dimensions, color and shape, while physical properties include mass, inertia matrix, collision parameters, etc.
 
-<img class="common_img" src="../_static/media/chapter_9\section_17\media\image3.png"  />
+<img class="common_img" src="../_static/media/chapter_9/section_17/media/image3.png"  />
 
 Take the link of this robotic arm as example. Its links description is as follows:
 
-```py
+```xml
 <link name="link 4">
 	<visual>
 		<geometry>
@@ -3599,11 +3599,11 @@ The joint in URDF has six types of motion.
 
 (5) Floating: Floating joint allows free movement in space, typically with six degrees of freedom. This type of joint is less commonly used. The sixth type, planar, constrains motion to a specific plane, and both types are relatively less frequently used.
 
-<img class="common_img" src="../_static/media/chapter_9\section_17\media\image4.png"  />
+<img class="common_img" src="../_static/media/chapter_9/section_17/media/image4.png"  />
 
 In the URDF model, each link is described using XML content, specifying details such as the name of the joint and its motion type.
 
-```py
+```xml
 <joint name="joint 2" type="revoluteu">
 	<parent link=link 1"/>
     <child link=ulink 2"/>
@@ -3633,41 +3633,41 @@ In ROS, the default unit for translation is meters, and for rotation it's radian
 
 * **Create Robot Model**
 
-(1) Click<img class="common_img" src="../_static/media/chapter_9\section_17\media\image5.png"  /> and select “System Tools →Terminator” in sequence.
+(1) Click<img class="common_img" src="../_static/media/chapter_9/section_17/media/image5.png"  /> and select "System Tools →Terminator" in sequence.
 
-<img class="common_img" src="../_static/media/chapter_9\section_17\media\image6.png"  />
+<img class="common_img" src="../_static/media/chapter_9/section_17/media/image6.png"  />
 
-(1) Input the command “System Tools →Terminator” and press enter to switch to the src folder in hiwonder_ws workspace
+(1) Input the command "System Tools →Terminator" and press enter to switch to the src folder in hiwonder_ws workspace
 
-<img class="common_img" src="../_static/media/chapter_9\section_17\media\image7.png"  />
+<img class="common_img" src="../_static/media/chapter_9/section_17/media/image7.png"  />
 
-(2) Input the command “**ros2 pkg create urdf_demo --build-type ament_python --dependencies rclpy**” and press Enter to creating a package named “**urdf_demo**” with the dependency rclpy.
+(2) Input the command "**ros2 pkg create urdf_demo --build-type ament_python --dependencies rclpy**" and press Enter to creating a package named "**urdf_demo**" with the dependency rclpy.
 
-```py
+```bash
 ros2 pkg create urdf_demo --build-type ament_python --dependencies rclpy
 ```
 
-(3) Input the command “**cd urdf_demo/**” to navigate to the **urdf_demo** package.
+(3) Input the command "**cd urdf_demo/**" to navigate to the **urdf_demo** package.
 
-```py
+```bash
 cd urdf_demo/
 ```
 
-(4) Input the command “**mkdir urdf**” to create the urdf folder.
+(4) Input the command "**mkdir urdf**" to create the urdf folder.
 
-```py
+```bash
 mkdir urdf
 ```
 
-(5) Input the command “**cd urdf/**” to switch to the urdf folder.
+(5) Input the command "**cd urdf/**" to switch to the urdf folder.
 
-```py
+```bash
 cd urdf/
 ```
 
-(6) Input the command “**vim simple_demo.urdf**” to open the file using VIM editor, copy and paste the program below. If you need to make modifications, you can press “i” to enter the insert mode. After you’ve finished the modifications, press “Esc” and enter “:wq” to save and exit.
+(6) Input the command "**vim simple_demo.urdf**" to open the file using VIM editor, copy and paste the program below. If you need to make modifications, you can press "i" to enter the insert mode. After you’ve finished the modifications, press "Esc" and enter ":wq" to save and exit.
 
-```py
+```bash
 vim simple_demo.urdf
 ```
 
@@ -3719,13 +3719,13 @@ vim simple_demo.urdf
 </robot>
 ```
 
-```py
+```bash
 :wq
 ```
 
-(8) Input the command “**chmod +x simple_demo.urdf**” and press Enter to grant the executable permissions to the saved **simple_demo.urdf** file.
+(8) Input the command "**chmod +x simple_demo.urdf**" and press Enter to grant the executable permissions to the saved **simple_demo.urdf** file.
 
-```py
+```bash
 chmod +x simple_demo.urdf
 ```
 
@@ -3733,29 +3733,29 @@ chmod +x simple_demo.urdf
 
 The model loaded by the above code appears is as follow:
 
-<img class="common_img" src="../_static/media/chapter_9\section_17\media\image15.png"   />
+<img class="common_img" src="../_static/media/chapter_9/section_17/media/image15.png"   />
 
 Define a simple robot mode, with the main components and functionalities as follow:
 
 (1) Two materials are defined - blue and white.
 
-<img class="common_img" src="../_static/media/chapter_9\section_17\media\image16.png"  />
+<img class="common_img" src="../_static/media/chapter_9/section_17/media/image16.png"  />
 
 (2) Defined the base_link using blue materials and cylinder geometry.
 
-<img class="common_img" src="../_static/media/chapter_9\section_17\media\image17.png"  />
+<img class="common_img" src="../_static/media/chapter_9/section_17/media/image17.png"  />
 
 (3) Defined the link of right leg and left leg using white material and box geometry.
 
-<img class="common_img" src="../_static/media/chapter_9\section_17\media\image18.png"  />
+<img class="common_img" src="../_static/media/chapter_9/section_17/media/image18.png"  />
 
-<img class="common_img" src="../_static/media/chapter_9\section_17\media\image19.png"  />
+<img class="common_img" src="../_static/media/chapter_9/section_17/media/image19.png"  />
 
 (4) Defined fixed rotational joints for the right leg and left leg, connecting them to the base link. The origin of the right leg joint is located at (0, -0.22, 0.25), and for the left leg, it's at (0, 0.22, 0.25). The leg boxes are rotated to stand upright.
 
-<img class="common_img" src="../_static/media/chapter_9\section_17\media\image20.png"  />
+<img class="common_img" src="../_static/media/chapter_9/section_17/media/image20.png"  />
 
-<img class="common_img" src="../_static/media/chapter_9\section_17\media\image21.png"  />
+<img class="common_img" src="../_static/media/chapter_9/section_17/media/image21.png"  />
 
 The main function is to define the materials, geometries, links and their connections or this simple robot.
 
@@ -3773,21 +3773,21 @@ Therefore, the similar simulation platforms like Gazebo can assist us in validat
 
 ### 8.18.2 Run Gazebo
 
-(1) Click<img class="common_img" src="../_static/media/chapter_9\section_18\media\image2.png"  /> to select “**System Tools →Terminator**” in sequence.
+(1) Click<img class="common_img" src="../_static/media/chapter_9/section_18/media/image2.png"  /> to select "**System Tools →Terminator**" in sequence.
 
-<img class="common_img" src="../_static/media/chapter_9\section_18\media\image3.png"  />
+<img class="common_img" src="../_static/media/chapter_9/section_18/media/image3.png"  />
 
-(2) Input the command “**ros2 launch ros_gz_sim_demos robot_description_publisher.launch.py**” and press Enter to run the “**robot_description_publisher.launch.py**” file.
+(2) Input the command "**ros2 launch ros_gz_sim_demos robot_description_publisher.launch.py**" and press Enter to run the "**robot_description_publisher.launch.py**" file.
 
-```py
+```bash
 ros2 launch ros_gz_sim_demos robot_description_publisher.launch.py
 ```
 
 After successful execution, the simulation interface of Ignition and the PC software of Rivz will open, allowing us to visualize the data of the small ball.
 
-<img class="common_img" src="../_static/media/chapter_9\section_18\media\image5.png"  />
+<img class="common_img" src="../_static/media/chapter_9/section_18/media/image5.png"  />
 
-<img class="common_img" src="../_static/media/chapter_9\section_18/media/image6.png"  />
+<img class="common_img" src="../_static/media/chapter_9/section_18/media/image6.png"  />
 
 ## 8.19 ROS2 Rviz Tool Usage
 
@@ -3801,19 +3801,19 @@ Therefore, data visualization can significantly enhance development efficiency. 
 
 ### 8.19.2 Start Rviz2
 
-(1) Click on<img class="common_img" src="../_static/media/chapter_9\section_19\media\image2.png"  /> to select “System Tools -\> Terminator”.
+(1) Click on<img class="common_img" src="../_static/media/chapter_9/section_19/media/image2.png"  /> to select "System Tools -\> Terminator".
 
-<img class="common_img" src="../_static/media/chapter_9\section_19\media\image3.png"  />
+<img class="common_img" src="../_static/media/chapter_9/section_19/media/image3.png"  />
 
-(2) Input the command “**rviz2**” to start Rivz2 tool.
+(2) Input the command "**rviz2**" to start Rivz2 tool.
 
-```py
+```bash
 rviz2
 ```
 
 The interface of Rviz can be primarily divided into five areas: toolbar area, the display list, 3D view area, viewpoint setting area, and time display area.
 
-<img class="common_img" src="../_static/media/chapter_9\section_19\media\image5.png"   />
+<img class="common_img" src="../_static/media/chapter_9/section_19/media/image5.png"   />
 
 (1) **Tool Bar Area**
 
@@ -3828,39 +3828,39 @@ The interface of Rviz can be primarily divided into five areas: toolbar area, th
 <td style="text-align: center;"><strong>Function</strong></td>
 </tr>
 <tr>
-<td style="text-align: center;"><img src="../_static/media/chapter_9\section_19/media/image6.png" style="width:0.98425in;height:0.27974in" /></td>
+<td style="text-align: center;"><img src="../_static/media/chapter_9/section_19/media/image6.png" style="width:0.98425in;height:0.27974in" /></td>
 <td style="text-align: left;">Select robot or specify a location to adjust the angle.</td>
 </tr>
 <tr>
-<td style="text-align: center;"><img src="../_static/media/chapter_9\section_19/media/image7.png" style="width:0.98425in;height:0.23727in" /></td>
+<td style="text-align: center;"><img src="../_static/media/chapter_9/section_19/media/image7.png" style="width:0.98425in;height:0.23727in" /></td>
 <td style="text-align: left;">After selecting the tool, press and hold left mouse button within the 3D view, then drag the mouse to adjust the camera angle.</td>
 </tr>
 <tr>
-<td style="text-align: center;"><img src="../_static/media/chapter_9\section_19/media/image8.png" style="width:0.7874in;height:0.25012in" /></td>
+<td style="text-align: center;"><img src="../_static/media/chapter_9/section_19/media/image8.png" style="width:0.7874in;height:0.25012in" /></td>
 <td style="text-align: left;">After selecting the tool, press and hold left mouse button within the 3D view to box-select the model.</td>
 </tr>
 <tr>
-<td style="text-align: center;"><img src="../_static/media/chapter_9\section_19/media/image9.png" style="width:0.98425in;height:0.23727in" /></td>
+<td style="text-align: center;"><img src="../_static/media/chapter_9/section_19/media/image9.png" style="width:0.98425in;height:0.23727in" /></td>
 <td style="text-align: left;">After selecting the tool, simply click the left mouse button anywhere within the 3D view to set that point as the center of the map.</td>
 </tr>
 <tr>
-<td style="text-align: center;"><img src="../_static/media/chapter_9\section_19/media/image10.png" style="width:0.74803in;height:0.25246in" /></td>
+<td style="text-align: center;"><img src="../_static/media/chapter_9/section_19/media/image10.png" style="width:0.74803in;height:0.25246in" /></td>
 <td style="text-align: left;">After selecting the tool, click the left mouse button once at the starting point and once at the ending point within the 3D view to measure the distance between the two points.</td>
 </tr>
 <tr>
-<td style="text-align: center;"><img src="../_static/media/chapter_9\section_19/media/image11.png" style="width:1.1811in;height:0.25309in" /></td>
+<td style="text-align: center;"><img src="../_static/media/chapter_9/section_19/media/image11.png" style="width:1.1811in;height:0.25309in" /></td>
 <td style="text-align: left;"><p>To set the position of the robot within the 3D view, this function is only available during navigation.</p>
 <p>When the robot undergoes displacement, indicating the actual position does not match its position in the 3D view, it's necessary to reset the robot's position within the 3D view to ensure navigation effectiveness.</p>
 <p>After selecting the tool, click the left mouse button at any location within the 3D view to set that point as the robot's position.</p></td>
 </tr>
 <tr>
-<td style="text-align: center;"><img src="../_static/media/chapter_9\section_19/media/image12.png" style="width:0.98425in;height:0.26575in" /></td>
+<td style="text-align: center;"><img src="../_static/media/chapter_9/section_19/media/image12.png" style="width:0.98425in;height:0.26575in" /></td>
 <td style="text-align: left;"><p>To set a single target point for the robot, this function is only available during navigation.</p>
 <p>After selecting the tool, click the left mouse button at any location within the map display area to set that point as the target.</p>
 <p>Once set, the robot will automatically generate a travel route and move along the route to the target point.</p></td>
 </tr>
 <tr>
-<td style="text-align: center;"><img src="../_static/media/chapter_9\section_19/media/image13.png" style="width:0.98425in;height:0.25071in" /></td>
+<td style="text-align: center;"><img src="../_static/media/chapter_9/section_19/media/image13.png" style="width:0.98425in;height:0.25071in" /></td>
 <td style="text-align: left;"><p>To set multiple target points for the robot, this function is only available during navigation.</p>
 <p>The usage of this tool is similar to "<strong>2D Nav Goal</strong>," but this tool can set multiple target points. Each click sets one target point, and you can set up to three target points.</p>
 <p>Once set, the robot will automatically generate a travel route based on the set order and move along the route to each target point sequentially.</p></td>
@@ -3873,7 +3873,7 @@ The interface of Rviz can be primarily divided into five areas: toolbar area, th
 
 - **Global Options**
 
-<img class="common_img" src="../_static/media/chapter_9\section_19\media\image14.png"  />
+<img class="common_img" src="../_static/media/chapter_9/section_19/media/image14.png"  />
 
 |     **Icon**      |                         **Function**                         |
 | :---------------: | :----------------------------------------------------------: |
@@ -3884,7 +3884,7 @@ The interface of Rviz can be primarily divided into five areas: toolbar area, th
 
 - **Grid**
 
-<img class="common_img" src="../_static/media/chapter_9\section_19\media\image15.png"  />
+<img class="common_img" src="../_static/media/chapter_9/section_19/media/image15.png"  />
 
 |     **Icon**      |                         **Function**                         |
 | :---------------: | :----------------------------------------------------------: |
@@ -3902,31 +3902,31 @@ The interface of Rviz can be primarily divided into five areas: toolbar area, th
 
 * **Write A launch File**
 
-(1) Click on<img class="common_img" src="../_static/media/chapter_9\section_19\media\image2.png"  /> to select “**System Tools -\> Terminator**”.
+(1) Click on<img class="common_img" src="../_static/media/chapter_9/section_19/media/image2.png"  /> to select "**System Tools -\> Terminator**".
 
-<img class="common_img" src="../_static/media/chapter_9\section_19\media\image3.png"  />
+<img class="common_img" src="../_static/media/chapter_9/section_19/media/image3.png"  />
 
-(2) Input the command “**cd hiwonder_ws/src/urdf_demo/**” to switch to the “**urdf_demo**” workspace.
+(2) Input the command "**cd hiwonder_ws/src/urdf_demo/**" to switch to the "**urdf_demo**" workspace.
 
-```py
+```bash
 cd hiwonder_ws/src/urdf_demo/
 ```
 
-(3) Input the command “**mkdir rviz launch**” and press Enter to create rivz and launch files.
+(3) Input the command "**mkdir rviz launch**" and press Enter to create rivz and launch files.
 
-```py
+```bash
 mkdir rviz launch
 ```
 
-(4) Input the command “**cd launch/**” to switch to the launch folder.
+(4) Input the command "**cd launch/**" to switch to the launch folder.
 
-```py
+```bash
 cd launch/
 ```
 
-(5) Enter the command “**vim rviz_view.launch.py**” to open the file using the VIM editor, copy and paste the program below. If you need to make modifications, you can press “**i**” to modify. After you’ve finishing the modifications, press “**Esc**” and enter “**:wq**” to save and exit.
+(5) Enter the command "**vim rviz_view.launch.py**" to open the file using the VIM editor, copy and paste the program below. If you need to make modifications, you can press "**i**" to modify. After you’ve finishing the modifications, press "**Esc**" and enter "**:wq**" to save and exit.
 
-```py
+```bash
 vim rviz_view.launch.py
 ```
 
@@ -3960,25 +3960,25 @@ def generate_launch_description():
     ])   
 ```
 
-<img class="common_img" src="../_static/media/chapter_9\section_19\media\image20.png"  />
+<img class="common_img" src="../_static/media/chapter_9/section_19/media/image20.png"  />
 
 * **setup.py File Setting**
 
 The setup.py file defines the metadata and build configuration for a ROS2 package, providing information such as package metadata, dependencies, build configuration, and installation logic. It helps developers correctly build, install, and use ROS2 packages. It is necessary to write the program entry points for rviz_view.launch.py into the setup.py file.
 
-(1) Enter the command “**cd ..**” to switch to the parent directory.
+(1) Enter the command "**cd ..**" to switch to the parent directory.
 
-```py
+```bash
 cd ..
 ```
 
-(2) Enter the command “**vim setup.py**” and press Enter to open the setup.py file.
+(2) Enter the command "**vim setup.py**" and press Enter to open the setup.py file.
 
-```py
+```bash
 vim setup.py
 ```
 
-(3) Press “i” to enter the editing mode, and then enter the following code to the corresponding position.
+(3) Press "i" to enter the editing mode, and then enter the following code to the corresponding position.
 
 ```py
 from setuptools import find_packages, setup
@@ -3991,79 +3991,79 @@ from glob import glob
         (os.path.join('share', package_name, 'rviz'), glob(os.path.join('rviz', '*.rviz'))),
 ```
 
-<img class="common_img" src="../_static/media/chapter_9\section_19\media\image23.png"  />
+<img class="common_img" src="../_static/media/chapter_9/section_19/media/image23.png"  />
 
-(4) Enter “**:wq**” to save and exit the file.
+(4) Enter "**:wq**" to save and exit the file.
 
-<img class="common_img" src="../_static/media/chapter_9\section_19\media\image24.png"  />
+<img class="common_img" src="../_static/media/chapter_9/section_19/media/image24.png"  />
 
 ### 8.19.4 Compilation and Execution
 
-(1) After granting the executable permission, enter the command “**cd ~/hiwonder_ws/**” to switch to the directory of the workspace.
+(1) After granting the executable permission, enter the command "**cd ~/hiwonder_ws/**" to switch to the directory of the workspace.
 
-```py
+```bash
 cd ~/hiwonder_ws/
 ```
 
-(2) Enter the command “**colcon build**” and press Enter to compile the packages within the workspace.
+(2) Enter the command "**colcon build**" and press Enter to compile the packages within the workspace.
 
-```py
+```bash
 colcon build
 ```
 
-(3) Enter the command “**source ./install/setup.bash**” and press Enter make the environment variables make effect.
+(3) Enter the command "**source ./install/setup.bash**" and press Enter make the environment variables make effect.
 
-```py
+```bash
 source ./install/setup.bash
 ```
 
-(4) Enter the command “**ros2 launch urdf_demo rviz_view.launch.py**” and press Enter to start **rviz_view.launch.py** file.
+(4) Enter the command "**ros2 launch urdf_demo rviz_view.launch.py**" and press Enter to start **rviz_view.launch.py** file.
 
-```py
+```bash
 ros2 launch urdf_demo rviz_view.launch.py
 ```
 
-(5) Select “base_link” in Rviz tool.
+(5) Select "base_link" in Rviz tool.
 
-<img class="common_img" src="../_static/media/chapter_9\section_19\media\image29.png"  />
+<img class="common_img" src="../_static/media/chapter_9/section_19/media/image29.png"  />
 
-(6) Click “**Add**” button to select “**RobotModel**” model, and then click “OK” to add model.
+(6) Click "**Add**" button to select "**RobotModel**" model, and then click "OK" to add model.
 
-<img class="common_img" src="../_static/media/chapter_9\section_19\media\image30.png"  />
+<img class="common_img" src="../_static/media/chapter_9/section_19/media/image30.png"  />
 
 (7) Select "**/robot_description**" in the "**Description Source**" column, then click on an empty space to load the model.
 
-<img class="common_img" src="../_static/media/chapter_9\section_19\media\image31.png"  />
+<img class="common_img" src="../_static/media/chapter_9/section_19/media/image31.png"  />
 
 (8) Select "**File**" in the top-left corner, then choose "**Save Config As**" to save the model configuration parameters.
 
-<img class="common_img" src="../_static/media/chapter_9\section_19\media\image32.png"  />
+<img class="common_img" src="../_static/media/chapter_9/section_19/media/image32.png"  />
 
-<img class="common_img" src="../_static/media/chapter_9\section_19\media\image33.png"  />
+<img class="common_img" src="../_static/media/chapter_9/section_19/media/image33.png"  />
 
-(9) Click on<img class="common_img" src="../_static/media/chapter_9\section_19\media\image2.png"  /> to select “**System Tools -\> Terminator**”.
+(9) Click on<img class="common_img" src="../_static/media/chapter_9/section_19/media/image2.png"  /> to select "**System Tools -\> Terminator**".
 
-<img class="common_img" src="../_static/media/chapter_9\section_19\media\image3.png"  />
+<img class="common_img" src="../_static/media/chapter_9/section_19/media/image3.png"  />
 
 (10) Enter the command "**cd hiwonder_ws/src/urdf_demo/launch/**" to switch to the launch folder.
 
-```py
+```bash
 cd hiwonder_ws/src/urdf_demo/launch/
 ```
 
 (11) Enter the command "**vim rviz_view.launch.py**" to edit the program, then copy the following code. If you need to make modifications, press "i" to enter insert mode. After making changes, press "Esc", then type ":wq" to save and exit.
 
-```py
+```bash
 vim rviz_view.launch.py
 ```
 
 arguments=\['-d', get_package_share_directory('urdf_demo') + '/rviz/rviz.rviz'\] \# Load the RViz configuration file to display the URDF model.
 
-<img class="common_img" src="../_static/media/chapter_9\section_19\media\image35.png"  />  
+<img class="common_img" src="../_static/media/chapter_9/section_19/media/image35.png"  />  
 
 (12) Then enter ":wq" to save and exit the file.
 
-```py
+```bash
 :wq
 ```
 
@@ -4077,11 +4077,11 @@ The functionality of Rviz in ROS is already quite powerful. However, in some sce
 
 Just like Rviz, the name RQT indicates that it is also based on the QT visualization tool.
 
-(1) Click on<img class="common_img" src="../_static/media/chapter_9/section_20/media/image2.png"  />at the top left corner, and then select “**System Tools→Terminator**” in sequence.
+(1) Click on<img class="common_img" src="../_static/media/chapter_9/section_20/media/image2.png"  />at the top left corner, and then select "**System Tools→Terminator**" in sequence.
 
 <img class="common_img" src="../_static/media/chapter_9/section_20/media/image3.png"  />
 
-(2) Enter the command “**rqt**” to open RQT tool.
+(2) Enter the command "**rqt**" to open RQT tool.
 
 <img class="common_img" src="../_static/media/chapter_9/section_20/media/image4.png"  />
 
@@ -4091,31 +4091,31 @@ This interface loads may small modules, each capable of implementing a specific 
 
 ### 8.20.2 Logging Display
 
-(1) Click on<img class="common_img" src="../_static/media/chapter_9/section_20/media/image2.png"  />at the top left corner, and then select “**System Tools→Terminator**” in sequence.
+(1) Click on<img class="common_img" src="../_static/media/chapter_9/section_20/media/image2.png"  />at the top left corner, and then select "**System Tools→Terminator**" in sequence.
 
 <img class="common_img" src="../_static/media/chapter_9/section_20/media/image3.png"  />
 
-(2) Enter the command “**ros2 run turtlesim turtlesim_node**” to launch the TurtleSim node.
+(2) Enter the command "**ros2 run turtlesim turtlesim_node**" to launch the TurtleSim node.
 
-```py
+```bash
 ros2 run turtlesim turtlesim_node
 ```
 
 <img class="common_img" src="../_static/media/chapter_9/section_20/media/image7.png"  />
 
-(3) Right click on a blank space to select “**Split Vertically**” to create a new terminal window.
+(3) Right click on a blank space to select "**Split Vertically**" to create a new terminal window.
 
 <img class="common_img" src="../_static/media/chapter_9/section_20/media/image8.png"  />
 
-(4) Enter the command “**ros2 run turtlesim turtle_teleop_key**” and press Enter to launch the TurtleSim control node.
+(4) Enter the command "**ros2 run turtlesim turtle_teleop_key**" and press Enter to launch the TurtleSim control node.
 
 <img class="common_img" src="../_static/media/chapter_9/section_20/media/image9.png"  />
 
-(5) Refer to step 3) to create a new window, and then enter command “**rqt**” to open RQT tool.
+(5) Refer to step 3) to create a new window, and then enter command "**rqt**" to open RQT tool.
 
 <img class="common_img" src="../_static/media/chapter_9/section_20/media/image10.png"  />
 
-(6) Select “**Plugins→Logging→Console**” in sequence to open logging display.
+(6) Select "**Plugins→Logging→Console**" in sequence to open logging display.
 
 <img class="common_img" src="../_static/media/chapter_9/section_20/media/image11.png"  />
 
@@ -4125,11 +4125,11 @@ ros2 run turtlesim turtlesim_node
 
 ### 8.20.3 Topic Pugin
 
-(1) Select “**Plugins→Topic→Message Publisher**” in sequence to open the topic plugin.
+(1) Select "**Plugins→Topic→Message Publisher**" in sequence to open the topic plugin.
 
 <img class="common_img" src="../_static/media/chapter_9/section_20/media/image13.png"  />
 
-(2) Click on<img class="common_img" src="../_static/media/chapter_9/section_20/media/image14.png"  />, then select the topic of “**/turtel/cmd_vel/**”, then click on<img class="common_img" src="../_static/media/chapter_9/section_20/media/image15.png"  />.
+(2) Click on<img class="common_img" src="../_static/media/chapter_9/section_20/media/image14.png"  />, then select the topic of "**/turtel/cmd_vel/**", then click on<img class="common_img" src="../_static/media/chapter_9/section_20/media/image15.png"  />.
 
 <img class="common_img" src="../_static/media/chapter_9/section_20/media/image16.png"  />
 
@@ -4143,25 +4143,25 @@ The turtle will move according to the specific linear and angular velocity data.
 
 ### 8.20.4 Service Plugin
 
-(1) Select “**Plugins→Services→Services Caller**” in sequence to open the service plugin.
+(1) Select "**Plugins→Services→Services Caller**" in sequence to open the service plugin.
 
 <img class="common_img" src="../_static/media/chapter_9/section_20/media/image19.png"  />
 
-(2) Select the “**/spawn**” service, then set the position for the new turtle to be spawned, name it as “turtle2”, and finally click on “**Call**”.
+(2) Select the "**/spawn**" service, then set the position for the new turtle to be spawned, name it as "turtle2", and finally click on "**Call**".
 
 <img class="common_img" src="../_static/media/chapter_9/section_20/media/image20.png"  />
 
-At this point, a turtle named “turtle2” will be spawned.
+At this point, a turtle named "turtle2" will be spawned.
 
 <img class="common_img" src="../_static/media/chapter_9/section_20/media/image21.png"  />
 
 ### 8.20.5 Drawing Plugin
 
-(1) Select “Plugins→Visualization→Plot” in sequence to open drawing plugin.
+(1) Select "Plugins→Visualization→Plot" in sequence to open drawing plugin.
 
 <img class="common_img" src="../_static/media/chapter_9/section_20/media/image22.png"  />
 
-(2) Enter “**/turtle/pose/**” to select the turtle’s position data, then click<img class="common_img" src="../_static/media/chapter_9/section_20/media/image23.png"  />.
+(2) Enter "**/turtle/pose/**" to select the turtle’s position data, then click<img class="common_img" src="../_static/media/chapter_9/section_20/media/image23.png"  />.
 
 <img class="common_img" src="../_static/media/chapter_9/section_20/media/image24.png"  />
 

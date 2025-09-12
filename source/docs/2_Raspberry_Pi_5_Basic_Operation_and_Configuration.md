@@ -49,7 +49,7 @@ Prepare a laptop computer. If you're using a desktop computer, please ensure you
 
 MobaXterm is a software that integrates various remote computing tools and offers a graphical interface. By connecting to the Raspberry Pi's Wi-Fi hotspot, we can directly control the Raspberry Pi from the computer. Next, we will provide a step-by-step explanation of how to install the software.
 
-(1) Double-click the '**[MobaXterm_installer_22.1.msi]()**' file saved in the folder '**[Appendix]()**'.
+(1) Double-click the '**MobaXterm_installer_22.1.msi**' file saved in the folder '**[Appendix](https://wiki.hiwonder.com/projects/Raspberry-Pi-5-Controller/en/latest/docs/Appendix.html)**'.
 
 <img class="common_img" src="../_static/media/chapter_2/section_2/media/image2.png"  />
 

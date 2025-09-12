@@ -1,4 +1,4 @@
-# 1.Read First
+# 1. Read First
 
 ## 1.1 Raspberry 5 Introduction
 

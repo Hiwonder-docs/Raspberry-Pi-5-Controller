@@ -523,13 +523,13 @@ We present the various key operations in the three modes in the form of a table.
 </tr>
 <tr>
 <td rowspan="3">Command mode</td>
-<td>“i”——Switch to input mode.</td>
+<td>"i"——Switch to input mode.</td>
 </tr>
 <tr>
-<td>“x”——Delete the character at the current cursor position.</td>
+<td>"x"——Delete the character at the current cursor position.</td>
 </tr>
 <tr>
-<td>“:”——Switch to bottom line command mode.</td>
+<td>":"——Switch to bottom line command mode.</td>
 </tr>
 <tr>
 <td rowspan="9">Input mode</td>
@@ -561,16 +561,16 @@ We present the various key operations in the three modes in the form of a table.
 </tr>
 <tr>
 <td rowspan="4">Last line command mode</td>
-<td>“q”——Exit the program</td>
+<td>"q"——Exit the program</td>
 </tr>
 <tr>
-<td>“w”——Save the file</td>
+<td>"w"——Save the file</td>
 </tr>
 <tr>
-<td>“wq”——Save and exit</td>
+<td>"wq"——Save and exit</td>
 </tr>
 <tr>
-<td>“q!”——Force exit without saving changes</td>
+<td>"q!"——Force exit without saving changes</td>
 </tr>
 </table>
 
@@ -895,11 +895,10 @@ Generally, there are three ways to backup the system. The table below lists the 
 
 * **Creating an Image Using Third-party Software on Windows**
 
-:::{Note}
-
-**It is recommended to use WinImager software. Users can find detailed tutorials by searching on the Internet.**
-
-:::
+> [!Note]
+>
+> **It is recommended to use WinImager software. Users can find detailed tutorials by searching on the Internet.**
+>
 
 (1) First, create a blank .img file locally on the computer. (Select '**Yes'**)
 
@@ -963,10 +962,10 @@ sh backup.sh
 
 (1) Insert the empty SD card into the card reader, and connect to the USB port of the Raspberry Pi.
 
-(2) After starting the Raspberry Pi successfully, click the Raspberry Pi icon in the upper left corner, select “Accessories” from the menu, and open the “SD Card Copier” tool.
+(2) After starting the Raspberry Pi successfully, click the Raspberry Pi icon in the upper left corner, select "**Accessories**" from the menu, and open the "**SD Card Copier**" tool.
 
 <img class="common_img" src="../_static/media/chapter_2/section_17/media/image9.png"  />
 
-(3) In the **/dev/mmcblk0** path, select the SD card containing the image under “Copy From Device.” Then, in the **dev/sda** path, select the new SD card under “Copy To Device.”
+(3) In the **/dev/mmcblk0** path, select the SD card containing the image under "**Copy From Device**." Then, in the **dev/sda** path, select the new SD card under "**Copy To Device**."
 
-(4) "New Partition UUIDs" below is the option for creating a new partition. Check it if you need it; uncheck it does not affect the outcome.
+(4) "**New Partition UUIDs**" below is the option for creating a new partition. Check it if you need it; uncheck it does not affect the outcome.

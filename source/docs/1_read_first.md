@@ -143,9 +143,14 @@ These are some of the more prevalent distribution systems for Raspberry Pi, mark
 
 You will need a card reader, a 32GB SD card (8GB or larger recommended), and a computer with internet access. Insert the SD card into the card reader and connect it to any available USB port on your computer.
 
-<img  class="common_img"  src="../_static/media/chapter_1/section_2/media/image2.png"  />
+<p class="common_img" style="text-align:center">
 
-<img  class="common_img"  src="../_static/media/chapter_1/section_2/media/image3.png"  />
+<img src="../_static/media/chapter_1/section_2/media/image2.png" style="width:60px;" />
+
+<img src="../_static/media/chapter_1/section_2/media/image3.png" style="width:50px;" />
+
+</p>
+
 
 ### 1.2.3 Install System Online Using Official Tool
 
@@ -215,7 +220,7 @@ Raspberry Pi has introduced Raspberry Pi Imager, an official graphical tool for 
 
 (2) Paste the heat sink to the position as pictured.
 
-<img  class="common_img"  src="../_static/media/chapter_1/section_3/media/image3.png"  />
+<img  class="common_img"  src="../_static/media/chapter_1/section_3/media/image3.png" style="width:600px;" />
 
 ### 1.3.2 Protective Shell and Cooling Fan Installation
 

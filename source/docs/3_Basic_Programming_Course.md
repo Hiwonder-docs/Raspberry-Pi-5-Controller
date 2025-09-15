@@ -381,11 +381,11 @@ print(*objects, sep=' ', end='\n' , file=sys.stdout, flush=False)
 
 The first parameter "**objects**" is the output object. When output several objects, they should be separately with "**,**" in between.
 
-The second parameter "**sep**" is used to put string between the output objects, ' ' by default.
+The second parameter "**sep**" is used to put string between the output objects, by default.
 
 The third parameter "**end**" is used to add string at the end of output, '\n' by default.
 
-The fourth parameter "**file**" is the object with a write function, the default value is "sys.stdout", that is screen.
+The fourth parameter "**file**" is the object with a write function, the default value is "**sys.stdout**", that is screen.
 
 The fifth parameter "**flush**" is used to output cache and the default value is "**False**".
 
@@ -438,7 +438,7 @@ Python adopts PEP8 as coding standard. "**PEP**" represents Python Enhancement P
 
 Please strictly follow the coding standard when coding to make the code neater, which will enhance the readability.
 
-(1) One "import" is for one module. Please don't import multiple modules for one time.
+(1) One "**import**" is for one module. Please don't import multiple modules for one time.
 
 |     Recommend     | <img src="../_static/media/chapter_3/section_1-3/media/image5.png" /> |
 | :---------------: | ------------------------------------------------------------ |
@@ -478,7 +478,7 @@ In Python, naming identifier should be consistent with the naming rules.
 | ------------------ | ------------------------------------------------------------ |
 | Invalid Identifier | <img src="../_static/media/chapter_3/section_1-3/media/image12.png" /> |
 
-(4) Identifier is case sensitive. For example, "num" , "Num" and "NUM" are three independent variables.
+(4) Identifier is case sensitive. For example, "**num**" , "**Num**" and "**NUM**" are three independent variables.
 
 (5) Identifier starting with underscore "**\_**" has special meaning. Please avoid using identifier starting with "**\_**" if not necessary.
 
@@ -492,11 +492,11 @@ In Python, naming identifier should be consistent with the naming rules.
 
 Besides the rules mentioned above, there are corresponding rules in identifier naming under different situation.
 
-(1) When used as module name, identifier should be short and composed of lower case letters. And underscore "\_" can be used for separation.
+(1) When used as module name, identifier should be short and composed of lower case letters. And underscore "**\_**" can be used for separation.
 
 (2) When used as package name, identifier should be short and
 
-composed of lower case letters, but it is not recommended to use full stop " .", such as "com.mr" and "com.mr.book" .
+composed of lower case letters, but it is not recommended to use full stop "**.**", such as "**com.mr**" and "**com.mr.book**" .
 
 (3) When used as class name, identifier should start with upper case letters, for example "Book" which defines a book class.
 
@@ -762,7 +762,7 @@ The syntax and execution process of single-branch selection structure are as fol
 |:---------------------------------------------------------------------:|:----------------------------------------------------------------------:|
 | <img src="../_static/media/chapter_3/section_1-4/media/image2.jpg" /> | <img src="../_static/media/chapter_3/section_1-4/media/image3.jpeg" /> |
 
-If the condition of "if statement" is true, block of code 1 and 2 will be
+If the condition of "**if statement**" is true, block of code 1 and 2 will be
 
 executed in sequence. Otherwise, skip block of code 1 and directly execute block of code 2.
 
@@ -855,7 +855,7 @@ The third parameter "**end**" is used to add string at the end of the output.
 
 The default value is a line break.
 
-The fourth parameter "**file**" is the object with a write function, the default value is "sys.stdout", that is screen.
+The fourth parameter "**file**" is the object with a write function, the default value is "**sys.stdout**", that is screen.
 
 The fifth parameter "**flush**" is used to control and output cache. The default value is "**False**".
 
@@ -916,7 +916,6 @@ break statement is used to get out of the whole loop. The syntax and execution p
 |                            Syntax                            |                      Execution Process                       |
 | :----------------------------------------------------------: | :----------------------------------------------------------: |
 | <img src="../_static/media/chapter_3/section_1-5/media/image6.jpeg"/> | <img src="../_static/media/chapter_3/section_1-5/media/image7.jpeg"/> |
-|                                                              |                                                              |
 
 When the judgement condition is executed and is "**True**", the loop will end.
 
@@ -933,7 +932,7 @@ continue statement is used to get out of this round of loop and carry out the ne
 
 When the judgement statement is executed and is "**True**", this round of loop is complete and next round of loop starts. If the judgement condition is
 
-"False" , the block of code 2 is executed and the second round of loop is done.
+"**False**" , the block of code 2 is executed and the second round of loop is done.
 
 (3) **pass statement**
 
@@ -952,7 +951,7 @@ stored in "**[3. 2 Python Programming-\> 3.2.5 Python Loop Statement-\> Routine 
 > **the input command should be case sensitive, and the keywords can be complemented by "Tab" key.**
 >
 
-(1) Start virtual machine, and click "<img src="../_static/media/chapter_3/section_1-5/media/image11.jpeg"  /> ", and then click "<img src="../_static/media/chapter_3/section_1-5/media/image12.png"  /> " or press "**Ctrl+Alt+T**" to open command line terminal.
+(1) Start virtual machine, and click <img src="../_static/media/chapter_3/section_1-5/media/image11.jpeg"  />, and then click <img src="../_static/media/chapter_3/section_1-5/media/image12.png"  /> or press "**Ctrl+Alt+T**" to open command line terminal.
 
 (2) Input command "**cd /mnt/hgfs/Share/**" and press Enter to enter the shared folder.
 
@@ -1069,7 +1068,7 @@ In Python, function generally is composed of function name, parameter list and f
 
 ④ Any passed in parameters and variables should be inserted inside the parenthesis.
 
-⑤ Functions should start with colon " **:**" and are indented strictly.
+⑤ Functions should start with colon "**:**" and are indented strictly.
 
 ⑥ The first line of statement in function can be docstring, i.e. function description.
 
@@ -1447,7 +1446,7 @@ Two core definitions: classes and objects
 
 Class is used to describes the object sets with the same properties and methods. And it defines the properties and methods shared by all the objects of this set. Object is the instance of class.
 
-For example, create a "cat" class, and define the name, color, age, etc., as well as the way to eat, drink, sound, etc. And instantiated object "ginger cat" will have these defined properties and methods.
+For example, create a "**cat**" class, and define the name, color, age, etc., as well as the way to eat, drink, sound, etc. And instantiated object "ginger cat" will have these defined properties and methods.
 
 (2) **Object**
 
@@ -1640,11 +1639,11 @@ designating the key parameter. If there are multiple maximum values, the first v
 
 (3) **Base Conversion**
 
-① bin(x): Convert the input integer x to a binary string prefixed with "0b"
+① bin(x): Convert the input integer x to a binary string prefixed with "**0b**"
 
-② oct(x): Convert the input integer x to an octal string prefixed with "0o"
+② oct(x): Convert the input integer x to an octal string prefixed with "**0o**"
 
-③ hex(x): Convert the input integer x to a hexadecimal string prefixed with "0x".
+③ hex(x): Convert the input integer x to a hexadecimal string prefixed with "**0x**".
 
 ④ ord(x): For the input single Unicode character, its corresponding Unicode integer will be returned.
 
@@ -1858,7 +1857,7 @@ The process provides the pre-requirements for the thread to execute the program.
 
 thread module has been abandoned, which can be replaced by threading.
 
-Therefore "thread" module cannot be used in Python3. For compatibility, thread is renamed as "\_thread" by Python3.
+Therefore "thread" module cannot be used in Python3. For compatibility, thread is renamed as "**\_thread**" by Python3.
 
 * **Thread Object**
 

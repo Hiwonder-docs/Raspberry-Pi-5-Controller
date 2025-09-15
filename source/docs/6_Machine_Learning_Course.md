@@ -8,7 +8,7 @@ Given that training the Yolov5 model necessitates a substantial volume of data, 
 
 To begin, you can assemble the images that require collection. As an illustration, let's consider the collection of traffic signs.
 
-To get detailed instructions about the file transfer method, please refer to the tutorial provided in ‘**[2. Raspberry Pi 5 Basic Operation and Configuration\>2.2 Remote Access and Remote File Transfer]()**’.
+To get detailed instructions about the file transfer method, please refer to the tutorial provided in '**[2. Raspberry Pi 5 Basic Operation and Configuration\>2.2 Remote Access and Remote File Transfer](2_Raspberry_Pi_5_Basic_Operation_and_Configuration.md#remote-access-and-remote-file-transfer)**'.
 
 * **Image Collecting**
 
@@ -18,222 +18,212 @@ To get detailed instructions about the file transfer method, please refer to the
 
 (3) Move the file 'data_gather.py' from the current directory to the Raspberry Pi.
 
-(4) Press the short-cut ‘Ctrl+Alt+T’ to open the command-line terminal, and run the command ‘python3 data_gather.py’.
+(4) Press the short-cut 'Ctrl+Alt+T' to open the command-line terminal, and run the command 'python3 data_gather.py'.
 
-```py
+```bash
 python3 data_gather.py
 ```
 
 If the live camera feed window occurs, it means that the data is collected successfully.
 
-<img class="common_img" src="../_static/media/chapter_6\section_1-1\media\image3.png"  />
+<img class="common_img" src="../_static/media/chapter_6/section_1-1/media/image3.png"  />
 
-:::{Note}
-
-* **Press the 'S' key to save the current picture. Long-press 'S' to save multiple continuous pictures.**
-
-* **Press 'Q' to exit the program.**
-
-* **For enhanced model reliability, capture target recognition content from varying distances, angles of rotation, and tilts.**
-
-:::
+> [!Note]
+> 
+> * **Press the 'S' key to save the current picture. Long-press 'S' to save multiple continuous pictures.**
+> * **Press 'Q' to exit the program.**
+> * **For enhanced model reliability, capture target recognition content from varying distances, angles of rotation, and tilts.**
+> 
 
 After initiating data collection, a folder named '**my_data**' will be created at the '**/home/pi**' path. This folder comprises three subfolders: Annotations, imageSets, and JPEGImages. 'JPEGImages' stores the images, 'Annotations' stores the annotation files, and 'imageSets' contains paths used for storing the images.
 
 * **Image Collecting**
 
-:::{Note}
-
-**the input command should be case sensitive, and keywords can be complemented using Tab key.**
-
-:::
+> [!Note]
+> 
+> **the input command should be case sensitive, and keywords can be complemented using Tab key.**
+> 
 
 (1) Move the file '**labelImg.zip**' from the current directory to the Raspberry Pi.
 
-(2) Double-click <img class="common_img" src="../_static/media/chapter_6\section_1-1\media\image4.png"  /> to open the command-line terminal.
+(2) Double-click <img class="common_img" src="../_static/media/chapter_6/section_1-1/media/image4.png"  /> to open the command-line terminal.
 
-(3) Execute the command ‘**unzip labelImg.zip -d ./**’ to extract to the main directory.
+(3) Execute the command '**unzip labelImg.zip -d ./**' to extract to the main directory.
 
-```py
+```bash
 unzip labelImg.zip -d ./
 ```
 
-(4) Run the command ‘**cd labelImg/**’ to navigate to the labelImg folder.
+(4) Run the command '**cd labelImg/**' to navigate to the labelImg folder.
 
-```py
+```bash
 cd labelImg/
 ```
 
-(5) Run the command ‘**python3 labelImg.py** ’ to open the image labeling software.
+(5) Run the command '**python3 labelImg.py** ' to open the image labeling software.
 
-```py
+```bash
 python3 labelImg.py
 ```
 
-<img class="common_img" src="../_static/media/chapter_6\section_1-1\media\image8.png"  />
+<img class="common_img" src="../_static/media/chapter_6/section_1-1/media/image8.png"  />
 
 (6) The table below outlines the function of each icon:
 
 |                           **Icon**                           | **Short-cut** |                       **Function**                        |
 | :----------------------------------------------------------: | :-----------: | :-------------------------------------------------------: |
-| <img class="common_img" src="../_static/media/chapter_6\section_1-1/media/image9.png"  /> |    Ctrl+U     |     Select the directory where the picture is saved.      |
-| <img class="common_img" src="../_static/media/chapter_6\section_1-1/media/image10.png"  /> |    Ctrl+R     | Select the directory where the calibration data is saved. |
-| <img class="common_img" src="../_static/media/chapter_6\section_1-1/media/image11.png"  /> |       W       |                   Create annotation box                   |
-| <img class="common_img" src="../_static/media/chapter_6\section_1-1/media/image12.png"  /> |    Ctrl+S     |                      Save annotation                      |
-| <img class="common_img" src="../_static/media/chapter_6\section_1-1/media/image13.png"  /> |       A       |               Switch to the previous image                |
-| <img class="common_img" src="../_static/media/chapter_6\section_1-1/media/image14.png"  /> |       D       |                 Switch to the next image                  |
+| <img class="common_img" src="../_static/media/chapter_6/section_1-1/media/image9.png"  /> |    Ctrl+U     |     Select the directory where the picture is saved.      |
+| <img class="common_img" src="../_static/media/chapter_6/section_1-1/media/image10.png"  /> |    Ctrl+R     | Select the directory where the calibration data is saved. |
+| <img class="common_img" src="../_static/media/chapter_6/section_1-1/media/image11.png"  /> |       W       |                   Create annotation box                   |
+| <img class="common_img" src="../_static/media/chapter_6/section_1-1/media/image12.png"  /> |    Ctrl+S     |                      Save annotation                      |
+| <img class="common_img" src="../_static/media/chapter_6/section_1-1/media/image13.png"  /> |       A       |               Switch to the previous image                |
+| <img class="common_img" src="../_static/media/chapter_6/section_1-1/media/image14.png"  /> |       D       |                 Switch to the next image                  |
 
-(7) Press ‘**Ctrl+U**’ and select the folder ‘**/home/pi/my_data/JPEGImages/**’ , then click-on ‘Choose’ button.
+(7) Press '**Ctrl+U**' and select the folder '**/home/pi/my_data/JPEGImages/**' , then click-on 'Choose' button.
 
-<img class="common_img" src="../_static/media/chapter_6\section_1-1\media\image15.png"  />
+<img class="common_img" src="../_static/media/chapter_6/section_1-1/media/image15.png"  />
 
-(8) Press ‘**Ctrl+R**’ to select the directory where the calibration data is saved as ‘**/home/pi/my_data/Annotations/**’. Then click-on ‘Choose’ button.
+(8) Press '**Ctrl+R**' to select the directory where the calibration data is saved as '**/home/pi/my_data/Annotations/**'. Then click-on 'Choose' button.
 
-<img class="common_img" src="../_static/media/chapter_6\section_1-1\media\image16.png"  />
+<img class="common_img" src="../_static/media/chapter_6/section_1-1/media/image16.png"  />
 
 (9) Press the "**W**" key on the keyboard to initiate the creation of the label box. Position the mouse cursor appropriately, then press and hold the left mouse button while dragging it to encompass the entire target recognition content within the label box. Release the left mouse button to finalize the selection of the target recognition content.
 
-:::{Note}
+> [!Note]
+> 
+> **The objects depicted in the image below are solely for demonstration purposes and are not part of the material package you received. You may select any object for labeling and assign any label name accordingly.**
+> 
 
-**The objects depicted in the image below are solely for demonstration purposes and are not part of the material package you received. You may select any object for labeling and assign any label name accordingly.**
-
-:::
-
-<img class="common_img" src="../_static/media/chapter_6\section_1-1\media\image17.png"  />
+<img class="common_img" src="../_static/media/chapter_6/section_1-1/media/image17.png"  />
 
 (10) In the pop-up window, assign a category name to the target recognition content; for instance, "right." Once you've named it, either click the "OK" button or press the "Enter" key to save this category.
 
-:::{Note}
+> [!Note]
+> 
+> **Tags can be customized with any name of your choosing.**
+> 
 
-**Tags can be customized with any name of your choosing.**
-
-:::
-
-<img class="common_img" src="../_static/media/chapter_6\section_1-1\media\image18.png"  />
+<img class="common_img" src="../_static/media/chapter_6/section_1-1/media/image18.png"  />
 
 (11) Press the shortcut 'Ctrl+S' to save the labeling data for the current picture.
 
 (12) Label other pictures following steps 4-6.
 
-(13) Click-on <img class="common_img" src="../_static/media/chapter_6\section_1-1\media\image19.png"  /> to open the file manager, then navigate to the folder ‘**/home/pi/my_data/Annotations**’ where the labeled picture files are saved.
+(13) Click-on <img class="common_img" src="../_static/media/chapter_6/section_1-1/media/image19.png"  /> to open the file manager, then navigate to the folder '**/home/pi/my_data/Annotations**' where the labeled picture files are saved.
 
-<img class="common_img" src="../_static/media/chapter_6\section_1-1/media/image20.png"  />
+<img class="common_img" src="../_static/media/chapter_6/section_1-1/media/image20.png"  />
 
 ### 6.1.2 Data Format Conversion
 
-:::{Note}
-
-**Note: The input command should be case sensitive, and keywords can be complemented using Tab key.**
-
-:::
+> [!Note]
+> 
+> **Note: The input command should be case sensitive, and keywords can be complemented using Tab key.**
+> 
 
 (1) Start the Raspberry Pi, and access the system desktop using VNC.
 
-(2) Transfer the file ‘**xml2yolo.py**’ to the Raspberry Pi.
+(2) Transfer the file '**xml2yolo.py**' to the Raspberry Pi.
 
-(3) Use short-cut ‘**Ctrl+Alt+T**’ to open the command-line terminal. Then run the command ‘**cp xml2yolo.py my_data/**’, and hit Enter key.
+(3) Use short-cut '**Ctrl+Alt+T**' to open the command-line terminal. Then run the command '**cp xml2yolo.py my_data/**', and hit Enter key.
 
-```py
+```bash
 cp xml2yolo.py my_data/
 ```
 
-(4) Run the command ‘**cd my_data/**’, and press Enter key to navigate to the designated path.
+(4) Run the command '**cd my_data/**', and press Enter key to navigate to the designated path.
 
-```py
+```bash
 cd my_data/
 ```
 
-(5) Execute the command ‘**sudo vim classes.names**’, and hit Enter key to create a file.
+(5) Execute the command '**sudo vim classes.names**', and hit Enter key to create a file.
 
-```py
+```bash
 sudo vim classes.names
 ```
 
 (6) Press the '**I**' key to enter editing mode and add the class name for the target recognition content. If adding multiple class names, use one class name per line. ('label' represents the class name)
 
-<img class="common_img" src="../_static/media/chapter_6\section_1-2\media\image5.png"  />
+<img class="common_img" src="../_static/media/chapter_6/section_1-2/media/image5.png"  />
 
-:::{Note}
+> [!Note]
+> 
+> **The class names added here must be consistent with the naming convention used in the image annotation software 'labelImg'.**
+> 
 
-**The class names added here must be consistent with the naming convention used in the image annotation software 'labelImg'.**
+(7) Having finished the input, press 'Esc', and input ':wq' to save and close the file.
 
-:::
-
-(7) Having finished the input, press ‘Esc’, and input ‘:wq’ to save and close the file.
-
-```py
+```bash
 :wq
 ```
 
-(8) Execute the command ‘**pip3 install PyYAML**’, and hit Enter to download yaml module.
+(8) Execute the command '**pip3 install PyYAML**', and hit Enter to download yaml module.
 
-```py
+```bash
 pip3 install PyYAML
 ```
 
-(9) Run the command ‘**python3 /home/pi/my_data/xml2yolo.py --data /home/pi/my_data --yaml /home/pi/my_data/data.yaml**’, and hit Enter to convert the data format.
+(9) Run the command '**python3 /home/pi/my_data/xml2yolo.py --data /home/pi/my_data --yaml /home/pi/my_data/data.yaml**', and hit Enter to convert the data format.
 
-```py
+```bash
 python3 /home/pi/my_data/xml2yolo.py --data /home/pi/my_data --yaml /home/pi/my_data/data.yaml
 ```
 
 If the below prompt occurs, it means the data conversion is successful.
 
-:::{Note}
+> [!Note]
+> 
+> **The conversion content shown in the image below is for reference purposes only. Due to differences in the number and names of tag settings, adjustments may be necessary. The modified content will depend on the specific tag settings.**
+> 
 
-**The conversion content shown in the image below is for reference purposes only. Due to differences in the number and names of tag settings, adjustments may be necessary. The modified content will depend on the specific tag settings.**
-
-:::
-
-<img class="common_img" src="../_static/media/chapter_6\section_1-2/media/image9.png"  />
+<img class="common_img" src="../_static/media/chapter_6/section_1-2/media/image9.png"  />
 
 ### 6.1.3 Model Training
 
-:::{Note}
-
-**The input command should be case sensitive, and keywords can be complemented using Tab key.**
-
-:::
+> [!Note]
+> 
+> **The input command should be case sensitive, and keywords can be complemented using Tab key.**
+> 
 
 * **Setup Environment**
 
 (1) Start the Raspberry Pi, and access the system desktop using the remote control software VNC.
 
-(2) Use short-cut ‘Ctrl+Alt+T’ to open the command-line terminal, and execute the command ‘**git clone <https://github.com/ultralytics/yolov5.git’>** to download the Yolov5 installation package.
+(2) Use short-cut 'Ctrl+Alt+T' to open the command-line terminal, and execute the command '**git clone <https://github.com/ultralytics/yolov5.git'>** to download the Yolov5 installation package.
 
-```py
+```bash
 git clone <https://github.com/ultralytics/yolov5.git
 ```
 
-We have provided the ‘**yolov5.zip**’ package which can be directly transferred to the Raspberry Pi. Execute the command ‘**ubzip yolov5.zip .d ./**’, and hit Enter key to extract the package.
+We have provided the '**yolov5.zip**' package which can be directly transferred to the Raspberry Pi. Execute the command '**ubzip yolov5.zip .d ./**', and hit Enter key to extract the package.
 
-```py
+```bash
 ubzip yolov5.zip .d ./
 ```
 
-(3) Run the command ‘**cd yolov5/**’, and hit Enter key to navigate to the designated directory.
+(3) Run the command '**cd yolov5/**', and hit Enter key to navigate to the designated directory.
 
-```py
+```bash
 cd yolov5/
 ```
 
 (4) Type the command '**pip3 install -r requirements.txt**' and press Enter to initiate the installation of the script's environment. This process may take some time, so please be patient.
 
-```py
+```bash
 pip3 install -r requirements.txt
 ```
 
 * **Train Model**
 
-(1) Press ‘**Ctrl+Alt+T**’ to open the command-line terminal, and run the command ‘**cd yolov5/**’, then hit Enter key to navigate to the designated directory.
+(1) Press '**Ctrl+Alt+T**' to open the command-line terminal, and run the command '**cd yolov5/**', then hit Enter key to navigate to the designated directory.
 
-```py
+```bash
 cd yolov5/
 ```
 
-(2) Execute the following command to train the model ‘**python3 train.py --img 320 --batch 4 --epochs 5 --data /home/pi/my_data/data.yaml --weights ./yolov5s.pt**’, and hit Enter key.
+(2) Execute the following command to train the model '**python3 train.py --img 320 --batch 4 --epochs 5 --data /home/pi/my_data/data.yaml --weights ./yolov5s.pt**', and hit Enter key.
 
-```py
+```bash
 python3 train.py --img 320 --batch 4 --epochs 5 --data /home/pi/my_data/data.yaml --weights ./yolov5s.pt
 ```
 
@@ -241,37 +231,36 @@ In the command, "**--img**" represents the image size; "**--batch**" indicates t
 
 Users can adjust these parameters based on their specific requirements. To enhance model reliability, increasing the number of training iterations is advisable, although it will extend training time. For optimal model recognition, it's recommended to have a dataset size of over 150 images for each category.
 
-:::{Note}
-
-**The dataset used here should be collected following the instructions provided in 'Lesson 5 Image Collecting & Labeling'.**
-
-:::
+> [!Note]
+> 
+> **The dataset used here should be collected following the instructions provided in 'Lesson 5 Image Collecting & Labeling'.**
+> 
 
 (3) If you see the content shown in the picture below, it indicates that training is currently underway.
 
-<img class="common_img" src="../_static/media/chapter_6\section_1-3\media\image7.png"  />
+<img class="common_img" src="../_static/media/chapter_6/section_1-3/media/image7.png"  />
 
 When you see the following content, it signifies that the training has been completed. The red box indicates the storage location of the model after training, with 'best.pt' being the model file.
 
-<img class="common_img" src="../_static/media/chapter_6\section_1-3\media\image8.png"  />
+<img class="common_img" src="../_static/media/chapter_6/section_1-3/media/image8.png"  />
 
 * **Model Usage**
 
 (1) Start the Raspberry Pi, and access the robot system desktop using VNC.
 
-(2) Use short-cut ‘**Ctrl+Alt+T**’ to open the command-line terminal. Then run the command ‘**cd yolov5/**’, and hit Enter to navigate to the designated directory.
+(2) Use short-cut '**Ctrl+Alt+T**' to open the command-line terminal. Then run the command '**cd yolov5/**', and hit Enter to navigate to the designated directory.
 
-```py
+```bash
 cd yolov5/
 ```
 
-(3) Execute the command ‘**python3 detect.py --weights runs/train/exp10/weights/best.pt --source 0**’ to initiate Yolov5 recognition
+(3) Execute the command '**python3 detect.py --weights runs/train/exp10/weights/best.pt --source 0**' to initiate Yolov5 recognition
 
 --weights runs/train/exp10/weights/best.pt': Specifies the file path for the trained model's weights as 'runs/train/exp10/weights/best.pt
 
 --source 0': Specifies the input source as 0, which typically denotes using the camera (webcam) as the input source.
 
-```py
+```bash
 python3 detect.py --weights runs/train/exp10/weights/best.pt --source 0
 ```
 
@@ -285,7 +274,7 @@ After a waiting period, the box displayed on the return screen below confirms su
 
 Press "ctrl+c" to exit.
 
-<img class="common_img" src="../_static/media/chapter_6\section_1-3/media/image10.png"  />
+<img class="common_img" src="../_static/media/chapter_6/section_1-3/media/image10.png"  />
 
 ## 6.2 Application Course
 
@@ -295,7 +284,7 @@ Press "ctrl+c" to exit.
 
 MediaPipe is an open-source framework of multi-media machine learning models. Cross-platform MediaPipe can run on mobile devices, workspace and servers, as well as support mobile GPU acceleration. It is also compatible with TensorFlow and TF Lite Inference Engine, and all kinds of TensorFlow and TF Lite models can be applied on it. Besides, MediaPipe supports GPU acceleration of mobile and embedded platform.
 
-<img class="common_img" src="../_static/media/chapter_6\section_2-1\media\image2.png"  />
+<img class="common_img" src="../_static/media/chapter_6/section_2-1/media/image2.png"  />
 
 * **MediaPipe Pros and Cons**
 
@@ -319,13 +308,13 @@ MediaPipe is an open-source framework of multi-media machine learning models. Cr
 
 The figure below shows how to use MediaPipe. The solid line represents the part to coded, and the dotted line indicates the part not to coded. MediaPipe can offer the result and the function realization framework quickly.
 
-<img class="common_img" src="../_static/media/chapter_6\section_2-1\media\image3.png"   />
+<img class="common_img" src="../_static/media/chapter_6/section_2-1/media/image3.png"   />
 
 (1) **Dependency**
 
 MediaPipe utilizes OpenCV to process video, and uses [FFMPEG](https://www.ffmpeg.org/) to process audio data. Furthermore, it incorporates other essential dependencies, including OpenGL/Metal, Tensorflow, and Eigen.
 
-For seamless usage of MediaPipe, we suggest gaining a basic understanding of OpenCV. To delve into OpenCV, you can find detailed information in ‘**[5. OpenCV Computer Vision Course]()**’.
+For seamless usage of MediaPipe, we suggest gaining a basic understanding of OpenCV. To delve into OpenCV, you can find detailed information in '**[5. OpenCV Computer Vision Course](5_OpenCV_Computer_Vision_Course.md)**'.
 
 (2) **MediaPipe Solutions**
 
@@ -335,51 +324,50 @@ The Solutions are developed using open-source pre-constructed samples from Tenso
 
 * **MediaPipe Learning Resources**
 
-MediaPipe website：https://developers.google.com/mediapipe
+MediaPipe website：<https://developers.google.com/mediapipe>
 
-MediaPipe Wiki：http://i.bnu.edu.cn/wiki/index.php?title=Mediapipe
+MediaPipe Wiki：<http://i.bnu.edu.cn/wiki/index.php?title=Mediapipe>
 
 MediaPipe github：<https://github.com/google/mediapipe>
 
-Dlib website: http://dlib.net/
+Dlib website: <http://dlib.net/>
 
 dlib github: <https://github.com/davisking/dlib>
 
 * **Install MediaPipe**
 
-(1) Start the Raspberry Pi, and access the robot system desktop using VNC. Use short-cut ‘**CTRL+ALT+T**’ to open the command-line terminal, and execute the command ‘**sudo apt update**’ to install and update APT download lists.
+(1) Start the Raspberry Pi, and access the robot system desktop using VNC. Use short-cut '**CTRL+ALT+T**' to open the command-line terminal, and execute the command '**sudo apt update**' to install and update APT download lists.
 
-```py
+```bash
 sudo apt update
 ```
 
-(2) Run the command ‘**sudo apt install python3-pip**’ to install pip.
+(2) Run the command '**sudo apt install python3-pip**' to install pip.
 
-:::{Note}
+> [!Note]
+> 
+> **Failure to update pip may cause the installation to fail.**
+> 
 
-**Failure to update pip may cause the installation to fail.**
-
-:::
-
-```py
+```bash
 sudo apt install python3-pip
 ```
 
-(3) Execute the command ‘**pip3 install --upgrade pip**’ to update pip.
+(3) Execute the command '**pip3 install --upgrade pip**' to update pip.
 
-```py
+```bash
 pip3 install --upgrade pip
 ```
 
-(4) Type the command ‘**pip3 install dataclasses**’ to install the dependency package.
+(4) Type the command '**pip3 install dataclasses**' to install the dependency package.
 
-```py
+```bash
 pip3 install dataclasses
 ```
 
-(5) Run the command ‘**pip3 install mediapipe**’ to install MediaPiPe, which will takes a certain period of time. Please be patient!
+(5) Run the command '**pip3 install mediapipe**' to install MediaPiPe, which will takes a certain period of time. Please be patient!
 
-```py
+```bash
 pip3 install mediapipe
 ```
 
@@ -397,33 +385,32 @@ Finally, complete the process by replacing the background with a virtual backgro
 
 * **Operation Steps**
 
-:::{Note}
+> [!Note]
+> 
+> **the input command should be case sensitive, and keywords can be complemented using Tab key.**
+> 
 
-**the input command should be case sensitive, and keywords can be complemented using Tab key.**
+(1) Transfer the file '**self_segmentation.py**' saved in the same directory to the Raspberry Pi.
 
-:::
+(2) Start the Raspberry Pi and access the robot system desktop using VNC. Press the short-cut '**CTRL+ALT+T**' to open the command-line terminal, then execute the command '**cd Mediapipe/**', and hit Enter key to navigate to the directory containing the game programs.
 
-(1) Transfer the file ‘**self_segmentation.py**’ saved in the same directory to the Raspberry Pi.
-
-(2) Start the Raspberry Pi and access the robot system desktop using VNC. Press the short-cut ‘**CTRL+ALT+T**’ to open the command-line terminal, then execute the command ‘**cd Mediapipe/**’, and hit Enter key to navigate to the directory containing the game programs.
-
-```py
+```bash
 cd Mediapipe/
 ```
 
-(3) Run the command ‘**python3 self_segmentation.py**’, and hit Enter key to initiate the background segmentation detection program.
+(3) Run the command '**python3 self_segmentation.py**', and hit Enter key to initiate the background segmentation detection program.
 
-```py
+```bash
 python3 self_segmentation.py
 ```
 
-(4) If you need to terminate the program, use short-cut ‘**Ctrl+C**’.
+(4) If you need to terminate the program, use short-cut '**Ctrl+C**'.
 
 * **Program Outcome**
 
 Once the game starts, the screen will transition to a gray virtual background. As soon as a human figure appears, the program will automatically execute background removal, effectively separating the human from the virtual background.
 
-<img class="common_img" src="../_static/media/chapter_6\section_2-2\media\image4.png"  /><img class="common_img" src="../_static/media/chapter_6\section_2-2\media\image5.png"  />
+<img class="common_img" src="../_static/media/chapter_6/section_2-2/media/image4.png"  /><img class="common_img" src="../_static/media/chapter_6/section_2-2/media/image5.png"  />
 
 * **Program Analysis**
 
@@ -431,7 +418,7 @@ The source code of this program locates in:
 
 **/home/pi/Mediapipe/self_segmentation.py**
 
-<img class="common_img" src="../_static/media/chapter_6\section_2-2\media\image6.png"  />
+<img class="common_img" src="../_static/media/chapter_6/section_2-2/media/image6.png"  />
 
 * **Basic Configuration**
 
@@ -532,39 +519,38 @@ Finally, draw the 3D boundary frame on the image.
 
 * **Operation Steps**
 
-:::{Note}
+> [!Note]
+> 
+> **the input command should be case sensitive, and keywords can be complemented using Tab key.**
+> 
 
-**the input command should be case sensitive, and keywords can be complemented using Tab key.**
+(1) Transfer the file '**self_segmentation.py**' saved in the same directory to the Raspberry Pi.
 
-:::
+(2) Start the Raspberry Pi and access the robot system desktop using VNC. Press the short-cut '**CTRL+ALT+T**' to open the command-line terminal, then execute the command '**cd Mediapipe/**', and hit Enter key to navigate to the directory containing the game programs.
 
-(1) Transfer the file ‘**self_segmentation.py**’ saved in the same directory to the Raspberry Pi.
-
-(2) Start the Raspberry Pi and access the robot system desktop using VNC. Press the short-cut ‘**CTRL+ALT+T**’ to open the command-line terminal, then execute the command ‘**cd Mediapipe/**’, and hit Enter key to navigate to the directory containing the game programs.
-
-```py
+```bash
 cd Mediapipe/
 ```
 
-(3) Run the command ‘**python3 objectron.py**’, and hit Enter key to initiate the 3D object detection program.
+(3) Run the command '**python3 objectron.py**', and hit Enter key to initiate the 3D object detection program.
 
-```py
+```bash
 python3 objectron.py
 ```
 
-(4) If you need to terminate the program, use short-cut ‘**Ctrl+C**’.
+(4) If you need to terminate the program, use short-cut '**Ctrl+C**'.
 
 * **Program Outcome**
 
 Once the game starts, the 3D frame will be drawn around the boundary of the recognized object. The system can identify several objects, including a cup (with handle), shoe, chair, and camera.
 
-<img class="common_img" src="D:/1. Raspberry Pi 5 Controller/6. Machine Learning Course/chapter_6/section_2-3/media/image4.png"  />
+<img class="common_img" src="../_static/media/chapter_6/section_2-3/media/image4.png"  />
 
 * **Program Analysis**
 
 The source code of this program locates in: **/home/pi/Mediapipe/objectron.py**
 
-<img class="common_img" src="D:/1. Raspberry Pi 5 Controller/6. Machine Learning Course/chapter_6/section_2-3/media/image5.png"  />
+<img class="common_img" src="../_static/media/chapter_6/section_2-3/media/image5.png"  />
 
 * **Basic Configuration**
 
@@ -642,7 +628,7 @@ By calling the imshow() function in the cv2 library, the camera image is display
 cv2.imshow('MediaPipe Selfie Segmentation', result_image)
 ```
 
-The first parameter within the function brackets, "'MediaPipe Objectron'", represents the window name, while the second parameter, "result_image", denotes the image to be displayed.
+The first parameter within the function brackets, "'**MediaPipe Objectron**'", represents the window name, while the second parameter, "**result_image**", denotes the image to be displayed.
 
 ### 6.2.4 Face Detection
 
@@ -662,23 +648,22 @@ Finally, frame the human face and mark the six key points.
 
 * **Operation Steps**
 
-:::{Note}
+> [!Note]
+> 
+> **the input command should be case sensitive, and keywords can be complemented using Tab key.**
+> 
 
-**the input command should be case sensitive, and keywords can be complemented using Tab key.**
+(1) Transfer the file '**mp_face_detect.py**' saved in the same folder as this document to the Raspberry Pi.
 
-:::
+(2) Start the Raspberry Pi and access the Raspberry Pi system desktop using VNC. Press the short-cut '**CTRL+ALT+T**' to open the command-line terminal. Then execute the command '**cd Mediapipe/**', and hit Enter to navigate to the directory containing the game programs.
 
-(1) Transfer the file ‘**mp_face_detect.py**’ saved in the same folder as this document to the Raspberry Pi.
-
-(2) Start the Raspberry Pi and access the Raspberry Pi system desktop using VNC. Press the short-cut ‘**CTRL+ALT+T**’ to open the command-line terminal. Then execute the command ‘**cd Mediapipe/**’, and hit Enter to navigate to the directory containing the game programs.
-
-```py
+```bash
 cd Mediapipe/
 ```
 
-(3) Run the command ‘**python3 face_detect.py**’ to run the face detection program.
+(3) Run the command '**python3 face_detect.py**' to run the face detection program.
 
-```py
+```bash
 python3 face_detect.py
 ```
 
@@ -686,13 +671,13 @@ python3 face_detect.py
 
 After starting the game, the system will recognize the human face on the screen and mark its key feature points.
 
-<img class="common_img" src="D:/1. Raspberry Pi 5 Controller/6. Machine Learning Course/chapter_6/section_2-4/media/image4.png"  />
+<img class="common_img" src="../_static/media/chapter_6/section_2-4/media/image4.png"  />
 
 * **Program Analysis**
 
 The program source code locates in: **/home/pi/Mediapipe/face_detect.py**
 
-<img class="common_img" src="D:/1. Raspberry Pi 5 Controller/6. Machine Learning Course/chapter_6/section_2-4/media/image5.png"  />
+<img class="common_img" src="../_static/media/chapter_6/section_2-4/media/image5.png"  />
 
 * **Basic Configuration**
 
@@ -719,9 +704,9 @@ Retrieve the camera image by invoking the VideoCapture() function from the cv2 l
 cap = cv2.VideoCapture("/dev/depth_cam")
 ```
 
-The parameters within the function parentheses specify the camera interface. "0" can be used as a default option for reading.
+The parameters within the function parentheses specify the camera interface. "**0**" can be used as a default option for reading.
 
-If the current device is connected to a single camera, either "0" or "-1" can be used as the camera ID. If the device has multiple cameras, "0" denotes the first camera, "1" the second camera, and so forth for additional camera IDs.
+If the current device is connected to a single camera, either "**0**" or "**-1**" can be used as the camera ID. If the device has multiple cameras, "**0**" denotes the first camera, "**1**" the second camera, and so forth for additional camera IDs.
 
 * **Convert Color Space**
 
@@ -765,7 +750,7 @@ cv2.imshow('MediaPipe Selfie Segmentation', result_image)
 
 '**MediaPipe Objectron**' represents the name of the window.
 
-‘**result_image**’ denotes the image to be displayed.
+'**result_image**' denotes the image to be displayed.
 
 ### 6.2.5 3D Face Detection
 
@@ -789,41 +774,40 @@ Finally, the faces in the detected image are rendered into a three-dimensional g
 
 * **Operation Steps**
 
-:::{Note}
+> [!Note]
+> 
+> **the input command should be case sensitive, and keywords can be complemented using Tab key.**
+> 
 
-**the input command should be case sensitive, and keywords can be complemented using Tab key.**
+(1) Transfer the file '**mp_face_detect.py**' saved in the same folder as this document to the Raspberry Pi.
 
-:::
+(2) Start the Raspberry Pi and access the Raspberry Pi system desktop using VNC. Press the short-cut '**CTRL+ALT+T**' to open the command-line terminal. Then execute the command '**cd Mediapipe/**', and hit Enter to navigate to the directory containing the game programs.
 
-(1) Transfer the file ‘**mp_face_detect.py**’ saved in the same folder as this document to the Raspberry Pi.
-
-(2) Start the Raspberry Pi and access the Raspberry Pi system desktop using VNC. Press the short-cut ‘**CTRL+ALT+T**’ to open the command-line terminal. Then execute the command ‘**cd Mediapipe/**’, and hit Enter to navigate to the directory containing the game programs.
-
-```py
+```bash
 cd Mediapipe/
 ```
 
-(3) Run the command ‘**python3 face_mesh.py**’ and hit Enter key to initiate the game program.
+(3) Run the command '**python3 face_mesh.py**' and hit Enter key to initiate the game program.
 
-```py
+```bash
 python3 face_mesh.py
 ```
 
-<img class="common_img" src="D:/1. Raspberry Pi 5 Controller/6. Machine Learning Course/chapter_6/section_2-5/media/image3.png"  />
+<img class="common_img" src="../_static/media/chapter_6/section_2-5/media/image3.png"  />
 
-(4) If you need to terminate this program, use short-cut ‘**Ctrl+C**’.
+(4) If you need to terminate this program, use short-cut '**Ctrl+C**'.
 
 * **Program Outcome**
 
 After initiating game, the camera detects a human face and projects its three-dimensional outline onto the live camera feed.
 
-<img class="common_img" src="D:/1. Raspberry Pi 5 Controller/6. Machine Learning Course/chapter_6/section_2-5/media/image4.png"  />
+<img class="common_img" src="../_static/media/chapter_6/section_2-5/media/image4.png"  />
 
 * **Program Analysis**
 
 The program source code locates in: **/home/pi/Mediapipe/face_mesh.py**
 
-<img class="common_img" src="D:/1. Raspberry Pi 5 Controller/6. Machine Learning Course/chapter_6/section_2-5/media/image5.png"  />
+<img class="common_img" src="../_static/media/chapter_6/section_2-5/media/image5.png"  />
 
 * **Basic Configuration**
 
@@ -852,9 +836,9 @@ Retrieve the camera image by invoking the VideoCapture() function from the cv2 l
 cap = cv2.VideoCapture("/dev/usb_cam")
 ```
 
-The parameters within the function parentheses specify the camera interface. "0" can be used as a default option for reading.
+The parameters within the function parentheses specify the camera interface. "**0**" can be used as a default option for reading.
 
-If the current device is connected to a single camera, either "0" or "-1" can be used as the camera ID. If the device has multiple cameras, "0" denotes the first camera, "1" the second camera, and so forth for additional camera IDs.
+If the current device is connected to a single camera, either "**0**" or "**-1**" can be used as the camera ID. If the device has multiple cameras, "**0**" denotes the first camera, "**1**" the second camera, and so forth for additional camera IDs.
 
 * **Convert Color Space**
 
@@ -917,23 +901,22 @@ Next, the minimum confidence threshold of the hand detection model is compared t
 
 * **Operation Steps**
 
-:::{Note}
+> [!Note]
+> 
+> **The input command should be case sensitive, and keywords can be complemented using Tab key.**
+> 
 
-**The input command should be case sensitive, and keywords can be complemented using Tab key.**
+(1) Start the Raspberry Pi and access the system desktop using VNC, then transfer the file '**hand.py**' saved in the same folder as this document to the Raspberry Pi.
 
-:::
+(2) After navigating to the system desktop, press '**CTRL+ALT+T**' to open the command-line terminal. Then execute the command '**cd Mediapipe/**', and hit Enter key to navigate to the directory containing game programs.
 
-(1) Start the Raspberry Pi and access the system desktop using VNC, then transfer the file ‘**hand.py**’ saved in the same folder as this document to the Raspberry Pi.
-
-(2) After navigating to the system desktop, press ‘**CTRL+ALT+T**’ to open the command-line terminal. Then execute the command ‘**cd Mediapipe/**’, and hit Enter key to navigate to the directory containing game programs.
-
-```py
+```bash
 cd Mediapipe/
 ```
 
-(3) Run the command ‘**python3 hand.py**’, and hit Enter key to initiate the game program.
+(3) Run the command '**python3 hand.py**', and hit Enter key to initiate the game program.
 
-```py
+```bash
 python3 hand.py
 ```
 
@@ -941,13 +924,13 @@ python3 hand.py
 
 Once the game begins, the camera's output screen will display the hand's keypoints and the connections between them when the hand is detected.
 
-<img class="common_img" src="D:/1. Raspberry Pi 5 Controller/6. Machine Learning Course/chapter_6/section_2-6/media/image4.png"  />
+<img class="common_img" src="../_static/media/chapter_6/section_2-6/media/image4.png"  />
 
 * **Program Analysis**
 
 The program source code is saved in: **/home/pi/Mediapipe/hand.py**
 
-<img class="common_img" src="D:/1. Raspberry Pi 5 Controller/6. Machine Learning Course/chapter_6/section_2-6/media/image5.png"  />
+<img class="common_img" src="../_static/media/chapter_6/section_2-6/media/image5.png"  />
 
 * **Basic Configuration**
 
@@ -1025,7 +1008,7 @@ This tutorial employs MediaPipe's limb detection model to identify key points of
 
 MediaPipe Pose is a sophisticated model designed for precise body pose tracking. It utilizes BlazePose to infer 33 3D keypoints across the body from RGB color space. Additionally, this research offers support for the ML Kit Pose detection API, enhancing accessibility and usability.
 
-<img class="common_img" src="../_static/media/chapter_6\section_2-7\media\image2.png"  />
+<img class="common_img" src="../_static/media/chapter_6/section_2-7/media/image2.png"  />
 
 * **Program Logic**
 
@@ -1041,39 +1024,38 @@ After importing MediaPipe's limb detection model, we obtain the real-time pictur
 
 * **Operation Steps**
 
-:::{Note}
+> [!Note]
+> 
+> **The input command should be case sensitive, and keywords can be complemented using Tab key.**
+> 
 
-**The input command should be case sensitive, and keywords can be complemented using Tab key.**
+(1) Transfer the file '**pose.py**' saved in the same folder as this document to the Raspberry Pi.
 
-:::
+(2) Start the Raspberry Pi, and access the system desktop using VNC. Then hit '**CTRL+ALT+T**' to open the command-line terminal, and execute the command '**cd Mediapipe/**' and hit Enter key to navigate to the directory containing game programs.
 
-(1) Transfer the file ‘**pose.py**’ saved in the same folder as this document to the Raspberry Pi.
-
-(2) Start the Raspberry Pi, and access the system desktop using VNC. Then hit ‘**CTRL+ALT+T**’ to open the command-line terminal, and execute the command ‘**cd Mediapipe/**’ and hit Enter key to navigate to the directory containing game programs.
-
-```py
+```bash
 cd Mediapipe/
 ```
 
-(3) Run the command ‘**python3 hand.py**’, and hit Enter key to initiate the game program.
+(3) Run the command '**python3 hand.py**', and hit Enter key to initiate the game program.
 
-```py
+```bash
 python3 hand.py
 ```
 
-(4) To terminate this game, simply press "Ctrl+C" within the terminal interface. If the termination process fails, please attempt again.
+(4) To terminate this game, simply press "**Ctrl+C**" within the terminal interface. If the termination process fails, please attempt again.
 
 * **Program Outcome**
 
 Upon initiating the game, the camera captures the human body posture, showcasing the key points of the limbs and the connections between them on the output screen.
 
-<img class="common_img" src="../_static/media/chapter_6\section_2-7\media\image5.png"  />
+<img class="common_img" src="../_static/media/chapter_6/section_2-7/media/image5.png"  />
 
 * **Program Analysis**
 
 The program source code is saved in: **/home/pi/Mediapipe/pose.py**
 
-<img class="common_img" src="../_static/media/chapter_6\section_2-7\media\image6.png"  />
+<img class="common_img" src="../_static/media/chapter_6/section_2-7/media/image6.png"  />
 
 * **Basic Configuration**
 
@@ -1099,9 +1081,9 @@ Retrieve the camera image by invoking the VideoCapture() function from the cv2 l
 cap = cv2.VideoCapture("/dev/usb_cam")
 ```
 
-The parameters within the function parentheses specify the camera interface. "0" can be used as a default option for reading.
+The parameters within the function parentheses specify the camera interface. "**0**" can be used as a default option for reading.
 
-If the current device is connected to a single camera, either "0" or "-1" can be used as the camera ID. If the device has multiple cameras, "0" denotes the first camera, "1" the second camera, and so forth for additional camera IDs.
+If the current device is connected to a single camera, either "**0**" or "**-1**" can be used as the camera ID. If the device has multiple cameras, "**0**" denotes the first camera, "**1**" the second camera, and so forth for additional camera IDs.
 
 * **Convert Color Space**
 
@@ -1154,7 +1136,7 @@ The initial parameter, "'**MediaPipe Pose**'," inside the function brackets, sig
 
 Machine Learning forms the cornerstone of artificial intelligence, serving as the fundamental approach to endow machines with intelligence. It spans multiple interdisciplinary fields such as probability theory, statistics, approximation theory, convex analysis, and algorithm complexity theory.
 
-<img class="common_img" src="../_static/media/chapter_6\section_3-1\media\image2.png"  />
+<img class="common_img" src="../_static/media/chapter_6/section_3-1/media/image2.png"  />
 
 In essence, machine learning explores how computers can acquire new knowledge or skills by mimicking human learning behaviors and continuously enhancing their performance by reorganizing existing knowledge structures. Practically, it entails utilizing data to train models and leveraging these models for predictions.
 
@@ -1168,7 +1150,7 @@ Machine learning can be broadly categorized into two types: supervised learning 
 
 Supervised learning involves providing a labeled dataset to the algorithm, where the correct answers are known. The machine learning algorithm uses this dataset to learn how to compute the correct answers. It is the most commonly used type of machine learning.
 
-For instance, in image recognition, a large dataset of dog pictures can be provided, with each picture labeled as "dog". This labeled dataset serves as the "correct answer". By learning from this dataset, the machine can develop the ability to recognize dogs in new images.<img class="common_img" src="../_static/media/chapter_6\section_3-1\media\image3.png"  />
+For instance, in image recognition, a large dataset of dog pictures can be provided, with each picture labeled as "dog". This labeled dataset serves as the "**correct answer**". By learning from this dataset, the machine can develop the ability to recognize dogs in new images.<img class="common_img" src="../_static/media/chapter_6/section_3-1/media/image3.png"  />
 
 Model Selection: In supervised learning, selecting the right model to represent the data relationship is crucial. Common supervised learning models encompass linear regression, logistic regression, decision trees, support vector machines (SVM), and deep neural networks. The choice of model hinges on the data's characteristics and the problem's nature.
 
@@ -1186,7 +1168,7 @@ Unsupervised learning involves providing an unlabeled dataset to the algorithm, 
 
 For instance, in image classification, a large dataset of cat and dog pictures can be provided without any labels. Through unsupervised learning, the machine can learn to divide the pictures into two categories: cat pictures and dog pictures.
 
-<img class="common_img" src="../_static/media/chapter_6\section_3-1/media/image4.png"  />
+<img class="common_img" src="../_static/media/chapter_6/section_3-1/media/image4.png"  />
 
 ### 6.3.2 Introduction to Machine Learning Library
 
@@ -1218,7 +1200,7 @@ MXNet is a top-tier deep learning framework that supports multiple programming l
 
 MXNet is specifically designed for efficiency and flexibility, with accelerated libraries that enable developers to leverage the full power of GPUs and cloud computing. It also supports distributed computing across dynamic cloud architectures via distributed parameter servers, achieving near-linear scaling with multiple GPUs/CPUs. Whether you're working on a small-scale project or a large-scale deep learning application, MXNet provides the tools and support you need to succeed.
 
-### **6.3.3 Yolov5 Model**
+### 6.3.3 Yolov5 Model
 
 * **Introduction to Yolo Model Series**
 
@@ -1256,9 +1238,9 @@ In YOLOv5, the data being processed is typically an image, which is two-dimensio
 
 During convolution, the periphery of the image may remain unchanged or be expanded as needed, and the convolution result is then placed back into the corresponding position in the image. For instance, if an image has a resolution of 6×6, it may be first expanded to a 7×7 image, and then substituted into the convolution kernel for calculation. The resulting data is then refilled into a blank image with a resolution of 6×6.
 
-<img class="common_img" src="D:/1. Raspberry Pi 5 Controller/6. Machine Learning Course/chapter_6/section_3-3/media/image2.png"   />
+<img class="common_img" src="../_static/media/chapter_6/section_3-3/media/image2.png"   />
 
-<img class="common_img" src="D:/1. Raspberry Pi 5 Controller/6. Machine Learning Course/chapter_6/section_3-3/media/image3.png"   />
+<img class="common_img" src="../_static/media/chapter_6/section_3-3/media/image3.png"   />
 
 ② Pooling layer: enlarge the features of image
 
@@ -1266,11 +1248,11 @@ The pooling layer is an essential part of a convolutional neural network and is 
 
 There are different types of pooling techniques available, including global pooling, average pooling, maximum pooling, and more. Each technique has its unique effect on the features extracted from the image.
 
-<img class="common_img" src="D:/1. Raspberry Pi 5 Controller/6. Machine Learning Course/chapter_6/section_3-3/media/image4.png"   />
+<img class="common_img" src="../_static/media/chapter_6/section_3-3/media/image4.png"   />
 
 Maximum pooling can extract the most distinctive features from an image, while discarding the remaining ones. For example, if we take an image with a resolution of 6×6 pixels, we can use a 2×2 filter to downsample the image and obtain a new image with reduced dimensions.
 
-<img class="common_img" src="D:/1. Raspberry Pi 5 Controller/6. Machine Learning Course/chapter_6/section_3-3/media/image5.png"   />
+<img class="common_img" src="../_static/media/chapter_6/section_3-3/media/image5.png"   />
 
 ③ Upsampling layer: restore the size of an image
 
@@ -1278,7 +1260,7 @@ This process is sometimes referred to as "anti-pooling". While upsampling restor
 
 For example, let's consider an image with a resolution of 6×6 pixels. Before upsampling, use 3X3 filter to calculate the original image so as to get the new image.
 
-<img class="common_img" src="D:/1. Raspberry Pi 5 Controller/6. Machine Learning Course/chapter_6/section_3-3/media/image6.png"   />
+<img class="common_img" src="../_static/media/chapter_6/section_3-3/media/image6.png"   />
 
 ④ Batch normalization layer: organize data
 
@@ -1286,7 +1268,7 @@ It aims to reduce the computational complexity of the model and to ensure that t
 
 Batch normalization works by standardizing the data within each mini-batch, which reduces the loss of information during the calculation process. By retaining more features in each calculation, batch normalization can improve the sensitivity of the model to the data.
 
-<img class="common_img" src="D:/1. Raspberry Pi 5 Controller/6. Machine Learning Course/chapter_6/section_3-3/media/image7.png"   />
+<img class="common_img" src="../_static/media/chapter_6/section_3-3/media/image7.png"   />
 
 ⑤ RELU layer: activate function
 
@@ -1294,19 +1276,19 @@ The activation function is a crucial component in the process of building a neur
 
 There are many different types of activation functions. Some of the most common activation functions include the ReLU, Tanh, and Sigmoid. For example, ReLU is a piecewise function that replaces all values less than zero with zero, while leaving positive values unchanged.
 
-<img class="common_img" src="D:/1. Raspberry Pi 5 Controller/6. Machine Learning Course/chapter_6/section_3-3/media/image8.GIF"   />
+<img class="common_img" src="../_static/media/chapter_6/section_3-3/media/image8.GIF"   />
 
 ⑥ ADD layer: add tensor
 
 In a typical neural network, the features can be divided into two categories: salient features and inconspicuous features.
 
-<img class="common_img" src="D:/1. Raspberry Pi 5 Controller/6. Machine Learning Course/chapter_6/section_3-3/media/image9.png"   />
+<img class="common_img" src="../_static/media/chapter_6/section_3-3/media/image9.png"   />
 
 ⑦ Concat layer: splice tensor
 
 It is used to splice together tensors of features, allowing for the combination of features that have been extracted in different ways. This can help to increase the richness and complexity of the feature set.
 
-<img class="common_img" src="D:/1. Raspberry Pi 5 Controller/6. Machine Learning Course/chapter_6/section_3-3/media/image10.png"   />
+<img class="common_img" src="../_static/media/chapter_6/section_3-3/media/image10.png"   />
 
 (2) **Compound Element**
 
@@ -1316,7 +1298,7 @@ When building a model, using only the layers mentioned above to construct functi
 
 A convolutional unit consists of a convolutional layer, a batch normalization layer, and an activation function. The convolution is performed first, followed by batch normalization, and finally activated using an activation function.
 
-<img class="common_img" src="D:/1. Raspberry Pi 5 Controller/6. Machine Learning Course/chapter_6/section_3-3/media/image11.png"   />
+<img class="common_img" src="../_static/media/chapter_6/section_3-3/media/image11.png"   />
 
 ② Focus module
 
@@ -1326,7 +1308,7 @@ As shown in the figure below, taking an image with a resolution of 6×6 as an ex
 
 By concatenating the small images at position 1 in each large region, a 3×3 image can be obtained. The small images at other positions are similarly concatenated, and the original 6×6 image will be broken down into four 3×3 images.
 
-<img class="common_img" src="D:/1. Raspberry Pi 5 Controller/6. Machine Learning Course/chapter_6/section_3-3/media/image12.png"   />
+<img class="common_img" src="../_static/media/chapter_6/section_3-3/media/image12.png"   />
 
 ③ Residual unit
 
@@ -1334,9 +1316,9 @@ The function of the residual unit is to enable the model to learn small changes 
 
 The first path uses two convolutional units to sample the image, while the second path does not use convolutional units for sampling but directly uses the original image. Finally, the data from the first path is added to the second path.
 
-<img class="common_img" src="D:/1. Raspberry Pi 5 Controller/6. Machine Learning Course/chapter_6/section_3-3/media/image13.png"   />
+<img class="common_img" src="../_static/media/chapter_6/section_3-3/media/image13.png"   />
 
-<img class="common_img" src="D:/1. Raspberry Pi 5 Controller/6. Machine Learning Course/chapter_6/section_3-3/media/image14.png"   />
+<img class="common_img" src="../_static/media/chapter_6/section_3-3/media/image14.png"   />
 
 ④ Composite Convolution Unit
 
@@ -1344,33 +1326,33 @@ In YOLOv5, the composite convolution unit is characterized by the ability to cus
 
 The first path only has one convolutional layer for sampling, while the second path has 2x+1 convolutional units and one convolutional layer for sampling. After sampling and splicing, the data is organized through batch normalization and then activated by an activation function. Finally, a convolutional layer is used for sampling.'
 
-<img class="common_img" src="D:/1. Raspberry Pi 5 Controller/6. Machine Learning Course/chapter_6/section_3-3/media/image15.png"   />
+<img class="common_img" src="../_static/media/chapter_6/section_3-3/media/image15.png"   />
 
 ⑤ Compound Residual Convolutional Unit
 
 The compound residual convolutional unit replaces the 2x convolutional layers in the compound convolutional unit with x residual units. In YOLOv5, the feature of the compound residual unit is mainly that the residual units can be customized according to the needs.
 
-<img class="common_img" src="D:/1. Raspberry Pi 5 Controller/6. Machine Learning Course/chapter_6/section_3-3/media/image16.png"   />
+<img class="common_img" src="../_static/media/chapter_6/section_3-3/media/image16.png"   />
 
 ⑥ Composite Pooling Unit
 
 The output data of the convolutional unit is fed into three max pooling layers and an additional copy is kept without processing. Then, the data from the four paths are concatenated and input into a convolutional unit. Using the composite pooling unit to process the data can significantly enhance the features of the original data.
 
-<img class="common_img" src="D:/1. Raspberry Pi 5 Controller/6. Machine Learning Course/chapter_6/section_3-3/media/image17.png"   />
+<img class="common_img" src="../_static/media/chapter_6/section_3-3/media/image17.png"   />
 
 (3) **Structure**
 
 Composed of three parts, YOLOv5 can output three sizes of data. Data of each size is processed in different way. The below picture is the output structure of YOLOv5.
 
-<img class="common_img" src="D:/1. Raspberry Pi 5 Controller/6. Machine Learning Course/chapter_6/section_3-3/media/image18.png"   />
+<img class="common_img" src="../_static/media/chapter_6/section_3-3/media/image18.png"   />
 
 Below is the output structures of data of three sizes.
 
-<img class="common_img" src="D:/1. Raspberry Pi 5 Controller/6. Machine Learning Course/chapter_6/section_3-3/media/image19.png"   />
+<img class="common_img" src="../_static/media/chapter_6/section_3-3/media/image19.png"   />
 
-<img class="common_img" src="D:/1. Raspberry Pi 5 Controller/6. Machine Learning Course/chapter_6/section_3-3/media/image20.png"   />
+<img class="common_img" src="../_static/media/chapter_6/section_3-3/media/image20.png"   />
 
-<img class="common_img" src="../_static/media/chapter_6\section_3-3/media/image21.png"   />
+<img class="common_img" src="../_static/media/chapter_6/section_3-3/media/image21.png"   />
 
 ### 6.3.4 YOLOv5 Running Procedure
 
@@ -1380,13 +1362,13 @@ In this section, we provide an explanation of the model workflow using the ancho
 
 When an image is input into model, object detection area requires us to offer, while prior bounding box is that box used to mark the object detection area on image before detection.
 
-<img class="common_img" src="../_static/media/chapter_6\section_3-4\media\image2.png"  />
+<img class="common_img" src="../_static/media/chapter_6/section_3-4/media/image2.png"  />
 
 * **Prediction Box**
 
 The prediction box is not required to set manually, which is the output result of the model. When the first batch of training data is input into model, the prediction box will be automatically generated with it. The position in which the object of same type appear more frequently are set as the center of the prediction box.
 
-<img class="common_img" src="../_static/media/chapter_6\section_3-4\media\image3.png"  />
+<img class="common_img" src="../_static/media/chapter_6/section_3-4/media/image3.png"  />
 
 * **Anchor Box**
 
@@ -1394,7 +1376,7 @@ After the prediction box is generated, deviation may occur in its size and posit
 
 The generation position of anchor box is determined by prediction box. In order to influence the position of the next generation of the prediction box, the anchor box is generated at the relative center of the existing prediction box.
 
-<img class="common_img" src="../_static/media/chapter_6\section_3-4\media\image4.png"  />
+<img class="common_img" src="../_static/media/chapter_6/section_3-4/media/image4.png"  />
 
 * **Realization Process**
 
@@ -1402,11 +1384,4 @@ After the data is calibrated, a prior bounding box appears on image. Then, the i
 
 Each newly generated prediction will be influenced by the last generated anchor box. Repeating the operations above continuously, the deviation of the size and position of the prediction box will be gradually erased until it coincides with the priori box.
 
-<img class="common_img" src="../_static/media/chapter_6\section_3-4/media/image5.png"   />
-
-
-
-
-
-
-
+<img class="common_img" src="../_static/media/chapter_6/section_3-4/media/image5.png"   />

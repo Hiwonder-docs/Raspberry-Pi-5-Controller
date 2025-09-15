@@ -154,10 +154,10 @@ Users send a command using the Docker client, and the Docker daemon receives the
 
 Official Installation Reference Manual: [<u>Install Docker Engine on Debian \| Docker Docs</u>](https://docs.docker.com/engine/install/debian/)
 
-:::{Note}
-
-**Raspberry Pi's image already has installed Docker when you receive the package. The following steps are for learning and reference only.**
-
+>[!Note]
+>
+>**Raspberry Pi's image already has installed Docker when you receive the package. The following steps are for learning and reference only.**
+>
 :::
 
 Let’s use the Aliyun source for downloading.
@@ -839,7 +839,11 @@ Command: docker cp \[host file path\] \[container id: container path\]
 touch test_1.txt
 ```
 
-② Enter “docker cp test_1.txt d2d0e43b41eb:/root/” in the terminal to copy the “test_1.txt” file to the “/root/” path of the container “d2d0e43b41eb” (Note: the container “d2d0e43b41eb” needs to keep running).
+② Enter “docker cp test_1.txt d2d0e43b41eb:/root/” in the terminal to copy the “test_1.txt” file to the “/root/” path of the container “d2d0e43b41eb” 
+
+>[!Note]
+>
+>**the container “d2d0e43b41eb” needs to keep running).**
 
 ```py
 docker cp test_1.txt d2d0e43b41eb:/root/

@@ -16,6 +16,7 @@ Raspberry Pi 5 Controller
    docs/3_Basic_Programming_Course.md
    docs/4_Hardware_Control_Course.md
    docs/5_OpenCV_Computer_Vision_Course.md
+   docs/6_Machine_Learning_Course.md
    docs/7_Docker_Container_Course.md
    docs/8_ROS2_Basic_Course.md
    docs/Appendix.md

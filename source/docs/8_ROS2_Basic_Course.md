@@ -57,10 +57,10 @@ If any further development learning is required, please refer to the official tu
 
 ## 8.2 ROS2 Installation
 
-:::{Note}
-
-**Note: The provided Raspberry Pi system image has already set up ROS2 environment. This lesson is offered for your reference only.**
-
+>[!Note]
+>
+>**The provided Raspberry Pi system image has already set up ROS2 environment. This lesson is offered for your reference only.**
+>
 :::
 
 **This lesson takes the example of humble (requires Internet connection)**
@@ -135,8 +135,11 @@ sudo apt-get install ros-humble-desktop-full -y
 
 ### 8.2.1 Test ROS2 Environment
 
-(1) Enter "**docker exec -it -u ubuntu -w /home/ubuntu 55ce /bin/bash**" to enter the container. (Note: 55ce is the container ID with the ROS2 environment installed.)
+(1) Enter "**docker exec -it -u ubuntu -w /home/ubuntu 55ce /bin/bash**" to enter the container. 
 
+>[!Note]
+>
+>**55ce is the container ID with the ROS2 environment installed.**
 ```bash
 docker exec -it -u ubuntu -w /home/ubuntu 55ce /bin/bash
 ```
@@ -314,10 +317,10 @@ The ros2 interface command is used to perform operations related to the interfac
 
 ## 8.4 ROS2 Development Environment Configuration
 
-:::{Note}
-
-Note: The provided Raspberry Pi image comes pre-installed and pre-configured with the development environment. This lesson is only provided for learning and reference purpose only.
-
+>[!Note]
+>
+>**The provided Raspberry Pi image comes pre-installed and pre-configured with the development environment. This lesson is only provided for learning and reference purpose only.**
+>
 :::
 
 During the subsequent learning and development processes, users can improve their efficiency by optimizing development environment and installing plugins.
@@ -370,7 +373,11 @@ Every time before entering the container, it is inconvenient to enter command in
 
 <img class="common_img" src="../_static/media/chapter_9/section_4/media/image11.png"  />
 
-(5) Check the "Run a custom command instead of my deal" option, and then enter the accessible command of container "**docker exec -it -u ubuntu -w /home/ubuntu 1318 /bin/bash**". (Note: 1318 is the container ID containing ROS2 environment.)
+(5) Check the "Run a custom command instead of my deal" option, and then enter the accessible command of container "**docker exec -it -u ubuntu -w /home/ubuntu 1318 /bin/bash**". 
+
+>[!Note]
+>
+>**1318 is the container ID containing ROS2 environment.**
 
 <img class="common_img" src="../_static/media/chapter_9/section_4/media/image12.png"  />
 
@@ -418,10 +425,10 @@ Enter the command "**sudo pip3 install transforms3d**" to install Python library
 sudo pip3 install transforms3d
 ```
 
-:::{Note}
-
-Prior to the installation of transforms3d library, you need to first install pip package.
-
+>[!Note]
+>
+>**Prior to the installation of transforms3d library, you need to first install pip package.**
+>
 :::
 
 ### 8.4.6 turtle-tf2-py& tf2-tools Libraries Installation
@@ -553,7 +560,7 @@ The above situations are all permitted, similar to create multiple new projects 
 
 ## 8.6 ROS2 Package
 
-## 8.6.1 Package Introduction
+### 8.6.1 Package Introduction
 
 Each robot may have may functionalities, such as motion control, visual perception, autonomous navigation, etc. It's possible to put the source code of these functions together, what if we want to share some of these functions with others? It can be found that the code is all mixed up and difficult to separate.
 
@@ -3623,9 +3630,9 @@ In the URDF model, each link is described using XML content, specifying details 
 
 ⑤ Limit: Specifies constraints on the motion, such as minimum position, maximum position, and maximum velocity.  
 
-:::{Note}
-
-In ROS, the default unit for translation is meters, and for rotation it's radians (not degrees). Therefore, in this context, 3.14 implies movement between -180 degrees and 180 degrees, linear velocity is in m/s, and angular velocity is in rad/s.
+>[!Note]
+>
+>**In ROS, the default unit for translation is meters, and for rotation it's radians (not degrees). Therefore, in this context, 3.14 implies movement between -180 degrees and 180 degrees, linear velocity is in m/s, and angular velocity is in rad/s.**
 
 :::
 

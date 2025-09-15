@@ -2899,7 +2899,7 @@ The underlying principle of the TF (Transform) functionality in ROS is to encaps
 
 <img class="common_img" src="../_static/media/chapter_9/section_16/media/image4.png"  />
 
-(2) Input the command "**ros2 launch turtle_tf2_py turtle_tf2_demo.launch.py**" to run the **turtle_tf2_demo.launch.py** file**.**
+(2) Input the command "**ros2 launch turtle_tf2_py turtle_tf2_demo.launch.py**" to run the **turtle_tf2_demo.launch.py** file.
 
 ```bash
 ros2 launch turtle_tf2_py turtle_tf2_demo.launch.py
@@ -3039,7 +3039,7 @@ Monitor the coordinate transformation from a source frame to a target frame at t
 self.target_frame,
 self.source_frame,
 now)
-except TransformException as ex: # If the coordinate transformation retrieval fails, enter the exception reporting.
+except TransformException as ex: # If the coordinate transformation retrieval fails, enter the exception reporting.
 self.get_logger().info(
 f'Could not transform {self.target_frame} to {self.source_frame}: {ex}')
 return
@@ -3132,7 +3132,7 @@ ros2 run tf_demo tf_listener
 
 <img class="common_img" src="../_static/media/chapter_9/section_16/media/image26.png"  />
 
-It can be seen that there are two coordinate systems in the current system, one is "world," and the other is "house." The relative positions between them will not change, and they are maintained by a static TF object.
+It can be seen that there are two coordinate systems in the current system, one is "world," and the other is "**house**." The relative positions between them will not change, and they are maintained by a static TF object.
 
 * **Program Analysis**
 
@@ -3319,8 +3319,7 @@ If the coordinate transformation retrieval fails, enter the exception reporting.
             if self.spawner.service_is_ready():                    # If 
     the turtle generation server is ready.
                 request = Spawn.Request()                          # Create a request data.
-                request.name = 'turtle2'                           # 
-Set the content of the request data, including the turtle's name, xy position, and orientation.
+                request.name = 'turtle2'                           # Set the content of the request data, including the turtle's name, xy position, and orientation.
                 request.x = float(4)
                 request.y = float(2)
                 request.theta = float(0)

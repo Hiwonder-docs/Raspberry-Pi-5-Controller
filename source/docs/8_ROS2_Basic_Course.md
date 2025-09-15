@@ -61,7 +61,6 @@ If any further development learning is required, please refer to the official tu
 >
 >**The provided Raspberry Pi system image has already set up ROS2 environment. This lesson is offered for your reference only.**
 >
-:::
 
 **This lesson takes the example of humble (requires Internet connection)**
 
@@ -188,7 +187,7 @@ Manifest file (package.xml) plays a crucial role in ROS2, providing descriptions
 
 The following table will introduce you some basic terms in ROS2:
 
-<table>
+<table class="docutils-nobg" border="1">
 <colgroup>
 <col style="width: 30%" />
 <col style="width: 69%" />
@@ -321,7 +320,6 @@ The ros2 interface command is used to perform operations related to the interfac
 >
 >**The provided Raspberry Pi image comes pre-installed and pre-configured with the development environment. This lesson is only provided for learning and reference purpose only.**
 >
-:::
 
 During the subsequent learning and development processes, users can improve their efficiency by optimizing development environment and installing plugins.
 
@@ -429,7 +427,6 @@ sudo pip3 install transforms3d
 >
 >**Prior to the installation of transforms3d library, you need to first install pip package.**
 >
-:::
 
 ### 8.4.6 turtle-tf2-py& tf2-tools Libraries Installation
 
@@ -3633,18 +3630,17 @@ In the URDF model, each link is described using XML content, specifying details 
 >[!Note]
 >
 >**In ROS, the default unit for translation is meters, and for rotation it's radians (not degrees). Therefore, in this context, 3.14 implies movement between -180 degrees and 180 degrees, linear velocity is in m/s, and angular velocity is in rad/s.**
-
-:::
+>
 
 ### 8.17.4 Complete Robot Model
 
 * **Create Robot Model**
 
-(1) Click<img class="common_img" src="../_static/media/chapter_9/section_17/media/image5.png"  /> and select "System Tools →Terminator" in sequence.
+(1) Click<img class="common_img" src="../_static/media/chapter_9/section_17/media/image5.png"  /> and select "**System Tools →Terminator**" in sequence.
 
 <img class="common_img" src="../_static/media/chapter_9/section_17/media/image6.png"  />
 
-(1) Input the command "System Tools →Terminator" and press enter to switch to the src folder in hiwonder_ws workspace
+(1) Input the command "**System Tools →Terminator**" and press enter to switch to the src folder in hiwonder_ws workspace
 
 <img class="common_img" src="../_static/media/chapter_9/section_17/media/image7.png"  />
 
@@ -3672,13 +3668,13 @@ mkdir urdf
 cd urdf/
 ```
 
-(6) Input the command "**vim simple_demo.urdf**" to open the file using VIM editor, copy and paste the program below. If you need to make modifications, you can press "i" to enter the insert mode. After you’ve finished the modifications, press "Esc" and enter ":wq" to save and exit.
+(6) Input the command "**vim simple_demo.urdf**" to open the file using VIM editor, copy and paste the program below. If you need to make modifications, you can press "**i**" to enter the insert mode. After you’ve finished the modifications, press "**Esc**" and enter "**:wq**" to save and exit.
 
 ```bash
 vim simple_demo.urdf
 ```
 
-```py
+```xml
 <?xml version="1.0"?>
 <robot name="materials">
   <material name="blue">
@@ -4177,4 +4173,3 @@ At this point, a turtle named "turtle2" will be spawned.
 <img class="common_img" src="../_static/media/chapter_9/section_20/media/image25.png"  />
 
 To further learn about other plugins in the RQT tool, please visit the official website (https://www.ros.org/) and explore the tutorials available there.
-

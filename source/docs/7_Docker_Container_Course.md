@@ -2,21 +2,21 @@
 
 ## 7.1 Docker Introduction and Installation
 
-<span class="mark">Docker is an open-source application container engine based on the Go language and licensed under Apache License 2.0.</span>
+Docker is an open-source application container engine based on the Go language and licensed under Apache License 2.0.
 
-<span class="mark">Docker enables developers to package their applications and dependencies into lightweight and portable containers, which can be deployed to popular Linux machines and virtualized environments.</span>
+Docker enables developers to package their applications and dependencies into lightweight and portable containers, which can be deployed to popular Linux machines and virtualized environments.
 
-<span class="mark">Containers are fully isolated using sandboxing mechanisms, ensuring that there are no interfaces between them (similar to apps on an iPhone), and a more important aspect is that the containers have extremely low-performance overhead.</span>
+Containers are fully isolated using sandboxing mechanisms, ensuring that there are no interfaces between them (similar to apps on an iPhone), and a more important aspect is that the containers have extremely low-performance overhead.
 
-<img class="common_img" src="../_static/media/chapter_7\section_1\media\image2.png"   />
+<img class="common_img" src="../_static/media/chapter_7/section_1/media/image2.png"   />
 
-<span class="mark">Docker Logo</span>
+Docker Logo
 
-<span class="mark">Docker Official Website: http://www.docker.com</span>
+Docker Official Website: <http://www.docker.com>
 
-<span class="mark">Docker Chinese Website: https://www.docker-cn.com</span>
+Docker Chinese Website: <https://www.docker-cn.com>
 
-<span class="mark">Docker Hub (Repository) Official Website: https://hub.docker.com</span>
+Docker Hub (Repository) Official Website: <https://hub.docker.com>
 
 ### 7.1.1Docker Introduction
 
@@ -24,17 +24,17 @@
 
 (1) Docker is a world-leading software container platform.
 
-(2) Docker uses the Go language deployed by Google to achieve the development, based on Linux Kernel technologies such as “cgroup”, “namespace”, and “UnionFS (AUFS)” to encapsulate and isolate progress, which belongs to virtualized technology at the operating system level. Because the processes of isolation are independent of the processes of the host and other isolation, Docker is also called a container. Its initial implementation is based on LXC.
+(2) Docker uses the Go language deployed by Google to achieve the development, based on Linux Kernel technologies such as "**cgroup**", "**namespace**", and "**UnionFS (AUFS)**" to encapsulate and isolate progress, which belongs to virtualized technology at the operating system level. Because the processes of isolation are independent of the processes of the host and other isolation, Docker is also called a container. Its initial implementation is based on LXC.
 
 (3) Docker automates repetitive tasks, such as the setup and configuration of the development environments, allowing developers to focus on the truly important thing: to build excellent software.
 
 (4) You can create and use containers easily to run your applications. The containers can also manage, replicate, share, and modify versions, just like managing normal codes.
 
-<img class="common_img" src="../_static/media/chapter_7\section_1\media\image3.png"   />
+<img class="common_img" src="../_static/media/chapter_7/section_1/media/image3.png"   />
 
 * **Docker Philosophy**
 
-<img class="common_img" src="../_static/media/chapter_7\section_1\media\image4.png"  />
+<img class="common_img" src="../_static/media/chapter_7/section_1/media/image4.png"  />
 
 The image shown above is the logo of Docker, which features a while fully carrying containers on its back. The containers are isolated from each other, representing the core concept of Docker.
 
@@ -56,7 +56,7 @@ Docker endows application isolation that is not only between applications but al
 
 * **Virtual Machines VS Docker**
 
-<img class="common_img" src="../_static/media/chapter_7\section_1\media\image5.png"   />
+<img class="common_img" src="../_static/media/chapter_7/section_1/media/image5.png"   />
 
 (1) The Docker daemon can directly communicate with the host operating system to distribute resources for each Docker container. It can also isolate the containers from the host operating system and each other. Virtual machines take several minutes to start, while the Docker containers can start within a few milliseconds. Since Docker has no overstaffed slave operating system, it can save a significant amount of disk space and other system resources.
 
@@ -68,7 +68,7 @@ Docker endows application isolation that is not only between applications but al
 
 (1) Consistent Running Environment
 
-Docker images provide a complete runtime environment excluding the kernel, which ensures consistency in the application runtime environment to avoid questions such as “This code works fine on my machine”.
+Docker images provide a complete runtime environment excluding the kernel, which ensures consistency in the application runtime environment to avoid questions such as "**This code works fine on my machine**".
 
 (2) Faster Start Time
 
@@ -76,7 +76,7 @@ Docker can start within seconds or milliseconds, greatly saving the time of deve
 
 (3) Isolation
 
-Docker’s isolation prevents resources from being affected by other users on shared servers.
+Docker's isolation prevents resources from being affected by other users on shared servers.
 
 (4) Elastic Scaling and Rapid Expansion
 
@@ -94,7 +94,7 @@ Docker can use customized application images to realize continuous integration, 
 
 Docker adopts a client-server architecture, where the Docker client communicates with its daemon responsible for building, operating, and distributing Docker containers. They can run on the same system, or the Docker client can be connected to a remote Docker daemon. They communicate with REST API over UNIX sockets or network interfaces. Another Docker client is Docker Compose, which enables you to manage applications composed of a set of containers.
 
-<img class="common_img" src="../_static/media/chapter_7\section_1\media\image6.png"  />
+<img class="common_img" src="../_static/media/chapter_7/section_1/media/image6.png"  />
 
 * **Three Basic Concepts of Docker** 
 
@@ -126,25 +126,25 @@ Once an image is constructed, it can easily run on the current host. However, if
 
 A Docker Registry can contain multiple repositories. Each repository contains multiple tags and each tag corresponds to an image. Therefore, an Image Repository is the place for Docker to centrally store image files, which is similar to the commonly used code repository.
 
-Generally, a repository includes images of different versions of the same software, and tags are usually used to correspond to each version. The “\<Repository Name\>: \<Tag\>” format can be used to specify which version of the software’s image to use. If a tag is not provided, the “latest” will be used as the default tag.
+Generally, a repository includes images of different versions of the same software, and tags are usually used to correspond to each version. The "\<Repository Name\>: \<Tag\>" format can be used to specify which version of the software's image to use. If a tag is not provided, the "latest" will be used as the default tag.
 
 * **Docker Operating Mechanism**
 
-Docker utilizes the common CS (Client-Server) architecture, where the Docker client is responsible for processing various commands input by users. Such as “docker build” and “docker run”. The real executor is the Docker daemon which acts as the server. It’s worth noting that the Docker client can run on the same machine as the Docker daemon.
+Docker utilizes the common CS (Client-Server) architecture, where the Docker client is responsible for processing various commands input by users. Such as "**docker build**" and "**docker run**". The real executor is the Docker daemon which acts as the server. It's worth noting that the Docker client can run on the same machine as the Docker daemon.
 
 Next, let's use a few commands to explain Docker's workflow:
 
 (1) docker build
 
-This command is used when the “dockerfile” is written and handed over to Docker for "compilation". The client forwards the request to the Docker daemon, which then creates an “executable program” image based on the “dockerfile”.
+This command is used when the "**dockerfile**" is written and handed over to Docker for "**compilation**". The client forwards the request to the Docker daemon, which then creates an "**executable program**" image based on the "**dockerfile**".
 
-<img class="common_img" src="../_static/media/chapter_7\section_1\media\image7.png"  />
+<img class="common_img" src="../_static/media/chapter_7/section_1/media/image7.png"  />
 
 (2) docker run
 
-The “executable program” image can be run after obtained with the "docker run" command. The Docker daemon receives the command and locates the specific image, which is then loaded into memory and executed. The running instance of the image is called a container.
+The "**executable program**" image can be run after obtained with the "**docker run**" command. The Docker daemon receives the command and locates the specific image, which is then loaded into memory and executed. The running instance of the image is called a container.
 
-<img class="common_img" src="../_static/media/chapter_7\section_1\media\image8.png"  />
+<img class="common_img" src="../_static/media/chapter_7/section_1/media/image8.png"  />
 
 (3) docker pull
 
@@ -158,123 +158,122 @@ Official Installation Reference Manual: [<u>Install Docker Engine on Debian \| D
 >
 >**Raspberry Pi's image already has installed Docker when you receive the package. The following steps are for learning and reference only.**
 >
-:::
 
-Let’s use the Aliyun source for downloading.
+Let's use the Aliyun source for downloading.
 
-(1) Press “Ctrl+Alt+T” to open the command line terminal, type “sudo apt-get update”, and press “Enter” to update the apt package list.
+(1) Press "**Ctrl+Alt+T**" to open the command line terminal, type "**sudo apt-get update**", and press "**Enter**" to update the apt package list.
 
-```py
+```bash
 sudo apt-get update
 ```
 
-(2) Type the command “sudo apt-get install ca-certificates curl gnupg” to install the necessary certificates, tools, and GPG (GnuPG) key management tool.
+(2) Type the command "**sudo apt-get install ca-certificates curl gnupg**" to install the necessary certificates, tools, and GPG (GnuPG) key management tool.
 
-```py
+```bash
 sudo apt-get install ca-certificates curl gnupg
 ```
 
-(3) Enter the command “sudo install -m 0755 -d /etc/apt/keyrings” to create a directory for storing the GPG keyring.
+(3) Enter the command "**sudo install -m 0755 -d /etc/apt/keyrings**" to create a directory for storing the GPG keyring.
 
-```py
+```bash
 sudo install -m 0755 -d /etc/apt/keyrings
 ```
 
-(4) Type the command “curl -fsSL https://download.docker.com/linux /debian/gpg \| sudo gpg --dearmor -o /etc/apt/keyrings/docker.gpg” to obtain the GPG key from Docker official and save it to the keyring.
+(4) Type the command "**curl -fsSL https://download.docker.com/linux /debian/gpg \| sudo gpg --dearmor -o /etc/apt/keyrings/docker.gpg**" to obtain the GPG key from Docker official and save it to the keyring.
 
-```py
-curl -fsSL https://download.docker.com/linux /debian/gpg \| sudo gpg --dearmor -o /etc/apt/keyrings/docker.gpg
+```bash
+curl -fsSL https://download.docker.com/linux /debian/gpg \| sudo gpg --dearmor -o /etc/apt/keyrings/docker.gpg
 ```
 
-```py
+```bash
 sudo chmod a+r /etc/apt/keyrings/docker.gpg
 ```
 
-(5) Enter the command “echo \\deb \[arch=\$(dpkg --print-architecture) signed-by=/etc/apt/keyrings/docker.gpg\] https://download.docker.com/linux/debian \\(. /etc/os-release && echo "\$VERSION_CODENAME") stable" \| \sudo tee /etc/apt/sources.list.d /docker.list \> /dev/null” to add Docker storage library into Apt software package source list.
+(5) Enter the command "**echo \\deb \[arch=\$(dpkg --print-architecture) signed-by=/etc/apt/keyrings/docker.gpg\] https://download.docker.com/linux/debian \\(. /etc/os-release && echo "\$VERSION_CODENAME") stable" \| \sudo tee /etc/apt/sources.list.d /docker.list \> /dev/null**" to add Docker storage library into Apt software package source list.
 
-```py
+```bash
 echo \\deb \[arch=\$(dpkg --print-architecture) signed-by=/etc/apt/keyrings/docker.gpg\] https://download.docker.com/linux/debian \\(. /etc/os-release && echo "\$VERSION_CODENAME") stable" \| \sudo tee /etc/apt/sources.list.d /docker.list \> /dev/null
 ```
 
-(6) Enter “sudo apt-get update” to update the apt software package list.
+(6) Enter "**sudo apt-get update**" to update the apt software package list.
 
-```py
+```bash
 sudo apt-get update
 ```
 
-(7) Enter “sudo apt-get install docker-ce docker-ce-cli containerd.io docker-buildx-plugin docker-compose-plugin” to install Docker and related components.
+(7) Enter "**sudo apt-get install docker-ce docker-ce-cli containerd.io docker-buildx-plugin docker-compose-plugin**" to install Docker and related components.
 
-```py
+```bash
 sudo apt-get install docker-ce docker-ce-cli containerd.io docker-buildx-plugin docker-compose-plugin
 ```
 
-(8) Enter “sudo groupadd docker” to create a Docker user group.
+(8) Enter "**sudo groupadd docker**" to create a Docker user group.
 
-```py
+```bash
 sudo groupadd docker
 ```
 
-(9) Enter “sudo gpasswd -a \$USER docker” to add the current user to the Docker user group, which avoids having to enter “sudo” every time you run a Docker command.
+(9) Enter "**sudo gpasswd -a \$USER docker**" to add the current user to the Docker user group, which avoids having to enter "**sudo**" every time you run a Docker command.
 
-```py
+```bash
 sudo gpasswd -a \$USER docker
 ```
 
-(10) Enter “sudo reboot” to reboot Raspberry Pi.
+(10) Enter "sudo reboot" to reboot Raspberry Pi.
 
-```py
+```bash
 sudo reboot
 ```
 
-(11) After the download is complete, enter “docker version” to check the Docker version.
+(11) After the download is complete, enter "**docker version**" to check the Docker version.
 
-```py
+```bash
 docker version
 ```
 
-(12) Enter “docker run hello-world”, if the message shown below appears, it means that the Docker is installed successfully.
+(12) Enter "**docker run hello-world**", if the message shown below appears, it means that the Docker is installed successfully.
 
-```py
+```bash
 docker run hello-world
 ```
 
-## 7.2 Docker ‘hello-world’
+## 7.2 Docker 'hello-world'
 
-The “hello-world” provided by Docker is a lightweight container, which is designed to test the successful installation and operation of Docker. It is very small in size and primarily used to demonstrate Docker’s basic usage and verify the correctness of the Docker operating environment.
+The "**hello-world**" provided by Docker is a lightweight container, which is designed to test the successful installation and operation of Docker. It is very small in size and primarily used to demonstrate Docker's basic usage and verify the correctness of the Docker operating environment.
 
-(1) Press “Ctrl+Alt+T” to open the command line terminal. Then enter “docker run hello-world” to download the “hello-world” image (if it is not present on your local machine).
+(1) Press "**Ctrl+Alt+T**" to open the command line terminal. Then enter "**docker run hello-world**" to download the "**hello-world**" image (if it is not present on your local machine).
 
-```py
+```bash
 docker run hello-world
 ```
 
-(2) Enter “docker images” in the terminal to list all images on the local master.
+(2) Enter "docker images" in the terminal to list all images on the local master.
 
-```py
+```bash
 docker images
 ```
 
-The relevant information of “Hello_World” can be checked, corresponding to the parameters:
+The relevant information of "**Hello_World**" can be checked, corresponding to the parameters:
 
-REPOSITORY: image’s repository source.
+REPOSITORY: image's repository source.
 
-TAG: image’s tag.
+TAG: image's tag.
 
-IMAGE ID: image’s ID.
+IMAGE ID: image's ID.
 
-CREATED: image’s creation time.
+CREATED: image's creation time.
 
-SIZE: image’s size.
+SIZE: image's size.
 
-(3) Enter “docker run -it hello-world” in the terminal to run the “hello-world” image. The terminal will print relevant prompt information.
+(3) Enter "**docker run -it hello-world**" in the terminal to run the "**hello-world**" image. The terminal will print relevant prompt information.
 
-```py
+```bash
 docker run -it hello-world
 ```
 
-(4) Enter “docker inspect ee30efe9” in the terminal to output JSON data including detailed information about the “hello-world” image.
+(4) Enter "**docker inspect ee30efe9**" in the terminal to output JSON data including detailed information about the "**hello-world**" image.
 
-```py
+```bash
 docker inspect ee30efe9
 ```
 
@@ -282,15 +281,15 @@ docker inspect ee30efe9
 
 ### 7.3.1 Help Command
 
-<span class="mark">“docker info” is used to display information about the Docker system, including its configuration and current status. It provides a detailed summary of Docker images, the number of containers, the Docker daemon, storage drivers, networks, and other relevant information.</span>
+"**docker info**" is used to display information about the Docker system, including its configuration and current status. It provides a detailed summary of Docker images, the number of containers, the Docker daemon, storage drivers, networks, and other relevant information.
 
-<span class="mark">“docker --help” is used to obtain help information for Docker commands. If it is executed, all available Docker commands and their options will be listed for reference.</span>
+"**docker --help**" is used to obtain help information for Docker commands. If it is executed, all available Docker commands and their options will be listed for reference.
 
 ### 7.3.2 Image Command
 
-(1) “docker images” lists all images on the local master.
+(1) "docker images" lists all images on the local master.
 
-```py
+```bash
 docker images
 ```
 
@@ -306,49 +305,49 @@ CREATED: the creation time of the image.
 
 SIZE: the size of the image.
 
-(The same repository source can have multiple tags representing different versions of the repository source. You can define different images using REPOSITORY: TAG. If a tag version for an image is not defined, Docker will use the “lastest” image by default.)
+(The same repository source can have multiple tags representing different versions of the repository source. You can define different images using REPOSITORY: TAG. If a tag version for an image is not defined, Docker will use the "**lastest**" image by default.)
 
-“docker images” also provides some options:
+"**docker images**" also provides some options:
 
 -a: list all local images
 
 -q: display image id only
 
---digests: display the image’s digest information
+--digests: display the image's digest information
 
-(2) “docker pull” is used to download images from a selected repository.
+(2) "**docker pull**" is used to download images from a selected repository.
 
-```py
+```bash
 docker pull
 ```
 
-<span class="mark">Usage:</span>
+Usage:
 
-<span class="mark">“docker pull” image repository address/image name: version</span>
+"**docker pull**" image repository address/image name: version
 
-<span class="mark">Demonstration (it cannot be downloaded, for reference only): “docker pull” hiwonder/ros-foxy:1.0.0</span>
+Demonstration (it cannot be downloaded, for reference only): "**docker pull**" hiwonder/ros-foxy:1.0.0
 
-For example, download the “debian” image: Press “Ctrl+Alt+T” to open the command line terminal. Then enter “docker pull debian” and press “Enter”.
+For example, download the "**debian**" image: Press "**Ctrl+Alt+T**" to open the command line terminal. Then enter "**docker pull debian**" and press "**Enter**".
 
-```py
+```bash
 docker pull debian
 ```
 
-Enter “docker images” to view the images on the master, and you can see a “debian” image has been added to the list of images.
+Enter "**docker images**" to view the images on the master, and you can see a "**debian**" image has been added to the list of images.
 
 <img class="common_img" src="../_static/media/chapter_7/section_3/media/image5.png"  />
 
-(3) “docker search” is used to search the image corresponding to the “DockerHub” repository.
+(3) "**docker search**" is used to search the image corresponding to the "**DockerHub**" repository.
 
-Take researching the “ROS” image for an example. Press “Ctrl+Alt+T” to open the command line terminal. Then enter “docker search ros” and press “Enter”.
+Take researching the "**ROS**" image for an example. Press "**Ctrl+Alt+T**" to open the command line terminal. Then enter "**docker search ros**" and press "**Enter**".
 
-```py
+```bash
 docker search ros
 ```
 
-“docker search” also provides some options.
+"**docker search**" also provides some options.
 
-```py
+```bash
 docker search
 ```
 
@@ -360,7 +359,7 @@ docker search
 
 --no-trunc: Do not truncate output
 
-(4) “docker rmi” is used to delete images.
+(4) "**docker rmi**" is used to delete images.
 
 docker rmi -f \[image id\]: delete a single image
 
@@ -370,19 +369,19 @@ docker rmi -f \$(docker images -qa) ：delete all images
 
 ### 7.3.3 Container Command
 
-The containers can be created only if there are images. Use “debian” to test. Press “Ctrl+Alt+T” to open the command line terminal. Then enter “docker pull debian” and press “Enter”.
+The containers can be created only if there are images. Use "debian" to test. Press "**Ctrl+Alt+T**" to open the command line terminal. Then enter "**docker pull debian**" and press "**Enter**".
 
-```py
+```bash
 docker pull debian
 ```
 
-* **“docker run” Image Running and Container Starting** 
+* **"docker run" Image Running and Container Starting** 
 
 Command Parameters: docker run \[OPTIONS\] IMAGE \[COMMAND\] \[ARG...\]
 
 Commonly Used Parameters:
 
---name="Name"： assign a name to the container
+--name="`Name`"： assign a name to the container
 
 -d：to run the container in the background and print its id
 
@@ -400,11 +399,11 @@ ip::containerPort
 
 hostPort:containerPort (commonly used)
 
-Take the running “debian” image as an example. In the command line terminal, enter “docker run -it debian /bin/bash” and press “Enter”.
+Take the running "**debian**" image as an example. In the command line terminal, enter "**docker run -it debian /bin/bash**" and press "**Enter**".
 
-“pi@raspberry” is the master system interface，and “root@9aeb4cc 795e6” is in the interface inside the “docker” container.
+"**pi@raspberry**" is the master system interface，and "**root@9aeb4cc 795e6**" is in the interface inside the "**docker**" container.
 
-```py
+```bash
 docker run -it debian /bin/bash
 ```
 
@@ -414,17 +413,17 @@ Parameters:
 
 -t: terminal
 
-debian : “debian” image
+debian : "**debian**" image
 
-“/bin/bash” is the command shown after the image name, indicating the hope that there is an interactive “Shell”. Therefore, “/bin/bash” is used.
+"**/bin/bash**" is the command shown after the image name, indicating the hope that there is an interactive "**Shell**". Therefore, "**/bin/bash**" is used.
 
-To exit the terminal, enter “exit” in the terminal and press “Enter”.
+To exit the terminal, enter "**exit**" in the terminal and press "**Enter**".
 
-```py
+```bash
 exit
 ```
 
-* **“docker ps” Listing All Running Containers** 
+* **"docker ps" Listing All Running Containers** 
 
 Command Parameters: docker ps \[OPTIONS\]
 
@@ -438,9 +437,9 @@ Commonly Used Parameters:
 
 -q：Default mode, only display container IDs
 
-Enter “docker ps -a” in the command line terminal and press “Enter”. The running and run containers are displayed. “container id” is the container ID, “image” is the image name used by the container, “created” is the creation time of the container, and “status” is the current status of the container.
+Enter "**docker ps -a**" in the command line terminal and press "**Enter**". The running and run containers are displayed. "**container id**" is the container ID, "**image**" is the image name used by the container, "**created**" is the creation time of the container, and "**status**" is the current status of the container.
 
-```py
+```bash
 docker ps -a
 ```
 
@@ -448,15 +447,15 @@ docker ps -a
 
 There are two commands for exiting containers:
 
-(1) Enter “exit” directly in the terminal and press “Enter”. This action will stop the container from running and exit it.
+(1) Enter "**exit**" directly in the terminal and press "**Enter**". This action will stop the container from running and exit it.
 
-```py
+```bash
 exit
 ```
 
-(2) Use “crtl+P+Q”. The container exits directly but keeps running. You can enter the command “docker ps” in the terminal to view the running containers.
+(2) Use "**crtl+P+Q**". The container exits directly but keeps running. You can enter the command "**docker ps**" in the terminal to view the running containers.
 
-```py
+```bash
 docker ps
 ```
 
@@ -464,59 +463,59 @@ docker ps
 
 You can enter a running container from another terminal with two commands:
 
-“docker attach” is used to enter the terminal of the container start command without starting a new process. Exiting from this container may cause the container to stop running.
+"**docker attach**" is used to enter the terminal of the container start command without starting a new process. Exiting from this container may cause the container to stop running.
 
-“docker exec” is used to open a new terminal in the container and start a new process. Exiting from the container will not affect the container’s running status. This method is generally preferred for entering a container.
+"**docker exec**" is used to open a new terminal in the container and start a new process. Exiting from the container will not affect the container's running status. This method is generally preferred for entering a container.
 
 (1) **docker attach**
 
-① Press “Ctrl+Alt+T” to open the command line terminal and enter “docker ps”. It displays the running containers.
+① Press "Ctrl+Alt+T" to open the command line terminal and enter "docker ps". It displays the running containers.
 
-```py
+```bash
 docker ps
 ```
 
-② Enter “docker attach 004c” in the terminal (The container ID can be shortened as long as it is a unique identifier for the container.) to get into the running container.
+② Enter "**docker attach 004c**" in the terminal (The container ID can be shortened as long as it is a unique identifier for the container.) to get into the running container.
 
-```py
+```bash
 docker attach 004c
 ```
 
-③ Enter “exit” in the terminal and press “Enter”. The container stops running and exits.
+③ Enter "**exit**" in the terminal and press "**Enter**". The container stops running and exits.
 
-```py
+```bash
 exit
 ```
 
-④ Enter “docker ps” in the terminal. It displays the running container, and you can see the earlier exited container is also closed.
+④ Enter "**docker ps**" in the terminal. It displays the running container, and you can see the earlier exited container is also closed.
 
-```py
+```bash
 docker ps
 ```
 
 (2) **docker exec**
 
-① Press “Ctrl+Alt+T” to open the command line terminal and enter “docker ps”. It displays the running containers.
+① Press "**Ctrl+Alt+T**" to open the command line terminal and enter "**docker ps**". It displays the running containers.
 
-```py
+```bash
 docker ps
 ```
 
-② Enter “docker exec -it efe9 /bin/bash” in the terminal (The container ID can be shortened as long as it is a unique identifier for the container.) to enter the running container.
+② Enter "**docker exec -it efe9 /bin/bash**" in the terminal (The container ID can be shortened as long as it is a unique identifier for the container.) to enter the running container.
 
-```py
+```bash
 docker exec -it efe9 /bin/bash
 ```
 
-③ Enter “exit” in the terminal and press “Enter”. The container will exit.
+③ Enter "**exit**" in the terminal and press "**Enter**". The container will exit.
 
-```py
+```bash
 exit
 ```
 
-④ Enter “docker ps” in the terminal. It displays the running container, and you can see the exited container is not closed.
+④ Enter "**docker ps**" in the terminal. It displays the running container, and you can see the exited container is not closed.
 
-```py
+```bash
 docker ps
 ```
 
@@ -542,15 +541,15 @@ docker ps -a -q\|xargs docker rm：Delete all containers
 
 * **View Process Information Running in Container**
 
-(1) Press “Ctrl+Alt+T” to open the command line terminal and enter “docker ps”. It displays the running containers.
+(1) Press "**Ctrl+Alt+T**" to open the command line terminal and enter "**docker ps**". It displays the running containers.
 
-```py
+```bash
 docker ps
 ```
 
-(2) Enter “docker top efe9” in the terminal. It displays the process information running in the container.
+(2) Enter "**docker top efe9**" in the terminal. It displays the process information running in the container.
 
-```py
+```bash
 docker top efe9
 ```
 
@@ -574,15 +573,15 @@ CMD: Command line used to start the process.
 
 * **View Metadata of Container or Image**
 
-(1) Press “Ctrl+Alt+T” to open the command line terminal and enter “docker ps”. It displays the running containers.
+(1) Press "**Ctrl+Alt+T**" to open the command line terminal and enter "**docker ps**". It displays the running containers.
 
-```py
+```bash
 docker ps
 ```
 
-(2) Enter “docker inspect efe9” in the terminal to output the JSON data including detailed information about the container or image.
+(2) Enter "**docker inspect efe9**" in the terminal to output the JSON data including detailed information about the container or image.
 
-```py
+```bash
 docker inspect efe9
 ```
 
@@ -606,25 +605,25 @@ The characteristic of UnionFS is that it can simultaneously load multiple file s
 
 When an image is downloaded, please observe the downloaded log output. You can see it is downloaded layer by layer.
 
-```py
+```bash
 docker pull mysql
 ```
 
-<img class="common_img" src="../_static/media/chapter_7\section_4\media\image2.png"  />
+<img class="common_img" src="../_static/media/chapter_7/section_4/media/image2.png"  />
 
-Enter the command “docker image inspect mysql” in the terminal to check the image layering.
+Enter the command "**docker image inspect mysql**" in the terminal to check the image layering.
 
-```py
+```bash
 docker image inspect mysql
 ```
 
-<img class="common_img" src="../_static/media/chapter_7\section_4\media\image4.png"  />
+<img class="common_img" src="../_static/media/chapter_7/section_4/media/image4.png"  />
 
 * **Layering Understanding**
 
 All docker images start at a base image layer. When a modification or new component is added, a new image layer is created on top of the current image layer.
 
-Illustrate by a simple example. If a new image is created based on “debian”, it will be the first layer of the new image. If a Python package is added to the image, the second image layer will be created on the top of the base image layer. If a security patch is added, the third image layer will be created on the top of the second layer. The image will be built like this layer by layer.
+Illustrate by a simple example. If a new image is created based on "**debian**", it will be the first layer of the new image. If a Python package is added to the image, the second image layer will be created on the top of the base image layer. If a security patch is added, the third image layer will be created on the top of the second layer. The image will be built like this layer by layer.
 
 All docker images are read-only. When a container is started, a new writable layer is mounted on the top of the image layers, which is commonly referred to as the container layer. The layers below it are called image layers.
 
@@ -636,240 +635,243 @@ The advantage of layering is resource sharing. For example, if there are multipl
 
 When the downloaded images from the docker image repository cannot meet your requirements, there are two ways to modify them.
 
-① Use “docker commit” to update an image from the created container and commit the image.
+① Use "**docker commit**" to update an image from the created container and commit the image.
 
-② Use the “Dockerfile” command to create a new image.
+② Use the "**Dockerfile**" command to create a new image.
 
 * **Commit an Image from Container**
 
-Command explanation: docker commit -m= “commit message” -a= “author” container ID target_image_name:\[Tag\] 【“-m” and “-a” parameters can be omitted】
+Command explanation: docker commit -m= "`commit message`" -a= "`author`" container ID target_image_name:\[Tag\] 【"**-m**" and "**-a**" parameters can be omitted】
 
-(1) Press “Ctrl+Alt+T” to open the command line terminal and enter “docker ps -a”. It displays all previously run containers, and you need to locate the container ID to be committed.
+(1) Press "Ctrl+Alt+T" to open the command line terminal and enter "**docker ps -a**". It displays all previously run containers, and you need to locate the container ID to be committed.
 
-```py
+```bash
 docker ps -a
 ```
 
-<img class="common_img" src="../_static/media/chapter_7\section_4\media\image5.png"  />
+<img class="common_img" src="../_static/media/chapter_7/section_4/media/image5.png"  />
 
-(2) Enter “docker commit 9aeb4cc795e6 debain:1.0” in the terminal to commit the image of container “9aeb4cc795e6” and name it “debian”. The tag name is 1.0.
+(2) Enter "**docker commit 9aeb4cc795e6 debain:1.0**" in the terminal to commit the image of container "**9aeb4cc795e6**" and name it "**debian**". The tag name is 1.0.
 
-```py
+```bash
 docker commit 9aeb4cc795e6 debain:1.0
 ```
 
-(3) Enter “docker images” in the terminal to view the images on the master. You can see a “debain” has been added to the list of images.
+(3) Enter "**docker images**" in the terminal to view the images on the master. You can see a "**debain**" has been added to the list of images.
 
 ```py
 docker images
 ```
 
-<img class="common_img" src="../_static/media/chapter_7\section_4\media\image7.png"  />
+<img class="common_img" src="../_static/media/chapter_7/section_4/media/image7.png"  />
 
-* “dockerfile” Image Creating
+* "**dockerfile**" Image Creating
 
-<span class="mark">Command explanation: docker build “-f dockerfile” means file path and “-t” is the name of the new image: TAG . \# docker build. The final “.” in the command indicates the current directory.</span>
+Command explanation: docker build "**-f dockerfile**" means file path and "**-t**" is the name of the new image: TAG . \# docker build. The final "**.**" in the command indicates the current directory.
 
-<span class="mark">Use the command “docker build” to create a new image from scratch. As a result, a “Dockerfile ” file needs to be created, including a set of commands for Docker on how to build the image.</span>
+Use the command "**docker build**" to create a new image from scratch. As a result, a "Dockerfile" file needs to be created, including a set of commands for Docker on how to build the image.
 
-About the compiling of “dockerfile”, please refer to “https://docs.docker.com/develop/develop images/dockerfile_best-practices/”.
+About the compiling of "**dockerfile**", please refer to "**https://docs.docker.com/develop/develop images/dockerfile_best-practices/**".
 
-(1) Press “Ctrl+Alt+T” to open the command line terminal. Enter “vim Dockerfile” in the terminal to create and open the file.
+(1) Press "**Ctrl+Alt+T**" to open the command line terminal. Enter "**vim Dockerfile**" in the terminal to create and open the file.
 
-```py
+```bash
 vim Dockerfile
 ```
 
-(2) Type the content shown below in the terminal and press “ESC”. Enter “：wq” to exit and save the file.
+(2) Type the content shown below in the terminal and press "**ESC**". **Enter** "`：wq`" to exit and save the file.
 
-<img class="common_img" src="../_static/media/chapter_7\section_4\media\image9.png"  />
+<img class="common_img" src="../_static/media/chapter_7/section_4/media/image9.png"  />
 
-<img class="common_img" src="../_static/media/chapter_7\section_4\media\image10.png"  />
+<img class="common_img" src="../_static/media/chapter_7/section_4/media/image10.png"  />
 
-(3) Enter “docker build -f dockerfile -t debain:1.1 .” in the terminal to build a new image.
+(3) Enter "**docker build -f dockerfile -t debain:1.1 .**" in the terminal to build a new image.
 
-```py
+```bash
 docker build -f dockerfile -t debain:1.1 .
 ```
 
-(4) Enter “docker images” in the terminal, then you can see the newly built image.
+(4) Enter "**docker images**" in the terminal, then you can see the newly built image.
 
-```py
+```bash
 docker images
 ```
 
-<img class="common_img" src="../_static/media/chapter_7\section_4/media/image12.png"  />
+<img class="common_img" src="../_static/media/chapter_7/section_4/media/image12.png"  />
 
 ## 7.5 Docker Hardware Interaction and Data Processing
 
 ### 7.5.1 Hardware Mounting (Port Binding)
 
 Connect the device to be mounted to the master, and create a udev rule in the host (/etc/udev/rules.d/).  
+
 Here is an example of mounting a USB camera. Please note that the example is for reference only and you should create your own udev rule based on your specific device.
 
-(1) Press “Ctrl+Alt+T” to open the command line terminal, and enter “docker run -it --device=/dev/video0 debian: latest /bin/bash” in the terminal to start the “debian” container and mount the USB camera.
+(1) Press "**Ctrl+Alt+T**" to open the command line terminal, and enter "**docker run -it --device=/dev/video0 debian: latest /bin/bash**" in the terminal to start the "**debian**" container and mount the USB camera.
 
-```py
+```bash
 docker run -it --device=/dev/video0 debian: latest /bin/bash
 ```
 
-(2) Enter “ls /dev/” in the terminal and press “Enter” to check the device currently mounted in the container. You can see that the USB camera "video0" has been successfully mounted.
+(2) Enter "**ls /dev/**" in the terminal and press "**Enter**" to check the device currently mounted in the container. You can see that the USB camera "**video0**" has been successfully mounted.
 
-```py
+```bash
 ls /dev/
 ```
 
-<img class="common_img" src="../_static/media/chapter_7\section_5\media\image3.png"  />
+<img class="common_img" src="../_static/media/chapter_7/section_5/media/image3.png"  />
 
 ### 7.5.2 GUI Displaying in Docker
 
 Install in the host:
 
-(1) Press “Ctrl+Alt+T” to open the command line terminal, and enter “sudo apt-get install tigervnc-standalone-server tigervnc-viewer” in the terminal. Press “Enter” and enter “y” to download.
+(1) Press "**Ctrl+Alt+T**" to open the command line terminal, and enter "**sudo apt-get install tigervnc-standalone-server tigervnc-viewer**" in the terminal. Press "**Enter**" and enter "**y**" to download.
 
-```py
+```bash
 sudo apt-get install tigervnc-standalone-server tigervnc-viewer
 ```
 
-(2) Enter “sudo apt-get install x11-xserver-utils” in the terminal and press “Enter” to download.
+(2) Enter "**sudo apt-get install x11-xserver-utils**" in the terminal and press "**Enter**" to download.
 
-```py
+```bash
 sudo apt-get install x11-xserver-utils
 ```
 
-(3) Enter “xhost +” in the terminal and press “Enter” to download.
+(3) Enter "**xhost +**" in the terminal and press "**Enter**" to download.
 
-```py
+```bash
 xhost +
 ```
 
-(4) Enter “docker run -it --env=“DISPLAY” --env=“QT_X11_NO_MITSHM =1” -v /tmp/.X11-unix:/tmp/.X11-unix debian:latest /bin/bash” in the terminal and press “Enter” to get into the container.
+(4) Enter "**docker run -it --env="DISPLAY" --env="QT_X11_NO_MITSHM =1**" -v /tmp/.X11-unix:/tmp/.X11-unix debian:latest /bin/bash" in the terminal and press "**Enter**" to get into the container.
 
-```py
-docker run -it --env=“DISPLAY” --env=“QT_X11_NO_MITSHM =1” -v /tmp/.X11-unix:/tmp/.X11-unix debian:latest /bin/bash
+```bash
+docker run -it --env="DISPLAY" --env="QT_X11_NO_MITSHM =1" -v /tmp/.X11-unix:/tmp/.X11-unix debian:latest /bin/bash
 ```
 
-(5) Enter “apt-get update” in the terminal and press “Enter” to update the software list.
+(5) Enter "**apt-get update**" in the terminal and press "**Enter**" to update the software list.
 
-```py
+```bash
 apt-get update
 ```
 
-(6) Enter “apt-get install -y x11-apps” in the terminal and press “Enter” to install the X11 image interface.
+(6) Enter "**apt-get install -y x11-apps**" in the terminal and press "**Enter**" to install the X11 image interface.
 
-```py
+```bash
 apt-get install -y x11-apps
 ```
 
-(7) Enter “xeyes” in the terminal and press “Enter”. A pair of eyes will appear, following the movement of the mouse.
+(7) Enter "**xeyes**" in the terminal and press "**Enter**". A pair of eyes will appear, following the movement of the mouse.
 
-```py
+```bash
 xeyes
 ```
 
-<img class="common_img" src="../_static/media/chapter_7\section_5\media\image10.png"  /><img class="common_img" src="../_static/media/chapter_7\section_5\media\image11.png"  />
+<img src="../_static/media/chapter_7/section_5/media/image10.png"  />
+
+<img src="../_static/media/chapter_7/section_5/media/image11.png"  />
 
 ### 7.5.3 File Transmission between Docker Container and Host 
 
-* **Copy File with “cp” Command**
+* **Copy File with "cp" Command**
 
 (1) **Copy File from Container to Host**
 
 Command: docker cp \[container id: container path\] \[target host path\]
 
-① Enter “docker run -it debian /bin/bash” in the terminal to get into the container.
+① Enter "**docker run -it debian /bin/bash**" in the terminal to get into the container.
 
-```py
+```bash
 docker run -it debian /bin/bash
 ```
 
-② Enter “cd” in the terminal to switch to the user's home directory.
+② Enter "**cd**" in the terminal to switch to the user's home directory.
 
-```py
+```bash
 cd
 ```
 
-③ Enter “ls” in the terminal to check the directory in the current path. You can see that it is an empty directory.
+③ Enter "**ls**" in the terminal to check the directory in the current path. You can see that it is an empty directory.
 
-```py
+```bash
 ls
 ```
 
-④ Enter “touch test.txt” in the terminal to create a “txt” file.
+④ Enter "**touch test.txt**" in the terminal to create a "txt" file.
 
-```py
+```bash
 touch test.txt
 ```
 
-⑤ Enter “pwd” in the terminal to check the current path.
+⑤ Enter "**pwd**" in the terminal to check the current path.
 
-```py
+```bash
 pwd
 ```
 
-⑥ Press “crtl+P+Q” to exit the container without stopping it.
+⑥ Press "**crtl+P+Q**" to exit the container without stopping it.
 
-⑦ Enter “docker cp d2d0e43b41eb:/root/test.txt ~/” in the terminal to copy the “test.txt” file created earlier to the host.
+⑦ Enter "**docker cp d2d0e43b41eb:/root/test.txt ~/**" in the terminal to copy the "**test.txt**" file created earlier to the host.
 
-```py
+```bash
 docker cp d2d0e43b41eb:/root/test.txt ~/
 ```
 
-⑧ Enter “cd /home/pi” in the terminal to access the file path.
+⑧ Enter "**cd /home/pi**" in the terminal to access the file path.
 
-```py
+```bash
 cd /home/pi
 ```
 
-⑨ Enter “ls” in the terminal to see that “test.txt” is already in the path.
+⑨ Enter "**ls**" in the terminal to see that "**test.txt**" is already in the path.
 
-```py
+```bash
 ls
 ```
 
-<img class="common_img" src="../_static/media/chapter_7\section_5\media\image19.png"  />
+<img class="common_img" src="../_static/media/chapter_7/section_5/media/image19.png"  />
 
 (2) **Copy File from Host to Container**
 
 Command: docker cp \[host file path\] \[container id: container path\]
 
-① Enter “touch test_1.txt” in the terminal to create a “test_1.txt” file.
+① Enter "**touch test_1.txt**" in the terminal to create a "**test_1.txt**" file.
 
-```py
+```bash
 touch test_1.txt
 ```
 
-② Enter “docker cp test_1.txt d2d0e43b41eb:/root/” in the terminal to copy the “test_1.txt” file to the “/root/” path of the container “d2d0e43b41eb” 
+② Enter "**docker cp test_1.txt d2d0e43b41eb:/root/**" in the terminal to copy the "**test_1.txt**" file to the "**/root/**" path of the container "**d2d0e43b41eb**" 
 
 >[!Note]
 >
->**the container “d2d0e43b41eb” needs to keep running).**
+>**the container "d2d0e43b41eb" needs to keep running).**
 
-```py
+```bash
 docker cp test_1.txt d2d0e43b41eb:/root/
 ```
 
-③ Enter “docker exec -it d2d0e43b41eb /bin/bash” in the terminal to enter the container.
+③ Enter "**docker exec -it d2d0e43b41eb /bin/bash**" in the terminal to enter the container.
 
-```py
+```bash
 docker exec -it d2d0e43b41eb /bin/bash
 ```
 
-④ Enter “cd” in the terminal to switch to the user's home directory.
+④ Enter "**cd**" in the terminal to switch to the user's home directory.
 
-```py
+```bash
 cd
 ```
 
-⑤ Enter “ls” in the terminal to check the directory in the current path. You can see that the file has been copied from the host to the container.
+⑤ Enter "**ls**" in the terminal to check the directory in the current path. You can see that the file has been copied from the host to the container.
 
-<img class="common_img" src="../_static/media/chapter_7\section_5\media\image23.png"  />
+<img class="common_img" src="../_static/media/chapter_7/section_5/media/image23.png"  />
 
 ### 7.5.4 Data Volume Usage
 
 * **Data Volume Introduction**
 
-When an application and its running environment are packaged into a container, the container can run along with the application. However, the requirement for the data is that it can be persistent. For example, if a “mysql” is installed in a container which is then deleted, the database would be lost. Therefore, we want containers to be able to share data. If the docker commit is not used to generate a new image and save the data as a part of the image, the data generated by the container will be lost when the container is deleted.
+When an application and its running environment are packaged into a container, the container can run along with the application. However, the requirement for the data is that it can be persistent. For example, if a "mysql" is installed in a container which is then deleted, the database would be lost. Therefore, we want containers to be able to share data. If the docker commit is not used to generate a new image and save the data as a part of the image, the data generated by the container will be lost when the container is deleted.
 
 To solve this problem, data volumes can be used to share data between containers and persist the data even after the container is deleted.
 
@@ -887,39 +889,39 @@ Features:
 
 Command: docker run -it -v \[host absolute path directory: container directory\] \[image name\]
 
-(1) Enter “docker run -it -v /home/pi/temp:/root/temp debian:latest /bin/bash” in the terminal to share the “/home/pi/temp” directory on the host with the “/root/temp” directory in the container.
+(1) Enter "**docker run -it -v /home/pi/temp:/root/temp debian:latest /bin/bash" in the terminal to share the "/home/pi/temp**" directory on the host with the "**/root/temp**" directory in the container.
 
-```py
+```bash
 docker run -it -v /home/pi/temp:/root/temp debian:latest /bin/bash
 ```
 
-(2) Enter “cd root/temp/” in the terminal to enter the specified directory.
+(2) Enter "**cd root/temp/**" in the terminal to enter the specified directory.
 
-```py
+```bash
 cd root/temp/
 ```
 
-(3) Enter “touch text_2.txt” in the terminal to create a file named “touch text_2.txt”.
+(3) Enter "**touch text_2.txt**" in the terminal to create a file named "**touch text_2.txt**".
 
-```py
+```bash
 touch text_2.txt
 ```
 
-(4) Enter “exit” in the terminal to exit the container.
+(4) Enter "**exit**" in the terminal to exit the container.
 
-```py
+```bash
 exit
 ```
 
-(5) Enter “cd /home/pi/temp/” in the terminal to enter the specified directory.
+(5) Enter "**cd /home/pi/temp/**" in the terminal to enter the specified directory.
 
-```py
+```bash
 cd /home/pi/temp/
 ```
 
-(6) Enter “ls” in the terminal to see that the file created in the container has been shared to the specified directory.
+(6) Enter "**ls**" in the terminal to see that the file created in the container has been shared to the specified directory.
 
-```py
+```bash
 ls
 ```
 
@@ -929,39 +931,39 @@ Nowadays, Docker has become one of the core tools for developing and deploying a
 
 ### 7.6.1 Unnecessary Container and Image Regular Cleaning
 
-Over time, Docker master’s valuable disk space may be occupied by a large number of unnecessary containers and images. Regularly cleaning up them is the first step in maintaining a healthy container environment.
+Over time, Docker master's valuable disk space may be occupied by a large number of unnecessary containers and images. Regularly cleaning up them is the first step in maintaining a healthy container environment.
 
-Press “Ctrl+Alt+T” to open the command line terminal, and enter “docker container prune”. Press “Enter” and input “y” to start removing unnecessary stopped containers.
+Press "**Ctrl+Alt+T**" to open the command line terminal, and enter "**docker container prune**". Press "**Enter**" and input "**y**" to start removing unnecessary stopped containers.
 
-```py
+```bash
 docker container prune
 ```
 
-Press “Ctrl+Alt+T” to open the command line terminal, and enter “docker image prune”. Press “Enter” and input “y” to start removing unnecessary images.
+Press "**Ctrl+Alt+T**" to open the command line terminal, and enter "**docker image prune**". Press "**Enter" and** input "**y**" to start removing unnecessary images.
 
-```py
+```bash
 docker image prune
 ```
 
 ### 7.6.2 Monitor Container Performance
 
-It is important to monitor the performance of the containers to ensure their normal operation. The real-time CPU, memory, network and disk usage of containers can be checked with Docker’s built-in “stats” command.
+It is important to monitor the performance of the containers to ensure their normal operation. The real-time CPU, memory, network and disk usage of containers can be checked with Docker's built-in "stats" command.
 
-Press “Ctrl+Alt+T” to open the command line terminal, and enter “docker stats 0cfc6a98a68c”. Press “Enter” to check the real-time performance of the container.
+Press "**Ctrl+Alt+T**" to open the command line terminal, and enter "**docker stats 0cfc6a98a68c**". Press "**Enter**" to check the real-time performance of the container.
 
-```py
+```bash
 docker stats 0cfc6a98a68c
 ```
 
-<img class="common_img" src="../_static/media/chapter_7\section_6\media\image5.png"  />
+<img class="common_img" src="../_static/media/chapter_7/section_6/media/image5.png"  />
 
 ### 7.6.3 Check Container Log 
 
-Logging container activities is extremely important for troubleshooting and diagnosing issues. Use the command “docker logs” to check the standard output logs of containers.
+Logging container activities is extremely important for troubleshooting and diagnosing issues. Use the command "**docker logs**" to check the standard output logs of containers.
 
-Press “Ctrl+Alt+T” to open the command line terminal, and enter “docker logs 0cfc6a98a68c”. Press “Enter” to check the standard output log of the container “0cfc6a98a68c”.
+Press "**Ctrl+Alt+T**" to open the command line terminal, and enter "**docker logs 0cfc6a98a68c**". Press "**Enter**" to check the standard output log of the container "**0cfc6a98a68c**".
 
-```py
+```bash
 docker logs 0cfc6a98a68c
 ```
 
@@ -969,19 +971,19 @@ docker logs 0cfc6a98a68c
 
 Containers may encounter various issues during runtime, including application collapsing and resource depletion. In such cases, restarting the container can be an effective way to resolve the problem.
 
-Press “Ctrl+Alt+T” to open the command line terminal, and enter “docker restart 0cfc6a98a68c”. Press “Enter” to restart the container.
+Press "**Ctrl+Alt+T**" to open the command line terminal, and enter "**docker restart 0cfc6a98a68c**". Press "**Enter**" to restart the container.
 
-```py
+```bash
 docker restart 0cfc6a98a68c
 ```
 
 ### 7.6.5 Process Container Network Problem
 
-The network problem between containers may cause communication failure among applications. Use the “docker network” command to manage the container network to check the containers’ IP addresses and port mappings.
+The network problem between containers may cause communication failure among applications. Use the "**docker network**" command to manage the container network to check the containers' IP addresses and port mappings.
 
-Press “Ctrl+Alt+T” to open the command line terminal, and enter “docker inspect -f '{{range .NetworkSettings.Networks}}{{.IPAddress}}{{end}}' 0cfc6a98a68c”. Press “Enter” to check the network information of the container.
+Press "**Ctrl+Alt+T**" to open the command line terminal, and enter "**docker inspect -f '{{range .NetworkSettings.Networks}}{{.IPAddress}}{{end}}' 0cfc6a98a68c**". Press "**Enter**" to check the network information of the container.
 
-```py
+```bash
 docker inspect -f '{{range .NetworkSettings.Networks}}{{.IPAddress}}{{end}}' 0cfc6a98a68c
 ```
 
@@ -989,15 +991,15 @@ docker inspect -f '{{range .NetworkSettings.Networks}}{{.IPAddress}}{{end}}' 0cf
 
 Storage problems in containers may involve disk space exhaustion and data loss. Use data volumes and store drivers to better manage container storage.
 
-Press “Ctrl+Alt+T” to open the command line terminal, and enter “docker volume create my-data”. Press “Enter” to create a data volume.
+Press "**Ctrl+Alt+T**" to open the command line terminal, and enter "**docker volume create my-data**". Press "**Enter**" to create a data volume.
 
-```py
+```bash
 docker volume create my-data
 ```
 
 After successfully creating the data volume, you can mount it to a container to enable data sharing.
 
-```py
+```bash
 docker run -v my-data:/path/in/container debian
 ```
 

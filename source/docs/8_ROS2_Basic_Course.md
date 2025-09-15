@@ -1834,8 +1834,8 @@ import rclpy # Import rclpy module
 from rclpy.node import Node # Import Node class
 from rclpy.parameter import Parameter # Import Parameter class
 class MinimalParam(Node): # Define the MinimalParam class inhering from the Node class
-def \_\_init\_\_(self):
-super().\_\_init\_\_('minimal_param_node') # Call the constructor of the parent class to initialize the node.
+def __init__(self):
+super().__init__('minimal_param_node') # Call the constructor of the parent class to initialize the node.
 self.declare_parameter('my_parameter', 'hiwonder') # Declare a parameter named "my_parameter" and set its default value to "hiwonder".
 self.timer = self.create_timer(1, self.timer_callback) # Create a time, set the callback function as timer_callback, with an interval of 1 second.
 def timer_callback(self):
@@ -1851,8 +1851,8 @@ self.set_parameters(all_new_parameters) # Set node's parameter value as new para
 def main():
 rclpy.init() # Initialize ROS node
 node = MinimalParam() # Create MinimalParam object
-rclpy.spin(node) \# Enter main loop
-if \_\_name\_\_ == '\_\_main\_\_':
+rclpy.spin(node) # Enter main loop
+if __name__ == '__main__':
 main()
 ```
 

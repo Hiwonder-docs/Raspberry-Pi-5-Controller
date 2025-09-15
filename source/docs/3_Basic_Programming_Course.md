@@ -60,7 +60,7 @@ Scientific Computing and Numerical Analysis: C++ finds application in developing
 
 (2) Use short-cut '**Ctrl+Alt+T**' or click-on terminal icon at the upper left corner to navigate to the terminal interface.
 
-(3) To create a new C++ file in the interface, append "**.cpp**" after the file name. For example, to demonstrate, let's create a new file named "**helloHiwonder.cpp**". Type "**vi helloHiwonder.cpp**" and press the "ENTER" key.
+(3) To create a new C++ file in the interface, append "**.cpp**" after the file name. For example, to demonstrate, let's create a new file named "**helloHiwonder.cpp**". Type "**vi helloHiwonder.cpp**" and press the "**ENTER**" key.
 
 ```bash
 vi helloHiwonder.cpp
@@ -73,7 +73,7 @@ vi helloHiwonder.cpp
 This line of code outputs the string "**helloHiwonder**" and then breaks the line.
 
 ```bash
-std::cout\<\<"helloHiwonder"\<\<std::endl;
+std::cout<<"helloHiwonder"<<std::endl;
 ```
 
 <img class="common_img" src="../_static/media/chapter_3/section_1-0/media/image3.png"  />

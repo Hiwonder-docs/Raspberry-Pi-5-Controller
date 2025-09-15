@@ -262,7 +262,7 @@ deb https://mirrors.tuna.tsinghua.edu.cn/raspberrypi/ bookworm main
 
 (6) Having saved the file, use short-cut '**Ctrl+X**' to exit the file.
 
-## 2.4 Lesson 4 Operating System Update
+## 2.4 Operating System Update
 
 Regularly updating the Raspberry Pi can enhance system security; however, it's not advisable for developers to update randomly.
 
@@ -409,7 +409,7 @@ Used to load and configure device tree overlays. By configuring dtoverlay, users
 ```py
 dtoverlaydtoverlay=vc4-kms-v3d
 ```
-  
+
   To access more detailed tutorials, please visit this website: **<https://www.raspberrypi.com/documentation/computers/raspberry-pi-5.html>**
 
 ## 2.7 Network Configuration Method+Vim Editor Installation and Usage Tutorial

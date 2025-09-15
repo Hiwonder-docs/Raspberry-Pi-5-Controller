@@ -916,6 +916,8 @@ vim setup.py
 
 <img class="common_img" src="../_static/media/chapter_9/section_8/media/image16.png"  />
 
+<p id="anchor_8_8_4"></p>
+
 ### 8.8.4 Compilation and Execution
 
 (1) After granting the executable permission, enter the command "**cd ~/hiwonder_ws/**" to switch to the directory of the workspace.
@@ -1065,7 +1067,7 @@ rosidl_generate_interfaces( \${PROJECT_NAME}
 
 <img class="common_img" src="../_static/media/chapter_9/section_8/media/image40.png"  />
 
-(9) Reference the step 1), 2) and 3) in "**[9.8.4 Compilation and Execution]()**" to compile the workspace.
+(9) Reference the step 1), 2) and 3) in "**[9.8.4 Compilation and Execution](#anchor_8_8_4)**" to compile the workspace.
 
 (10) Modify the code inside the red box below, replace it with the statement "**from demo_interfaces.msg import String**". This change enables the use of custom messages and maintains the same functionality as before.
 

@@ -90,7 +90,7 @@ docker ps
 
 <img class="common_img" src="../_static/media/chapter_9/section_2/media/image5.png"  />
 
-(3) Enter the command "**docker exec -it 55ce /bin/bash**" to enter the container (the container’s ID can be abbreviated as long as it uniquely identifies the container).
+(3) Enter the command "**docker exec -it 55ce /bin/bash**" to enter the container (the container's ID can be abbreviated as long as it uniquely identifies the container).
 
 ```bash
 docker exec -it 55ce /bin/bash
@@ -169,7 +169,7 @@ source ~/.bashrc
 ros2 run turtlesim turtlesim_node
 ```
 
-<img class="common_img" src="../_static/media/chapter_9\section_2/media/image18.png"  />
+<img class="common_img" src="../_static/media/chapter_9/section_2/media/image18.png"  />
 
 ## 8.3 ROS2 Command-Line Operation
 
@@ -250,7 +250,7 @@ The following table will provide explanations for the commonly used files in ROS
 
 |    **Term**    |                       **Instruction**                        |
 | :------------: | :----------------------------------------------------------: |
-|   Urdf file    | A model file describing robot’s entire elements, including link, joint, kinematics parameters, dynamics parameters, visual models and collision detection models. |
+|   Urdf file    | A model file describing robot's entire elements, including link, joint, kinematics parameters, dynamics parameters, visual models and collision detection models. |
 |    Srv file    | It is stored in the srv folder used to define ROS service messages, consisting of two parts: request and respond. The request and respond are separated by the "---" symbol. |
 |    Msg file    | It is stored in the msg folder used to define ROS topic messages. |
 |  package.xml   | Description of the package attributes, including the package name, version number, authorship and other information. |
@@ -275,7 +275,7 @@ The ros2 pkg has a total of five commands: create, executables, list, prefix, xm
 
 The function of ros2 run is allow you to run nodes within ROS2 package. The basic syntax is "**ros2 run <package_name> <node_name>" as pictured.**
 
-<img class="common_img" src="../_static/media/chapter_9\section_3/media/image2.png"  />
+<img class="common_img" src="../_static/media/chapter_9/section_3/media/image2.png"  />
 
 * **Command-line Tool**
 
@@ -331,7 +331,7 @@ During the subsequent learning and development processes, users can improve thei
 sudo raspi-config
 ```
 
-(2) Select "2. Display Options" using "↑↓" keys and press "Enter" to confirm. "Esc" key can be used to go back to the previous level.
+(2) Select "2. Display Options" using "↑↓" keys and press "Enter" to confirm. "**Esc**" key can be used to go back to the previous level.
 
 <img class="common_img" src="../_static/media/chapter_9/section_4/media/image3.png"  />
 
@@ -351,7 +351,7 @@ sudo raspi-config
 
 During the subsequent ROS development, it is necessary to open multiple terminals. In this point, terminator tool will be utilized.
 
-(1) Click <img class="common_img" src="../_static/media/chapter_9/section_4/media/image7.png"  /> in the upper-left corner, and select System Tools and Terminator in sequence.
+(1) Click <img src="../_static/media/chapter_9/section_4/media/image7.png"  /> in the upper-left corner, and select System Tools and Terminator in sequence.
 
 <img class="common_img" src="../_static/media/chapter_9/section_4/media/image8.png"  />
 
@@ -387,7 +387,7 @@ Every time before entering the container, it is inconvenient to enter command in
 
 The Tree is a command-line tool, used to list the hierarchical structure of directories and files in a tree-like format. It helps users visualize the directory structure of the file system in a clear manner, including files and sub-directories.
 
-(1) Click <img class="common_img" src="../_static/media/chapter_9/section_4/media/image14.png"  /> in the upper-left corner, select **System Tools** and **Terminator** in sequence.
+(1) Click <img src="../_static/media/chapter_9/section_4/media/image14.png"  /> in the upper-left corner, select **System Tools** and **Terminator** in sequence.
 
 <img class="common_img" src="../_static/media/chapter_9/section_4/media/image8.png"  />
 
@@ -405,7 +405,7 @@ tree -L 1
 
 ### 8.4.4 pip Package Installation
 
-Python-pip is a package for Python3’s package management tool "pip". pip is the official package management tool for Python, used to install, upgrade and manage Python package .
+Python-pip is a package for Python3's package management tool "pip". pip is the official package management tool for Python, used to install, upgrade and manage Python package .
 
 Enter the command "**sudo apt-get install python3-pip**" to install pip.
 
@@ -458,11 +458,11 @@ sudo apt-get install ros-humble-ros-gz
 
 In ROS robot development, when we develop specific functionalities for robots, various code, parameters, scripts, and other files need to be placed in a folder for management. This folder is called a workspace in the ROS system. Therefore, a workspace is a folder where project-related files are stored, serving as the main location for storing all data during the development process.
 
-### 8.5.2 **Create & Compile Workspace**
+### 8.5.2 Create & Compile Workspace
 
-(1) Click<img class="common_img" src="../_static/media/chapter_9\section_5/media/image2.png"  /> in the upper left corner, then select **System Tools and Terminator** in sequence.
+(1) Click <img src="../_static/media/chapter_9/section_5/media/image2.png"  /> in the upper left corner, then select **System Tools and Terminator** in sequence.
 
-<img class="common_img" src="../_static/media/chapter_9\section_5/media/image3.png"  />
+<img class="common_img" src="../_static/media/chapter_9/section_5/media/image3.png"  />
 
 (2) Enter "**docker ps**" to list the currently running containers
 
@@ -470,7 +470,7 @@ In ROS robot development, when we develop specific functionalities for robots, v
 docker ps
 ```
 
-<img class="common_img" src="../_static/media/chapter_9\section_5/media/image4.png"  />
+<img class="common_img" src="../_static/media/chapter_9/section_5/media/image4.png"  />
 
 (3) Enter "**docker exec -it -u ubuntu -w /home/ubuntu 55ce /bin/bash**" (the container ID can be abbreviated as long as it uniquely identifies the container) to enter the contain with ROS2 installed.
 
@@ -478,7 +478,7 @@ docker ps
 docker exec -it -u ubuntu -w /home/ubuntu 55ce /bin/bash
 ```
 
-<img class="common_img" src="../_static/media/chapter_9\section_5/media/image5.png"  />
+<img class="common_img" src="../_static/media/chapter_9/section_5/media/image5.png"  />
 
 (4) Enter "**mkdir -p ~/hiwonder_ws/src**" to create a workspace called "**mkdir -p ~/hiwonder_ws/src**".
 
@@ -486,7 +486,7 @@ docker exec -it -u ubuntu -w /home/ubuntu 55ce /bin/bash
 mkdir -p ~/hiwonder_ws/src
 ```
 
-<img class="common_img" src="../_static/media/chapter_9\section_5/media/image6.png"  />
+<img class="common_img" src="../_static/media/chapter_9/section_5/media/image6.png"  />
 
 (5) Enter "**cd hiwonder_ws**" to switch to the workspace named "**hiwonder_ws**".
 
@@ -494,7 +494,7 @@ mkdir -p ~/hiwonder_ws/src
 cd hiwonder_ws
 ```
 
-<img class="common_img" src="../_static/media/chapter_9\section_5/media/image7.png"  />
+<img class="common_img" src="../_static/media/chapter_9/section_5/media/image7.png"  />
 
 (6) Enter "**colcon build**" to compile the workspace.
 
@@ -502,7 +502,7 @@ cd hiwonder_ws
 colcon build
 ```
 
-<img class="common_img" src="../_static/media/chapter_9\section_5/media/image8.png"  />
+<img class="common_img" src="../_static/media/chapter_9/section_5/media/image8.png"  />
 
 (7) Enter "**source ~/hiwonder_ws/install/setup.bash**" to load the workspace environment in ROS2.
 
@@ -510,7 +510,7 @@ colcon build
 source ~/hiwonder_ws/install/setup.bash
 ```
 
-<img class="common_img" src="../_static/media/chapter_9\section_5/media/image9.png"  />
+<img class="common_img" src="../_static/media/chapter_9/section_5/media/image9.png"  />
 
 (8) Every time yon open a nrew terminal, step 7) will be executed to load the workspace. However, you can enter the command "**echo "source ~/hiwonder_ws/install/setup.bash" >> ~/.bashrc**" to append the specified command to the .bashrc file.
 
@@ -532,9 +532,9 @@ After compilation, enter the command "**tree -L 1**" to view the root directory 
 tree -L 1
 ```
 
-<img class="common_img" src="../_static/media/chapter_9\section_5/media/image12.png"  />
+<img class="common_img" src="../_static/media/chapter_9/section_5/media/image12.png"  />
 
-A typical workspace structure in ROS system is shown as above. The "hiwonder_ws" is the root directory of the workspace, which contains four sub-directories, or sub-spaces.
+A typical workspace structure in ROS system is shown as above. The "**hiwonder_ws**" is the root directory of the workspace, which contains four sub-directories, or sub-spaces.
 
 | **Name** |      **Meaning**       |                       **Instruction**                        |
 | :------: | :--------------------: | :----------------------------------------------------------: |
@@ -543,7 +543,7 @@ A typical workspace structure in ROS system is shown as above. The "hiwonder_ws"
 |   log    |     Log workspace      | Save various logs including warnings, errors, and information during the compilation and execution processes |
 |   src    |     Code workspace     | The subsequent code and scripts need to be manually placed here. |
 
-All in all,most of operations are performed within the "src" folder among these four spaces. After successful compilation, the results will be executed from the "install" folder. The "build" and "folder" are rarely used.
+All in all,most of operations are performed within the "**src**" folder among these four spaces. After successful compilation, the results will be executed from the "**install**" folder. The "**build**" and "folder" are rarely used.
 
 Moreover, the name of the workspace can be customized, and there can be multiple workspaces. For example:
 
@@ -565,7 +565,7 @@ The principle of packages addresses this issue. The code of different function i
 
 ### 8.6.2 Create and Compile Package
 
-(1) Click<img class="common_img" src="../_static/media/chapter_9/section_6/media/image2.png"  /> in the upper-left corner, then select "**System Tools and Terminator**" in sequence.
+(1) Click <img src="../_static/media/chapter_9/section_6/media/image2.png"  /> in the upper-left corner, then select "**System Tools and Terminator**" in sequence.
 
 <img class="common_img" src="../_static/media/chapter_9/section_6/media/image3.png"  />
 
@@ -628,9 +628,9 @@ During communication, regardless of the method used, the construction of communi
 
 ### 8.7.2 Create Node
 
-(1) Click<img class="common_img" src="../_static/media/chapter_9\section_7/media/image2.png"  /> in the upper left corner, and then select "**System Tools and Terminator**" in sequence.
+(1) Click <img src="../_static/media/chapter_9/section_7/media/image2.png"  /> in the upper left corner, and then select "**System Tools and Terminator**" in sequence.
 
-<img class="common_img" src="../_static/media/chapter_9\section_7/media/image3.png"  />
+<img class="common_img" src="../_static/media/chapter_9/section_7/media/image3.png"  />
 
 (2) Enter the command "**cd hiwonder_ws/src/hello_world_demo/hello_world_demo**" and press Enter to switch to the path of the "**hello_world_demo**" package.
 
@@ -638,7 +638,7 @@ During communication, regardless of the method used, the construction of communi
 cd hiwonder_ws/src/hello_world_demo/hello_world_demo
 ```
 
-(3) Enter command "package" to edit program. Copy the below program. You can press "i" to edit the program. After modification, press "Esc" and enter ":wq" to save and exit the program.
+(3) Enter command "**package**" to edit program. Copy the below program. You can press "**i**" to edit the program. After modification, press "**Esc**" and enter "**:wq**" to save and exit the program.
 
 ```bash
 vim hello_world.py
@@ -655,7 +655,7 @@ super().__init__('hello_world_demo')
 def run(self):
 # Execute a loop when the ROS2 system is running normally.
 while rclpy.ok():
-# Print "Hello World" to the node’s log.
+# Print "Hello World" to the node's log.
 self.get_logger().info('Hello World')
 # Sleep for 0.5s to control the loop time.
 time.sleep(0.5)
@@ -705,7 +705,7 @@ colcon build
 
 (3) Enter the command "**colcon build**" and press Enter to make the environment variables take effect.
 
-<img class="common_img" src="../_static/media/chapter_9\section_7/media/image10.png"  />
+<img class="common_img" src="../_static/media/chapter_9/section_7/media/image10.png"  />
 
 (4) Enter command "**ros2 run hello_world_demo hello_world**" and press Enter to start hello_world node.
 
@@ -713,27 +713,27 @@ colcon build
 ros2 run hello_world_demo hello_world
 ```
 
-<img class="common_img" src="../_static/media/chapter_9\section_7/media/image11.png"  />
+<img class="common_img" src="../_static/media/chapter_9/section_7/media/image11.png"  />
 
 ### 8.7.4 Program Analysis
 
 According to the realization result, the logic progress for the program is shown as pictured:
 
-<img class="common_img" src="../_static/media/chapter_9\section_7/media/image12.png"   />
+<img class="common_img" src="../_static/media/chapter_9/section_7/media/image12.png"   />
 
-Create a node named HelloWorldNode, and print "Hello World" to the node’s log every 0.5 seconds in the main loop of the node. During program execution, the ROS2 Python interface is initialized first, then a node instance is created and its main loop is run. When the program is interrupted, the node object is destroyed, and the ROS2 Python interface is shut down.
+Create a node named HelloWorldNode, and print "**Hello World**" to the node's log every 0.5 seconds in the main loop of the node. During program execution, the ROS2 Python interface is initialized first, then a node instance is created and its main loop is run. When the program is interrupted, the node object is destroyed, and the ROS2 Python interface is shut down.
 
 (1) **Main function**
 
-<img class="common_img" src="../_static/media/chapter_9\section_7/media/image13.png"  />
+<img class="common_img" src="../_static/media/chapter_9/section_7/media/image13.png"  />
 
 First, invoke the rclpy.init() function to initialize ROS2 Python interface. Then instantiate the HelloWorkdNode file. Finally, execute the node.run() function.
 
 (2) **HelloWorldNode Class**
 
-<img class="common_img" src="../_static/media/chapter_9\section_7/media/image14.png"  />
+<img class="common_img" src="../_static/media/chapter_9/section_7/media/image14.png"  />
 
-First, create a node named HelloWorldNode, then print "Hello World" to the node’s log at intervals of 0.5 seconds in the node’s main loop.
+First, create a node named HelloWorldNode, then print "Hello World" to the node's log at intervals of 0.5 seconds in the node's main loop.
 
 ## 8.8 ROS2 Topic
 
@@ -743,7 +743,7 @@ Topic communication is the most common way of communication in ROS2. Publishers 
 
 Topic communication is based on publish and subscribe models as pictured:
 
-<img class="common_img" src="../_static/media/chapter_9\section_8/media/image2.GIF"   />
+<img class="common_img" src="../_static/media/chapter_9/section_8/media/image2.GIF"   />
 
 The characteristic of the topic data transmission is from one node to another. The object sending data is called the publisher, while the object receiving data is called the subscriber. Each topic requires a name, and the transmitted data also requires a fixed data type.
 
@@ -751,9 +751,9 @@ The characteristic of the topic data transmission is from one node to another. T
 
 * **Create Publisher**
 
-(1) Click<img class="common_img" src="../_static/media/chapter_9\section_8/media/image3.png"  /> and select "System Tools -\>Terminator" in sequence.
+(1) Click <img src="../_static/media/chapter_9/section_8/media/image3.png"  /> and select "System Tools -\>Terminator" in sequence.
 
-<img class="common_img" src="../_static/media/chapter_9\section_8/media/image4.png"  />
+<img class="common_img" src="../_static/media/chapter_9/section_8/media/image4.png"  />
 
 (2) Enter the command "**cd hiwonder_ws/src/**" to switch to the src folder within hiwonder_ws workspace.
 
@@ -777,7 +777,7 @@ rclpy dependency
 cd topic_demo/topic_demo
 ```
 
-(5) Enter the command "**vim topic_pub.py**" to edit the program, copy the following program. If modification is required, you can press "i" to modify the program. After modification, press "Esc" and eneter "**:wq**" to save and exit.
+(5) Enter the command "**vim topic_pub.py**" to edit the program, copy the following program. If modification is required, you can press "**i**" to modify the program. After modification, press "**Esc**" and eneter "**:wq**" to save and exit.
 
 ```bash
 vim topic_pub.py
@@ -839,7 +839,7 @@ chmod +x topic_pub.py
 
 * **Create Subscriber**
 
-(1) Enter the command "**vim topic_sub.py**" to edit the program. Copy the following program. If modification is required, you can press "i" to modify the program. After modification, press "Esc" and eneter "**:wq**" to save and exit.
+(1) Enter the command "**vim topic_sub.py**" to edit the program. Copy the following program. If modification is required, you can press "**i**" to modify the program. After modification, press "**Esc**" and eneter "**:wq**" to save and exit.
 
 ```bash
 vim topic_sub.py
@@ -904,17 +904,17 @@ cd ..
 vim setup.py
 ```
 
-(3) Press "i" to enter the editing mode, and then enter the following code to the corresponding position.
+(3) Press "**i**" to enter the editing mode, and then enter the following code to the corresponding position.
 
 'topic_pub = topic_demo.topic_pub:main',
 
 'topic_sub = topic_demo.topic_sub:main'
 
-<img class="common_img" src="../_static/media/chapter_9\section_8/media/image15.png"  />
+<img class="common_img" src="../_static/media/chapter_9/section_8/media/image15.png"  />
 
 (4) Enter "**:wq**" to save and exit the file.
 
-<img class="common_img" src="../_static/media/chapter_9\section_8/media/image16.png"  />
+<img class="common_img" src="../_static/media/chapter_9/section_8/media/image16.png"  />
 
 ### 8.8.4 Compilation and Execution
 
@@ -944,7 +944,7 @@ ros2 run topic_demo topic_pub
 
 (5) Right click to select "**Split Vertically**" to create a new terminal window.
 
-<img class="common_img" src="../_static/media/chapter_9\section_8/media/image21.png"  />
+<img class="common_img" src="../_static/media/chapter_9/section_8/media/image21.png"  />
 
 (6) Enter the command "**ros2 run topic_demo topic_sub**" and press Enter to start the topic_sub topic publishing node.
 
@@ -958,39 +958,39 @@ ros2 run topic_demo topic_sub
 
 According to the realization result, the logic progress for the program is shown as pictured:
 
-<img class="common_img" src="../_static/media/chapter_9\section_8/media/image23.png"   />
+<img class="common_img" src="../_static/media/chapter_9/section_8/media/image23.png"   />
 
-Create a publisher named as minimal_publisher. This publisher publishes a message with an incremental number every to the "topic" topic every 0.5 seconds. During program execution, ROS 2 node is initialized first. Then, a MinimalPublisher object is created, and the program enters the ROS 2 node's event loop. When the program is interrupted, the node object is destroyed, and the ROS 2 node is shut down.
+Create a publisher named as minimal_publisher. This publisher publishes a message with an incremental number every to the "**topic**" topic every 0.5 seconds. During program execution, ROS 2 node is initialized first. Then, a MinimalPublisher object is created, and the program enters the ROS 2 node's event loop. When the program is interrupted, the node object is destroyed, and the ROS 2 node is shut down.
 
 ① **Main Function**
 
-<img class="common_img" src="../_static/media/chapter_9\section_8/media/image24.png"  />
+<img class="common_img" src="../_static/media/chapter_9/section_8/media/image24.png"  />
 
 First, invoke the rclpy.init() function to initialize ROS2 Python interface. Then instantiate the MinimalPublisher() file. Finally, execute the minimal_publisher within the event loop of the ROS2 node.
 
 ② MinimalPublisher Class
 
-<img class="common_img" src="../_static/media/chapter_9\section_8/media/image25.png"  />
+<img class="common_img" src="../_static/media/chapter_9/section_8/media/image25.png"  />
 
-First, create a node named minimal_publisher, then create a publisher named "publisher\_". The timier_callback() callback function prints a message with an incremental number to the node’s log at intervals of 0.5 second.
+First, create a node named minimal_publisher, then create a publisher named "**publisher\_**". The timier_callback() callback function prints a message with an incremental number to the node's log at intervals of 0.5 second.
 
 (2) **Subscribe to Topic**
 
 According to the realization result, the logic progress for the program is shown as pictured:
 
-<img class="common_img" src="../_static/media/chapter_9\section_8/media/image26.png"   />
+<img class="common_img" src="../_static/media/chapter_9/section_8/media/image26.png"   />
 
 Create a subscriber named as minimal_sublisher. This subscriber prints the subscribed messages to logger. During program execution, ROS 2 node is initialized first. Then, a MinimalPublisher object is created, and the program enters the ROS 2 node's event loop. When the program is interrupted, the node object is destroyed, and the ROS 2 node is shut down.
 
 ① **Main Function**
 
-<img class="common_img" src="../_static/media/chapter_9\section_8/media/image27.png"  />
+<img class="common_img" src="../_static/media/chapter_9/section_8/media/image27.png"  />
 
 First, invoke the rclpy.init() function to initialize ROS2 Python interface. Then instantiate the MinimalPublisher() file. Finally, execute the minimal_publisher within the event loop of the ROS2 node.
 
 ② MinimalSublisher Class
 
-<img class="common_img" src="../_static/media/chapter_9\section_8/media/image28.png"  />
+<img class="common_img" src="../_static/media/chapter_9/section_8/media/image28.png"  />
 
 First create a node named minimal_sublisher. Then create a subscriber named subscription. In the listener_callback() callback function, the received message content is printed to the logger.
 
@@ -998,9 +998,9 @@ First create a node named minimal_sublisher. Then create a subscriber named subs
 
 Both topic_pub.py and topic_pub.py utilizes ROS official interfaces.
 
-<img class="common_img" src="../_static/media/chapter_9\section_8/media/image29.png"  />
+<img class="common_img" src="../_static/media/chapter_9/section_8/media/image29.png"  />
 
-<img class="common_img" src="../_static/media/chapter_9\section_8/media/image30.png"  />
+<img class="common_img" src="../_static/media/chapter_9/section_8/media/image30.png"  />
 
 Though it is a way good practice to use a pre-defined interfaces, it may necessary to define custom messages and services. The following will demonstrate how to create custom interface definitions.
 
@@ -1036,13 +1036,15 @@ cd msg
 
 (6) Enter the command "**vim String.msg**" to edit the program. Enter "**string data**". If you need to make modifications, you can press "**i**". After modification, enter "**:wq**" to save and exit.
 
-<img class="common_img" src="../_static/media/chapter_9\section_8/media/image36.png"  /><img class="common_img" src="../_static/media/chapter_9\section_8/media/image37.png"  />
+<img src="../_static/media/chapter_9/section_8/media/image36.png"  />
+
+<img src="../_static/media/chapter_9/section_8/media/image37.png"  />
 
 ```bash
 :wq
 ```
 
-(7) Enter "**cd .."** to navigate back to the parent directory, then enter "**vim CMakeLists.txt**" to open the file using the Vim text editor. Copy the following program and paste it into the specific location as pictured.If you need to make modifications, press "i" to enter insert mode. Once you've finished editing, press "**Esc**", then type "**:wq**" to save and exit.
+(7) Enter "**cd .."** to navigate back to the parent directory, then enter "**vim CMakeLists.txt**" to open the file using the Vim text editor. Copy the following program and paste it into the specific location as pictured.If you need to make modifications, press "**i**" to enter insert mode. Once you've finished editing, press "**Esc**", then type "**:wq**" to save and exit.
 
 ```py
 find_package(rosidl_default_generators REQUIRED)
@@ -1051,9 +1053,9 @@ rosidl_generate_interfaces( \${PROJECT_NAME}
 )
 ```
 
-<img class="common_img" src="../_static/media/chapter_9\section_8/media/image39.png"  />
+<img class="common_img" src="../_static/media/chapter_9/section_8/media/image39.png"  />
 
-(8) Enter the command "**vim package.xml**" again to open the file using the Vim text editor. If you need to make modifications, press "i" to enter insert mode. Once you've finished editing, press "**Esc**", then type "**:wq**" to save and exit.
+(8) Enter the command "**vim package.xml**" again to open the file using the Vim text editor. If you need to make modifications, press "**i**" to enter insert mode. Once you've finished editing, press "**Esc**", then type "**:wq**" to save and exit.
 
 ```xml
 \<build_depend\>rosidl_default_generators\</build_depend\>
@@ -1061,13 +1063,13 @@ rosidl_generate_interfaces( \${PROJECT_NAME}
 \<member_of_group\>rosidl_interface_packages\</member_of_group\>
 ```
 
-<img class="common_img" src="../_static/media/chapter_9\section_8/media/image40.png"  />
+<img class="common_img" src="../_static/media/chapter_9/section_8/media/image40.png"  />
 
-(9) Reference the step 1), 2) and 3) in "**[9.8.4. Compilation and Execution]()**" to compile the workspace.
+(9) Reference the step 1), 2) and 3) in "**[9.8.4 Compilation and Execution]()**" to compile the workspace.
 
 (10) Modify the code inside the red box below, replace it with the statement "**from demo_interfaces.msg import String**". This change enables the use of custom messages and maintains the same functionality as before.
 
-<img class="common_img" src="../_static/media/chapter_9\section_8/media/image30.png"  />
+<img class="common_img" src="../_static/media/chapter_9/section_8/media/image30.png"  />
 
 ## 8.9 ROS2 Service Instruction
 
@@ -1075,7 +1077,7 @@ rosidl_generate_interfaces( \${PROJECT_NAME}
 
 Service communication is a communication model based on request and respond. During the mutual communication, the client sends request data to the server, and the server responds with results to the client.
 
-<img class="common_img" src="../_static/media/chapter_9\section_9/media/image2.GIF"   />
+<img class="common_img" src="../_static/media/chapter_9/section_9/media/image2.GIF"   />
 
 From the perspective of service implementation, the request- respond form is called the client/server model, abbreviated as CS mode. In this model, when the client requires certain data, aiming at a specified service, a request message targeting a specific service will be sent. Upon receiving the request, the server processes it and provides a respond.
 
@@ -1083,9 +1085,9 @@ This communication mechanism is common in our daily life. For example, when we b
 
 ### 8.9.2 Create Interface 
 
-(1) Click<img class="common_img" src="../_static/media/chapter_9\section_9/media/image3.png"  /> and select "System Tools -\>Terminator" in sequence.
+(1) Click <img src="../_static/media/chapter_9/section_9/media/image3.png"  /> and select "**System Tools -\>Terminator**" in sequence.
 
-<img class="common_img" src="../_static/media/chapter_9\section_9/media/image4.png"  />
+<img class="common_img" src="../_static/media/chapter_9/section_9/media/image4.png"  />
 
 (2) Enter the command "**cd hiwonder_ws/src/**" to switch to the **demo_interfaces** package.
 
@@ -1106,7 +1108,7 @@ mkdir src
 cd src
 ```
 
-(5) Enter the command "**vim AddInts.srv**" to edit the program. Enter the code below. If you need to make modifications, press "i" to enter insert mode. Once you've finished editing, press "**Esc**", then type "**:wq**" to save and exit.
+(5) Enter the command "**vim AddInts.srv**" to edit the program. Enter the code below. If you need to make modifications, press "**i**" to enter insert mode. Once you've finished editing, press "**Esc**", then type "**:wq**" to save and exit.
 
 ```bash
 vim AddInts.srv
@@ -1120,13 +1122,13 @@ int32 num2
 int32 sum
 ```
 
-<img class="common_img" src="../_static/media/chapter_9\section_9/media/image9.png"  />
+<img class="common_img" src="../_static/media/chapter_9/section_9/media/image9.png"  />
 
 ```bash
 :wq
 ```
 
-(6) Enter "**cd .."** to navigate back to the parent directory, then enter "**vim CMakeLists.txt**" to open the file using the Vim text editor. Copy the following program and paste it into the specific location as pictured.If you need to make modifications, press "i" to enter insert mode. Once you've finished editing, press "**Esc**", then type "**:wq**" to save and exit.
+(6) Enter "**cd .."** to navigate back to the parent directory, then enter "**vim CMakeLists.txt**" to open the file using the Vim text editor. Copy the following program and paste it into the specific location as pictured.If you need to make modifications, press "**i**" to enter insert mode. Once you've finished editing, press "**Esc**", then type "**:wq**" to save and exit.
 
 ```bash
 find_package(rosidl_default_generators REQUIRED)
@@ -1136,19 +1138,19 @@ rosidl_generate_interfaces( \${PROJECT_NAME}
 )
 ```
 
-<img class="common_img" src="../_static/media/chapter_9\section_9/media/image11.png"  />
+<img class="common_img" src="../_static/media/chapter_9/section_9/media/image11.png"  />
 
 ### 8.9.3 Create Service 
 
 * **Create Server**
 
-(1) Click<img class="common_img" src="../_static/media/chapter_9\section_9/media/image3.png"  /> and select "System Tools -\>Terminator" in sequence.
+(1) Click <img src="../_static/media/chapter_9/section_9/media/image3.png"  /> and select "**System Tools -\>Terminator**" in sequence.
 
-<img class="common_img" src="../_static/media/chapter_9\section_9/media/image4.png"  />
+<img class="common_img" src="../_static/media/chapter_9/section_9/media/image4.png"  />
 
 (2) Enter the command "**cd hiwonder_ws/src/**" to switch to the src folder within hiwonder_ws workspace.
 
-<img class="common_img" src="../_static/media/chapter_9\section_9/media/image12.png"  />
+<img class="common_img" src="../_static/media/chapter_9/section_9/media/image12.png"  />
 
 (3) Enter the command "**ros2 pkg create service_demo --build-type ament_python --dependencies rclpy**" and press Enter to create a package named "**service_demo**" with rclpy dependency.
 
@@ -1162,7 +1164,7 @@ ros2 pkg create service_demo --build-type ament_python --dependencies rclpy
 cd service_demo/service_demo/
 ```
 
-(5) Enter the command "**vim service_server.py**" to edit the program, copy the program below. If modification is required, you can press "i" to modify the program. After modification, press "Esc" and eneter "**:wq**" to save and exit.
+(5) Enter the command "**vim service_server.py**" to edit the program, copy the program below. If modification is required, you can press "**i**" to modify the program. After modification, press "**Esc**" and eneter "**:wq**" to save and exit.
 
 ```bash
 vim service_server.py
@@ -1178,13 +1180,13 @@ class MinimalService(Node):
 def \_\_init\_\_(self):
 # Call the initialize method of the Node class to set the node name as "minimal_service"
 super().\_\_init\_\_('minimal_service')
-# Create a service that provides a service of type AddInts. Set the service name as ‘add_two_ints’, and the callback function as ‘add_two_ints_callback’.
+# Create a service that provides a service of type AddInts. Set the service name as 'add_two_ints', and the callback function as 'add_two_ints_callback'.
 self.srv = self.create_service(AddInts, 'add_two_ints', self.add_two_ints_callback)
 # Define service callback function
 def add_two_ints_callback(self, request, response):
 # Log the received requests num1 and num2 in the logs.
 self.get_logger().info('Incoming request\nnum1: %d num2: %d' % (request.num1, request.num2))
-# Calculate and set the respond field ‘sum’.
+# Calculate and set the respond field 'sum'.
 response.sum = request.num1 + request.num2
 # Return respond
 return response
@@ -1215,7 +1217,7 @@ chmod +x service_server.py
 
 * **Create Client**
 
-(1) Enter the command "**vim service_client.py**" to edit the program. Copy the following program. If you need to make modifications, you can press "i" to modify the program. After modification, press "Esc" and eneter "**:wq**" to save and exit.
+(1) Enter the command "**vim service_client.py**" to edit the program. Copy the following program. If you need to make modifications, you can press "**i**" to modify the program. After modification, press "**Esc**" and eneter "**:wq**" to save and exit.
 
 ```bash
 vim service_client.py
@@ -1304,14 +1306,14 @@ cd ..
 vim setup.py
 ```
 
-(3) Press "i" to enter the editing mode, and then enter the following code to the corresponding position.
+(3) Press "**i**" to enter the editing mode, and then enter the following code to the corresponding position.
 
 ```py
 'service_server = service_demo.service_server:main',
 'service_client = service_demo.service_client:main'
 ```
 
-<img class="common_img" src="../_static/media/chapter_9\section_9/media/image22.png"  />
+<img class="common_img" src="../_static/media/chapter_9/section_9/media/image22.png"  />
 
 (4) Enter "**:wq**" to save and exit the file.
 
@@ -1319,7 +1321,7 @@ vim setup.py
 :wq
 ```
 
-<img class="common_img" src="../_static/media/chapter_9\section_9/media/image23.png"  />
+<img class="common_img" src="../_static/media/chapter_9/section_9/media/image23.png"  />
 
 ### 8.9.5 Compilation and Execution
 
@@ -1350,7 +1352,7 @@ ros2 run service_demo service_server
 
 (5) Right click to select "**Split Vertically**" to create a new terminal window.
 
-<img class="common_img" src="../_static/media/chapter_9\section_9/media/image28.png"  />
+<img class="common_img" src="../_static/media/chapter_9/section_9/media/image28.png"  />
 
 (6) Enter the command "**ros2 run service_demo service_client 1 2**" and press Enter to start the **service_client** client to send the calculation request for numbers 1 and 2. Once the server receives the calculation request for numbers 1 and 2, it will send back the result to the client.
 
@@ -1358,7 +1360,7 @@ ros2 run service_demo service_server
 ros2 run service_demo service_client 1 2
 ```
 
-<img class="common_img" src="../_static/media/chapter_9\section_9/media/image30.png"  />
+<img class="common_img" src="../_static/media/chapter_9/section_9/media/image30.png"  />
 
 ### 8.9.6 Program Analysis
 
@@ -1366,19 +1368,19 @@ ros2 run service_demo service_client 1 2
 
 According to the realization result, the logic progress for the program is shown as pictured:
 
-<img class="common_img" src="../_static/media/chapter_9\section_9/media/image31.png"   />
+<img class="common_img" src="../_static/media/chapter_9/section_9/media/image31.png"   />
 
 Create a server named "**minimal_service**" which will receive requests, perform calculations on them, and respond with the result. During program execution, ROS 2 node is initialized first. Then, a MinimalPublisher object is created, and the program enters the ROS 2 node's event loop. When the program is interrupted, the node object is destroyed, and the ROS 2 node is shut down.
 
 (1) **Main Function**
 
-<img class="common_img" src="../_static/media/chapter_9\section_9/media/image32.png"  />
+<img class="common_img" src="../_static/media/chapter_9/section_9/media/image32.png"  />
 
 First, invoke the **rclpy.init()** function to initialize ROS2 Python interface. Then instantiate the **MinimalService()**. Finally, execute the **minimal_service** within the event loop of the ROS2 node.
 
 (2) **MinimalService Class**
 
-<img class="common_img" src="../_static/media/chapter_9\section_9/media/image33.png"  />
+<img class="common_img" src="../_static/media/chapter_9/section_9/media/image33.png"  />
 
 First, a node named minimal_service is created. Then, a service is created to provide a service of type AddInts, with the service name 'add_two_ints'. Inside the add_two_ints_callback() callback function, the two data from the request are received, processed for calculation, and the result of the calculation is responded back.
 
@@ -1386,21 +1388,21 @@ First, a node named minimal_service is created. Then, a service is created to pr
 
 According to the realization result, the logic progress for the program is shown as pictured:
 
-<img class="common_img" src="../_static/media/chapter_9\section_9/media/image34.png"   />
+<img class="common_img" src="../_static/media/chapter_9/section_9/media/image34.png"   />
 
 A client named "**minimal_client**" is created, which connects to the AddInts service named '**add_two_ints**'. It sends the two requested data. During program execution, it initializes the ROS2 node, creates a MinimalClient object, sends the service request, prints the response result, and upon interruption, it destroys the node object and closes the ROS 2 node.
 
 (1) **Main Function**
 
-<img class="common_img" src="../_static/media/chapter_9\section_9/media/image35.png"  />
+<img class="common_img" src="../_static/media/chapter_9/section_9/media/image35.png"  />
 
 First, invoke the rclpy.init() function to initialize ROS2 Python interface. Then instantiate the MinimalClient() file and send the service request. Finally, process the respond data.
 
 (2) **MinimalClient Class**
 
-<img class="common_img" src="../_static/media/chapter_9\section_9/media/image36.png"  />
+<img class="common_img" src="../_static/media/chapter_9/section_9/media/image36.png"  />
 
-First, a node named "minimal_client" is created. Then, a service client is created to connect to the AddInts service named "add_two_ints". In the send_request() function, the two command-line augments are used as the data for the request object, and the request is sent.
+First, a node named "**minimal_client**" is created. Then, a service client is created to connect to the AddInts service named "**add_two_ints**". In the send_request() function, the two command-line augments are used as the data for the request object, and the request is sent.
 
 ## 8.10 ROS2 Action
 
@@ -1414,7 +1416,7 @@ The action communication client/server model is as follow:
 
 ### 8.10.2 Create Interface 
 
-(1) Click<img class="common_img" src="../_static/media/chapter_9/section_10/media/image3.png"  /> and select "System Tools -\>Terminator" in sequence.
+(1) Click <img src="../_static/media/chapter_9/section_10/media/image3.png"  /> and select "**System Tools -\>Terminator**" in sequence.
 
 <img class="common_img" src="../_static/media/chapter_9/section_10/media/image4.png"  />
 
@@ -1436,7 +1438,7 @@ mkdir action
 cd action
 ```
 
-(5) Enter the command "**vim FileDownload.action**" to open the file with text editor, then enter the code below. If you need to make modifications, you can press "i" to modify. Once modifications are completed, press "Esc" and enter ":wq" to save and exit the program.
+(5) Enter the command "**vim FileDownload.action**" to open the file with text editor, then enter the code below. If you need to make modifications, you can press "**i**" to modify. Once modifications are completed, press "**Esc**" and enter "**:wq**" to save and exit the program.
 
 ```bash
 vim FileDownload.action
@@ -1460,7 +1462,7 @@ float32 completion_percentage
 :wq
 ```
 
-(6) Enter "**cd .."** to navigate back to the parent directory, then enter "**vim CMakeLists.txt**" to open the file using the Vim text editor. Copy the following program and paste it into the specific location as pictured.If you need to make modifications, press "i" to enter insert mode. Once you've finished editing, press "**Esc**", then type "**:wq**" to save and exit.
+(6) Enter "**cd .."** to navigate back to the parent directory, then enter "**vim CMakeLists.txt**" to open the file using the Vim text editor. Copy the following program and paste it into the specific location as pictured.If you need to make modifications, press "**i**" to enter insert mode. Once you've finished editing, press "**Esc**", then type "**:wq**" to save and exit.
 
 ```py
 find_package(rosidl_default_generators REQUIRED)
@@ -1477,7 +1479,7 @@ rosidl_generate_interfaces( \${PROJECT_NAME}
 
 * **Create Server**
 
-(1) Click<img class="common_img" src="../_static/media/chapter_9/section_10/media/image3.png"  /> and select "System Tools -\>Terminator" in sequence.
+(1) Click <img src="../_static/media/chapter_9/section_10/media/image3.png"  /> and select "**System Tools -\>Terminator**" in sequence.
 
 <img class="common_img" src="../_static/media/chapter_9/section_10/media/image4.png"  />
 
@@ -1501,7 +1503,7 @@ ros2 pkg create action_demo --build-type ament_python --dependencies rclpy
 cd action_demo/action_demo/
 ```
 
-(5) Enter the command "**vim action_server.py**" to edit the program, copy the program below. If you need to make modifications, press "i" to enter insert mode. Once you've finished editing, press "**Esc**", then type "**:wq**" to save and exit.
+(5) Enter the command "**vim action_server.py**" to edit the program, copy the program below. If you need to make modifications, press "**i**" to enter insert mode. Once you've finished editing, press "**Esc**", then type "**:wq**" to save and exit.
 
 ```bash
 vim action_server.py
@@ -1563,7 +1565,7 @@ chmod +x action_server.py
 
 * **Create Client**
 
-(1) Enter the command "**vim action_client.py**" to edit the program. Copy the following program. If you need to make modifications, press "i" to enter insert mode. After modification, press "Esc" and eneter "**:wq**" to save and exit.
+(1) Enter the command "**vim action_client.py**" to edit the program. Copy the following program. If you need to make modifications, press "**i**" to enter insert mode. After modification, press "**Esc**" and eneter "**:wq**" to save and exit.
 
 ```bash
 vim action_client.py
@@ -1635,7 +1637,7 @@ cd ..
 vim setup.py
 ```
 
-(3) Press "i" to enter insert mode, and then enter the code below to the corresponding location.
+(3) Press "**i**" to enter insert mode, and then enter the code below to the corresponding location.
 
 ```bash
 'action_server = action_demo.action_server:main',
@@ -1678,7 +1680,7 @@ ros2 run action_demo action_server
 
 <img class="common_img" src="../_static/media/chapter_9/section_10/media/image28.png"  />
 
-(6) Enter the command "**ros2 run action_demo action_client**" and press Enter to tart "action_client" action client. At this point, the server also receive the requests.
+(6) Enter the command "**ros2 run action_demo action_client**" and press Enter to tart "**action_client**" action client. At this point, the server also receive the requests.
 
 ```bash
 ros2 run action_demo action_client
@@ -1728,7 +1730,7 @@ First, invoke the **rclpy.init()** function to initialize ROS2 Python interface.
 
 <img class="common_img" src="../_static/media/chapter_9/section_10/media/image36.png"  />
 
-A ActionClient object is created to communicate with the task service. The client provides a send_goal method to send the download target, and registers three callback functions to handle the status changes "feedback" at the different stages of the task. After sending the Goal, the send_goal method adds callback functions through the future object to wait for the ActionServer's response. These three callback functions are used to obtain the Goal reception result, update the task progress, and obtain the completion result, covering the entire lifecycle of the task.
+A ActionClient object is created to communicate with the task service. The client provides a send_goal method to send the download target, and registers three callback functions to handle the status changes "**feedback**" at the different stages of the task. After sending the Goal, the send_goal method adds callback functions through the future object to wait for the ActionServer's response. These three callback functions are used to obtain the Goal reception result, update the task progress, and obtain the completion result, covering the entire lifecycle of the task.
 
 ## 8.11 ROS2 Communication Interface
 
@@ -1748,11 +1750,11 @@ ROS has three commonly used communication mechanisms, namely topics, services, a
 
 In the Lesson 8 ROS Topic, Lesson 9 Service Instruction, and Lesson 10 ROS Action, the custom interface package named demo_interfaces. Within this package, three custom interfaces are created, which are String.msg, FileDownload.action, and AddInts.srv.
 
-(1) Click<img class="common_img" src="../_static/media/chapter_9/section_11/media/image3.png"  /> and select "System Tools -\>Terminator" in sequence.
+(1) Click <img src="../_static/media/chapter_9/section_11/media/image3.png"  /> and select "**System Tools -\>Terminator**" in sequence.
 
 <img class="common_img" src="../_static/media/chapter_9/section_11/media/image4.png"  />
 
-(2) Enter the command "**cd hiwonder_ws/src/demo_interfaces**" to switch to the ""demo_interfaces" custom interface package.
+(2) Enter the command "**cd hiwonder_ws/src/demo_interfaces**" to switch to the "**demo_interfaces**" custom interface package.
 
 ```bash
 cd hiwonder_ws/src/demo_interfaces
@@ -1782,7 +1784,7 @@ Parameters have rich features. For example, if a node shares a parameter, other 
 
 ### 8.12.2 param Parameter
 
-Let’s fist get to know param parameter commands. The detailed instruction is as follow:
+Let's fist get to know param parameter commands. The detailed instruction is as follow:
 
 |            Command             |           Instruction            |
 | :----------------------------: | :------------------------------: |
@@ -1795,7 +1797,7 @@ Let’s fist get to know param parameter commands. The detailed instruction is a
 
 ### 8.12.3 Create A Parameter Example
 
-(1) Click<img class="common_img" src="../_static/media/chapter_9/section_12/media/image2.png"  /> and select "System Tools -\>Terminator" in sequence.
+(1) Click <img src="../_static/media/chapter_9/section_12/media/image2.png"  /> and select "**System Tools -\>Terminator**" in sequence.
 
 <img class="common_img" src="../_static/media/chapter_9/section_12/media/image3.png"  />
 
@@ -1807,19 +1809,19 @@ cd hiwonder_ws/src/demo_interfaces
 
 <img class="common_img" src="../_static/media/chapter_9/section_12/media/image4.png"  />
 
-(3) Enter the command "**ros2 pkg create param_demo --build-type ament_python --dependencies rclpy**" and press Enter to create a package named "param_demo" with rclpy dependency.
+(3) Enter the command "**ros2 pkg create param_demo --build-type ament_python --dependencies rclpy**" and press Enter to create a package named "**param_demo**" with rclpy dependency.
 
 ```bash
 ros2 pkg create param_demo --build-type ament_python --dependencies rclpy
 ```
 
-(4) Enter the command "**cd param_demo/param_demo/**" to switch to the "param_demo" package.
+(4) Enter the command "**cd param_demo/param_demo/**" to switch to the "**param_demo**" package.
 
 ```bash
 cd param_demo/param_demo/
 ```
 
-(5) Enter the command "**vim param_demo.py**" to open the file using VIM text editor. Copy the program below. If you need to make modifications, you can press "i" to enter the insert mode. If you’ve finishing the modification, press "Esc" and enter ":wq" to save and exit.
+(5) Enter the command "**vim param_demo.py**" to open the file using VIM text editor. Copy the program below. If you need to make modifications, you can press "**i**" to enter the insert mode. If you've finishing the modification, press "**Esc**" and enter "**:wq**" to save and exit.
 
 ```bash
 vim param_demo.py
@@ -1843,7 +1845,7 @@ rclpy.Parameter.Type.STRING, # The parameter type is string
 'hiwonder' # The parameter value is 'hiwonder'
 )
 all_new_parameters = [my_new_param] # Place the new parameter object into the list.
-self.set_parameters(all_new_parameters) # Set node’s parameter value as new parameter value.
+self.set_parameters(all_new_parameters) # Set node's parameter value as new parameter value.
 def main():
 rclpy.init() # Initialize ROS node
 node = MinimalParam() # Create MinimalParam object
@@ -1892,7 +1894,7 @@ ros2 run param_demo param_demo
 
 <img class="common_img" src="../_static/media/chapter_9/section_12/media/image14.png"  />
 
-(6) Enter the command "**ros2 param set minimal_param_node my_parameter world**" and press Enter to modify the parameter my_parameter of the node minimal_param_node to "world".
+(6) Enter the command "**ros2 param set minimal_param_node my_parameter world**" and press Enter to modify the parameter my_parameter of the node minimal_param_node to "**world**".
 
 ```bash
 ros2 param set minimal_param_node my_parameter world
@@ -1908,7 +1910,7 @@ According to the realization result, the logic progress for the program is shown
 
 <img class="common_img" src="../_static/media/chapter_9/section_12/media/image17.jpeg"   />
 
-Create a MinimalParam class, declare a string parameter "my_parameter" in the constructor, and create a timer with a 1-second interval. The timer callback function is called every 1 second. Inside the callback, it first retrieves the current value of the parameter, then prints a log, creates a new parameter object, sets a new value, and finally calls the set_parameters function to modify the parameter value in the parameter server.
+Create a MinimalParam class, declare a string parameter "**my_parameter**" in the constructor, and create a timer with a 1-second interval. The timer callback function is called every 1 second. Inside the callback, it first retrieves the current value of the parameter, then prints a log, creates a new parameter object, sets a new value, and finally calls the set_parameters function to modify the parameter value in the parameter server.
 
 * **Main Function**
 
@@ -1919,6 +1921,7 @@ First, invoke the **rclpy.init()** function to initialize ROS2 Python interface.
 * **MinimalParam Class**
 
 <img class="common_img" src="../_static/media/chapter_9/section_12/media/image19.png"  />  
+
 First, a string parameter named "**my_parameter**" is declared, and a timer with a 1-second period is created. The timer callback function, timer_callback, is called every second. It first retrieves the current value of the "**my_parameter**" parameter and then prints a log output. Next, the callback function creates a new parameter object with the same name but with a value of "hiwonder". Afterward, it calls the set_parameters function to modify the parameter value.
 
 ## 8.13 Distributed Communication Instruction
@@ -1927,7 +1930,7 @@ First, a string parameter named "**my_parameter**" is declared, and a timer with
 
 Multicomputer communication refers to the process of information transmission and exchange between multiple computers or nodes in a network.
 
-The ROS-based intermediate piece is DDS. In the same network, the distributed communication can be implemented by using the domain DDS’s ID mechanics (ROS_DOMAIN_ID). The general progress: before starting nodes, the value of domain ID can be set. If different nodes have the same domain ID, they can freely discover and communicate with each other. Conversely, if the domain ID values are different, communication cannot be established. By default, all nodes use a domain ID of 0 at startup. In other words, as long as you ensure that they are in the same network, no configuration is required, and nodes on different ROS2 devices can achieve distributed communication.
+The ROS-based intermediate piece is DDS. In the same network, the distributed communication can be implemented by using the domain DDS's ID mechanics (ROS_DOMAIN_ID). The general progress: before starting nodes, the value of domain ID can be set. If different nodes have the same domain ID, they can freely discover and communicate with each other. Conversely, if the domain ID values are different, communication cannot be established. By default, all nodes use a domain ID of 0 at startup. In other words, as long as you ensure that they are in the same network, no configuration is required, and nodes on different ROS2 devices can achieve distributed communication.
 
 The distributed communication has extensive application scenarios such as autonomous vehicle formations, drone formations, remote control, and so on. The interaction of these data relies on distributed communication.
 
@@ -1937,7 +1940,7 @@ ROS2 provides a mechanism called DOMAIN, similar to grouping, where terminals wi
 
 By default, all ROS2 nodes uses a domain ID of 0. To avoid messages confusion, devices from different groups running ROS2 within the same network should use different domain ID. It is recommended to use ID between 0-101.
 
-(1) Click<img class="common_img" src="../_static/media/chapter_9/section_13/media/image2.png"  /> and select "**System Tools -\>Terminator**" in sequence.
+(1) Click <img src="../_static/media/chapter_9/section_13/media/image2.png"  /> and select "**System Tools -\>Terminator**" in sequence.
 
 <img class="common_img" src="../_static/media/chapter_9/section_13/media/image3.png"  />
 
@@ -1947,7 +1950,7 @@ By default, all ROS2 nodes uses a domain ID of 0. To avoid messages confusion, d
 vim ~/.bashrc
 ```
 
-(3) Press "i" to enter the insert mode, and enter "**export ROS_DOMAIN_ID=25**" in corresponding location. After you’ve finishing modifications, press "Esc" and enter ":wq" to save and exit.
+(3) Press "**i**" to enter the insert mode, and enter "**export ROS_DOMAIN_ID=25**" in corresponding location. After you've finishing modifications, press "**Esc**" and enter "**:wq**" to save and exit.
 
 ```bash
 export ROS_DOMAIN_ID=25
@@ -1993,13 +1996,13 @@ The distributed communication mechanism of ROS2:
 
 ### 8.14.1 DDS Introduction
 
-The full name of DDS is Data Distribution Service, which means data distribution service. It was published and maintained by the Object Management Organization (OMG) in 2004. It is a set of data publish-subscribe standards tailored for real-time systems. It was initially used by the US Navy to address compatibility issues with large software upgrades in complex naval network environments. It has since become a mandatory standard.  
+The full name of DDS is Data Distribution Service, which means data distribution service. It was published and maintained by the Object Management Organization (OMG) in 2004. It is a set of data publish-subscribe standards tailored for real-time systems. It was initially used by the US Navy to address compatibility issues with large software upgrades in complex naval network environments. It has since become a mandatory standard.  
 DDS emphasizes putting data at the center and can provide a rich set of quality of service policies to ensure real-time, efficient, and flexible data distribution. It can meet various requirements of distributed real-time communication applications.  
 In the previous courses, the topics, services, and actions learned are all implemented at the communication level through DDS. It can be considered as the neural network within the ROS system. The common communication models include the following four types:
 
 <img class="common_img" src="../_static/media/chapter_9/section_14/media/image2.jpeg"   />
 
-(1) In the point-to-point model, many clients connect to a single server, requiring the establishment of a connection each time communication occurs. A the number of communication nodes increases, so does the number of connections. Additionally, each client needs to know the specific address of the server and the services it provides. Once the server’s address changes, all clients are affected.
+(1) In the point-to-point model, many clients connect to a single server, requiring the establishment of a connection each time communication occurs. A the number of communication nodes increases, so does the number of connections. Additionally, each client needs to know the specific address of the server and the services it provides. Once the server's address changes, all clients are affected.
 
 (2) In the broker mode, optimization is applied to the point-to-point model. A centralized Broker handles all requests and further identifies the roles that can effectively respond to the service.This relieves clients from needing to concern themselves with the specific address of the server. However, there are evident issues with this approach. As the Broker serves as the core, its processing speed impacts the efficiency of all nodes. When the system scales to a certain extent, the Broker becomes the performance bottleneck of the entire system. Moreover, if the Broker encounters an exception, it may result in the entire system failing to operate normally. Previously, the ROS1 system utilized a similar architecture.
 
@@ -2019,7 +2022,7 @@ In the four major components of ROS, the addition of DDS significantly improves 
 
 The fundamental structure in DDS is the Domain, which binds various applications together for communication. Another important feature in DDS is Quality of Service - QoS.
 
-QoS is a network transmission strategy where applications specify the required quality of network transmission behavior. QoS services fulfill these behavioral requirements, striving to meet customers’ demands for communication quality. It can be regarded as a contract between data providers and receivers. The strategies are as follow:
+QoS is a network transmission strategy where applications specify the required quality of network transmission behavior. QoS services fulfill these behavioral requirements, striving to meet customers' demands for communication quality. It can be regarded as a contract between data providers and receivers. The strategies are as follow:
 
 (1) The DEADLINE policy indicates that communication data must be transmitted within a specified deadline for each communication instance.
 
@@ -2031,7 +2034,7 @@ QoS is a network transmission strategy where applications specify the required q
 
 ### 8.14.4 DDS Configuration in Command-line
 
-(1) Click <img class="common_img" src="../_static/media/chapter_9/section_14/media/image4.png"  /> in the upper-left corner to select "System Tools→Terminator" in sequence.
+(1) Click <img src="../_static/media/chapter_9/section_14/media/image4.png"  /> in the upper-left corner to select "System Tools→Terminator" in sequence.
 
 <img class="common_img" src="../_static/media/chapter_9/section_14/media/image5.png"  />
 
@@ -2055,7 +2058,7 @@ QoS is a network transmission strategy where applications specify the required q
 
 * **Create Publisher**
 
-(1) Click <img class="common_img" src="../_static/media/chapter_9/section_14/media/image4.png"  /> in the upper-left corner to select "System Tools→Terminator" in sequence.
+(1) Click <img src="../_static/media/chapter_9/section_14/media/image4.png"  /> in the upper-left corner to select "**System Tools→Terminator**" in sequence.
 
 <img class="common_img" src="../_static/media/chapter_9/section_14/media/image5.png"  />
 
@@ -2077,7 +2080,7 @@ ros2 pkg create DDS_qos_demo --build-type ament_python --dependencies rclpy
 cd DDS_qos_demo/DDS_qos_demo/
 ```
 
-(5) Enter the command "**vim DDS_qos_pub.py**" to edit the program using VIM editor, copy and paste the program below. If you need to make modifications, you can press "i" to enter the insert mode. Once you’ve finished the modifications, you can press "Esc" and enter ":wq" to save and exit.
+(5) Enter the command "**vim DDS_qos_pub.py**" to edit the program using VIM editor, copy and paste the program below. If you need to make modifications, you can press "**i**" to enter the insert mode. Once you've finished the modifications, you can press "**Esc**" and enter "**:wq**" to save and exit.
 
 ```bash
 vim DDS_qos_pub.py
@@ -2121,7 +2124,7 @@ main()
 :wq
 ```
 
-(6) Enter the command "**chmod +x DDS_qos_pub.py**" and press Enter to grant the executable permission to the saved "topic_pub.py".
+(6) Enter the command "**chmod +x DDS_qos_pub.py**" and press Enter to grant the executable permission to the saved "**topic_pub.py**".
 
 ```bash
 chmod +x DDS_qos_pub.py
@@ -2129,7 +2132,7 @@ chmod +x DDS_qos_pub.py
 
 * **Create Subscriber**
 
-(1) Enter the command "**vim DDS_qos_sub.py**" to edit the program using VIM editor, copy and paste the program below. If you need to make modifications, you can press "i" to enter the insert mode. Once you’ve finished the modifications, you can press "Esc" and enter ":wq" to save and exit.
+(1) Enter the command "**vim DDS_qos_sub.py**" to edit the program using VIM editor, copy and paste the program below. If you need to make modifications, you can press "**i**" to enter the insert mode. Once you've finished the modifications, you can press "**Esc**" and enter "**:wq**" to save and exit.
 
 ```bash
 vim DDS_qos_sub.py
@@ -2188,7 +2191,7 @@ cd ..
 vim setup.py
 ```
 
-(3) Press "i" to enter the insert mode, and then enter the following code to the corresponding position.
+(3) Press "**i**" to enter the insert mode, and then enter the following code to the corresponding position.
 
 ```bash
 'DDS_qos_pub = DDS_qos_demo.DDS_qos_pub:main',
@@ -2304,7 +2307,7 @@ action_n
 
 * **Create single_node.launch.py**
 
-(1) Click on<img class="common_img" src="../_static/media/chapter_9/section_15/media/image2.png"  /> and select "**System Tools →Terminato**r" in sequence.
+(1) Click on <img src="../_static/media/chapter_9/section_15/media/image2.png"  /> and select "**System Tools →Terminato**r" in sequence.
 
 <img class="common_img" src="../_static/media/chapter_9/section_15/media/image3.png"  />
 
@@ -2338,7 +2341,7 @@ mkdir launch
 cd launch
 ```
 
-(7) Enter the command "**vim single_node.launch.py**" to edit the program and copy the following program. If you need to make modifications, please press "i" to enter the insert mode. Once you’ve finished modifications, please press "Esc" and input ":wq" to save and exit.
+(7) Enter the command "**vim single_node.launch.py**" to edit the program and copy the following program. If you need to make modifications, please press "**i**" to enter the insert mode. Once you've finished modifications, please press "**Esc**" and input "**:wq**" to save and exit.
 
 ```bash
 vim single_node.launch.py
@@ -2382,7 +2385,7 @@ cd ..
 vim setup.py
 ```
 
-(3) Press "i" to enter the insert mode, and then enter the following code to the corresponding position.
+(3) Press "**i**" to enter the insert mode, and then enter the following code to the corresponding position.
 
 ```py
 from setuptools import find_packages, setup
@@ -2427,7 +2430,7 @@ ros2 launch launch_demo single_node.launch.py
 
 * Program Analysis
 
-To describe a launch task for the "hello_world" node using a Node, including the package name and executable file, and to return a LaunchDescription object containing this node task, implement the generation of a launch file to describe and start the "hello_world" node.
+To describe a launch task for the "**hello_world**" node using a Node, including the package name and executable file, and to return a LaunchDescription object containing this node task, implement the generation of a launch file to describe and start the "**hello_world**" node.
 
 <img class="common_img" src="../_static/media/chapter_9/section_15/media/image20.png"  />
 
@@ -2441,7 +2444,7 @@ To describe a launch task for the "hello_world" node using a Node, including the
 cd hiwonder_ws/src/launch_demo/launch
 ```
 
-(2) Enter the command "**vim multi_node.launch.py**" to edit the program and copy the following program. If you need to make modifications, please press "i" to enter the insert mode. Once you’ve finished modifications, please press "Esc" and input ":wq" to save and exit.
+(2) Enter the command "**vim multi_node.launch.py**" to edit the program and copy the following program. If you need to make modifications, please press "**i**" to enter the insert mode. Once you've finished modifications, please press "**Esc**" and input "**:wq**" to save and exit.
 
 ```bash
 vim multi_node.launch.py
@@ -2520,7 +2523,7 @@ In the ROS community, there are abundant resources. When using code from others,
 cd hiwonder_ws/src/launch_demo/launch
 ```
 
-(2) Enter the command "**vim remapping.launch.py**" to edit the program and copy the following program. If you need to make modifications, please press "i" to enter the insert mode. Once you’ve finished modifications, please press "Esc" and input ":wq" to save and exit.
+(2) Enter the command "**vim remapping.launch.py**" to edit the program and copy the following program. If you need to make modifications, please press "**i**" to enter the insert mode. Once you've finished modifications, please press "**Esc**" and input "**:wq**" to save and exit.
 
 ```bash
 vim remapping.launch.py
@@ -2599,7 +2602,7 @@ Through Node action, a launch task to execute the **topic_pub** node from the **
 cd hiwonder_ws/src/launch_demo/launch
 ```
 
-(2) Enter the command "**vim param.launch.py**" to edit the program and copy the following program. If you need to make modifications, please press "i" to enter the insert mode. Once you’ve finished modifications, please press "Esc" and input ":wq" to save and exit.
+(2) Enter the command "**vim param.launch.py**" to edit the program and copy the following program. If you need to make modifications, please press "**i**" to enter the insert mode. Once you've finished modifications, please press "**Esc**" and input "**:wq**" to save and exit.
 
 ```bash
 vim param.launch.py
@@ -2693,7 +2696,7 @@ Through DeclareLaunchArgument, three parameters, background_r, g, and b, were de
 cd hiwonder_ws/src/launch_demo/launch
 ```
 
-(2) Enter the command "**vim param_yaml.launch.py**" to edit the program and copy the following program. If you need to make modifications, please press "i" to enter the insert mode. Once you’ve finished modifications, please press "Esc" and input ":wq" to save and exit.
+(2) Enter the command "**vim param_yaml.launch.py**" to edit the program and copy the following program. If you need to make modifications, please press "**i**" to enter the insert mode. Once you've finished modifications, please press "**Esc**" and input "**:wq**" to save and exit.
 
 ```bash
 vim param_yaml.launch.py
@@ -2747,7 +2750,7 @@ cd ..
 vim setup.py
 ```
 
-(3) Press "i" to enter the insert mode, and then enter the following code to the corresponding position.
+(3) Press "**i**" to enter the insert mode, and then enter the following code to the corresponding position.
 
 ```py
 (os.path.join('share', package_name, 'config'), glob(os.path.join('config', '\*.\*'))),
@@ -2805,7 +2808,7 @@ Through Node, describe a launch task for a turtlesim node, setting the package n
 cd hiwonder_ws/src/launch_demo/launch
 ```
 
-(2) Enter the command "**vim launch_include.launch.py**" to edit the program and copy the following program. If you need to make modifications, please press "i" to enter the insert mode. Once you’ve finished modifications, please press "Esc" and input ":wq" to save and exit.
+(2) Enter the command "**vim launch_include.launch.py**" to edit the program and copy the following program. If you need to make modifications, please press "**i**" to enter the insert mode. Once you've finished modifications, please press "**Esc**" and input "**:wq**" to save and exit.
 
 ```bash
 vim launch_include.launch.py
@@ -2884,13 +2887,15 @@ In a mobile robot system, the coordinate system also serves as an important role
 
 The relationships between coordinate systems, layered one upon the other, are complex. Some are relatively fixed. Even seemingly simple coordinate systems become intricate within spatial contexts. A well-managed coordinate system becomes particularly crucial in such scenarios.
 
-<img class="common_img" src="../_static/media/chapter_9/section_16/media/image2.png"  />The basic theory of coordinate transformation relationships is explained in every textbook on robotics. It can be decomposed into two parts: translation and rotation, described using a 4\*4 matrix. Drawing coordinate systems in space and the transformation relationships between them is essentially a vectorial description.
+<img class="common_img" src="../_static/media/chapter_9/section_16/media/image2.png"  />
+
+The basic theory of coordinate transformation relationships is explained in every textbook on robotics. It can be decomposed into two parts: translation and rotation, described using a 4\*4 matrix. Drawing coordinate systems in space and the transformation relationships between them is essentially a vectorial description.
 
 The underlying principle of the TF (Transform) functionality in ROS is to encapsulate these mathematical transformations. Detailed theoretical knowledge can be found in robotics textbooks. Our focus here is primarily on explaining the practical usage of the TF coordinate management system.
 
 ### 8.16.2 Operations
 
-(1) Click on<img class="common_img" src="../_static/media/chapter_9/section_16/media/image3.png"  /> and select "**System Tools →Terminator**" in sequence.
+(1) Click on <img src="../_static/media/chapter_9/section_16/media/image3.png"  /> and select "**System Tools →Terminator**" in sequence.
 
 <img class="common_img" src="../_static/media/chapter_9/section_16/media/image4.png"  />
 
@@ -2926,7 +2931,7 @@ The transformation values of the coordinate frames are cyclically printed in the
 
 * **Create static_tf_broadcaster.py**
 
-(1) Click on<img class="common_img" src="../_static/media/chapter_9/section_16/media/image3.png"  /> and select "**System Tools →Terminator**" in sequence.
+(1) Click on <img src="../_static/media/chapter_9/section_16/media/image3.png"  /> and select "**System Tools →Terminator**" in sequence.
 
 <img class="common_img" src="../_static/media/chapter_9/section_16/media/image4.png"  />
 
@@ -2948,7 +2953,7 @@ ros2 pkg create tf_demo --build-type ament_python --dependencies rclpy
 cd tf_demo/tf_demo/
 ```
 
-(5) Enter the command "**vim static_tf_broadcaster.py**" to edit the program, copy and paste the program below. If you need to make changes, press "i" to enter insert mode. Once you've finished editing, press "Esc", then type ":wq" to save and exit.
+(5) Enter the command "**vim static_tf_broadcaster.py**" to edit the program, copy and paste the program below. If you need to make changes, press "**i**" to enter insert mode. Once you've finished editing, press "**Esc**", then type "**:wq**" to save and exit.
 
 ```bash
 vim static_tf_broadcaster.py
@@ -2999,7 +3004,7 @@ chmod +x static_tf_broadcaster.py
 
 * **Create tf_listener.py**
 
-(1) Enter the command "**vim tf_listener.py**" to edit the program, copy the following program. If need to make modifications, you can press "i" to enter the insert mode. After you’ve have finished the modifications, press "Esc" and input ":wq" to save and exit.
+(1) Enter the command "**vim tf_listener.py**" to edit the program, copy the following program. If need to make modifications, you can press "**i**" to enter the insert mode. After you've have finished the modifications, press "**Esc**" and input "**:wq**" to save and exit.
 
 ```bash
 vim tf_listener.py
@@ -3076,7 +3081,7 @@ cd ..
 vim setup.py
 ```
 
-(3) Press "i" to enter the editing mode, and then enter the following code to the corresponding position.
+(3) Press "**i**" to enter the editing mode, and then enter the following code to the corresponding position.
 
 ```py
 'static_tf_broadcaster = tf_demo.static_tf_broadcaster:main',
@@ -3151,7 +3156,7 @@ The TFListener node class was created, and during the initialization of the node
 
 * **Create turtle_tf_broadcaster.py**
 
-(1) Click on<img class="common_img" src="../_static/media/chapter_9/section_16/media/image3.png"  /> and select "**System Tools →Terminator**" in sequence.
+(1) Click on <img src="../_static/media/chapter_9/section_16/media/image3.png"  /> and select "**System Tools →Terminator**" in sequence.
 
 <img class="common_img" src="../_static/media/chapter_9/section_16/media/image4.png"  />
 
@@ -3161,7 +3166,7 @@ The TFListener node class was created, and during the initialization of the node
 cd hiwonder_ws/src/tf_demo/tf_demo/
 ```
 
-(3) Enter the command **"vim turtle_tf_broadcaster.py"** to edit the program, copy and paste the program below. If you need to make changes, press "i" to enter insert mode. Once you've finished editing, press "Esc", then type ":wq" to save and exit.
+(3) Enter the command **"vim turtle_tf_broadcaster.py"** to edit the program, copy and paste the program below. If you need to make changes, press "**i**" to enter insert mode. Once you've finished editing, press "**Esc**", then type "**:wq**" to save and exit.
 
 ```bash
 vim turtle_tf_broadcaster.py
@@ -3232,7 +3237,7 @@ chmod +x turtle_tf_broadcaster.py
 
 * **Create turtle_following.py**
 
-(1) Enter the command "**vim turtle_following.py**" to edit the program, then paste the following program. If you need to make modifications, you can press "i" to enter the insert mode. Once you’ve finished modifications, input ":wq" to save and exit the file.
+(1) Enter the command "**vim turtle_following.py**" to edit the program, then paste the following program. If you need to make modifications, you can press "**i**" to enter the insert mode. Once you've finished modifications, input "**:wq**" to save and exit the file.
 
 ```bash
 vim turtle_following.py
@@ -3297,7 +3302,7 @@ If the coordinate transformation retrieval fails, enter the exception reporting.
                     trans.transform.translation.y,
                     trans.transform.translation.x)
 
-                scale_forward_speed = 0.5                          # Calculate the linear velocity based on the turtle’s distance 
+                scale_forward_speed = 0.5                          # Calculate the linear velocity based on the turtle's distance 
                 msg.linear.x = scale_forward_speed * math.sqrt(
                       trans.transform.translation.x ** 2 +
                     trans.transform.translation.y ** 2)
@@ -3364,7 +3369,7 @@ mkdir launch
 cd launch/
 ```
 
-(4) Enter the command "**vim turtle_following.launch.py**" to edit the program, and then paste the following program. If you need to make modifications, you can press "i". Once you’ve finished the modifications, press "Esc" and enter ":wq" to save and exit.
+(4) Enter the command "**vim turtle_following.launch.py**" to edit the program, and then paste the following program. If you need to make modifications, you can press "**i**". Once you've finished the modifications, press "**Esc**" and enter "**:wq**" to save and exit.
 
 ```bash
 vim turtle_following.launch.py
@@ -3439,7 +3444,7 @@ cd ..
 vim setup.py
 ```
 
-(3) Press "i" to enter the insert mode, and then enter the following code to the corresponding position.
+(3) Press "**i**" to enter the insert mode, and then enter the following code to the corresponding position.
 
 ```py
 import os
@@ -3523,7 +3528,7 @@ The modeling method in ROS is called URDF, which stands for United Robot Descrip
 
 ### 8.17.2 Components of A Robot
 
-During the process of modeling and describing robots, it’s essential for us to familiarize with the components and parameters of the robot. For example, a robot typically consists of four major parts including hardware structure, drive system, sensor system, and control system. The robot. Whether it’s mobile robot or desktop robotic arm, common robot on the market can be decomposed into these four main components.
+During the process of modeling and describing robots, it's essential for us to familiarize with the components and parameters of the robot. For example, a robot typically consists of four major parts including hardware structure, drive system, sensor system, and control system. The robot. Whether it's mobile robot or desktop robotic arm, common robot on the market can be decomposed into these four main components.
 
 <img class="common_img" src="../_static/media/chapter_9/section_17/media/image2.png"  />
 
@@ -3636,7 +3641,7 @@ In the URDF model, each link is described using XML content, specifying details 
 
 * **Create Robot Model**
 
-(1) Click<img class="common_img" src="../_static/media/chapter_9/section_17/media/image5.png"  /> and select "**System Tools →Terminator**" in sequence.
+(1) Click <img src="../_static/media/chapter_9/section_17/media/image5.png"  /> and select "**System Tools →Terminator**" in sequence.
 
 <img class="common_img" src="../_static/media/chapter_9/section_17/media/image6.png"  />
 
@@ -3668,7 +3673,7 @@ mkdir urdf
 cd urdf/
 ```
 
-(6) Input the command "**vim simple_demo.urdf**" to open the file using VIM editor, copy and paste the program below. If you need to make modifications, you can press "**i**" to enter the insert mode. After you’ve finished the modifications, press "**Esc**" and enter "**:wq**" to save and exit.
+(6) Input the command "**vim simple_demo.urdf**" to open the file using VIM editor, copy and paste the program below. If you need to make modifications, you can press "**i**" to enter the insert mode. After you've finished the modifications, press "**Esc**" and enter "**:wq**" to save and exit.
 
 ```bash
 vim simple_demo.urdf
@@ -3776,7 +3781,7 @@ Therefore, the similar simulation platforms like Gazebo can assist us in validat
 
 ### 8.18.2 Run Gazebo
 
-(1) Click<img class="common_img" src="../_static/media/chapter_9/section_18/media/image2.png"  /> to select "**System Tools →Terminator**" in sequence.
+(1) Click <img src="../_static/media/chapter_9/section_18/media/image2.png"  /> to select "**System Tools →Terminator**" in sequence.
 
 <img class="common_img" src="../_static/media/chapter_9/section_18/media/image3.png"  />
 
@@ -3796,7 +3801,7 @@ After successful execution, the simulation interface of Ignition and the PC soft
 
 ### 8.19.1 Rviz2 Introduction
 
-During the process of robot development, if we only analyze various functionalities from a data perspective, it’s challenging to quickly grasp the the data’s effect. For example, with robot models, we need to know what our designed model looks like, as well as the positions of numerous coordinate systems within the model during the motion process.
+During the process of robot development, if we only analyze various functionalities from a data perspective, it's challenging to quickly grasp the the data's effect. For example, with robot models, we need to know what our designed model looks like, as well as the positions of numerous coordinate systems within the model during the motion process.
 
 For instance, in tasks like motion planning for robotic arms or autonomous navigation for mobile robots, it's essential to visualize the surrounding environment, the planned trajectory, and sensor data such as cameras, 3D cameras, LiDAR, etc. Data is used for computation, but visualization effects are intended for human understanding.
 
@@ -3804,7 +3809,7 @@ Therefore, data visualization can significantly enhance development efficiency. 
 
 ### 8.19.2 Start Rviz2
 
-(1) Click on<img class="common_img" src="../_static/media/chapter_9/section_19/media/image2.png"  /> to select "System Tools -\> Terminator".
+(1) Click on <img src="../_static/media/chapter_9/section_19/media/image2.png"  /> to select "**System Tools -\> Terminator**".
 
 <img class="common_img" src="../_static/media/chapter_9/section_19/media/image3.png"  />
 
@@ -3820,7 +3825,7 @@ The interface of Rviz can be primarily divided into five areas: toolbar area, th
 
 (1) **Tool Bar Area**
 
-<table>
+<table class="docutils-nobg" border="1">
 <colgroup>
 <col style="width: 28%" />
 <col style="width: 71%" />
@@ -3871,7 +3876,6 @@ The interface of Rviz can be primarily divided into five areas: toolbar area, th
 </tbody>
 </table>
 
-
 (2) **Display List**
 
 - **Global Options**
@@ -3901,11 +3905,11 @@ The interface of Rviz can be primarily divided into five areas: toolbar area, th
 |       Plane       |             The plane used for drawing the grid.             |
 |      Offset       | Offset grid from the origin of the coordinate system, with three parameters representing the offset along the X, Y, and Z axes, measured in meters. |
 
-### 8.19.3 **Load URDF Model on Rviz**
+### 8.19.3 Load URDF Model on Rviz
 
 * **Write A launch File**
 
-(1) Click on<img class="common_img" src="../_static/media/chapter_9/section_19/media/image2.png"  /> to select "**System Tools -\> Terminator**".
+(1) Click on <img src="../_static/media/chapter_9/section_19/media/image2.png"  /> to select "**System Tools -\> Terminator**".
 
 <img class="common_img" src="../_static/media/chapter_9/section_19/media/image3.png"  />
 
@@ -3927,7 +3931,7 @@ mkdir rviz launch
 cd launch/
 ```
 
-(5) Enter the command "**vim rviz_view.launch.py**" to open the file using the VIM editor, copy and paste the program below. If you need to make modifications, you can press "**i**" to modify. After you’ve finishing the modifications, press "**Esc**" and enter "**:wq**" to save and exit.
+(5) Enter the command "**vim rviz_view.launch.py**" to open the file using the VIM editor, copy and paste the program below. If you need to make modifications, you can press "**i**" to modify. After you've finishing the modifications, press "**Esc**" and enter "**:wq**" to save and exit.
 
 ```bash
 vim rviz_view.launch.py
@@ -3981,7 +3985,7 @@ cd ..
 vim setup.py
 ```
 
-(3) Press "i" to enter the editing mode, and then enter the following code to the corresponding position.
+(3) Press "**i**" to enter the editing mode, and then enter the following code to the corresponding position.
 
 ```py
 from setuptools import find_packages, setup
@@ -4026,7 +4030,7 @@ source ./install/setup.bash
 ros2 launch urdf_demo rviz_view.launch.py
 ```
 
-(5) Select "base_link" in Rviz tool.
+(5) Select "**base_link**" in Rviz tool.
 
 <img class="common_img" src="../_static/media/chapter_9/section_19/media/image29.png"  />
 
@@ -4044,7 +4048,7 @@ ros2 launch urdf_demo rviz_view.launch.py
 
 <img class="common_img" src="../_static/media/chapter_9/section_19/media/image33.png"  />
 
-(9) Click on<img class="common_img" src="../_static/media/chapter_9/section_19/media/image2.png"  /> to select "**System Tools -\> Terminator**".
+(9) Click on <img src="../_static/media/chapter_9/section_19/media/image2.png"  /> to select "**System Tools -\> Terminator**".
 
 <img class="common_img" src="../_static/media/chapter_9/section_19/media/image3.png"  />
 
@@ -4054,7 +4058,7 @@ ros2 launch urdf_demo rviz_view.launch.py
 cd hiwonder_ws/src/urdf_demo/launch/
 ```
 
-(11) Enter the command "**vim rviz_view.launch.py**" to edit the program, then copy the following code. If you need to make modifications, press "i" to enter insert mode. After making changes, press "Esc", then type ":wq" to save and exit.
+(11) Enter the command "**vim rviz_view.launch.py**" to edit the program, then copy the following code. If you need to make modifications, press "**i**" to enter insert mode. After making changes, press "**Esc**", then type "**:wq**" to save and exit.
 
 ```bash
 vim rviz_view.launch.py
@@ -4064,7 +4068,7 @@ arguments=\['-d', get_package_share_directory('urdf_demo') + '/rviz/rviz.rviz'\]
 
 <img class="common_img" src="../_static/media/chapter_9/section_19/media/image35.png"  />  
 
-(12) Then enter ":wq" to save and exit the file.
+(12) Then enter "**:wq**" to save and exit the file.
 
 ```bash
 :wq
@@ -4080,7 +4084,7 @@ The functionality of Rviz in ROS is already quite powerful. However, in some sce
 
 Just like Rviz, the name RQT indicates that it is also based on the QT visualization tool.
 
-(1) Click on<img class="common_img" src="../_static/media/chapter_9/section_20/media/image2.png"  />at the top left corner, and then select "**System Tools→Terminator**" in sequence.
+(1) Click on <img src="../_static/media/chapter_9/section_20/media/image2.png"  />at the top left corner, and then select "**System Tools→Terminator**" in sequence.
 
 <img class="common_img" src="../_static/media/chapter_9/section_20/media/image3.png"  />
 
@@ -4094,7 +4098,7 @@ This interface loads may small modules, each capable of implementing a specific 
 
 ### 8.20.2 Logging Display
 
-(1) Click on<img class="common_img" src="../_static/media/chapter_9/section_20/media/image2.png"  />at the top left corner, and then select "**System Tools→Terminator**" in sequence.
+(1) Click on <img src="../_static/media/chapter_9/section_20/media/image2.png"  />at the top left corner, and then select "**System Tools→Terminator**" in sequence.
 
 <img class="common_img" src="../_static/media/chapter_9/section_20/media/image3.png"  />
 
@@ -4132,7 +4136,7 @@ ros2 run turtlesim turtlesim_node
 
 <img class="common_img" src="../_static/media/chapter_9/section_20/media/image13.png"  />
 
-(2) Click on<img class="common_img" src="../_static/media/chapter_9/section_20/media/image14.png"  />, then select the topic of "**/turtel/cmd_vel/**", then click on<img class="common_img" src="../_static/media/chapter_9/section_20/media/image15.png"  />.
+(2) Click on <img src="../_static/media/chapter_9/section_20/media/image14.png"  />, then select the topic of "**/turtel/cmd_vel/**", then Click on <img src="../_static/media/chapter_9/section_20/media/image15.png"  />.
 
 <img class="common_img" src="../_static/media/chapter_9/section_20/media/image16.png"  />
 
@@ -4150,11 +4154,11 @@ The turtle will move according to the specific linear and angular velocity data.
 
 <img class="common_img" src="../_static/media/chapter_9/section_20/media/image19.png"  />
 
-(2) Select the "**/spawn**" service, then set the position for the new turtle to be spawned, name it as "turtle2", and finally click on "**Call**".
+(2) Select the "**/spawn**" service, then set the position for the new turtle to be spawned, name it as "**turtle2**", and finally click on "**Call**".
 
 <img class="common_img" src="../_static/media/chapter_9/section_20/media/image20.png"  />
 
-At this point, a turtle named "turtle2" will be spawned.
+At this point, a turtle named "**turtle2**" will be spawned.
 
 <img class="common_img" src="../_static/media/chapter_9/section_20/media/image21.png"  />
 
@@ -4164,7 +4168,7 @@ At this point, a turtle named "turtle2" will be spawned.
 
 <img class="common_img" src="../_static/media/chapter_9/section_20/media/image22.png"  />
 
-(2) Enter "**/turtle/pose/**" to select the turtle’s position data, then click<img class="common_img" src="../_static/media/chapter_9/section_20/media/image23.png"  />.
+(2) Enter "**/turtle/pose/**" to select the turtle's position data, then Click <img src="../_static/media/chapter_9/section_20/media/image23.png"  />.
 
 <img class="common_img" src="../_static/media/chapter_9/section_20/media/image24.png"  />
 
@@ -4172,4 +4176,4 @@ At this point, a turtle named "turtle2" will be spawned.
 
 <img class="common_img" src="../_static/media/chapter_9/section_20/media/image25.png"  />
 
-To further learn about other plugins in the RQT tool, please visit the official website (https://www.ros.org/) and explore the tutorials available there.
+To further learn about other plugins in the RQT tool, please visit the official website (<https://www.ros.org/>) and explore the tutorials available there.

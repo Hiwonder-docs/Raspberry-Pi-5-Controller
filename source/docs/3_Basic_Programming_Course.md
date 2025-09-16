@@ -108,6 +108,12 @@ g++ helloHiwonder.cpp -o helloHiwonder2
 
 (4) Run the command '**./helloHiwonder2**', and hit Enter key to execute this file.
 
+```
+./helloHiwonder2
+```
+
+
+
 <img class="common_img" src="../_static/media/chapter_3/section_1-0/media/image9.png"  />
 
 For a comprehensive understanding of the C++ language, you can refer to "**<http://www.cplusplus.com/>**" for learning resources.
@@ -133,15 +139,9 @@ First released in 1991, Python is a cross-platform programming language.
 
 And it gets its name from comedy troupe Monty Python preferred by its developer.
 
-Python provides ample API (Application Programming Interface) and tools,
+Python provides ample API (Application Programming Interface) and tools, which enables the programmer to write extension modules in C, C++ and Cython. In addition, Python compiler can also be integrated into the program which requires scripting language, so it is frequently used to integrate and package the program written in other languages.
 
-which enables the programmer to write extension modules in C, C++ and
-
-Cython. In addition, Python compiler can also be integrated into the program which requires scripting language, so it is frequently used to integrate and package the program written in other languages.
-
-Thanks to its syntax, dynamic typing and nature of interpreted language, Python is the programming language adopted by most platforms to write script and develop application. As the version keeps updating and new functions are added, Python is gradually applied in the development of independent and
-
-large-scale project.
+Thanks to its syntax, dynamic typing and nature of interpreted language, Python is the programming language adopted by most platforms to write script and develop application. As the version keeps updating and new functions are added, Python is gradually applied in the development of independent and large-scale project.
 
 > [!Note]
 >
@@ -158,20 +158,15 @@ large-scale project.
 
 ④ Free and open-source
 
-⑤ Abundant libraries: Python comes with large standard library which can handle various tasks, including regular expressions, documentation
+⑤ Abundant libraries: Python comes with large standard library which can handle various tasks, including regular expressions, documentation generation, unit testing, threading, databases, web browsers, CGI, FTP, and other system-related operations.
 
-generation, unit testing, threading, databases, web browsers, CGI, FTP, and other system-related operations.
-
-⑥ Transplantable: as Python is open-source, it can be transplanted to
-
-various platforms, such as Linux and Windows.
+⑥ Transplantable: as Python is open-source, it can be transplanted to various platforms, such as Linux and Windows.
 
 * **Python Installation**
 
 > [!Note]
 >
-> **the following operations are based on Ubuntu18.04. As Ubuntu18.04 comes with Python 3.6.9, users who use this system can skip Python installation.**
->
+> **The following operations are based on Ubuntu18.04. As Ubuntu18.04 comes with Python 3.6.9, users who use this system can skip Python installation.**
 
 (1) Install Python with Ubuntu official apt tool package.
 
@@ -239,7 +234,7 @@ sudo snap install pycharm-community --classic
 
 <img class="common_img" src="../_static/media/chapter_3/section_1-1/media/image15.jpeg"  />
 
-⑥**Lastly, you will enter this interface.**
+⑥Lastly, you will enter this interface.
 
 <img class="common_img" src="../_static/media/chapter_3/section_1-1/media/image16.jpeg"  />
 
@@ -283,7 +278,7 @@ For example, we can print "**Hello World**" string on the screen.
 
 > [!Note]
 >
-> **Note: please strictly distinguish lower case and upper case, and the keywords can be complemented by Tab key.**
+> **Please strictly distinguish lower case and upper case, and the keywords can be complemented by Tab key.**
 
 (1) Start virtual machine, and click <img src="../_static/media/chapter_3/section_1-2/media/image2.png"  /> , and then click <img src="../_static/media/chapter_3/section_1-2/media/image3.png"  /> or press "**Ctrl+Alt+T**" to open command line terminal.
 
@@ -361,8 +356,7 @@ vim hello.py
 
 > [!Note]
 >
-> **there is no need to enclose the mathematical expression with double quotation mark.**
->
+> **There is no need to enclose the mathematical expression with double quotation mark.**
 
 (5) Press "**Esc**" and input " **:wq**" and press **Enter** to save and exit the editing.
 
@@ -378,15 +372,15 @@ print() function is used to print output in the format below.
 print(*objects, sep=' ', end='\n' , file=sys.stdout, flush=False)
 ```
 
-The first parameter "**objects**" is the output object. When output several objects, they should be separately with "**,**" in between.
+The first parameter `objects` is the output object. When output several objects, they should be separately with "**,**" in between.
 
-The second parameter "**sep**" is used to put string between the output objects, by default.
+The second parameter `sep` is used to put string between the output objects, by default.
 
-The third parameter "**end**" is used to add string at the end of output, '\n' by default.
+The third parameter `end` is used to add string at the end of output, '\n' by default.
 
-The fourth parameter "**file**" is the object with a write function, the default value is "**sys.stdout**", that is screen.
+The fourth parameter `file` is the object with a write function, the default value is `sys.stdout`, that is screen.
 
-The fifth parameter "**flush**" is used to output cache and the default value is "**False**".
+The fifth parameter `flush` is used to output cache and the default value is `False`.
 
 ### 3.2.3 Python Basic Syntax
 
@@ -544,9 +538,7 @@ keyword.kwlist
 
 There are six types of data in Python3, including Number, String, List, Tuple, Dictionary and Set.
 
-And Number, String and Tuple are immutable, while List, Dictionary and
-
-Set are mutable.
+And Number, String and Tuple are immutable, while List, Dictionary and Set are mutable.
 
 > [!Note]
 >
@@ -565,19 +557,17 @@ Number includes three numeric types to represent numbers or value.
 
 components. Both real and imaginary components belong to floating type.
 
-④ bool: Only has "**True**" and "**False**" values.  "**True**" corresponds to " **1**" and "False" corresponds to "**0**"
+④ bool: Only has "**True**" and `False` values.  "**True**" corresponds to " **1**" and "False" corresponds to "**0**"
 
 (2) String
 
-A string is a collection of multiple characters. Strings in Python are
-
-surrounded by either single quotation marks "**'**", or double quotation marks "**"**" and triple quotation marks "**'''**" or "**"""**" .
+A string is a collection of multiple characters. Strings in Python are surrounded by either single quotation marks "**'**", or double quotation marks **"** and triple quotation marks **'''** or **"""**.
 
 Strings with single quotation marks and double quotation marks are equivalent, and return the objects of the same type.
 
 > [!Note]
 >
-> when there is quotation marks inside the strings, we need to escape them through adding backslash "\" in front of the quotation marks to avoid syntax error.**
+> when there is quotation marks inside the strings, we need to escape them through adding backslash "\" in front of the quotation marks to avoid syntax error.
 >
 
 (3) List
@@ -588,9 +578,7 @@ List is a sequence structure in Python, which can store any types of data,includ
 Variable name = [element 1, element 2,..., element n]
 ```
 
-The number of elements in List is unlimited and there can be different types of elements in one List. For better readability of program, it is
-
-recommended to use one type of data in one list.
+The number of elements in List is unlimited and there can be different types of elements in one List. For better readability of program, it is recommended to use one type of data in one list.
 
 Each element in the List corresponds to integer index value. The corresponding element values can be obtained though index values so as to change and delete them.
 
@@ -638,7 +626,7 @@ Conditional statement controls the execution of different blocks of code through
 
 Conditional expression consists of operator and operand. Take "**a\<4**" for example. "**a**" and "**4**" are operand ，and "**\<**" is operator.
 
-Judgment conditions can be any element with Boolean properties, including data, variables, and expressions composed of variables and operators. If its Boolean property is "**True**", the condition holds; if it is "**False**", the condition doesn't hold.
+Judgment conditions can be any element with Boolean properties, including data, variables, and expressions composed of variables and operators. If its Boolean property is "**True**", the condition holds; if it is `False`, the condition doesn't hold.
 
 The table lists the commonly used operators by conditional expression.
 
@@ -735,17 +723,17 @@ The table lists the commonly used operators by conditional expression.
 
 Python is able to combine the judgement condition logically through the reserved words "**not**" , "**and**" and "**or**" .
 
-① not: it represents the "**not**" relationship for an individual condition. If the Boolean property of the "**condition**" is "**True**" , the Boolean property of the "**not condition**" is "**False**". If Boolean property of the "**condition**" is "**False**", the
+① not: it represents the "**not**" relationship for an individual condition. If the Boolean property of the "**condition**" is "**True**" , the Boolean property of the "**not condition**" is `False`. If Boolean property of the "**condition**" is `False`, the
 
 Boolean property of the "**not condition**" is "**True**"
 
 ② and: it represents "**and**" relationship between several conditions. Only when the Boolean properties of the conditions connected by "and" are **all**
 
-**"True"**, the Boolean property of the logic expression is "**True**", otherwise "**False**".
+**"True"**, the Boolean property of the logic expression is "**True**", otherwise `False`.
 
 ③ or: it represents "**or**" relationship between several conditions. Only when the Boolean properties of the conditions connected by "or" are **all**
 
-**"False"**, the Boolean property of the logic expression is "**False**", otherwise "**True**".
+**"False"**, the Boolean property of the logic expression is `False`, otherwise "**True**".
 
 (2) Selection Statement
 
@@ -799,7 +787,7 @@ stored in "**[3.2 Python Programming->3.2.4 Python Conditional Statement](#ancho
 
 > [!Note]
 >
-> **the input command should be case sensitive and keywords can be complemented by "Tab" key.**
+> **The input command should be case sensitive and keywords can be complemented by "Tab" key.**
 >
 
 (1) Start virtual machine, and click <img src="../_static/media/chapter_3/section_1-4/media/image7.png"  />, and then click <img src="../_static/media/chapter_3/section_1-4/media/image8.png"  /> or press "**Ctrl+Alt+T**" to open command line terminal.
@@ -846,17 +834,17 @@ The format of print() function is as follow.
 print(*objects, sep=' ', end='\n' , file=sys.stdout, flush=False)
 ```
 
-The first parameter "**objects**" is the output object. When several objects are output at one time, objects should be separated by comma "**,**" .
+The first parameter `objects` is the output object. When several objects are output at one time, objects should be separated by comma "**,**" .
 
-The second parameter "**sep**" is used to insert the string between the objects. The default value is a space.
+The second parameter `sep` is used to insert the string between the objects. The default value is a space.
 
-The third parameter "**end**" is used to add string at the end of the output.
+The third parameter `end` is used to add string at the end of the output.
 
 The default value is a line break.
 
-The fourth parameter "**file**" is the object with a write function, the default value is "**sys.stdout**", that is screen.
+The fourth parameter `file` is the object with a write function, the default value is `sys.stdout`, that is screen.
 
-The fifth parameter "**flush**" is used to control and output cache. The default value is "**False**".
+The fifth parameter `flush` is used to control and output cache. The default value is `False`.
 
 (3) Range Judgement
 
@@ -890,7 +878,7 @@ The syntax and execution flow of the `while` loop are as follows:The format and 
 | ------------------------------------------------------------ |-----------------------------------------------------------------------|
 | <img src="../_static/media/chapter_3/section_1-5/media/image2.jpeg"/> | <img src="../_static/media/chapter_3/section_1-5/media/image3.jpeg"/> |
 
-When the loop condition is "**True**", the block of code in while loop will be executed till the loop condition is "**False**" . When the loop condition is always "**True**", it will fall into "**dead loop**" .
+When the loop condition is "**True**", the block of code in while loop will be executed till the loop condition is `False` . When the loop condition is always "**True**", it will fall into "**dead loop**" .
 
 (2) for loop
 
@@ -931,7 +919,7 @@ continue statement is used to get out of this round of loop and carry out the ne
 
 When the judgement statement is executed and is "**True**", this round of loop is complete and next round of loop starts. If the judgement condition is
 
-"**False**" , the block of code 2 is executed and the second round of loop is done.
+`False` , the block of code 2 is executed and the second round of loop is done.
 
 (3) pass statement
 
@@ -947,7 +935,7 @@ stored in "**[3. 2 Python Programming-\> 3.2.5 Python Loop Statement-\> Routine 
 
 > [!Note]
 >
-> **the input command should be case sensitive, and the keywords can be complemented by "Tab" key.**
+> **The input command should be case sensitive, and the keywords can be complemented by "Tab" key.**
 >
 
 (1) Start virtual machine, and click <img src="../_static/media/chapter_3/section_1-5/media/image11.jpeg"  />, and then click <img src="../_static/media/chapter_3/section_1-5/media/image12.png"  /> or press "**Ctrl+Alt+T**" to open command line terminal.
@@ -1008,17 +996,17 @@ The syntax of print() function is as follow.
 print(*objects, sep=' ', end='\n' , file=sys.stdout, flush=False)
 ```
 
-The first parameter "**objects**" is the output object. When output several objects for one time, objects should be separated by "**,**" .
+The first parameter `objects` is the output object. When output several objects for one time, objects should be separated by "**,**" .
 
-The second parameter "**sep**" is used to insert the string between the objects. The default value is a space.
+The second parameter `sep` is used to insert the string between the objects. The default value is a space.
 
-The third parameter "**end**" is used to add string at the end of the output.
+The third parameter `end` is used to add string at the end of the output.
 
 The default value is a line break.
 
-The fourth parameter "**file**" is the object with a write function, the default value is "**sys.stdout**", that is screen.
+The fourth parameter `file` is the object with a write function, the default value is `sys.stdout`, that is screen.
 
-The fifth parameter "**flush**" is used to control and output cache. The default value is "**False**".
+The fifth parameter `flush` is used to control and output cache. The default value is `False`.
 
 (2) Print String Elements
 
@@ -1198,9 +1186,7 @@ Check the code below. When passing the parameter, the function can output normal
 
 (5) Named Keyword Argument
 
-Named keyword arguments can be used when it is necessary to restrict parameters to be passed only by keyword. In user-defined function,
-
-parameters are separated by "**\***" and the parameters following "**\***" are named keyword parameter.
+Named keyword arguments can be used when it is necessary to restrict parameters to be passed only by keyword. In user-defined function, parameters are separated by "*****" and the parameters following "*****" are named keyword parameter.
 
 Take the codes below for example. "**live_city" following** "**\***" is named keyword parameter. Therefore, the parameters must be passed by keyword, otherwise the program will throw error.
 
@@ -1210,18 +1196,13 @@ Take the codes below for example. "**live_city" following** "**\***" is named ke
 
 > [!Note]
 >
-> **Note: In Python, the parameters should be defined in order that is positional parameter, default parameter, mutable parameter, named keyword parameter and keyword parameter.**
->
+> **In Python, the parameters should be defined in order that is positional parameter, default parameter, mutable parameter, named keyword parameter and keyword parameter.**
 
 * **Module Introduction**
 
-In general, module is a file suffixed by " **.py**" . In addition, there is other file type of module, such as " **.pyo**" , " **.pyc**", " **.pyd**" , " **.so**" and " **.dll**" . If you are
+In general, module is a file suffixed by " **.py**" . In addition, there is other file type of module, such as " **.pyo**" , " **.pyc**", " **.pyd**" , " **.so**" and " **.dll**" . If you are Python novice, you can skip these types.
 
-Python novice, you can skip these types.
-
-Package the code that can realize specific function as an independent
-
-module, which is convenient for other programs and scripts to be imported and used, and avoid the function name from overlapping the variable name.
+Package the code that can realize specific function as an independent module, which is convenient for other programs and scripts to be imported and used, and avoid the function name from overlapping the variable name.
 
 Modules comes from three channels.
 
@@ -1231,15 +1212,11 @@ Modules comes from three channels.
 
 (3) User-defined module
 
-When you need to call the function of a module, import this module
-
-through import statement before calling the function. There are two ways to import the module. (content inside the square parenthesis can be omitted)
+When you need to call the function of a module, import this module through import statement before calling the function. There are two ways to import the module. (content inside the square parenthesis can be omitted)
 
 (1) import **module name** \[ as alias\]
 
-All members of the designated module will be imported when we use the import statement in this syntax. When you need to use the members of the
-
-module, this module name should be used as the prefix of the member name.
+All members of the designated module will be imported when we use the import statement in this syntax. When you need to use the members of the module, this module name should be used as the prefix of the member name.
 
 (2) from **module name** import **member name**\[ as alias\]
 
@@ -1272,7 +1249,7 @@ There are two common types of containers, including sequence (List,Tuple, etc.) 
 
 (2) Tuple
 
-① Syntax：(123 ，456 ，789 ，100)。Syntax: (123 ，456 ，789 ，100)
+① Syntax：`(123 ，456 ，789 ，100)。Syntax: (123 ，456 ，789 ，100)`
 
 ② Format: surrounded by bracket and the elements are separated by comma. The elements can be nested, but the type of elements must be unified. They can be read by subscript, but cannot be written, added or deleted.
 
@@ -1282,7 +1259,7 @@ There are two common types of containers, including sequence (List,Tuple, etc.) 
 
 (3) Set
 
-① Syntax: { 1 ，"23" ，classObjectA }
+① Syntax: `{ 1 ，"23" ，classObjectA }`
 
 ② Format: it is surrounded by curly bracket. Its elements are separated by comma. The type of the elements is diverse, and they can be nested, and read and written by subscript
 
@@ -1629,7 +1606,7 @@ designating the key parameter. If there are multiple maximum values, the first v
 
 > [!Note]
 >
-> the incoming parameter x must be bytes.
+> The incoming parameter x must be bytes.
 >
 
 <img class="common_img" src="../_static/media/chapter_3/section_1-10/media/image7.jpeg"  />

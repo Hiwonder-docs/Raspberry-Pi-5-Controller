@@ -81,7 +81,11 @@ MobaXterm is a software that integrates various remote computing tools and offer
 
 (3) Type the command "**ping raspberrypi -4**" to view the IP address assigned to the Raspberry Pi 5 by the hotspot.
 
-<img class="common_img" src="../_static/media/chapter_2/section_2/media/image9.png"  />
+```
+ping raspberrypi -4
+```
+
+​	<img class="common_img" src="../_static/media/chapter_2/section_2/media/image9.png"  />
 
 ### 2.2.2 Connect to Raspberry Pi 5 Using MobaXterm
 
@@ -133,8 +137,6 @@ If you're not accustomed to command-line control and the official system image b
 sudo raspi-config
 ```
 
-
-
 <img class="common_img" src="../_static/media/chapter_2/section_2/media/image17.png"  />
 
 (2) In this interface, use the up and down arrow keys to navigate, press Enter to confirm selections, and press Esc to return to the previous level. Locate "**Interface Options**" and press Enter to access the relevant settings interface.
@@ -177,7 +179,7 @@ VNC is remote control software that provides a graphical desktop interface, simi
 
 <img class="common_img" src="../_static/media/chapter_2/section_2/media/image25.png"  />
 
-(6) After installation, open <img class="common_img" src="../_static/media/chapter_2/section_2/media/image26.png"   />.
+(6) After installation, open <img  src="../_static/media/chapter_2/section_2/media/image26.png"   />.
 
 * **VNC Connection**
 
@@ -722,7 +724,11 @@ sudo nano /etc/lightdm/lightdm.conf' to access the 'lightdm.conf
 
 <img class="common_img" src="../_static/media/chapter_2/section_9/media/image4.png"  />
 
-(2) Remove the comment symbol "**\#**" before "**xserver-command=X**" and modify it to "**xserver-command=X -s 0 -dpms**". Here, the "**-s**" parameter sets the screen saver to not start, and "**-dpms**" disables power management.
+(2) Remove the comment symbol "**\#**" before "**xserver-command=X**" and modify it to "**xserver-command=X -s 0 -dpms**". Here, the "**-s**" parameter sets the screen saver to not start, and "**-dpms**" disables powe	r management.
+
+```
+xserver-command=X
+```
 
 <img class="common_img" src="../_static/media/chapter_2/section_9/media/image5.png"  />
 
@@ -906,6 +912,10 @@ The Raspberry Pi 5 is equipped with 2 USB2.0 (black) and 2 USB3.0 (blue) ports. 
 FSWebcam is a command line tool designed for Linux systems, offering an open-source solution for capturing camera images and saving them as image files. It operates by interfacing with the camera through the Video4Linux interface, allowing users to adjust various settings such as image quality, resolution, and more using available options and parameters. To begin using FSWebcam, simply install the tool through the command line interface.
 
 (1) Press '**Ctrl+Alt+T**' to open the command-line terminal, and run the command '**sudo apt install fswebcam**' to install FSWebcam.
+
+```
+sudo apt install fswebcam
+```
 
 <img class="common_img" src="../_static/media/chapter_2/section_15/media/image3.png"  />
 

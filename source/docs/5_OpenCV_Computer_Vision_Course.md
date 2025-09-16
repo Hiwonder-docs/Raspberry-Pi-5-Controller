@@ -115,7 +115,7 @@ For file transfer methods, please consult the documents located in the directory
 
 > [!Note]
 > 
->**Note: The input command should be case sensitive, and keywords can be complemented using 'Tab' key.**
+>**The input command should be case sensitive, and keywords can be complemented using 'Tab' key.**
 
 (1) Open VNC, and use short-cut '**Ctrl+Alt+T**' to open the command-line terminal, then run the command '**cd OpenCV/face/**' and hit Enter to navigate to the directory containing the program files.
 
@@ -301,8 +301,7 @@ For file transfer methods, please consult the documents located in the directory
 
 > [!Note]
 > 
-> **Note: The input command should be case sensitive, and keywords can be complemented using 'Tab' key.**
-> 
+> **The input command should be case sensitive, and keywords can be complemented using 'Tab' key.**
 
 (1) Open VNC, and use short-cut '**Ctrl+Alt+T**' to open the command-line terminal, then run the command '**cd Opencv**' and hit Enter to navigate to the directory containing the program files.
 
@@ -446,8 +445,7 @@ Connect the camera to the Raspberry Pi controller.
 
 > [!Note]
 > 
-> **Note: The camera is not hot-swappable. Please ensure it is plugged into the USB interface on the Raspberry Pi motherboard before powering on the Raspberry Pi**
-> 
+> **The camera is not hot-swappable. Please ensure it is plugged into the USB interface on the Raspberry Pi motherboard before powering on the Raspberry Pi**
 
 (1) Connect the camera to the Raspberry Pi controller and start the Raspberry Pi. After the Raspberry Pi is booted up successfully, establish the connection between the Raspberry Pi and VNC.
 
@@ -473,7 +471,7 @@ Connect the camera to the Raspberry Pi controller.
 > Access the Raspberry Pi system using VNC according to the instructions provided in '**[2. Raspberry Pi 5 Basic Operation and Configuration\2.2 Remote Access and Remote File Transfer](2_Raspberry_Pi_5_Basic_Operation_and_Configuration.md#remote-access-and-remote-file-transfer)**'.
 > 
 
-(2) Click-on <img class="common_img" src="../_static/media/chapter_5/section_4/media/image7.jpeg" /> or press 'Ctrl+Alt+T' to open the command-line terminal.
+(2) Click-on <img src="../_static/media/chapter_5/section_4/media/image7.jpeg" /> or press 'Ctrl+Alt+T' to open the command-line terminal.
 
 <img class="common_img" src="../_static/media/chapter_5/section_4/media/image8.jpeg" />
 
@@ -1103,7 +1101,7 @@ Before operation, please move to "**[5. OpenCV Computer Vision Course->5.2 Basic
 
 > [!Note]
 > 
-> **the input command should be case sensitive and the keywords can be complemented by "Tab" key.**
+> **The input command should be case sensitive and the keywords can be complemented by "Tab" key.**
 > 
 
 ① Open virtual machine and start the system. Click <img src="../_static/media/chapter_5/section_11/media/image10.jpeg" />, and then <img src="../_static/media/chapter_5/section_11/media/image12.png" /> or press "**Ctrl+Alt+T**" to open command line terminal.
@@ -1210,7 +1208,7 @@ Before operation, please copy the routine "**Scale**" in "4.OpenCV-\>Image Proce
 
 > [!Note]
 > 
-> **the input command should be case sensitive and the keywords can be complemented by "Tab" key.**
+> **The input command should be case sensitive and the keywords can be complemented by "Tab" key.**
 > 
 
 ① Open virtual machine and start the system. Click <img src="../_static/media/chapter_5/section_12/media/image3.jpeg" />, and then <img src="../_static/media/chapter_5/section_12/media/image5.png" /> or press "**Ctrl+Alt+T**" to open command line terminal.
@@ -1345,7 +1343,7 @@ Before operation, please copy the routine code in "[**5.OpenCV-\>5.2 Basic Cours
 
 > [!Note]
 > 
-> **the input command should be case sensitive and the keywords can be complemented by "Tab" key.**
+> **The input command should be case sensitive and the keywords can be complemented by "Tab" key.**
 > 
 
 * Open virtual machine and start the system. Click <img src="../_static/media/chapter_5/section_12/media/image18.jpeg" />, and then <img src="../_static/media/chapter_5/section_12/media/image20.png" /> or press "**Ctrl+Alt+T**" to open command line terminal.
@@ -1454,7 +1452,7 @@ Before operation, please copy the routine "**Revolve**" in "[5.OpenCV->5.2 Basic
 
 > [!Note]
 > 
-> **the input command should be case sensitive and the keywords can be complemented by "Tab" key.**
+> **The input command should be case sensitive and the keywords can be complemented by "Tab" key.**
 
 * Open virtual machine and start the system. Click <img src="../_static/media/chapter_5/section_12/media/image35.jpeg" />, and then <img src="../_static/media/chapter_5/section_12/media/image37.png" /> or press "**Ctrl+Alt+T**" to open command line terminal.
 
@@ -1640,8 +1638,7 @@ When map1 represents x value of (x,y), its value is the y value of (x,y) in CV_1
 
 > [!Note]
 > 
-> map1 refers to the column where the pixel is located, and map2 refers to the row where the pixel is located. So usually, map1 is written as mapx and map2 as mapy for better understanding.
-> 
+> **map1 refers to the column where the pixel is located, and map2 refers to the row where the pixel is located. So usually, map1 is written as mapx and map2 as mapy for better understanding.**
 
 * Interpolation is for interpolation method.
 
@@ -1661,11 +1658,11 @@ Before operation, please copy the routine "**Remap**" in "[5.OpenCV->5.2 Basic C
 
 > [!Note]
 > 
-> **the input command should be case sensitive and the keywords can be complemented by "Tab" key.**
-> 
+> **The input command should be case sensitive and the keywords can be complemented by "Tab" key.**
 
 * Open virtual machine and start the system. Click <img src="../_static/media/chapter_5/section_12/media/image64.jpeg" />, and then <img src="../_static/media/chapter_5/section_12/media/image66.png" /> or press "**Ctrl+Alt+T**" to open command line terminal.
-* Input command "**cd /mnt/hgfs/Share/Remap/**" and press Enter to enter the shared folder.
+  * Input command "**cd /mnt/hgfs/Share/Remap/**" and press Enter to enter the shared folder.
+
 
 ```bash
 cd /mnt/hgfs/Share/Remap/
@@ -1723,7 +1720,7 @@ Before operation, please copy the routine "**Remap**" in "**[5.OpenCV->5.2 Basic
 
 > [!Note]
 > 
-> **the input command should be case sensitive and the keywords can be complemented by "Tab" key.**
+> **The input command should be case sensitive and the keywords can be complemented by "Tab" key.**
 
 * Open virtual machine and start the system. Click <img src="../_static/media/chapter_5/section_12/media/image77.jpeg" />, and then <img src="../_static/media/chapter_5/section_12/media/image79.png" /> or press "**Ctrl+Alt+T**" to open command line terminal.
 
@@ -1799,8 +1796,7 @@ Before operation, please copy the routine "**Remap**" in "**[5. OpenCV Computer 
 
 > [!Note]
 > 
-> **the input command should be case sensitive and the keywords can be complemented by "Tab" key.**
-> 
+> **The input command should be case sensitive and the keywords can be complemented by "Tab" key.**
 
 ① Open virtual machine and start the system. Click <img src="../_static/media/chapter_5/section_12/media/image89.jpeg" />, and then <img src="../_static/media/chapter_5/section_12/media/image91.png" /> or press "**Ctrl+Alt+T**" to open command line terminal.
 
@@ -1872,7 +1868,7 @@ Before operation, please copy the routine "**Remap**" in "**[5. OpenCV Computer 
 
 > [!Note]
 > 
-> **the input command should be case sensitive and the keywords can be complemented by "Tab" key.**
+> **The input command should be case sensitive and the keywords can be complemented by "Tab" key.**
 > 
 
 ① Open virtual machine and start the system. Click <img src="../_static/media/chapter_5/section_12/media/image101.jpeg" />, and then <img src="../_static/media/chapter_5/section_12/media/image103.png" /> or press "**Ctrl+Alt+T**" to open command line terminal.
@@ -1947,7 +1943,7 @@ Before operation, please copy the routine "**Remap**" in "4.OpenCV-\>Lesson 8 Im
 
 > [!Note]
 > 
-> **Note: the input command should be case sensitive and the keywords can be complemented by "Tab" key.**
+> **Note: The input command should be case sensitive and the keywords can be complemented by "Tab" key.**
 
 * Open virtual machine and start the system. Click <img src="../_static/media/chapter_5/section_12/media/image113.jpeg" />, and then <img src="../_static/media/chapter_5/section_12/media/image115.png" /> or press "**Ctrl+Alt+T**" to open command line terminal.
 
@@ -2011,7 +2007,7 @@ Before operation, please copy the routine "**Scale**" in "**[5. OpenCV Computer 
 
 > [!Note]
 > 
-> **the input command should be case sensitive and the keywords can be complemented by "Tab" key.**
+> **The input command should be case sensitive and the keywords can be complemented by "Tab" key.**
 > 
 
 * Open virtual machine and start the system. Click <img src="../_static/media/chapter_5/section_12/media/image125.jpeg" />, and then <img src="../_static/media/chapter_5/section_12/media/image127.png" /> or press "**Ctrl+Alt+T**" to open command line terminal.
@@ -2150,7 +2146,7 @@ Before operation, please copy the routine "**filtering.py**" in"4.OpenCV-\>Lesso
 
 > [!Note]
 > 
-> **the input command should be case sensitive and the keywords can be complemented by "Tab" key.**
+> **The input command should be case sensitive and the keywords can be complemented by "Tab" key.**
 > 
 
 (1) Open virtual machine and start the system. Click <img src="../_static/media/chapter_5/section_13/media/image7.png" />, and then <img class="common_img" src="../_static/media/chapter_5/section_13/media/image9.png" /> or press "**Ctrl+Alt+T**" to open command line terminal.
@@ -2438,8 +2434,7 @@ Before operation, please copy the routine "**edge_detection.py**"and sample pict
 
 > [!Note]
 > 
-> **the input command should be case sensitive and the keywords can be complemented by "Tab" key.**
-> 
+> **The input command should be case sensitive and the keywords can be complemented by "Tab" key.**
 
 (1) Open virtual machine and start the system. Click " <img class="common_img" src="../_static/media/chapter_5/section_14/media/image5.png"/>", and then "<img class="common_img" src="../_static/media/chapter_5/section_14/media/image7.png" /> " or press "**Ctrl+Alt+T**" to open command line terminal.
 
@@ -2711,8 +2706,7 @@ Before operation, please copy the routine "**example_org.jpg**" in "[5. OpenCV C
 
 > [!Note]
 > 
-> **the input command should be case sensitive and the keywords can be complemented by "Tab" key.**
-> 
+> **The input command should be case sensitive and the keywords can be complemented by "Tab" key.**
 
 (1) Open virtual machine and start the system. Click <img src="../_static/media/chapter_5/section_15/media/image8.jpeg" />, and then <img src="../_static/media/chapter_5/section_15/media/image10.png"/>
 

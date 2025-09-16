@@ -116,7 +116,7 @@ python3 labelImg.py
 
 > [!Note]
 > 
-> **Note: The input command should be case sensitive, and keywords can be complemented using Tab key.**
+> **The input command should be case sensitive, and keywords can be complemented using Tab key.**
 > 
 
 (1) Start the Raspberry Pi, and access the system desktop using VNC.
@@ -386,7 +386,7 @@ Finally, complete the process by replacing the background with a virtual backgro
 
 > [!Note]
 > 
-> **the input command should be case sensitive, and keywords can be complemented using Tab key.**
+> **The input command should be case sensitive, and keywords can be complemented using Tab key.**
 > 
 
 (1) Transfer the file '**self_segmentation.py**' saved in the same directory to the Raspberry Pi.
@@ -520,7 +520,7 @@ Finally, draw the 3D boundary frame on the image.
 
 > [!Note]
 > 
-> **the input command should be case sensitive, and keywords can be complemented using Tab key.**
+> **The input command should be case sensitive, and keywords can be complemented using Tab key.**
 > 
 
 (1) Transfer the file '**self_segmentation.py**' saved in the same directory to the Raspberry Pi.

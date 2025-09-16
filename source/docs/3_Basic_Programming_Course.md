@@ -118,7 +118,7 @@ For a comprehensive understanding of the C++ language, you can refer to "**<http
 
 * **Python Introduction**
 
-(1) **Object Oriented Introduction**
+(1) Object Oriented Introduction
 
 Python is a object oriented programming language. Object Oriented is a method of software development and a programming paradigm. Difference between Object Oriented and Procedure Oriented is as follow.
 
@@ -127,7 +127,7 @@ Python is a object oriented programming language. Object Oriented is a method of
 |      Procedure Oriented      | Focus on procedure, analyze the steps to solve problems and implement the steps sequentially with functions. |
 |       Object Oriented        | Focus on object, decompose things that  make up the problem into several objects and describe the behavior of an object in the overall solution. |
 
-(2) **Python Introduction**
+(2) Python Introduction
 
 First released in 1991, Python is a cross-platform programming language.
 
@@ -148,7 +148,7 @@ large-scale project.
 > **Python2.0 is no longer maintained by the official since 2020, so it is recommended to use Python3.0 or above.**
 >
 
-(3) **Python Feature**
+(3) Python Feature
 
 ① Easy to master: Python has small amount of keywords, simple structure and clear syntax definition.
 
@@ -195,7 +195,7 @@ python3.8 -V
 
 * **pyCharm Installation**
 
-(1) **Download pyCharm**
+(1) Download pyCharm
 
 ① Input command "**sudo apt install snapd snapd-xdg-open**" to install snap installation package.
 
@@ -215,7 +215,7 @@ snap refresh
 sudo snap install pycharm-community --classic
 ```
 
-(2) **Open pyCharm**
+(2) Open pyCharm
 
 ① Open menu and find pyCharm
 
@@ -243,7 +243,7 @@ sudo snap install pycharm-community --classic
 
 <img class="common_img" src="../_static/media/chapter_3/section_1-1/media/image16.jpeg"  />
 
-(3) **Usage of pyCharm**
+(3) Usage of pyCharm
 
 ① The user interface of pyCharm is as follow.
 
@@ -271,7 +271,7 @@ sudo snap install pycharm-community --classic
 
 <img class="common_img" src="../_static/media/chapter_3/section_1-1/media/image23.jpeg"  />
 
-**To learn more information, please visit pyCharm official website: <https://www.jetbrains.com/zh-cn/pycharm/>**
+To learn more information, please visit pyCharm official website: <https://www.jetbrains.com/zh-cn/pycharm/>
 
 ### 3.2.2 First Program-"Hello World"
 
@@ -284,7 +284,6 @@ For example, we can print "**Hello World**" string on the screen.
 > [!Note]
 >
 > **Note: please strictly distinguish lower case and upper case, and the keywords can be complemented by Tab key.**
->
 
 (1) Start virtual machine, and click <img src="../_static/media/chapter_3/section_1-2/media/image2.png"  /> , and then click <img src="../_static/media/chapter_3/section_1-2/media/image3.png"  /> or press "**Ctrl+Alt+T**" to open command line terminal.
 
@@ -482,11 +481,11 @@ In Python, naming identifier should be consistent with the naming rules.
 
 (5) Identifier starting with underscore "**\_**" has special meaning. Please avoid using identifier starting with "**\_**" if not necessary.
 
-| Identifier                           | Meaning                                                      | Example  |
-| ------------------------------------ | ------------------------------------------------------------ | -------- |
-| Start with single underscore         | Class properties that cannot be accessed directly through"from...import*" | _width   |
-| Start with double underscore         | Exclusive member of class                                    | __add    |
-| Start and end with double underscore | Special identifier                                           | __init__ |
+| Identifier                           | Meaning                                                      | Example |
+| ------------------------------------ | ------------------------------------------------------------ | ------- |
+| Start with single underscore         | Class properties that cannot be accessed directly through"from...import*" | _width  |
+| Start with double underscore         | Exclusive member of class                                    | __add   |
+| Start and end with double underscore | Special identifier                                           | init    |
 
 (6) Chinese can be used as identifier in Python. To avoid error, please shun Chinese.
 
@@ -554,7 +553,7 @@ Set are mutable.
 > In Python, type() function can be used to check the type of variable.
 >
 
-(1) **Number**
+(1) Number
 
 Number includes three numeric types to represent numbers or value.
 
@@ -568,7 +567,7 @@ components. Both real and imaginary components belong to floating type.
 
 ④ bool: Only has "**True**" and "**False**" values.  "**True**" corresponds to " **1**" and "False" corresponds to "**0**"
 
-(2) **String**
+(2) String
 
 A string is a collection of multiple characters. Strings in Python are
 
@@ -581,7 +580,7 @@ Strings with single quotation marks and double quotation marks are equivalent, a
 > when there is quotation marks inside the strings, we need to escape them through adding backslash "\" in front of the quotation marks to avoid syntax error.**
 >
 
-(3) **List**
+(3) List
 
 List is a sequence structure in Python, which can store any types of data,including integer, decimal, string, list, tuple, etc. Its format is as follow.
 
@@ -595,7 +594,7 @@ recommended to use one type of data in one list.
 
 Each element in the List corresponds to integer index value. The corresponding element values can be obtained though index values so as to change and delete them.
 
-(4) **Tuple**
+(4) Tuple
 
 Tuple is another important sequence structure in Python, which is similar to List. And its format is as follow.
 
@@ -605,7 +604,7 @@ Variable name = (element 1, element 2,..., element n)
 
 Different from List, Tuple is immutable sequence, which means that its elements cannot be changed or deleted.
 
-(5) **Dictionary**
+(5) Dictionary
 
 A dictionary is an unordered, mutable sequence that is created in the following format.
 
@@ -617,7 +616,7 @@ Dictionary is the only type of mapping in Python, which means that elements corr
 
 The elements of dictionary can be List, Tuple, Dictionary and other types of data, but key value must be the immutable type. In addition, there should be only one key value in the same dictionary variable.
 
-(6) **Set**
+(6) Set
 
 Set is used to store non-repetitive elements and its format is as follow.
 
@@ -635,7 +634,7 @@ Set can only store immutable data type, including integer, float type, string an
 
 Conditional statement controls the execution of different blocks of code through judging whether the condition holds and based on the result of condition expression.
 
-(1) **Conditional Expression**
+(1) Conditional Expression
 
 Conditional expression consists of operator and operand. Take "**a\<4**" for example. "**a**" and "**4**" are operand ，and "**\<**" is operator.
 
@@ -748,7 +747,7 @@ Boolean property of the "**not condition**" is "**True**"
 
 **"False"**, the Boolean property of the logic expression is "**False**", otherwise "**True**".
 
-(2) **Selection Statement**
+(2) Selection Statement
 
 There are three types of selection statements, including single-branch selection structure, double-branch selection structure and multi-branch
 
@@ -883,7 +882,7 @@ statement will be explained combining with the related routines.
 
 Loop statement includes "**while**" and "**for**", which is used to repeat some steps.
 
-(1) **while loop**
+(1) while loop
 
 The syntax and execution flow of the `while` loop are as follows:The format and execution process of while loop are as follow.
 
@@ -893,7 +892,7 @@ The syntax and execution flow of the `while` loop are as follows:The format and 
 
 When the loop condition is "**True**", the block of code in while loop will be executed till the loop condition is "**False**" . When the loop condition is always "**True**", it will fall into "**dead loop**" .
 
-(2) **for loop**
+(2) for loop
 
 The syntax and execution process of for loop are as follow.
 
@@ -909,7 +908,7 @@ After entering **for loop**, traverse the elements within target and execute the
 
 Loop control statement can be used to interrupt the loop, or skip the current loop to execute the next loop. Loop control statement contains "**break**", "**continue**" and "**pass**".
 
-(1) **break Statement**
+(1) break Statement
 
 break statement is used to get out of the whole loop. The syntax and execution process are as follow.
 
@@ -921,7 +920,7 @@ When the judgement condition is executed and is "**True**", the loop will end.
 
 If the judgement condition is "False" , the block of code 2 will be executed and the loop will continue.
 
-(2) **continue statement**
+(2) continue statement
 
 continue statement is used to get out of this round of loop and carry out the next round of loop. The syntax and execution process are as follow.
 
@@ -934,7 +933,7 @@ When the judgement statement is executed and is "**True**", this round of loop i
 
 "**False**" , the block of code 2 is executed and the second round of loop is done.
 
-(3) **pass statement**
+(3) pass statement
 
 pass statement is null statement and nothing will be executed. It is used to keep the integrity of the program structure.
 
@@ -981,7 +980,7 @@ The used routine "**loop_statement.py**" is stored in "[**3.2 Python Programming
 
 <img class="common_img" src="../_static/media/chapter_3/section_1-5/media/image17.png"  />
 
-(1) **Calculate Factorial of the Value**
+(1) Calculate Factorial of the Value
 
 ① Input data
 
@@ -1021,7 +1020,7 @@ The fourth parameter "**file**" is the object with a write function, the default
 
 The fifth parameter "**flush**" is used to control and output cache. The default value is "**False**".
 
-(2) **Print String Elements**
+(2) Print String Elements
 
 ① Input data
 
@@ -1054,7 +1053,7 @@ without importing any function libraries. The common built-in functions include 
 
 User-defined function will define a piece of regular and reusable code as function to elevate the reuse rate and maintenance of the codes.
 
-(1) **Function Definition**
+(1) Function Definition
 
 In Python, function generally is composed of function name, parameter list and function body consisting of series of statements. And the format is as follow.
 
@@ -1079,7 +1078,7 @@ In Python, function generally is composed of function name, parameter list and f
 > **when building function, the parenthesis behind the function name cannot be omitted though there is no parameter in the function.**
 >
 
-(2) **Parameter and Argument**
+(2) Parameter and Argument
 
 When defining function, we should adopt the parameter, while when calling the function, we adopt argument. They both work to pass the data.
 
@@ -1105,7 +1104,7 @@ with=4 height=9 area=36
 
 After parameter "**w**" and "**h**" are passed into the function body, "**width**" and "**height**" parameters are assigned to the corresponding values.
 
-(3) **Return Value**
+(3) Return Value
 
 After the function is executed, system will feed back some value to external caller, and these values are considered as return values of functions.
 
@@ -1125,11 +1124,11 @@ Pay attention, in Python, there can be multiple return values in one function as
 
 There are two return values inside the **calculate()** function, including "**x+y**"and "**x\*y**" . After this function is called, "**a**" and "**b**" variables will be assigned to these two return values.
 
-**2. Function Passing**
+* **Function Passing**
 
 There are two types of function parameters, including mutable and immutable, whose calling results are different.
 
-**2.1 Mutable Parameter**
+(1) Mutable Parameter
 
 The calling of mutable parameter is similar to pass-by-reference in C++. If the mutable parameter is passed, such as list and dictionary, modification of the passed in parameters inside the function will affect the external variables.
 
@@ -1139,7 +1138,7 @@ For example, after the passed in list "**list_01**" is changed inside **change_i
 
 <img class="common_img" src="../_static/media/chapter_3/section_1-6/media/image10.png"  />
 
-**2.2 Immutable Parameter**
+(2) Immutable Parameter
 
 Calling immutable parameters is similar to C++ pass-by-value. If immutable parameters are called, such as integer, string and tuple, the modification of the passed in parameter inside the function will not affect the external variable.
 
@@ -1153,7 +1152,7 @@ However, when execute "**a = 10**", variable "**a**" points to newly generated i
 
 * **Parameter Type**
 
-(1) **Positional Parameter**
+(1) Positional Parameter
 
 When calling function, each argument is associated with the corresponding parameter in positional order, and this association is called a positional parameter.
 
@@ -1163,7 +1162,7 @@ Take the code below for example. When calling **describe_student()** function, n
 
 <img class="common_img" src="../_static/media/chapter_3/section_1-6/media/image14.png"  />
 
-(2) **Default Parameter**
+(2) Default Parameter
 
 When defining functions, we can specify the default value of each
 
@@ -1177,7 +1176,7 @@ When argument is offered to "**student_age**" parameter during calling describe_
 
 <img class="common_img" src="../_static/media/chapter_3/section_1-6/media/image16.png"  />
 
-(3) **Variable-length Parameter**
+(3) Variable-length Parameter
 
 In Python, function can also be defined as variable-length parameter which is also called mutable parameter. By adding "**\***" in front of the identifier, the corresponding parameter can be defined as variable-length parameter.
 
@@ -1187,7 +1186,7 @@ Take the codes below for example. After parameter "**number**" is defined as var
 
 <img class="common_img" src="../_static/media/chapter_3/section_1-6/media/image18.png"  />
 
-(4) **Keyword Parameter**
+(4) Keyword Parameter
 
 Keyword parameter will be passed by "**parameter name-value**" pair. In this way, when designating the argument of function, the position of argument and parameter can be different and we just need to ensure the parameter name is correct.
 
@@ -1197,7 +1196,7 @@ Check the code below. When passing the parameter, the function can output normal
 
 <img class="common_img" src="../_static/media/chapter_3/section_1-6/media/image20.png"  />
 
-(5) **Named Keyword Argument**
+(5) Named Keyword Argument
 
 Named keyword arguments can be used when it is necessary to restrict parameters to be passed only by keyword. In user-defined function,
 
@@ -1261,7 +1260,7 @@ There are two common types of containers, including sequence (List,Tuple, etc.) 
 
 * **Container Introduction**
 
-(1) **List**
+(1) List
 
 ① Syntax: \[ 123 , "456" , classObjectA , \[ 123,"456"\] \]
 
@@ -1271,7 +1270,7 @@ There are two common types of containers, including sequence (List,Tuple, etc.) 
 
 <img class="common_img" src="../_static/media/chapter_3/section_1-7/media/image2.png"  />
 
-(2) **Tuple**
+(2) Tuple
 
 ① Syntax：(123 ，456 ，789 ，100)。Syntax: (123 ，456 ，789 ，100)
 
@@ -1281,7 +1280,7 @@ There are two common types of containers, including sequence (List,Tuple, etc.) 
 
 <img class="common_img" src="../_static/media/chapter_3/section_1-7/media/image3.png"  />
 
-(3) **Set**
+(3) Set
 
 ① Syntax: { 1 ，"23" ，classObjectA }
 
@@ -1291,7 +1290,7 @@ There are two common types of containers, including sequence (List,Tuple, etc.) 
 
 <img class="common_img" src="../_static/media/chapter_3/section_1-7/media/image4.png"  />
 
-(4) **Dictionary**
+(4) Dictionary
 
 ① Syntax: `{"name" : "zhangsan" ， "age" ：50}`
 
@@ -1303,7 +1302,7 @@ There are two common types of containers, including sequence (List,Tuple, etc.) 
 
 * **Basic Operation of Container**
 
-(1) **Basic Operation of List**
+(1) Basic Operation of List
 
 <table class="docutils-nobg" border="1">
   <thead>
@@ -1390,7 +1389,7 @@ There are two common types of containers, including sequence (List,Tuple, etc.) 
 
 <img class="common_img" src="../_static/media/chapter_3/section_1-7/media/image9.jpeg"  />
 
-(2) **Basic Operation of Tuple**
+(2) Basic Operation of Tuple
 
 The operations on tuple are similar to those on list, but they are still different.
 
@@ -1398,7 +1397,7 @@ The operations on tuple are similar to those on list, but they are still differe
 
 ② remove() and pop() are also not contained, hence we cannot delete elements from the tuple.
 
-(3) **Basic Operation of Dictionary**
+(3) Basic Operation of Dictionary
 
 |         Method          |                            Usage                             |
 | :---------------------: | :----------------------------------------------------------: |
@@ -1442,13 +1441,13 @@ Two core definitions: classes and objects
 
 * **Class and Object Introduction**
 
-(1) **Class**
+(1) Class
 
 Class is used to describes the object sets with the same properties and methods. And it defines the properties and methods shared by all the objects of this set. Object is the instance of class.
 
 For example, create a "**cat**" class, and define the name, color, age, etc., as well as the way to eat, drink, sound, etc. And instantiated object "ginger cat" will have these defined properties and methods.
 
-(2) **Object**
+(2) Object
 
 An Object is an instance of a Class, which holds the properties and methods of class. In Python, all data types are considered as object, and objects can be
 
@@ -1500,7 +1499,7 @@ construction method of parent class, and the child class will override the paren
 
 * **File Operation**
 
-(1) **File and File Path**
+(1) File and File Path
 
 ① Two key properties: "file name" and "path"
 
@@ -1508,7 +1507,7 @@ construction method of parent class, and the child class will override the paren
 
 ③ (.) and (..) folder: Not real folders, they are the special name that can be used in the path. When a single period (".") is used as a folder directory name, it is an abbreviation for this directory. Two periods ("..") mean the parent folder.
 
-(2) **File Reading Operation**
+(2) File Reading Operation
 
 ① Open and close file: call open function to pass in file name and identifier. Open file to return a file object, and then call close() method of File object to close this file. "with" statement can also be used to close the file automatically when ending.
 
@@ -1582,7 +1581,7 @@ The amount of built-in functions must be strictly controlled, otherwise Python c
 
 <img class="common_img" src="../_static/media/chapter_3/section_1-10/media/image2.jpeg"  />
 
-(1) **Operation Type**
+(1) Operation Type
 
 ① abs(x)：abs function is used to return the absolute value of a value. The input x parameter can be the floating point number of the integer, and also can be complex number.
 
@@ -1606,7 +1605,7 @@ designating the key parameter. If there are multiple maximum values, the first v
 
 <img class="common_img" src="../_static/media/chapter_3/section_1-10/media/image4.png"  />
 
-(2) **Convert the Type**
+(2) Convert the Type
 
 ① int(x): If x is a number or string, the integer of x will be returned. If x is empty, 0 will be returned.
 
@@ -1637,7 +1636,7 @@ designating the key parameter. If there are multiple maximum values, the first v
 
 <img class="common_img" src="../_static/media/chapter_3/section_1-10/media/image8.jpeg"  />
 
-(3) **Base Conversion**
+(3) Base Conversion
 
 ① bin(x): Convert the input integer x to a binary string prefixed with "**0b**"
 
@@ -1653,7 +1652,7 @@ designating the key parameter. If there are multiple maximum values, the first v
 
 <img class="common_img" src="../_static/media/chapter_3/section_1-10/media/image10.jpeg"  />
 
-(4) **Numerical Operations**
+(4) Numerical Operations
 
 ① list(x): list function changes the incoming parameters to a new list and returns it. In addition, the list itself is also a mutable object.
 
@@ -1689,7 +1688,7 @@ designating the key parameter. If there are multiple maximum values, the first v
 
 <img class="common_img" src="../_static/media/chapter_3/section_1-10/media/image16.jpeg"  />
 
-(5) **Sorting Operation**
+(5) Sorting Operation
 
 ① sorted(x, key=None, reverse=False): Sort the iterable object x and return a new sorted object. The key parameter can specify how to compare, and when reverse is True, it indicates sorting in descending order.
 
@@ -1697,7 +1696,7 @@ designating the key parameter. If there are multiple maximum values, the first v
 
 <img class="common_img" src="../_static/media/chapter_3/section_1-10/media/image17.jpeg"  />
 
-(6) **Sequence Operation**
+(6) Sequence Operation
 
 ① all(x): Determine whether each element of the iterable object x is true, and if one element is False (0), return False.
 
@@ -1725,7 +1724,7 @@ designating the key parameter. If there are multiple maximum values, the first v
 
 <img class="common_img" src="../_static/media/chapter_3/section_1-10/media/image23.jpeg"  />
 
-(7) **Object Element Operation**
+(7) Object Element Operation
 
 ① help(object): The help function can help users to query the information of different objects, including built-in methods, properties and other information.
 
@@ -1761,7 +1760,7 @@ However unlike the repr function, ascii() escape non-ASCII encoded characters.
 
 <img class="common_img" src="../_static/media/chapter_3/section_1-10/media/image29.jpeg"  />
 
-(8) **Property Operation**
+(8) Property Operation
 
 ① isinstance(object, classinfo): The function is used to determine whether the object belongs to the type of classinfo, if it is, it returns True, otherwise it returns False
 
@@ -1789,7 +1788,7 @@ property of the object. If the deleting property is allowed by object, the delat
 
 <img class="common_img" src="../_static/media/chapter_3/section_1-10/media/image33.jpeg"  />
 
-(9) **Variable Operation**
+(9) Variable Operation
 
 ① globals(): Return a dictionary composed of global variables and their values in the scope
 
@@ -1803,7 +1802,7 @@ property of the object. If the deleting property is allowed by object, the delat
 
 <img class="common_img" src="../_static/media/chapter_3/section_1-10/media/image37.jpeg"  />
 
-(10) **Human-computer Operation**
+(10) Human-computer Operation
 
 ① print(\*objects, end='\n', file=sys.stdout): Print the contents of objects to the text stream specified by file, and end with end.
 
@@ -1815,7 +1814,7 @@ property of the object. If the deleting property is allowed by object, the delat
 
 <img class="common_img" src="../_static/media/chapter_3/section_1-10/media/image39.jpeg"  />
 
-(11) **Compilation Operation**
+(11) Compilation Operation
 
 ① compile(source,, mode): The function compiles the source into code which is then executed by the exec function or the eval function. The mode parameter indicates the mode adopted in compiling the code.
 
@@ -1827,7 +1826,7 @@ property of the object. If the deleting property is allowed by object, the delat
 
 <img class="common_img" src="../_static/media/chapter_3/section_1-10/media/image41.jpeg"  />
 
-(12) **Decorator Function**
+(12) Decorator Function
 
 ① classmethod(): It is used to to encapsulate a method into a class method, and the method modified by the decorator can be called without creating a class object.
 
@@ -1887,7 +1886,7 @@ Therefore "thread" module cannot be used in Python3. For compatibility, thread i
 
 * **Create Thread Object**
 
-(1) **Thread Directly Create Thread**
+(1) Thread Directly Create Thread
 
 Pass a function object from the class constructor, which is the callback function used to handle the task.
 
@@ -1895,7 +1894,7 @@ Pass a function object from the class constructor, which is the callback functio
 
 <img class="common_img" src="../_static/media/chapter_3/section_1-11/media/image4.jpeg"  />
 
-(2) **Inherit Thread Class**
+(2) Inherit Thread Class
 
 Write a custom class to inherit Thread, then rewrite the run() method, that is write the task processing code in it, and then create a child class of this Thread.
 
@@ -1919,7 +1918,7 @@ Multiple threads modifying a data together will lead to unpredictable results.
 
 In order to ensure the accuracy of data, multiple threads need to be synchronized. Simple thread synchronization can be achieved by using the Lock and Rlock of the Thread object.
 
-(1) **LOCK**
+(1) LOCK
 
 ① acquire(blocking=True, timeout=-1):: Puts the thread into a synchronously blocked state to acquire a lock. If the parameter blocking is set as True during calling, blocking will last until the lock is released, then lock the LOCK and return True. When the parameter blocking is set as False, no blocking will occur.
 
@@ -1933,7 +1932,7 @@ release() is only called under the locked state. It changes the state to unlocke
 
 After execution, t1 first obtains the lock, and then releases the lock after the execution ends. t2 obtains the lock again, and continues to execute before releasing the lock, so as to avoid simultaneous processing and data errors.
 
-(2) **RLock**
+(2) RLock
 
 ① acquire(blocking=True, timeout=-1): The lock can be acquired either blocking or non-blocking. When no parameter is called and if the thread already owns the lock, the recursion level is increased by one, and it returns immediately. Otherwise, if another thread owns the lock, block until the lock is unlocked.
 
@@ -2019,7 +2018,7 @@ Then we need to import it in python with "import numpy". We can use "import nump
 
 <img class="common_img" src="../_static/media/chapter_3/section_1-13/media/image3.jpeg"  />
 
-(1) **Take Fixed Value**
+(1) Take Fixed Value
 
 ① np.zeros(n, dtype=int): Create a one-dimensional array of integers of length n and all zeros
 
@@ -2029,7 +2028,7 @@ Then we need to import it in python with "import numpy". We can use "import nump
 
 <img class="common_img" src="../_static/media/chapter_3/section_1-13/media/image4.jpeg"  />
 
-(2) **Regular Distribution**
+(2) Regular Distribution
 
 ① np.arange(): arithmetic progression
 
@@ -2045,19 +2044,19 @@ Then we need to import it in python with "import numpy". We can use "import nump
 
 * **Take Subset**
 
-(1) **Index Starts from 0**
+(1) Index Starts from 0
 
 ① Similar to the way list takes subset in Python, the index of numpy array also starts from 0.
 
 ② The index of negative can be seen as the nth last value.
 
-(2) **Take Subset of Single Value**
+(2) Take Subset of Single Value
 
 View with the element subscript.
 
 <img class="common_img" src="../_static/media/chapter_3/section_1-13/media/image7.jpeg"  />
 
-(3) **Slice Takes Subset**
+(3) Slice Takes Subset
 
 ① For the one-dimensional array x1 of the length of 10, x1\[0:5\]
 
@@ -2069,17 +2068,17 @@ represents the subset from index0 to index4, and the step size is 1 by default.
 
 <img class="common_img" src="../_static/media/chapter_3/section_1-13/media/image8.jpeg"  />
 
-(4) **Multiple Index of the List Take Subset**
+(4) Multiple Index of the List Take Subset
 
 Take the subset in sequence according to the index.
 
 <img class="common_img" src="../_static/media/chapter_3/section_1-13/media/image9.jpeg"  />
 
-(5) **Logical Boolean Takes Subset**
+(5) Logical Boolean Takes Subset
 
 <img class="common_img" src="../_static/media/chapter_3/section_1-13/media/image10.jpeg"  />
 
-(6) **Create Unrelated Subset Replicas**
+(6) Create Unrelated Subset Replicas
 
 copy() can create unrelated subset replicas
 
@@ -2097,27 +2096,27 @@ copy() can create unrelated subset replicas
 
 * **Arrays Merging and Splitting**
 
-(1) **Array Merging**
+(1) Array Merging
 
-① concatenate() : Connect two one-dimensional array or merge two two-dimensional arrays according to row and column.
+① `concatenate()` : Connect two one-dimensional array or merge two two-dimensional arrays according to row and column.
 
 <img class="common_img" src="../_static/media/chapter_3/section_1-13/media/image14.jpeg"  />
 
-② vstack(): Merge two arrays vertically, as long as these two arrays have the same number of columns.
+② `vstack()`: Merge two arrays vertically, as long as these two arrays have the same number of columns.
 
 <img class="common_img" src="../_static/media/chapter_3/section_1-13/media/image15.jpeg"  />
 
-③ hstack(): Merge two arrays horizontally, as long as these two arrays have the same number of rows.
+③ `hstack()`: Merge two arrays horizontally, as long as these two arrays have the same number of rows.
 
 <img class="common_img" src="../_static/media/chapter_3/section_1-13/media/image16.jpeg"  />
 
-(2)**Split Array**
+(2) Split Array
 
-① split(): Split one-dimensional array. Where to split will be designated by the index of the parameter. When the function returns multiple objects, we need to set the corresponding numbers of object names in front of the equal sign. When the function result returns multiple objects, set the corresponding number of object names before the equal sign
+① `split()`: Split one-dimensional array. Where to split will be designated by the index of the parameter. When the function returns multiple objects, we need to set the corresponding numbers of object names in front of the equal sign. When the function result returns multiple objects, set the corresponding number of object names before the equal sign
 
 <img class="common_img" src="../_static/media/chapter_3/section_1-13/media/image17.jpeg"  />
 
-② vsplit(): Split a two-dimensional array horizontally. And hsplit() splits a two-dimensional array vertically.
+② `vsplit()`: Split a two-dimensional array horizontally. And hsplit() splits a two-dimensional array vertically.
 
 <img class="common_img" src="../_static/media/chapter_3/section_1-13/media/image18.jpeg"  />
 

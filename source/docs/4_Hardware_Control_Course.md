@@ -46,9 +46,17 @@ sudo apt-get remove --purge --auto-remove firefox geany -y
 
 (6) Enter the "**mkdir ~/.pip**" command to create a directory named "**.pip**" in home directory.
 
+```
+mkdir ~/.pip
+```
+
 <img class="common_img" src="../_static/media/chapter_4/section_1/image9.png"/>
 
 (7) Enter the "**vim ~/.pip/pip.conf**" command to open the "**pip.conf**" file.
+
+```
+vim ~/.pip/pip.conf
+```
 
 <img class="common_img" src="../_static/media/chapter_4/section_1/image10.png"/>
 
@@ -62,9 +70,17 @@ sudo apt-get remove --purge --auto-remove firefox geany -y
 
 (10) Enter the "**pip3 install gpiod**" command to install the "**gpiod**" Library.
 
+```
+pip3 install gpiod
+```
+
 <img class="common_img" src="../_static/media/chapter_4/section_1/image13.png"/>
 
 (11) After the installation is complete, enter the "**gpiodetect**" to scan the GPIO port in the system. If the installation is successful, you can see the corresponding information about the GPIO controller and the port.
+
+```
+gpiodetect
+```
 
 <img class="common_img" src="../_static/media/chapter_4/section_1/image14.png"/>
 
@@ -442,7 +458,7 @@ python3 UART.py
 
 * **Program Display**
 
-(1) **Serial Port Utility**
+(1) Serial Port Utility
 
 The message sent by Raspberry Pi 5 can be received in the Serial Port Utility. Make sure to edit the baud rate to "**115200**" as follows:
 
@@ -452,7 +468,7 @@ For example, you can enter text "nihao" in the field below, then click "Send".
 
 <img class="common_img" src="../_static/media/chapter_4/section_5/image38.png"/>
 
-(2) **Raspberry Pi 5**
+(2) Raspberry Pi 5
 
 On the command line interface of the Raspberry Pi 5, you can receive the message sent from the PC side.
 

@@ -18,7 +18,7 @@ To get detailed instructions about the file transfer method, please refer to the
 
 (3) Move the file 'data_gather.py' from the current directory to the Raspberry Pi.
 
-(4) Press the short-cut 'Ctrl+Alt+T' to open the command-line terminal, and run the command 'python3 data_gather.py'.
+(4) Press the short-cut **Ctrl+Alt+T** to open the command-line terminal, and run the command 'python3 data_gather.py'.
 
 ```bash
 python3 data_gather.py
@@ -41,8 +41,7 @@ After initiating data collection, a folder named '**my_data**' will be created a
 
 > [!Note]
 > 
-> **the input command should be case sensitive, and keywords can be complemented using Tab key.**
-> 
+> **The input command should be case sensitive, and keywords can be complemented using Tab key.**
 
 (1) Move the file '**labelImg.zip**' from the current directory to the Raspberry Pi.
 
@@ -288,7 +287,7 @@ MediaPipe is an open-source framework of multi-media machine learning models. Cr
 
 * **MediaPipe Pros and Cons**
 
-(1) **MediaPipe Pros**
+(1) MediaPipe Pros
 
 ① MediaPipe supports various platforms and languages, including iOS, Android, C++, Python, JAVAScript, Coral, etc.
 
@@ -296,7 +295,7 @@ MediaPipe is an open-source framework of multi-media machine learning models. Cr
 
 ③ Models and codes are with high reuse rate.
 
-(2) **MediaPipe Cons**
+(2) MediaPipe Cons
 
 ① For mobile devices, MediaPipe will occupy 10M or above.
 
@@ -310,13 +309,13 @@ The figure below shows how to use MediaPipe. The solid line represents the part 
 
 <img class="common_img" src="../_static/media/chapter_6/section_2-1/media/image3.png"   />
 
-(1) **Dependency**
+(1) Dependency
 
 MediaPipe utilizes OpenCV to process video, and uses [FFMPEG](https://www.ffmpeg.org/) to process audio data. Furthermore, it incorporates other essential dependencies, including OpenGL/Metal, Tensorflow, and Eigen.
 
 For seamless usage of MediaPipe, we suggest gaining a basic understanding of OpenCV. To delve into OpenCV, you can find detailed information in '**[5. OpenCV Computer Vision Course](5_OpenCV_Computer_Vision_Course.md)**'.
 
-(2) **MediaPipe Solutions**
+(2) MediaPipe Solutions
 
 Solutions is based on the open-source pre-constructed sample of TensorFlow or TFLite. MediaPipe Solutions is built upon a framework, which provides 16 Solutions, including face detection, Face Mesh, iris, hand, posture, human body and so on.
 
@@ -422,7 +421,7 @@ The source code of this program locates in:
 
 * **Basic Configuration**
 
-(1) **Build Selfie Segmentation Model**
+(1) Build Selfie Segmentation Model
 
 Import the selfie segmentation model from MediaPipe toolkit.
 
@@ -435,9 +434,9 @@ The first parameter, 'model_selection', determines the choice of model. MediaPip
 
 The landscape model is similar to the universal model but operates on 144x256x3 (HWC) tensors. It requires fewer FLOPs (computational effort) than the universal model, resulting in faster performance. It's important to note that MediaPipe Selfie Segmentation automatically resizes the input image to the required tensor dimensions before passing it to the ML model.
 
-(2) **Access Live Camera Feed**
+(2) Access Live Camera Feed
 
-Call VideoCapture() function in cv2 library to obtain the live camera feed.
+Call `VideoCapture()` function in cv2 library to obtain the live camera feed.
 
 ```py
 cap = cv2.VideoCapture("/dev/depth_cam")
@@ -453,13 +452,13 @@ When the robot is connected to a single camera, you have the option to use eithe
 image = cv2.cvtColor(cv2.flip(image, 1), cv2.COLOR_BGR2RGB)
 ```
 
-Employ cvtColor() function in cv2 library to convert the color space.
+Employ `cvtColor()` function in cv2 library to convert the color space.
 
 Before segmenting the image, you need to convert the image into RGB color space.
 
 * **Segment and Change Background**
 
-(1) **Draw Segmented Images**
+(1) Draw Segmented Images
 
 Utilizing the previously constructed selfie segmentation model, generate a segmentation map for both the person and the background in the image.
 
@@ -467,7 +466,7 @@ Utilizing the previously constructed selfie segmentation model, generate a segme
 results = selfie_segmentation.process(image)
 ```
 
-(2) **Boundary Filtering**
+(2) Boundary Filtering
 
 To refine segmentation around edges, bilateral filtering can be applied to the 'results.segmentation_mask' array.
 
@@ -476,9 +475,9 @@ condition = np.stack(
             (results.segmentation_mask[:,:,0],) * 3, axis=-1) > 0.1
 ```
 
-Use the expression 'np.stack((results.segmentation_mask,) \* 3, axis=-1) \> 0.1'. Decreasing the final parameter value enhances edge inclusion.
+Use the expression `np.stack((results.segmentation_mask,) * 3, axis=-1) > 0.1`. Decreasing the final parameter value enhances edge inclusion.
 
-(3) **Change Background**
+(3) Change Background
 
 Eliminate the background from the segmented image and replace it with a virtual background.
 
@@ -489,21 +488,21 @@ if bg_image is None:
         output_image = np.where(condition, image, bg_image)
 ```
 
-Utilize 'np.zeros(image.shape, dtype=np.uint8)' to remove the background and replace it with 'BG_COLOR'. 'BG_COLOR' can be a color or an image. For colors, provide the RGB value, ensuring image size consistency with the camera size.
+Utilize `np.zeros(image.shape, dtype=np.uint8)` to remove the background and replace it with `BG_COLOR`. `BG_COLOR` can be a color or an image. For colors, provide the RGB value, ensuring image size consistency with the camera size.
 
 ```py
 BG_COLOR = (192, 192, 192)  # gray
 ```
 
-(4) **Obtain Live Camera Feed**
+(4) Obtain Live Camera Feed
 
-By invoking the 'imshow()' function from the 'cv2' library, the camera image is displayed in the specified window.
+By invoking the `imshow()` function from the 'cv2' library, the camera image is displayed in the specified window.
 
 ```py
 cv2.imshow('MediaPipe Selfie Segmentation', result_image)
 ```
 
-The first parameter within the function brackets, "'MediaPipe Selfie Segmentation'", represents the window name, while the second parameter, "result_image", denotes the image to be displayed.
+The first parameter within the function brackets, **MediaPipe Selfie Segmentation**, represents the window name, while the second parameter, `result_image`, denotes the image to be displayed.
 
 ### 6.2.3 3D Object Detection
 
@@ -554,7 +553,7 @@ The source code of this program locates in: **/home/pi/Mediapipe/objectron.py**
 
 * **Basic Configuration**
 
-(1) **Create 3D Detection Model**
+(1) Create 3D Detection Model
 
 Import Objectron (3D ObjectDetection) model from MediaPipe.
 
@@ -576,9 +575,9 @@ The fourth parameter, 'min_tracking_confidence=0.4', determines the minimum conf
 
 The fifth parameter, 'model_name='Cup'', designates the 3D bounding box model name. This specifies the model used to display 3D bounding box landmarks. Currently supported options include {'Shoe', 'Chair', 'Cup', 'Camera'}. The default is 'Shoe'.
 
-(2) **Access Live Camera Feed**
+(2) Access Live Camera Feed
 
-Call **VideoCapture()** function in cv2 library to access the live camera feed.
+Call `VideoCapture()` function in cv2 library to access the live camera feed.
 
 ```py
 cap = cv2.VideoCapture("/dev/depth_cam")
@@ -600,7 +599,7 @@ Before proceeding with picture detection, it's essential to convert the image to
 
 * **3D Object Detection**
 
-(1) **Detection**
+(1) Detection
 
 Utilizing the previously constructed Objectron (3D Object Detection) model, detect the 3D shape of the object.
 
@@ -608,9 +607,9 @@ Utilizing the previously constructed Objectron (3D Object Detection) model, dete
 results = objectron.process(image)
 ```
 
-(2) **Draw 3D Border**
+(2) Draw 3D Border
 
-Traverse the recognized objects and utilize '**mp_drawing.draw_landmarks()**' and '**mp_drawing.draw_axis()**' to draw the 3D bounding box of the object.
+Traverse the recognized objects and utilize `mp_drawing.draw_landmarks()` and `mp_drawing.draw_axis()` to draw the 3D bounding box of the object.
 
 ```py
 for detected_object in results.detected_objects:
@@ -620,7 +619,7 @@ for detected_object in results.detected_objects:
                                          detected_object.translation)
 ```
 
-(3) **Obtain Live Camera Feed**
+(3) Obtain Live Camera Feed
 
 By calling the imshow() function in the cv2 library, the camera image is displayed in the specified window.
 
@@ -628,7 +627,7 @@ By calling the imshow() function in the cv2 library, the camera image is display
 cv2.imshow('MediaPipe Selfie Segmentation', result_image)
 ```
 
-The first parameter within the function brackets, "'**MediaPipe Objectron**'", represents the window name, while the second parameter, "**result_image**", denotes the image to be displayed.
+The first parameter within the function brackets, **MediaPipe Objectron**, represents the window name, while the second parameter, `result_image`, denotes the image to be displayed.
 
 ### 6.2.4 Face Detection
 
@@ -650,8 +649,7 @@ Finally, frame the human face and mark the six key points.
 
 > [!Note]
 > 
-> **the input command should be case sensitive, and keywords can be complemented using Tab key.**
-> 
+> **The input command should be case sensitive, and keywords can be complemented using Tab key.**
 
 (1) Transfer the file '**mp_face_detect.py**' saved in the same folder as this document to the Raspberry Pi.
 
@@ -681,7 +679,7 @@ The program source code locates in: **/home/pi/Mediapipe/face_detect.py**
 
 * **Basic Configuration**
 
-(1) **Create 3D Detection Model**
+(1) Create 3D Detection Model
 
 Import the FaceDetection model from MediaPipe toolkit.
 
@@ -696,7 +694,7 @@ This parameter represents that a face will be marked as detected only if the con
 
 while cap.isOpened(): Initiates a loop that continues until either the video stream ends or an error occurs. The function cap.isOpened() verifies whether the video capture object (represented by 'cap') is open and accessible for reading. Within the loop, this line retrieves a frame from the video stream. If the retrieval is successful, the variable 'success' will be True, and 'image' will hold the retrieved image data.
 
-(2) **Access Live Camera Feed**
+(2) Access Live Camera Feed
 
 Retrieve the camera image by invoking the VideoCapture() function from the cv2 library.
 
@@ -714,13 +712,13 @@ If the current device is connected to a single camera, either "**0**" or "**-1**
 image = cv2.cvtColor(cv2.flip(image,1), cv2.COLOR_BGR2RGB)
 ```
 
-Use the cvtColor() function from the cv2 library to convert the color space.
+Use the `cvtColor()` function from the cv2 library to convert the color space.
 
 Prior to image detection, convert the image to the RGB color space.
 
 * **Face Detection**
 
-(1) **Detection**
+(1) Detection
 
 Using the previously constructed FaceDetection model, identify faces in the image.
 
@@ -728,9 +726,9 @@ Using the previously constructed FaceDetection model, identify faces in the imag
 results = face_detection.process(image)
 ```
 
-(2) **Draw 3D Border**
+(2) Draw 3D Border
 
-Utilize **mp_drawing.draw_detection(image, detection)** to outline the face and mark its key features.
+Utilize `mp_drawing.draw_detection(image, detection)` to outline the face and mark its key features.
 
 ```py
 if results.detections:
@@ -740,7 +738,7 @@ if results.detections:
     image = show_fps(cv2.flip(image, 1))
 ```
 
-(3) **Display Live Camera Feed**
+(3) Display Live Camera Feed
 
 Invoke the imshow() function from cv2 library to display the live camera feed on the designated window.
 
@@ -748,9 +746,9 @@ Invoke the imshow() function from cv2 library to display the live camera feed on
 cv2.imshow('MediaPipe Selfie Segmentation', result_image)
 ```
 
-'**MediaPipe Objectron**' represents the name of the window.
+`MediaPipe Objectron` represents the name of the window.
 
-'**result_image**' denotes the image to be displayed.
+`result_image` denotes the image to be displayed.
 
 ### 6.2.5 3D Face Detection
 
@@ -776,8 +774,7 @@ Finally, the faces in the detected image are rendered into a three-dimensional g
 
 > [!Note]
 > 
-> **the input command should be case sensitive, and keywords can be complemented using Tab key.**
-> 
+> **The input command should be case sensitive, and keywords can be complemented using Tab key.**
 
 (1) Transfer the file '**mp_face_detect.py**' saved in the same folder as this document to the Raspberry Pi.
 
@@ -811,7 +808,7 @@ The program source code locates in: **/home/pi/Mediapipe/face_mesh.py**
 
 * **Basic Configuration**
 
-(1) **Construct a face mesh model**
+(1) Construct a face mesh model
 
 Import the face mesh model from the MediaPipe toolkit.
 
@@ -828,7 +825,7 @@ The second parameter, 'min_detection_confidence,' sets the minimum confidence le
 
 The third parameter, 'min_tracking_confidence,' sets the minimum confidence value for face tracking. Increasing this value enhances solution robustness but may increase latency.
 
-(2) **Access Live Camera Feed**
+(2) Access Live Camera Feed
 
 Retrieve the camera image by invoking the VideoCapture() function from the cv2 library.
 
@@ -846,13 +843,13 @@ If the current device is connected to a single camera, either "**0**" or "**-1**
 image = cv2.cvtColor(image, cv2.COLOR_BGR2RGB)
 ```
 
-Use the cvtColor() function from the cv2 library to convert the color space.
+Use the `cvtColor()` function from the cv2 library to convert the color space.
 
 Prior to image detection, convert the image to the RGB color space.
 
 * **Face Detection**
 
-(1) **Face Detection**
+(1) Face Detection
 
 Using the previously constructed FaceDetection model, identify faces in the image.
 
@@ -860,9 +857,9 @@ Using the previously constructed FaceDetection model, identify faces in the imag
  results = face_detection.process(image)
 ```
 
-(2) **Draw Face Mesh**
+(2) Draw Face Mesh
 
-Use the **mp_drawing.draw_landmarks()** function to draw the face grid detected in the picture.
+Use the `mp_drawing.draw_landmarks()` function to draw the face grid detected in the picture.
 
 ```py
 if results.multi_face_landmarks:
@@ -873,15 +870,15 @@ if results.multi_face_landmarks:
             landmark_drawing_spec=drawing_spec)
 ```
 
-(3) **Display Live Camera Feed**
+(3) Display Live Camera Feed
 
-Invoke the imshow() function from cv2 library to display the live camera feed on the designated window.
+Invoke the `imshow()` function from cv2 library to display the live camera feed on the designated window.
 
 ```py
  cv2.imshow('MediaPipe Face Mesh', result_image)
 ```
 
-The initial parameter, "'**MediaPipe Face Mesh**'," inside the function brackets, signifies the window name, while the subsequent parameter, "**result_image**," denotes the displayed image.
+The initial parameter, "**MediaPipe Face Mesh**" inside the function brackets, signifies the window name, while the subsequent parameter, `result_image` denotes the displayed image.
 
 ### 6.2.6 Hand Key Point Detection
 
@@ -934,7 +931,7 @@ The program source code is saved in: **/home/pi/Mediapipe/hand.py**
 
 * **Basic Configuration**
 
-(1) **Create Hand Detection Model**
+(1) Create Hand Detection Model
 
 Import the hand detection model from the MediaPipe library.
 
@@ -944,11 +941,11 @@ with mp_hands.Hands(
     min_tracking_confidence=0.5) as hands:
 ```
 
-The initial parameter, "**min_detection_confidence**," denotes the minimum confidence required for hand detection, with a default value of 0.5. This parameter falls within the range of \[0.0, 1.0\].
+The initial parameter, `min_detection_confidence`, denotes the minimum confidence required for hand detection, with a default value of 0.5. This parameter falls within the range of \[0.0, 1.0\].
 
-The second parameter, "**min_tracking_confidence**," represents the minimum confidence level for hand tracking. Setting this parameter to a higher value enhances the robustness of the solution, albeit at the expense of increased latency.
+The second parameter, `min_tracking_confidence`, represents the minimum confidence level for hand tracking. Setting this parameter to a higher value enhances the robustness of the solution, albeit at the expense of increased latency.
 
-(2) **Access Live Camera Feed**
+(2) Access Live Camera Feed
 
 Retrieve the camera image by invoking the VideoCapture() function from the cv2 library.
 
@@ -966,13 +963,13 @@ If the current device is connected to a single camera, either "0" or "-1" can be
 image = cv2.cvtColor(image, cv2.COLOR_BGR2RGB)
 ```
 
-Use the cvtColor() function from the cv2 library to convert the color space.
+Use the `cvtColor()` function from the cv2 library to convert the color space.
 
 Prior to image detection, convert the image to the RGB color space.
 
 * **Hand Detection**
 
-(1) **Detection**
+(1) Detection
 
 Utilizing the previously imported hand detection model, detect the presence of hands within the image.
 
@@ -980,9 +977,9 @@ Utilizing the previously imported hand detection model, detect the presence of h
  results = hands.process(image)
 ```
 
-(2) **Draw Hand Key Point**
+(2) Draw Hand Key Point
 
-Utilize the **mp_drawing.draw_landmarks()** function to visualize the detected hand joints within the image.
+Utilize the `mp_drawing.draw_landmarks()` function to visualize the detected hand joints within the image.
 
 ```py
 for hand_landmarks in results.multi_hand_landmarks:
@@ -992,15 +989,15 @@ for hand_landmarks in results.multi_hand_landmarks:
             mp_hands.HAND_CONNECTIONS)
 ```
 
-(3) **Display Live Camera Feed**
+(3) Display Live Camera Feed
 
-Invoke the imshow() function from cv2 library to display the live camera feed on the designated window.
+Invoke the `imshow()` function from cv2 library to display the live camera feed on the designated window.
 
 ```py
 cv2.imshow('MediaPipe Hands', result_image)
 ```
 
-The initial parameter, "'**MediaPipe Hands**'," inside the function brackets, signifies the window name, while the subsequent parameter, "**result_image**," denotes the displayed image.
+The initial parameter, "**MediaPipe Hands**" inside the function brackets, signifies the window name, while the subsequent parameter, `result_image`, denotes the displayed image.
 
 ### 6.2.7 Body Keypoint Detection
 
@@ -1059,7 +1056,7 @@ The program source code is saved in: **/home/pi/Mediapipe/pose.py**
 
 * **Basic Configuration**
 
-(1) **Create Body Detection Model**
+(1) Create Body Detection Model
 
 Import the pose detection model from the MediaPipe library.
 
@@ -1069,11 +1066,11 @@ with mp_pose.Pose(
     min_tracking_confidence=0.5) as pose:
 ```
 
-The initial parameter, "**min_detection_confidence**," denotes the minimum confidence required for hand detection, with a default value of 0.5. This parameter falls within the range of \[0.0, 1.0\].
+The initial parameter, `min_detection_confidence`, denotes the minimum confidence required for hand detection, with a default value of 0.5. This parameter falls within the range of \[0.0, 1.0\].
 
-The second parameter, "**min_tracking_confidence**," represents the minimum confidence level for hand tracking. Setting this parameter to a higher value enhances the robustness of the solution, albeit at the expense of increased latency.
+The second parameter, `min_tracking_confidence`, represents the minimum confidence level for hand tracking. Setting this parameter to a higher value enhances the robustness of the solution, albeit at the expense of increased latency.
 
-(2) **Access Live Camera Feed**
+(2) Access Live Camera Feed
 
 Retrieve the camera image by invoking the VideoCapture() function from the cv2 library.
 
@@ -1087,17 +1084,17 @@ If the current device is connected to a single camera, either "**0**" or "**-1**
 
 * **Convert Color Space**
 
-```py
+```python
 image = cv2.cvtColor(image, cv2.COLOR_BGR2RGB)
 ```
 
-Use the cvtColor() function from the cv2 library to convert the color space.
+Use the `cvtColor()` function from the cv2 library to convert the color space.
 
 Prior to image detection, convert the image to the RGB color space.
 
 * **Body Detection**
 
-(1) **Detection**
+(1) Detection
 
 Utilizing the limb detection model previously imported, detect the limbs within the image.
 
@@ -1105,9 +1102,9 @@ Utilizing the limb detection model previously imported, detect the limbs within 
  results = pose.process(image)
 ```
 
-(2) **Draw Key Points**
+(2) Draw Key Points
 
-Utilize the **mp_drawing.draw_landmarks()** function to visualize the detected key points of the limbs within the image, along with the connecting lines between them.
+Utilize the `mp_drawing.draw_landmarks()` function to visualize the detected key points of the limbs within the image, along with the connecting lines between them.
 
 ```py
 mp_drawing.draw_landmarks(
@@ -1116,15 +1113,15 @@ mp_drawing.draw_landmarks(
         mp_pose.POSE_CONNECTIONS)
 ```
 
-(3) **Display Live Camera Feed**
+(3) Display Live Camera Feed
 
-Invoke the imshow() function from cv2 library to display the live camera feed on the designated window.
+Invoke the `imshow()` function from cv2 library to display the live camera feed on the designated window.
 
 ```py
 cv2.imshow('MediaPipe Pose', result_image)
 ```
 
-The initial parameter, "'**MediaPipe Pose**'," inside the function brackets, signifies the window name, while the subsequent parameter, "**result_image**," denotes the displayed image.
+The initial parameter, "MediaPipe Pose" inside the function brackets, signifies the window name, while the subsequent parameter, `result_image` denotes the displayed image.
 
 ## 6.3 Basic Course
 
@@ -1132,7 +1129,7 @@ The initial parameter, "'**MediaPipe Pose**'," inside the function brackets, sig
 
 * **Machine Learning Introduction**
 
-(1) **What “Machine Learning” is**
+(1) What “Machine Learning” is
 
 Machine Learning forms the cornerstone of artificial intelligence, serving as the fundamental approach to endow machines with intelligence. It spans multiple interdisciplinary fields such as probability theory, statistics, approximation theory, convex analysis, and algorithm complexity theory.
 
@@ -1142,11 +1139,11 @@ In essence, machine learning explores how computers can acquire new knowledge or
 
 For instance, consider AlphaGo, the pioneering artificial intelligence system that triumphed over human professional Go players and even world champions. AlphaGo operates on the principles of deep learning, wherein it discerns the intrinsic laws and representation layers within sample data to extract meaningful insights.
 
-(2) **Types of Machine Learning**
+(2) Types of Machine Learning
 
 Machine learning can be broadly categorized into two types: supervised learning and unsupervised learning. The key distinction between these two types lies in whether the machine learning algorithm has prior knowledge of the classification and structure of the dataset.
 
-① **Supervised Learning**
+① Supervised Learning
 
 Supervised learning involves providing a labeled dataset to the algorithm, where the correct answers are known. The machine learning algorithm uses this dataset to learn how to compute the correct answers. It is the most commonly used type of machine learning.
 
@@ -1162,7 +1159,7 @@ Model Evaluation: Upon completing training, evaluating the model's performance o
 
 In summary, supervised learning entails utilizing labeled training data to train a model for predicting or classifying new unlabeled data. Key steps encompass selecting an appropriate model, conducting feature engineering, training and optimizing the model, and evaluating its performance. Together, these components constitute the foundational elements of supervised learning.
 
-② **Unsupervised Learning**
+② Unsupervised Learning
 
 Unsupervised learning involves providing an unlabeled dataset to the algorithm, where the correct answers are unknown. In this type of machine learning, the machine must mine potential structural relationships within the dataset.
 
@@ -1176,25 +1173,25 @@ For instance, in image classification, a large dataset of cat and dog pictures c
 
 There are a large variety of machine learning frameworks. Among them, PyTorch, Tensorflow, MXNet and paddlepaddle are common.
 
-(1) **PyTorch**
+(1) PyTorch
 
 PyTorch is a powerful open-source machine learning framework, originally based on the BSD License Torch framework. It supports advanced multidimensional array operations and is widely used in the field of machine learning. PyTorch, built on top of Torch, offers even greater flexibility and functionality. One of its most distinguishing features is its support for dynamic computational graphs and its Python interface.
 
 In contrast to TensorFlow's static computation graph, PyTorch's computation graph is dynamic. This allows for real-time modifications to the graph as computational needs change. Additionally, PyTorch enables developers to accelerate tensor calculations using GPUs, create dynamic computational graphs, and automatically calculate gradients. This makes PyTorch an ideal choice for machine learning tasks that require flexibility, speed, and powerful computing capabilities.
 
-(2) **Tensorflow**
+(2) Tensorflow
 
 TensorFlow is a powerful open-source machine learning framework that allows users to quickly construct neural networks and train, evaluate, and save them. It provides an easy and efficient way to implement machine learning and deep learning concepts. TensorFlow combines computational algebra with optimization techniques to make the calculation of many mathematical expressions easier.
 
 One of TensorFlow's key strengths is its ability to run on machines of varying sizes and types, including supercomputers, embedded systems, and everything in between. TensorFlow can also utilize both CPU and GPU computing resources, making it an extremely versatile platform. When it comes to industrial deployment, TensorFlow is often the most suitable machine learning framework due to its robustness and reliability. In other words, TensorFlow is an excellent choice for deploying machine learning applications in a production environment.
 
-(3) **PaddlePaddle**
+(3) PaddlePaddle
 
 PaddlePaddle is a cutting-edge deep learning framework developed by Baidu, which integrates years of research and practical experience in deep learning. PaddlePaddle offers a comprehensive set of features, including training and inference frameworks, model libraries, end-to-end development kits, and a variety of useful tool components. It is the first open-source, industry-level deep learning platform to be developed in China, offering rich and powerful features to developers worldwide.
 
 Deep learning has proven to be a powerful tool in many machine learning applications in recent years. From image recognition and speech recognition to natural language processing, robotics, online advertising, automatic medical diagnosis, and finance, deep learning has revolutionized the way we approach these fields. With PaddlePaddle, developers can harness the power of deep learning to create innovative and cutting-edge applications that meet the needs of users and businesses alike.
 
-(4) **MXNet**
+(4) MXNet
 
 MXNet is a top-tier deep learning framework that supports multiple programming languages, including Python, C++, Scala, R, and more. It features a dataflow graph similar to other leading frameworks like TensorFlow and Theano, as well as advanced features such as robust multi-GPU support and high-level model building blocks comparable to Lasagne and Blocks. MXNet can run on virtually any hardware, including mobile phones, making it a versatile choice for developers.
 
@@ -1204,7 +1201,7 @@ MXNet is specifically designed for efficiency and flexibility, with accelerated 
 
 * **Introduction to Yolo Model Series**
 
-(1) **YOLO Series**
+(1) YOLO Series
 
 YOLO (You Only Look Once) is an one-stage regression algorithm based on deep learning.
 
@@ -1212,7 +1209,7 @@ R-CNN series algorithm dominates target detection domain before YOLOv1 is releas
 
 To tackle this problem, YOLO is released. Its core idea is to redefine target detection as a regression problem, use the entire image as network input, and directly return position and category of Bounding Box at output layer. Compared with traditional methods for target detection, it distinguishes itself in high detection speed and high average accuracy.
 
-(2) **YOLOv5**
+(2) YOLOv5
 
 YOLOv5 is an optimized version based on previous YOLO models, whose detection speed and accuracy is greatly improved.
 
@@ -1228,7 +1225,7 @@ In general, a target detection algorithm is divided into 4 modules, namely input
 
 * **YOLOv5 Model Structure**
 
-(1) **Component**
+(1) Component
 
 ① Convolution layer: extract features of the image
 
@@ -1290,7 +1287,7 @@ It is used to splice together tensors of features, allowing for the combination 
 
 <img class="common_img" src="../_static/media/chapter_6/section_3-3/media/image10.png"   />
 
-(2) **Compound Element**
+(2) Compound Element
 
 When building a model, using only the layers mentioned above to construct functions can lead to lengthy, disorganized, and poorly structured code. By assembling basic elements into various units and calling them accordingly, the efficiency of writing the model can be effectively improved.
 
@@ -1340,7 +1337,7 @@ The output data of the convolutional unit is fed into three max pooling layers a
 
 <img class="common_img" src="../_static/media/chapter_6/section_3-3/media/image17.png"   />
 
-(3) **Structure**
+(3) Structure
 
 Composed of three parts, YOLOv5 can output three sizes of data. Data of each size is processed in different way. The below picture is the output structure of YOLOv5.
 

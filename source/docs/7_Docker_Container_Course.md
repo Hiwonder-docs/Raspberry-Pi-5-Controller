@@ -775,7 +775,7 @@ xeyes
 
 * **Copy File with "cp" Command**
 
-(1) **Copy File from Container to Host**
+(1) Copy File from Container to Host
 
 Command: docker cp \[container id: container path\] \[target host path\]
 
@@ -831,7 +831,7 @@ ls
 
 <img class="common_img" src="../_static/media/chapter_7/section_5/media/image19.png"  />
 
-(2) **Copy File from Host to Container**
+(2) Copy File from Host to Container
 
 Command: docker cp \[host file path\] \[container id: container path\]
 

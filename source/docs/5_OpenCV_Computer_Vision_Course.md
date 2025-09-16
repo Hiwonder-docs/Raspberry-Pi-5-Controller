@@ -41,23 +41,23 @@ At this point, the live camera feed window will occur. When a red, green, or blu
 
 * **Program Analysis**
 
-**The source code of the program is saved in: /home/pi/Opencv/color_discern.py**
+The source code of the program is saved in: `/home/pi/Opencv/color_discern.py`
 
 <img class="common_img" src="../_static/media/chapter_5/section_1/media/image5.jpeg" />
 
-(1) **Import Library Files**
+(1) Import Library Files
 
 Import the cv2 library from OpenCV, as well as the sys, time, and math modules. Additionally, instantiate the numpy library.
 
 <img class="common_img" src="../_static/media/chapter_5/section_1/media/image6.jpeg" />
 
-(2) **Set the Color Threshold**
+(2) Set the Color Threshold
 
 Next, establish the threshold for color recognition. Initially, define the target thresholds for color recognition by the camera (note that OpenCV's default color model is BGR, with "'red': (0, 0, 255),'blue': (255, 0, 0),'green': (0 , 255, 0)"). Then, specify a range for the threshold, as illustrated below:
 
 <img class="common_img" src="../_static/media/chapter_5/section_1/media/image7.jpeg" />
 
-(3) **Retrieve Recognition Image**
+(3) Retrieve Recognition Image
 
 ① The second parameter invokes the VideoCapture() function to instantiate the camera object. Its argument 0 denotes the first camera. If there are multiple cameras, the parameter can be adjusted to 1, 2, 3, and so forth.
 
@@ -75,7 +75,7 @@ Next, establish the threshold for color recognition. Initially, define the targe
 
 <img class="common_img" src="../_static/media/chapter_5/section_1/media/image11.png" />
 
-(4) **Color Recognition**
+(4) Color Recognition
 
 After capturing the recognition image through the camera, the image undergoes processing via the getAreaMaxContour() function to obtain the object's outline. The specific processing method is illustrated below:
 
@@ -85,21 +85,21 @@ Subsequently, the identification information is printed by invoking the putText(
 
 <img class="common_img" src="../_static/media/chapter_5/section_1/media/image13.png" />
 
-The parameter breakdown of the aforementioned code "**cv2.putText(img, "Color:" + detect_color,(10, img.shape\[0\] - 10),** **cv2.FONT_HERSHEY_SIMPLEX, 0.65, draw_color, 2)**" is as follows:
+The parameter breakdown of the aforementioned code `cv2.putText(img, "Color:" + detect_color,(10, img.shape[0] - 10)`, `cv2.FONT_HERSHEY_SIMPLEX, 0.65, draw_color, 2)`" is as follows:
 
-The first parameter "**image**" represents the target image.
+The first parameter `image` represents the target image.
 
-The second parameter "**Color + detect color**" denotes the text string to be drawn.
+The second parameter `Color + detect color` denotes the text string to be drawn.
 
-The third parameter "**(10, img.shape\[0\] - 10)**" indicates the coordinates of the lower left corner of the text string in the image.
+The third parameter `(10, img.shape[0] - 10)` indicates the coordinates of the lower left corner of the text string in the image.
 
-The fourth parameter "**cv2.FONT_HERSHEY_SIMPLEX**" specifies the font type for printing.
+The fourth parameter `cv2.FONT_HERSHgpiodetectEY_SIMPLEX` specifies the font type for printing.
 
-The fifth parameter "**0.65**" signifies the font size.
+The fifth parameter `0.65` signifies the font size.
 
-The sixth parameter "**draw_color**" specifies the font color.
+The sixth parameter `draw_color` specifies the font color.
 
-The seventh parameter "**2**" denotes the font thickness.
+The seventh parameter `2` denotes the font thickness.
 
 ### 5.1.2 Human Face Detection
 
@@ -116,7 +116,6 @@ For file transfer methods, please consult the documents located in the directory
 > [!Note]
 > 
 >**Note: The input command should be case sensitive, and keywords can be complemented using 'Tab' key.**
->
 
 (1) Open VNC, and use short-cut '**Ctrl+Alt+T**' to open the command-line terminal, then run the command '**cd OpenCV/face/**' and hit Enter to navigate to the directory containing the program files.
 
@@ -138,57 +137,119 @@ At this point, the live camera feed window will occur. The human face will be re
 
 * **Program Analysis**
 
-The source code of this program is saved in: **/home/pi/Opencv/face/face.py**
+The source code of this program is saved in:` /home/pi/Opencv/face/face.py`
 
-<img class="common_img" src="../_static/media/chapter_5/section_2/media/image5.jpeg" />
+```python
+#导入所需的库(Import required libraries)
+import cv2 as cv
+import numpy as np
+#检测函数(Detection function)
+def face_detect(image):
+    gray = cv.cvtColor(image, cv.COLOR_BGR2GRAY) #转化图像为灰度图(Convert image to grayscale)
+    face_detector = cv.CascadeClassifier("./haarcascade_frontalface_default.xml")#读取人脸数据(Read face data)
+    faces = face_detector.detectMultiScale(gray,1.02,20)#进行人脸检测(Perform face detection)
+    for x, y, w, h in faces:
+        cv.rectangle(image, (x, y), (x + w, y + h), (0, 0, 255), 2)#对人脸位置画框(Draw rectangle around face position)
+    cv.imshow("face_detect", image)#展示(Display)
+#运行人脸检测并显示(Run face detection and display)
+def video_face_detect():
+    capture = cv.VideoCapture(0)#设置使用的相机(Set the camera to use)
+    while True:
+        ret, frame = capture.read()#读取相机图像(Read camera image)
+        frame = cv.flip(frame, 1)#将回传画面设置图像水平翻转(Set the returned image to horizontal flip)
+        face_detect(frame)#人脸检测(Face detection)
+        c = cv.waitKey(10)
+        if c==27:  #按下ESC键退出(Press ESC key to exit)
+            break
+```
 
-(1) **Import Library Files**
+(1) Import Library Files
 
 Import the cv2 library from OpenCV. Additionally, instantiate the numpy library.
 
-<img class="common_img" src="../_static/media/chapter_5/section_2/media/image6.png" />
+```
+import cv2 as cv
+import numpy as np
+```
 
-(2) **Main Function Analysis**
+(2) Main Function Analysis
 
-① **Human Face Real Time Detection**
+① Human Face Real Time Detection
 
-<img class="common_img" src="../_static/media/chapter_5/section_2/media/image7.jpeg" />
+```
+if __name__ == '__main__':
+    video_face_detect()#实时检测人脸(Real-time face detection)
+```
 
-* Call '**video_face_detect()**' function to execute the human face detection.
+* Call `video_face_detect()` function to execute the human face detection.
 
-<img class="common_img" src="../_static/media/chapter_5/section_2/media/image8.jpeg" />
+```python
+def video_face_detect():
+    capture = cv.VideoCapture(0)#设置使用的相机(Set the camera to use)
+    while True:
+        ret, frame = capture.read()#读取相机图像(Read camera image)
+        frame = cv.flip(frame, 1)#将回传画面设置图像水平翻转(Set the returned image to horizontal flip)
+        face_detect(frame)#人脸检测(Face detection)
+        c = cv.waitKey(10)
+        if c==27:  #按下ESC键退出(Press ESC key to exit)
+            break
+```
 
 * In the video_face_detect() function, invoke the VideoCapture() function from the cv2 library to instantiate the camera object.
 
-<img class="common_img" src="../_static/media/chapter_5/section_2/media/image9.png" />
+```
+    capture = cv.VideoCapture(0)#设置使用的相机(Set the camera to use)
+```
 
 Its parameter "0" indicates the first camera. If there are multiple cameras, adjust the parameter to 1, 2, 3, and so forth, accordingly.
 
 * Within the while loop, utilize the read() function of the camera object to capture a frame of the video, and employ the flip() function from the cv2 library to horizontally flip the returned image.
 
-<img class="common_img" src="../_static/media/chapter_5/section_2/media/image10.jpeg" />
+```
+    while True:
+        ret, frame = capture.read()#读取相机图像(Read camera image)
+        frame = cv.flip(frame, 1)#将回传画面设置图像水平翻转(Set the returned image to horizontal flip)
+```
 
 * Call face_detect() function to detect the image.
 
-<img class="common_img" src="../_static/media/chapter_5/section_2/media/image11.png" />
+```
+        face_detect(frame)#人脸检测(Face detection)
+```
 
-<img class="common_img" src="../_static/media/chapter_5/section_2/media/image12.jpeg" />
+```
+def face_detect(image):
+    gray = cv.cvtColor(image, cv.COLOR_BGR2GRAY) #转化图像为灰度图(Convert image to grayscale)
+    face_detector = cv.CascadeClassifier("./haarcascade_frontalface_default.xml")#读取人脸数据(Read face data)
+    faces = face_detector.detectMultiScale(gray,1.02,20)#进行人脸检测(Perform face detection)
+```
 
 * In the face detection function, for enhanced detection speed, initially employ the cvtColor() function from the cv2 library to convert the source image into grayscale. The first parameter "image" represents the source image, while "cv.COLOR_BGR2GRAY" denotes the target image. Subsequently, utilize the cv.CascadeClassifier() function to read the facial data. Then, call the detectMultiScale() function to identify faces. Within this function, the first parameter "gray" denotes the image to be analyzed, the second parameter "1.02" signifies the proportion coefficient of the search window in consecutive scans, indicating that each search window expands by 2%. The third parameter "20" represents the minimum number of adjacent rectangles required to constitute the detection target.
 
-<img class="common_img" src="../_static/media/chapter_5/section_2/media/image13.png" />
+```
+    for x, y, w, h in faces:
+        cv.rectangle(image, (x, y), (x + w, y + h), (0, 0, 255), 2)#对人脸位置画框(Draw rectangle around face position)
+    cv.imshow("face_detect", image)#展示(Display)
+```
 
 * Finally, utilize the cv.rectangle() function to frame the face positions and employ the cv.imshow() function to display the resultant image.
 
 * Subsequently, wait for a duration of 10 units. If the ESC key is detected as keyboard input during this period, exit the program by closing the window.
 
-<img class="common_img" src="../_static/media/chapter_5/section_2/media/image14.jpeg" />
+```
+        c = cv.waitKey(10)
+        if c==27:  #按下ESC键退出(Press ESC key to exit)
+            break
+```
 
-②**Exit Face Detection**
+② Exit Face Detection
 
 Invoke destroyAllWindows() function to close all the image window.
 
-<img class="common_img" src="../_static/media/chapter_5/section_2/media/image15.png" />
+```
+    cv.waitKey(0) #按下任意键退出(Press any key to exit)
+    cv.destroyAllWindows()
+```
 
 ### 5.1.3 Tag Recognition
 
@@ -198,7 +259,7 @@ Tag recognition involves identifying the corresponding ID of a tag card through 
 
 AprilTag, akin to barcodes and QR codes, serves as a visual positioning identifier facilitating swift tag detection and relative position calculation, meeting real-time requirements. The principles of tag recognition are delineated as follows:
 
-(1) **Image Acquisition and Processing:**
+(1) Image Acquisition and Processing:
 
 ① Initialize the camera.
 
@@ -206,13 +267,13 @@ AprilTag, akin to barcodes and QR codes, serves as a visual positioning identifi
 
 ③ Convert the image information from BGR format to grayscale.
 
-(2) **Label Detection:**
+(2) Label Detection:
 
 Obtain the coordinate information of the four corner points of the tag code.
 
 Draw the outline of the Tag label based on the obtained coordinates.
 
-(3) **Label Information Acquisition:**
+(3) Label Information Acquisition:
 
 ① Clarify lattice coordinates within the determined quadrilateral.
 
@@ -220,13 +281,13 @@ Draw the outline of the Tag label based on the obtained coordinates.
 
 ③ After filtering and validation, calculate the tag's ID and rotation angle.
 
-(4) **Tag Recognition and Buzzer Control:**
+(4) Tag Recognition and Buzzer Control:
 
 ① Frame the recognized tag.
 
 ② Control the buzzer to produce sound upon recognition.
 
-(5) **Determining Largest Labels:**
+(5) Determining Largest Labels:
 
 ① Convert recognized label coordinates into unscaled coordinates.
 
@@ -277,19 +338,48 @@ At this point, the terminal's return screen will open, and the camera will ident
 
 * **Program Analysis**
 
-The source code of the program is saved in **/home/pi/Opencv/apriltag_discern.py**
+The source code of the program is saved in `/home/pi/Opencv/apriltag_discern.py`
 
-<img class="common_img" src="../_static/media/chapter_5/section_3/media/image8.png" />
+```python
+#标签识别(Tag Recognition)
+import sys
+import cv2
+import math
+import time
+import numpy as np
+import apriltag
+import RPi.GPIO as GPIO
 
-(1) **Import Library Files**
+GPIO.setwarnings(False)
+GPIO.setmode(GPIO.BCM)
+
+#apriltag检测(AprilTag detection)
+
+if sys.version_info.major == 2:
+    print('Please run this program with python3!')
+    sys.exit(0)
+```
+
+(1) Import Library Files
 
 Import the cv2 library from OpenCV. Additionally, instantiate the numpy library.
 
-<img class="common_img" src="../_static/media/chapter_5/section_3/media/image9.png" />
+```python
+#标签识别(Tag Recognition)
+import sys
+import cv2
+import math
+import time
+import numpy as np
+import apriltag
+import RPi.GPIO as GPIO
+```
 
-(2) **Tag Detection**
+(2) Tag Detection
 
-<img class="common_img" src="../_static/media/chapter_5/section_3/media/image10.png" />
+```
+            cv2.drawContours(img, [np.array(corners, np.int)], -1, (0, 255, 255), 2)
+```
 
 AprilTag recognition primarily utilizes the drawContours() and putText() functions from the cv2 library:
 
@@ -305,23 +395,26 @@ The fourth parameter "(0, 255, 255)" signifies the outline color, with the order
 
 The fifth parameter "2" determines the width of the outline; "-1" indicates filling the outline with the specified color.
 
-<img class="common_img" src="../_static/media/chapter_5/section_3/media/image11.png" />
+```
+        cv2.putText(img, "tag_id: " + str(tag_id), (10, img.shape[0] - 30), cv2.FONT_HERSHEY_SIMPLEX, 0.65, [0, 255, 255], 2)
+        cv2.putText(img, "tag_family: " + tag_family, (10, img.shape[0] - 10), cv2.FONT_HERSHEY_SIMPLEX, 0.65, [0, 255, 255], 2)
+```
 
-The putText() function is utilized to display text content on the image. Taking "cv2.putText(img, "tag_id: " + str(tag_id), (10, img.shape\[0\] - 30), cv2.FONT_HERSHEY_SIMPLEX, 0.65, \[0, 255, 255\], 2)" as an example, the parameters are interpreted as follows:
+The putText() function is utilized to display text content on the image. Taking `cv2.putText(img, "tag_id: " + str(tag_id), (10, img.shape\[0\] - 30), cv2.FONT_HERSHEY_SIMPLEX, 0.65, \[0, 255, 255\], 2)` as an example, the parameters are interpreted as follows:
 
-The first parameter "img" represents the input image.
+The first parameter `img` represents the input image.
 
-The second parameter ""tag_id: " + str(tag_id)" denotes the text to be added.
+The second parameter `"tag_id: " + str(tag_id)` denotes the text to be added.
 
-The third parameter "(10, img.shape\[0\] - 30)" specifies the coordinates of the upper-left corner of the added content.
+The third parameter `(10, img.shape[0] - 30)` specifies the coordinates of the upper-left corner of the added content.
 
-The fourth parameter "cv2.FONT_HERSHEY_SIMPLEX" indicates the font style for the added content.
+The fourth parameter `cv2.FONT_HERSHEY_SIMPLEX` indicates the font style for the added content.
 
-The fifth parameter "0.65" determines the font size.
+The fifth parameter `0.65` determines the font size.
 
-The sixth parameter "\[0, 255, 255\]" defines the font color, with the order representing Blue, Green, Red; here, it denotes yellow.
+The sixth parameter `[0, 255, 255]` defines the font color, with the order representing Blue, Green, Red; here, it denotes yellow.
 
-The seventh parameter "2" specifies the font width.
+The seventh parameter `2` specifies the font width.
 
 ### 5.1.4 Shape Recognition
 
@@ -400,7 +493,7 @@ python3 ShapeRecognize.py
 
 (6) If you need to terminate this program, press 'q'key to terminate the running program.
 
-(7) To facilitate later viewing, we can move/copy this program to the directory '**home\pi\Ai_vision**'.
+(7) To facilitate later viewing, we can move/copy this program to the directory `home\pi\Ai_vision`.
 
 <img class="common_img" src="../_static/media/chapter_5/section_4/media/image11.jpeg" />
 
@@ -410,45 +503,90 @@ Right-click the program file, and select '**Thonny** **Python** **IDE**'to open 
 
 <img class="common_img" src="../_static/media/chapter_5/section_4/media/image12.jpeg" />
 
-(1) **Import Library File**
+(1) Import Library File
 
 Import the CV2 library file from OpenCV, and initialize the numpy library.
 
-<img class="common_img" src="../_static/media/chapter_5/section_4/media/image13.png" />
+```
+import cv2
+import numpy as np
+```
 
-(2) **Detect Object Color and Draw a Frame**
+(2) Detect Object Color and Draw a Frame
 
 Next, define a function to identify the color of the detected object and draw its outline. The specific code is displayed in the figure below:
 
-<img class="common_img" src="../_static/media/chapter_5/section_4/media/image14.jpeg" />
+```python
+#检测颜色并画框(Detect colors and draw frames)
+def detection(gray,image):
+    # 检测边界using a findContours() function(Detect boundaries using findContours() function)
+    contours, _ = cv2.findContours(
+        gray, cv2.RETR_TREE, cv2.CHAIN_APPROX_SIMPLE)
+    i = 0
+    # list for storing names of shapes(List for storing names of shapes)
+    for contour in contours:
+        # here we are ignoring first counter because
+        # findcontour function detects whole image as shape
+        #if i == 0:
+            #i = 1
+           # continue
+
+        # 计算边长数量cv2.approxPloyDP() function to approximate the shape(Calculate edge count using cv2.approxPolyDP() function to approximate the shape)
+        approx = cv2.approxPolyDP(
+            contour, 0.06 * cv2.arcLength(contour, True), True)
+        # 根据检测到边缘画边using drawContours() function(Draw edges based on detected boundaries using drawContours() function)
+        cv2.drawContours(image, [contour], 0, (0, 0, 255), 5)
+    try:
+        # 寻找中心点finding center point of shape(Find center point of shape)
+        M = cv2.moments(contour)
+        if M['m00'] != 0.0:
+            x = int(M['m10'] / M['m00'])
+            y = int(M['m01'] / M['m00'])
+```
+
+
 
 Invoke the findContours() function from the cv2 library to identify the object's boundaries, and set i to a value of 0, as illustrated in the figure below:
 
-<img class="common_img" src="../_static/media/chapter_5/section_4/media/image15.jpeg" />
+```python
+#检测颜色并画框(Detect colors and draw frames)
+def detection(gray,image):
+    # 检测边界using a findContours() function(Detect boundaries using findContours() function)
+    contours, _ = cv2.findContours(
+        gray, cv2.RETR_TREE, cv2.CHAIN_APPROX_SIMPLE)
+    i = 0
+```
 
 Simultaneously, establish a loop to iterate through the detection data.
 
-Subsequently, calculate the object's side length by invoking the approxPolyDP() function from the cv2 library.
+Subsequently, calculate the object's side length by invoking the `approxPolyDP()` function from the cv2 library.
 
-<img class="common_img" src="../_static/media/chapter_5/section_4/media/image16.png" />
+```python
+        # 计算边长数量cv2.approxPloyDP() function to approximate the shape(Calculate edge count using cv2.approxPolyDP() function to approximate the shape)
+        approx = cv2.approxPolyDP(
+            contour, 0.06 * cv2.arcLength(contour, True), True)
+```
 
 Then utilize the drawContours() function to sketch the edge line.
 
-<img class="common_img" src="../_static/media/chapter_5/section_4/media/image17.png" />
+```
+        # 根据检测到边缘画边using drawContours() function(Draw edges based on detected boundaries using drawContours() function)
+        cv2.drawContours(image, [contour], 0, (0, 0, 255), 5)
+```
 
 In this function:
 
-The first parameter, 'image', signifies the target image.
+The first parameter, `image`, signifies the target image.
 
-The second parameter, '\[contours\]', denotes the input contour group, with each contour group consisting of a point vector.
+The second parameter, `[contours]`, denotes the input contour group, with each contour group consisting of a point vector.
 
-The third parameter, '0', specifies which contour to draw. If negative, all contours will be drawn.
+The third parameter, `0`, specifies which contour to draw. If negative, all contours will be drawn.
 
-The fourth parameter, '(0, 0, 255)', represents the color of the outline.
+The fourth parameter, `(0, 0, 255)`, represents the color of the outline.
 
-The fifth parameter, '5', indicates the line width of the outline. If negative or CV_FILLED, it denotes filling the inside of the outline.
+The fifth parameter, `5`, indicates the line width of the outline. If negative or CV_FILLED, it denotes filling the inside of the outline.
 
-(3) **Shape Discrimination**
+(3) Shape Discrimination
 
 Determine the shape based on the number of recognized side lengths. If the count is 3, it's a triangle, and "Triangle" will be printed on the return screen. If it's 4, it's a rectangle, and "Rectangle" will be printed. Otherwise, it's considered circular, and "Circle" will be printed.
 
@@ -658,31 +796,31 @@ Drawing function in OpenCV can be used to draw line, rectangle, circle, etc., an
 
 * **Draw Line**
 
-Function format: **cv2.line(image,pt1,pt2,color,thickness)**
+Function format: `cv2.line(image,pt1,pt2,color,thickness)`
 
-(1) Image: Image where the line will be drawn
+(1) `Image`: Image where the line will be drawn
 
-(2) pt1: starting coordinate of the line. The coordinate is represented by a tuples consisting of two values i.e. (X,Y)
+(2) `pt1`: starting coordinate of the line. The coordinate is represented by a tuples consisting of two values i.e. (X,Y)
 
-(3) pt2: ending coordinate of the line. The coordinate is represented by a tuples consisting of two values i.e. (X,Y).
+(3) `pt2`: ending coordinate of the line. The coordinate is represented by a tuples consisting of two values i.e. (X,Y).
 
-(4) Color: The color of the line. And BGR is represented by a tuple. For example, (255, 0, 0) stands for blue.
+(4) `Color`: The color of the line. And BGR is represented by a tuple. For example, (255, 0, 0) stands for blue.
 
-(5) Thickness: The thickness of the line
+(5) `Thickness`: The thickness of the line
 
 <img class="common_img" src="../_static/media/chapter_5/section_9/media/image2.png" />
 
 * **Draw Rectangle**
 
-Function format: **cv2.rectangle(image,pt1,pt2,color,thickness)**
+Function format: `cv2.rectangle(image,pt1,pt2,color,thickness)`
 
-(1) image: The picture where the rectangle will be drawn
+(1) `image`: The picture where the rectangle will be drawn
 
-(2) pt1: vertex coordinate of the rectangle, (x,y), which is represented by a tuple consisting of two numbers.
+(2) `pt1`: vertex coordinate of the rectangle, (x,y), which is represented by a tuple consisting of two numbers.
 
-(3) pt2: The diagonal vertex coordinates of pt1 and its format is similar to that of pt1.
+(3) `pt2`: The diagonal vertex coordinates of pt1 and its format is similar to that of pt1.
 
-(4) color: The color of the rectangle. And BGR is represented by a tuple.
+(4) `color`: The color of the rectangle. And BGR is represented by a tuple.
 
 For example, (255, 0, 0) stands for blue.
 
@@ -692,51 +830,51 @@ For example, (255, 0, 0) stands for blue.
 
 * **Draw Circle**
 
-Function format: **cv2.circle(image,center,radius,color,thickness)**
+Function format: `cv2.circle(image,center,radius,color,thickness)`
 
-(1) image: The picture where the circle will be drawn
+(1) `image`: The picture where the circle will be drawn
 
-(2) center: The center of the circle, (x,y), which is represented by a tuple consisting of two numbers.
+(2) `center`: The center of the circle, (x,y), which is represented by a tuple consisting of two numbers.
 
-(3) radius: The radius of the circle.
+(3) `radius`: The radius of the circle.
 
-(4) color: The color of the circle. BGR is represented by a tuple. For example, (255, 0, 0) stands for blue.
+(4) `color`: The color of the circle. BGR is represented by a tuple. For example, (255, 0, 0) stands for blue.
 
-(5) thickness: Line thickness. The greater the value, the thicker the line. If the value is negative or cv2.FILLED, a filled circle will be drawn.
+(5) `thickness`: Line thickness. The greater the value, the thicker the line. If the value is negative or cv2.FILLED, a filled circle will be drawn.
 
 <img class="common_img" src="../_static/media/chapter_5/section_9/media/image4.png" />
 
 * **Draw Polygon**
 
-Function format: **cv2.polylines(image,pts,isClosed,color,thickness)**
+Function format: `cv2.polylines(image,pts,isClosed,color,thickness)`
 
-(1)  image: The picture where the polygon will be drawn
+(1)  `image`: The picture where the polygon will be drawn
 
-(2)  pts: The vertex coordinate of the polygon. When several quadrangles are required in a picture, the shape of ndarray is (N ，4 ，2).
+(2)  `pts`: The vertex coordinate of the polygon. When several quadrangles are required in a picture, the shape of ndarray is (N ，4 ，2).
 
-(3)  isClosed: Whether the polygon is closed or not, True generally.
+(3)  `isClosed`: Whether the polygon is closed or not, True generally.
 
-(4) color: The color of the polygon. BGR is represented by a tuple. For example, (255, 0, 0) stands for blue.
+(4) `color`: The color of the polygon. BGR is represented by a tuple. For example, (255, 0, 0) stands for blue.
 
-(5) thickness: Line thickness. The greater the value, the thicker the line.
+(5) `thickness`: Line thickness. The greater the value, the thicker the line.
 
 <img class="common_img" src="../_static/media/chapter_5/section_9/media/image5.png" />
 
 * **Add Text**
 
-Function format: **cv2.putText(image,text,pt,font,fontScale,color)**
+Function format: `cv2.putText(image,text,pt,font,fontScale,color)`
 
-(1) image: The image where the text is added.
+(1) `image`: The image where the text is added.
 
-(2) text: The text content
+(2) `text`: The text content
 
-(3) pt: The coordinate of the upper left corner of the text
+(3) `pt`: The coordinate of the upper left corner of the text
 
-(4) font: Font of the text
+(4) `font`: Font of the text
 
-(5)  fontScale: Font size
+(5) `fontScale`: Font size
 
-(6) color: The color of the text. BGR is represented by a tuple. For example, (255, 0, 0) stands for blue.
+(6) `color`: The color of the text. BGR is represented by a tuple. For example, (255, 0, 0) stands for blue.
 
 <img class="common_img" src="../_static/media/chapter_5/section_9/media/image6.png" />
 
@@ -746,47 +884,47 @@ Function format: **cv2.putText(image,text,pt,font,fontScale,color)**
 
 The value of the pixel can be acquired through the coordinate of row and column. For BGR image, an array consisting of blue, green and red values will be returned. For grayscale image, the corresponding intensity will be returned. And the pixel can be modified in this way.
 
-(1) img\[x,y\]**: Acquire the value of some pixel and return its BGR value.
+(1) `img[x,y]`: Acquire the value of some pixel and return its BGR value.
 
-(2) **img\[x,y,index\]**: Acquire the value of a color channel. The order of the color channel is BGR.
+(2) `img[x,y,index]`: Acquire the value of a color channel. The order of the color channel is BGR.
 
-(3) **img\[x,y\]=\[B,G,R\]**: Modify the color channel value of this pixel.
+(3) `img[x,y]=[B,G,R]`: Modify the color channel value of this pixel.
 
 <img class="common_img" src="../_static/media/chapter_5/section_10/media/image2.png" />
 
 * **Acquire the Image Property**
 
-(1) **shape**: If it is a color picture, acquire the shape of the image and return an array containing the number of row, column and channel. If it is binary
+(1) `shape`: If it is a color picture, acquire the shape of the image and return an array containing the number of row, column and channel. If it is binary
 
 image or grayscale image, only the number of row and column will be returned. Through judging whether the returned value contains the number of channel, we can know that it is a grayscale picture or color picture.
 
-(2) **size**: Return the pixel number of the image. The format is "**row x column x channel**" . The number of channel of the grayscale picture is 1.
+(2) `size`: Return the pixel number of the image. The format is "**row x column x channel**" . The number of channel of the grayscale picture is 1.
 
-(3) **dtype**: Return the data type of the picture
+(3) `dtype`: Return the data type of the picture
 
 <img class="common_img" src="../_static/media/chapter_5/section_10/media/image3.png" />
 
 * **Splitting and Merging of Image Channel**
 
-(1) **Splitting of Image Channel**
+(1) Splitting of Image Channel
 
-**split**: Input the image to be split and return the picture with three individual color channels.
+`split`: Input the image to be split and return the picture with three individual color channels.
 
 <img class="common_img" src="../_static/media/chapter_5/section_10/media/image4.png" />
 
-(2) **Merging of Image Channel**
+(2) Merging of Image Channel
 
-**merge**: Merge three individual channels, including B, G and R into BGR image with three channel.
+`merge`: Merge three individual channels, including B, G and R into BGR image with three channel.
 
 <img class="common_img" src="../_static/media/chapter_5/section_10/media/image5.png" />
 
 * **Color Space Conversion**
 
-There more than 150 ways to convert colors in OpenCV. And BGR is commonly converted into GRAY and HSV. The function format is **cvtColor(img,flag).**
+There more than 150 ways to convert colors in OpenCV. And BGR is commonly converted into GRAY and HSV. The function format is `cvtColor(img,flag)`.
 
-(1) **img**: The image converted the color space
+(1) `img`: The image converted the color space
 
-(2) **flag**: The converted type. For example, **cv2.COLOR_BGR2HSV** indicates that convert BGR into HSV.
+(2) `flag`: The converted type. For example, **cv2.COLOR_BGR2HSV** indicates that convert BGR into HSV.
 
 <img class="common_img" src="../_static/media/chapter_5/section_10/media/image6.png" />
 
@@ -812,7 +950,7 @@ Some common color spaces are listed below.
 
 * **Common Color Space**
 
-(1) **RGB Color Space**
+(1) RGB Color Space
 
 The properties of RGB color space are as follow.
 
@@ -826,7 +964,7 @@ Therefore, there are flaws in RGB color space, including uneven color value and 
 
 <img class="common_img" src="../_static/media/chapter_5/section_11/media/image2.jpeg" />
 
-(2) **Lab Color Space**
+(2) Lab Color Space
 
 Similar to RGB, Lab also has three image channels.
 
@@ -872,7 +1010,7 @@ In OpenCV, the image converted into Lab color space is as follow.
 
 <img class="common_img" src="../_static/media/chapter_5/section_11/media/image5.jpeg" />
 
-(3) **Ycrcb Color Space**
+(3) Ycrcb Color Space
 
 HVS (Human Visual System) is less sensitive to color than to luminance.
 
@@ -886,7 +1024,7 @@ Luminance can reflect how bright or dark a color is, which can be calculated thr
 
 Observations focusing on intensity and color components can be made for LAB for illumination changes. Compared with LAB, the perception difference between red and orange in outdoor is smaller, while white between three components are distinguished.
 
-(4) **HSV Color Space**
+(4) HSV Color Space
 
 HSV color space is vision perception oriented color model which is composed of these three components.
 
@@ -918,7 +1056,7 @@ S components in outdoor and indoor are also similar. V stands for brightness so 
 
 The difference of red value between indoor and outdoor is large for the reason that H component represent red by angle ranging from \[300,360\] and \[0,60\].
 
-(5) **Gray Color Space**
+(5) Gray Color Space
 
 GRAY color space generally refers to grayscale image, monochromatic image, in which each pixel is processed into 256 gray level from black to white.
 
@@ -959,7 +1097,7 @@ Take cv2.cvtColor(frame, cv2.COLOR_RGB2LAB) for example.
 
 Follow the following steps to transform the pictures into some common color spaces.
 
-(1) **Operation Steps**
+(1) Operation Steps
 
 Before operation, please move to "**[5. OpenCV Computer Vision Course->5.2 Basic Course->5.2.7 Image Processing---Color Space Conversion->Sample Code](https://drive.google.com/drive/folders/13gcSm-nwHg-qbhdCUJnca088PBSkGOW9?usp=sharing)**", and copy the sample routine "**color_conversion.py**" and picture "img1.jpg" into the shared folder 
 
@@ -968,27 +1106,27 @@ Before operation, please move to "**[5. OpenCV Computer Vision Course->5.2 Basic
 > **the input command should be case sensitive and the keywords can be complemented by "Tab" key.**
 > 
 
-(1) Open virtual machine and start the system. Click <img src="../_static/media/chapter_5/section_11/media/image10.jpeg" />, and then <img src="../_static/media/chapter_5/section_11/media/image12.png" /> or press "**Ctrl+Alt+T**" to open command line terminal.
+① Open virtual machine and start the system. Click <img src="../_static/media/chapter_5/section_11/media/image10.jpeg" />, and then <img src="../_static/media/chapter_5/section_11/media/image12.png" /> or press "**Ctrl+Alt+T**" to open command line terminal.
 
-(2) Input command "**cd /mnt/hgfs/Share/Image**" and press Enter to enter the shared folder.
+② Input command "**cd /mnt/hgfs/Share/Image**" and press Enter to enter the shared folder.
 
 ```bash
 cd /mnt/hgfs/Share/Image
 ```
 
-(3) Input command "**python3 color_conversion.py**" and press Enter to run the code.
+③ Input command "**python3 color_conversion.py**" and press Enter to run the code.
 
 ```bash
 python3 color_conversion.py
 ```
 
-(2) **Program Outcome**
+(2) Program Outcome
 
 After execution, the final processed result is as follow.
 
 <img class="common_img" src="../_static/media/chapter_5/section_11/media/image15.jpeg" />
 
-(3) **Program Analysis**
+(3) Program Analysis
 
 ① Firstly, import the required module with import statement.
 
@@ -1042,15 +1180,15 @@ dst represents the output image whose type is the same as src. And its
 
 size is dsize (when it is not 0) or can be calculated through src.size(), fx and fy.
 
-(1) src represents the original picture
+*  src represents the original picture
 
-(2) dsize stands for the size of the output image
+* dsize stands for the size of the output image
 
-(3) fx indicates the horizontal scaling ratio
+*  fx indicates the horizontal scaling ratio
 
-(4) fy denotes the vertical scaling ratio
+*  fy denotes the vertical scaling ratio
 
-(5) interpolation is for interpolation method.
+*  interpolation is for interpolation method.
 
 |          Type          |                         Description                          |
 | :--------------------: | :----------------------------------------------------------: |
@@ -1064,9 +1202,9 @@ size is dsize (when it is not 0) or can be calculated through src.size(), fx and
 | cv2.WARP_FILL_OUTLIERS | Flag, fills all of the destination image pixels. If some of them correspond to outliers in the source image, they are set to zero |
 |  cv2.WARP_INVERSE_MAP  | flag, inverse transformation. Forexample, polar transformation. If flag is not set, perform transformation:dst( ρ,ϕ)=src(x,y) For example, If flag is set, perform transformation: dst(x,y)=src(ρ,ϕ) |
 
-(1) **Operation Steps**
+(1) Operation Steps
 
-**The program will scale the image.**
+The program will scale the image.
 
 Before operation, please copy the routine "**Scale**" in "4.OpenCV-\>Image Processing --- Geometric Transformation-\>Routine Code" to the shared folder.
 
@@ -1089,19 +1227,19 @@ cd /mnt/hgfs/Share/Scale
 python3 Scale.py
 ```
 
-(2) **Program Outcome**
+(2) Program Outcome
 
 The final output picture is as follow.
 
 <img class="common_img" src="../_static/media/chapter_5/section_12/media/image8.jpeg" />
 
-① **src**: Original picture. Its size is 492\*430 pixels (width\*height)
+① src: Original picture. Its size is 492\*430 pixels (width\*height)
 
-② **res1**: The size of the picture after zoomed in. Its size is 590\*512 pixels (width\*height)
+② res1: The size of the picture after zoomed in. Its size is 590\*512 pixels (width\*height)
 
-③ **res2**: The size of the picture after zoomed out. And its size is 295\*258 pixels(width\*height)
+③ res2: The size of the picture after zoomed out. And its size is 295\*258 pixels(width\*height)
 
-(3) **Program Analysis**
+(3) Program Analysis
 
 The routine "**Scale.py**" can be found in "**[5. OpenCV Computer Vision Lesson->5.2 Basic Course->5.2.8 Image Processing---Geometric Transformation->Routine Code->Scale.py](https://drive.google.com/drive/folders/1gXZBxAakvGOHBCHmVQCu1WvmUXokL4zY?usp=sharing)**" .
 
@@ -1111,7 +1249,7 @@ Firstly, import the required module through import statement.
 
 <img class="common_img" src="../_static/media/chapter_5/section_12/media/image10.png" />
 
-Then call **imread()** function in cv2 module to read the image that needs to be scaled.
+Then call `imread()` function in cv2 module to read the image that needs to be scaled.
 
 <img class="common_img" src="../_static/media/chapter_5/section_12/media/image11.png" />
 
@@ -1147,7 +1285,7 @@ through a series of geometric transformations, while lines and parallelism can b
 
 Linearity means that the straight lines of the image can still be preserved after affine transformation. And parallelism indicates that parallel lines can be preserved after affine transformation.
 
-Translation and rotation are special cases of affine transformation which is realized by the function **cv2.warpAffine()** in OpenCV. This function execute transformation by a transformation matrix M (transformation matrix of translation and rotation is different)
+Translation and rotation are special cases of affine transformation which is realized by the function `cv2.warpAffine()` in OpenCV. This function execute transformation by a transformation matrix M (transformation matrix of translation and rotation is different)
 
 <img class="common_img" src="../_static/media/chapter_5/section_12/media/image14.jpeg" />
 
@@ -1155,19 +1293,19 @@ As the picture below shown, the original image O can be transformed into affine 
 
 <img class="common_img" src="../_static/media/chapter_5/section_12/media/image15.jpeg" />
 
-The format of **cv2.warpAffine()** function is as follow.
+The format of `cv2.warpAffine()` function is as follow.
 
 ```py
 dst = cv2.warpAffine( src, M, dsize[, flags[, borderMode[, borderValue]]] )
 ```
 
-(1) **dst:** Represent the output image after affine transformation. The type of this image is similar to that of the original image. And the actual size of the output image is finally determined by dsize.
+* `dst`: Represent the output image after affine transformation. The type of this image is similar to that of the original image. And the actual size of the output image is finally determined by dsize.
 
-(2) **src:** Represent the original image
+*  `src`: Represent the original image.
 
-(3) **M:** Stand for a 2x3 transformation matrix. Various affine transformation can be realized by using different transformation matrix. And the size of the output image is finally determined by dsize.
+*  `M`: Stand for a 2x3 transformation matrix. Various affine transformation can be realized by using different transformation matrix. And the size of the output image is finally determined by dsize.
 
-(4) **flags:** Represents the interpolation method which defaults to
+* `flags`: Represents the interpolation method which defaults to.
 
 INTER_LINEAR. When it is **WARP_INVERSE_MAP**, M is an inverse transformation from the target image dst to the original image src.
 
@@ -1175,7 +1313,7 @@ INTER_LINEAR. When it is **WARP_INVERSE_MAP**, M is an inverse transformation fr
 
 type,BORDER_CONSTANT by default. When it is **BORDER_TRANSPARENT**, the values in the target image do not change, and these values correspond to the outliers in the original image.
 
-(5) **borderValue**: Refer to border value, 0 by default.
+* `borderValue`: Refer to border value, 0 by default.
 
 The optional parameters of cv2.warpAffine() function can be omitted, and its final format is as follow.
 
@@ -1191,7 +1329,7 @@ dst(,J)=sr c(M1x+M ZY+MS,MU X+M2zy+MS)
 
 Therefore, the type of affine transformation relies on the transformation matrix M.
 
-(1) **Translation**
+(1) Translation
 
 Translation is the movement of the object. If the coordinates of the object translation is obtained, the following transformation matrix can be created.
 
@@ -1199,9 +1337,9 @@ Translation is the movement of the object. If the coordinates of the object tran
 
 Put the transformation matrix into the array whose type is np.float32, and assign M matrix to cv2.warpAffine() function so as to realize translation.
 
-① **Operation Steps**
+① Operation Steps
 
-**This routine will translate the image to right.**
+This routine will translate the image to right.
 
 Before operation, please copy the routine code in "[**5.OpenCV-\>5.2 Basic Course->5.2.8 Image Processing --- Geometric Transformation-\>Routine Code**](https://drive.google.com/drive/folders/1gXZBxAakvGOHBCHmVQCu1WvmUXokL4zY?usp=sharing)" to the shared folder. 
 
@@ -1210,27 +1348,27 @@ Before operation, please copy the routine code in "[**5.OpenCV-\>5.2 Basic Cours
 > **the input command should be case sensitive and the keywords can be complemented by "Tab" key.**
 > 
 
-1\) Open virtual machine and start the system. Click <img src="../_static/media/chapter_5/section_12/media/image18.jpeg" />, and then <img src="../_static/media/chapter_5/section_12/media/image20.png" /> or press "**Ctrl+Alt+T**" to open command line terminal.
+* Open virtual machine and start the system. Click <img src="../_static/media/chapter_5/section_12/media/image18.jpeg" />, and then <img src="../_static/media/chapter_5/section_12/media/image20.png" /> or press "**Ctrl+Alt+T**" to open command line terminal.
 
-2\) Input command "**cd /mnt/hgfs/Share/Translation/**" and press Enter to enter the shared folder.
+*  Input command "**cd /mnt/hgfs/Share/Translation/**" and press Enter to enter the shared folder.
 
 ```bash
 cd /mnt/hgfs/Share/Translation/
 ```
 
-3\) Input command "**python3 Translation.py**" and press Enter to run the routine.
+* Input command "**python3 Translation.py**" and press Enter to run the routine.
 
 ```bash
 python3 Translation.py
 ```
 
-② **Program Outcome**
+② Program Outcome
 
 The final output picture is as follow.
 
 <img class="common_img" src="../_static/media/chapter_5/section_12/media/image23.jpeg" />
 
-③ **Program Analysis** 
+③ Program Analysis 
 
 The routine "**Translation.py**" can be found in "**[5. OpenCV Computer Vision Lesson->5.2 Basic Course->5.2.8 Image Processing---Geometric Transformation->Routine Code->TranslaTion](https://drive.google.com/drive/folders/1gXZBxAakvGOHBCHmVQCu1WvmUXokL4zY?usp=sharing)**" .
 
@@ -1240,7 +1378,7 @@ The routine "**Translation.py**" can be found in "**[5. OpenCV Computer Vision L
 
 <img class="common_img" src="../_static/media/chapter_5/section_12/media/image25.png" />
 
-* Then call **imread()** function in cv2 module to read the image that needs to be translated.
+* Then call `imread()` function in cv2 module to read the image that needs to be translated.
 
 <img class="common_img" src="../_static/media/chapter_5/section_12/media/image26.png" />
 
@@ -1270,11 +1408,11 @@ returned if there is no keyboard input. Generally we set it to 0, the function w
 
 cv2.destroyAllWindows() is used to delete the window. If there is no parameter in the bracket, all the windows will be deleted. If you input the specific value of the window, the designated window will be removed.
 
-(2) **Rotation**
+(2) Rotation
 
 Both translation and rotation are the examples of the affine transformation, and employ cv2.warpAffine function to realize affine transformation. But their transformation matrix is different. When rotating the image with function
 
-cv2.warpAffine(), obtain the transformation matrix with function cv2.getRotationMatrix2D().
+`cv2.warpAffine()`, obtain the transformation matrix with function cv2.getRotationMatrix2D().
 
 The function format is
 
@@ -1282,13 +1420,13 @@ The function format is
 retval=cv2.getRotationMatrix2D(center, angle, scale)
 ```
 
-① center refers to the center of rotation.
+* center refers to the center of rotation.
 
-② angle stands for rotation angle. When it is positive, the image will be rotated counterclockwise. When it is negative, the image will be
+* angle stands for rotation angle. When it is positive, the image will be rotated counterclockwise. When it is negative, the image will be
 
 rotated clockwise.
 
-③ scale means scaled size
+* scale means scaled size
 
 The rotation angle θ can be obtained from matrix M.
 
@@ -1308,16 +1446,15 @@ For example, set the function as below to rotate the image around the image cent
 M=cv2.getRotationMatrix2D((height/2,width/2),45,0.6)
 ```
 
-① **Operation Steps**
+① Operation Steps
 
-**This routine will rotate the image 90 degree counterclockwise.**
+This routine will rotate the image 90 degree counterclockwise.
 
-Before operation, please copy the routine "**Revolve**" in "**[5.OpenCV->5.2 Basic Course->5.2.8 Image Processing --- Geometric Transformation-\>Routine Code](https://drive.google.com/drive/folders/1gXZBxAakvGOHBCHmVQCu1WvmUXokL4zY?usp=sharing)" to the shared folder**.
+Before operation, please copy the routine "**Revolve**" in "[5.OpenCV->5.2 Basic Course->5.2.8 Image Processing --- Geometric Transformation-\>Routine Code](https://drive.google.com/drive/folders/1gXZBxAakvGOHBCHmVQCu1WvmUXokL4zY?usp=sharing)" to the shared folder.
 
 > [!Note]
 > 
 > **the input command should be case sensitive and the keywords can be complemented by "Tab" key.**
-> 
 
 * Open virtual machine and start the system. Click <img src="../_static/media/chapter_5/section_12/media/image35.jpeg" />, and then <img src="../_static/media/chapter_5/section_12/media/image37.png" /> or press "**Ctrl+Alt+T**" to open command line terminal.
 
@@ -1333,13 +1470,13 @@ cd /mnt/hgfs/Share/Revolve/
 python3 Revolve.py
 ```
 
-② **Program Outcome**
+② Program Outcome
 
 The output picture is as follow.
 
 <img class="common_img" src="../_static/media/chapter_5/section_12/media/image40.jpeg" />
 
-③ **Program Analysis**
+③ Program Analysis
 
 The routine "**Revolve.py**" can be found in "**[5. OpenCV Computer Vision Lesson->5.2 Basic Course->5.2.8 Image Processing---Geometric Transformation->Routine Code->Revolve](https://drive.google.com/drive/folders/1gXZBxAakvGOHBCHmVQCu1WvmUXokL4zY?usp=sharing)**" .
 
@@ -1349,7 +1486,7 @@ The routine "**Revolve.py**" can be found in "**[5. OpenCV Computer Vision Lesso
 
 <img class="common_img" src="../_static/media/chapter_5/section_12/media/image42.png" />
 
-* Then call **imread()** function in cv2 module to read the image that needs to be rotated.
+* Then call `imread()` function in cv2 module to read the image that needs to be rotated.
 
 <img class="common_img" src="../_static/media/chapter_5/section_12/media/image43.png" />
 
@@ -1387,15 +1524,15 @@ Perspective transformation is realized by function cv2.warpPerspective(), and th
 dst=cv2.warpPerspective(src, M, dsize[, flags[,borderMode[, borderValue]]])
 ```
 
-(1) dst represents the output image after perspective transformation, whose type is the same as the original picture. And its size is determined by dsize.
+* dst represents the output image after perspective transformation, whose type is the same as the original picture. And its size is determined by dsize.
 
-(2) src represents the image to be processed.
+*  src represents the image to be processed.
 
-(3) M stands for a 3x3 transformation matrix
+*  M stands for a 3x3 transformation matrix
 
-(4) dsize indicates the dimension of the output image.
+* dsize indicates the dimension of the output image.
 
-(5) flags represents the interpolation method which defaults to
+* flags represents the interpolation method which defaults to
 
 INTER_LINEAR. When it is **WARP_INVERSE_MAP**, M is an inverse transformation from the target image dst to the original image src.
 
@@ -1405,7 +1542,7 @@ type,BORDER_CONSTANT by default. When it is
 
 **BORDER_TRANSPARENT**, the values in the target image do not change, and these values correspond to the outliers in the original image.
 
-(1) **Operation Steps**
+(1) Operation Steps
 
 This routine will perform perspective transformation.
 
@@ -1413,8 +1550,7 @@ Before operation, please copy the routine "**Perspective**" in "[5.OpenCV->5.2 B
 
 > [!Note]
 > 
-> **the input command should be case sensitive and the keywords can be complemented by "Tab" key.**
-> 
+> **The input command should be case sensitive and the keywords can be complemented by "Tab" key.**
 
 ① Open virtual machine and start the system. Click <img src="../_static/media/chapter_5/section_12/media/image50.jpeg" />, and then <img src="../_static/media/chapter_5/section_12/media/image52.png" /> or press "**Ctrl+Alt+T**" to open command line terminal.
 
@@ -1430,13 +1566,13 @@ cd /mnt/hgfs/Share/Perspective/
 python3 Perspective.py
 ```
 
-(2) **Program Outcome**
+(2) Program Outcome
 
 The final output picture is as follow.
 
 <img class="common_img" src="../_static/media/chapter_5/section_12/media/image55.jpeg" />
 
-(3) **Program Analysis**
+(3) Program Analysis
 
 The routine "**Perspective.py**" can be found in "**[5. OpenCV Computer Vision Lesson->5.2 Basic Course->5.2.8 Image Processing---Geometric Transformation->Routine Code->Perspective](https://drive.google.com/drive/folders/1gXZBxAakvGOHBCHmVQCu1WvmUXokL4zY?usp=sharing)**" .
 
@@ -1446,7 +1582,7 @@ The routine "**Perspective.py**" can be found in "**[5. OpenCV Computer Vision L
 
 <img class="common_img" src="../_static/media/chapter_5/section_12/media/image57.png" />
 
-② Then call **imread()** function in cv2 module to read the image for perspective transformation.
+② Then call `imread()` function in cv2 module to read the image for perspective transformation.
 
 <img class="common_img" src="../_static/media/chapter_5/section_12/media/image58.png" />
 
@@ -1456,23 +1592,23 @@ The routine "**Perspective.py**" can be found in "**[5. OpenCV Computer Vision L
 
 ④ In this example, specify four vertices pts1 of the parallelogram in the original image, and specify four vertices pts2 of the rectangle in the target image. Next, generate the transformation matrix M with
 
-**dst=cv2.warpPerspective(img,M,(cols,rows))**. Next, employ
+`dst=cv2.warpPerspective(img,M,(cols,rows))`. Next, employ
 
-**dst=cv2.warpPerspective(img,M,(cols,rows))** statement to convert parallelogram to rectangle.
+`dst=cv2.warpPerspective(img,M,(cols,rows))` statement to convert parallelogram to rectangle.
 
 <img class="common_img" src="../_static/media/chapter_5/section_12/media/image60.png" />
 
-5\) After setting, the picture before and after translation can be displayed through imshow function.
+⑤ After setting, the picture before and after translation can be displayed through imshow function.
 
 <img class="common_img" src="../_static/media/chapter_5/section_12/media/image61.png" />
 
-6\) Lastly, close the window through the function, and you can press any key to exit the program.
+⑥ Lastly, close the window through the function, and you can press any key to exit the program.
 
 <img class="common_img" src="../_static/media/chapter_5/section_12/media/image62.png" />
 
-cv2.waitKey() is a keyboard binding function. Its time unit is milliseconds (ms). The function will wait n ms set in bracket to check if there is any keyboard input. If there is, the ASCII value of the key is returned. -1 will be returned if there is no keyboard input. Generally we set it to 0, the function will wait for keyboard input endlessly.
+`cv2.waitKey()` is a keyboard binding function. Its time unit is milliseconds (ms). The function will wait n ms set in bracket to check if there is any keyboard input. If there is, the ASCII value of the key is returned. -1 will be returned if there is no keyboard input. Generally we set it to 0, the function will wait for keyboard input endlessly.
 
-cv2.destroyAllWindows() is used to delete the window. If there is no parameter in the bracket, all the windows will be deleted. If you input the specific value of the window, the designated window will be removed.
+`cv2.destroyAllWindows()` is used to delete the window. If there is no parameter in the bracket, all the windows will be deleted. If you input the specific value of the window, the designated window will be removed.
 
 * **Remap**
 
@@ -1492,13 +1628,13 @@ The image will flip in the x direction. cv2.remap() function in OpenCV makes it 
 dst= cv2.remap(src,map1,map2,interpolation[,borderMode[,borderValue]])
 ```
 
-(1) dst represents the output image whose type and size are the same as the original picture.
+*  dst represents the output image whose type and size are the same as the original picture.
 
-(2) src represents the original image
+* src represents the original image
 
-(3) There are two possible values of map1 parameter. It represents a map of (x,y), or x value of (x,y) of CV_16SC2 , CV_32FC1, CV_32FC2 type.
+* There are two possible values of map1 parameter. It represents a map of (x,y), or x value of (x,y) of CV_16SC2 , CV_32FC1, CV_32FC2 type.
 
-(4) There are also two possible values of map2 parameter. When map1 represents (x,y), its value is none.
+* There are also two possible values of map2 parameter. When map1 represents (x,y), its value is none.
 
 When map1 represents x value of (x,y), its value is the y value of (x,y) in CV_16UC1, CV_32FC1 type.
 
@@ -1507,17 +1643,17 @@ When map1 represents x value of (x,y), its value is the y value of (x,y) in CV_1
 > map1 refers to the column where the pixel is located, and map2 refers to the row where the pixel is located. So usually, map1 is written as mapx and map2 as mapy for better understanding.
 > 
 
-(5) Interpolation is for interpolation method.
+* Interpolation is for interpolation method.
 
-(6) borderMode refers to border value. When it is
+* borderMode refers to border value. When it is
 
 BORDER_TRANSPARENT, the pixel of target image corresponding to outliers in the original image will not be modified.
 
-(7) borderValue refers to border value, 0 by default.
+* borderValue refers to border value, 0 by default.
 
-(1) **Copy Pixel**
+(1) Copy Pixel
 
-① **Operation Steps**
+① Operation Steps
 
 All pixels in the target image are mapped to the pixels on the 100th row and 200th column in the original image.
 
@@ -1541,13 +1677,13 @@ cd /mnt/hgfs/Share/Remap/
 python3 copy.py
 ```
 
-② **Program Outcome**
+② Program Outcome
 
 A pure-colored picture will be output.
 
 <img class="common_img" src="../_static/media/chapter_5/section_12/media/image69.jpeg" />
 
-③ **Program Analysis**
+③ Program Analysis
 
 The routine "**copy.py**" can be found in "**[5. OpenCV Computer Vision Lesson->5.2 Basic Course->5.2.8 Image Processing---Geometric Transformation-\>Routine Code-\>Remap](https://drive.google.com/drive/folders/1gXZBxAakvGOHBCHmVQCu1WvmUXokL4zY?usp=sharing)**".
 
@@ -1555,7 +1691,7 @@ The routine "**copy.py**" can be found in "**[5. OpenCV Computer Vision Lesson->
 
 <img class="common_img" src="../_static/media/chapter_5/section_12/media/image71.png" />
 
-* Then call **imread()** function in cv2 module to read the image that needs to be scaled.
+* Then call `imread()` function in cv2 module to read the image that needs to be scaled.
 
 <img class="common_img" src="../_static/media/chapter_5/section_12/media/image72.png" />
 
@@ -1571,13 +1707,13 @@ The routine "**copy.py**" can be found in "**[5. OpenCV Computer Vision Lesson->
 
 <img class="common_img" src="../_static/media/chapter_5/section_12/media/image75.png" />
 
-cv2.waitKey() is a keyboard binding function. Its time unit is milliseconds (ms). The function will wait n ms set in bracket to check if there is any keyboard input. If there is, the ASCII value of the key is returned. -1 will be returned if there is no keyboard input. Generally we set it to 0, the function will wait for keyboard input endlessly.
+`cv2.waitKey()` is a keyboard binding function. Its time unit is milliseconds (ms). The function will wait n ms set in bracket to check if there is any keyboard input. If there is, the ASCII value of the key is returned. -1 will be returned if there is no keyboard input. Generally we set it to 0, the function will wait for keyboard input endlessly.
 
-cv2.destroyAllWindows() is used to delete the window. If there is no parameter in the bracket, all the windows will be deleted. If you input the specific value of the window, the designated window will be removed.
+`cv2.destroyAllWindows()` is used to delete the window. If there is no parameter in the bracket, all the windows will be deleted. If you input the specific value of the window, the designated window will be removed.
 
-(2) **Copy the Whole Image**
+(2) Copy the Whole Image
 
-① **Operation Steps**
+① Operation Steps
 
 Besides the pixels can be copied, the whole image can also be copied.
 
@@ -1588,7 +1724,6 @@ Before operation, please copy the routine "**Remap**" in "**[5.OpenCV->5.2 Basic
 > [!Note]
 > 
 > **the input command should be case sensitive and the keywords can be complemented by "Tab" key.**
-> 
 
 * Open virtual machine and start the system. Click <img src="../_static/media/chapter_5/section_12/media/image77.jpeg" />, and then <img src="../_static/media/chapter_5/section_12/media/image79.png" /> or press "**Ctrl+Alt+T**" to open command line terminal.
 
@@ -1604,13 +1739,13 @@ cd /mnt/hgfs/Share/Remap/
 python3 copy_all.py
 ```
 
-② **Program Outcome**
+② Program Outcome
 
 Correspond all the pixels of the original image to those of original image. The final output image is as follow.
 
 <img class="common_img" src="../_static/media/chapter_5/section_12/media/image81.jpeg" />
 
-③ **Program Analysis**
+③ Program Analysis
 
 The routine "**copy_all.py**" can be found in "**[5. OpenCV Computer Vision Course->5.2 Basic Course->5.2.8 Image Processing---Geometric Transformation->Routine Code](https://drive.google.com/drive/folders/1gXZBxAakvGOHBCHmVQCu1WvmUXokL4zY?usp=sharing)**" .
 
@@ -1620,7 +1755,7 @@ The routine "**copy_all.py**" can be found in "**[5. OpenCV Computer Vision Cour
 
 <img class="common_img" src="../_static/media/chapter_5/section_12/media/image83.png" />
 
-* Then call **imread()** function in cv2 module to read the image.
+* Then call `imread()` function in cv2 module to read the image.
 
 <img class="common_img" src="../_static/media/chapter_5/section_12/media/image84.png" />
 
@@ -1636,11 +1771,11 @@ The routine "**copy_all.py**" can be found in "**[5. OpenCV Computer Vision Cour
 
 <img class="common_img" src="../_static/media/chapter_5/section_12/media/image87.png" />
 
-cv2.waitKey() is a keyboard binding function. Its time unit is milliseconds (ms). The function will wait n ms set in bracket to check if there is any keyboard input. If there is, the ASCII value of the key is returned. -1 will be returned if there is no keyboard input. Generally we set it to 0, the function will wait for keyboard input endlessly.
+`cv2.waitKey()` is a keyboard binding function. Its time unit is milliseconds (ms). The function will wait n ms set in bracket to check if there is any keyboard input. If there is, the ASCII value of the key is returned. -1 will be returned if there is no keyboard input. Generally we set it to 0, the function will wait for keyboard input endlessly.
 
-cv2.destroyAllWindows() is used to delete the window. If there is no parameter in the bracket, all the windows will be deleted. If you input the specific value of the window, the designated window will be removed.
+`cv2.destroyAllWindows()` is used to delete the window. If there is no parameter in the bracket, all the windows will be deleted. If you input the specific value of the window, the designated window will be removed.
 
-(3) **Rotate Around X Axis**
+(3) Rotate Around X Axis
 
 If make the image flip around x axis,
 
@@ -1654,9 +1789,9 @@ Or：
 
 ② map2= total number of row - 1 - current row number
 
-① **Operation Steps**
+(4) Operation Steps
 
-With cv2.remap() function, the pixels can be remapped, and also be
+With`cv2.remap()` function, the pixels can be remapped, and also be
 
 flipped and then remapped. Ensure the x axis coordinate remains unchanged and y-axis coordinate after rotation is symmetric with respect to x axis.
 
@@ -1681,13 +1816,13 @@ cd /mnt/hgfs/Share/Remap/
 python3 x_rotation.py
 ```
 
-② **Program Outcome**
+(5) Program Outcome
 
 The final output image is as follow.
 
 <img class="common_img" src="../_static/media/chapter_5/section_12/media/image93.jpeg" />
 
-③ **Program Analysis**
+(6) Program Analysis
 
 The routine "**x_rotation.py**" can be found in "**[5. OpenCV Computer Vision Course->5.2 Basic Course->5.2.8 Image Processing---Geometric Transformation->Routine Code](https://drive.google.com/drive/folders/1gXZBxAakvGOHBCHmVQCu1WvmUXokL4zY?usp=sharing)**" .
 
@@ -1697,7 +1832,7 @@ The routine "**x_rotation.py**" can be found in "**[5. OpenCV Computer Vision Co
 
 <img class="common_img" src="../_static/media/chapter_5/section_12/media/image95.png" />
 
-② Then call **imread()** function in cv2 module to read the image that needs to be scaled.
+② Then call` imread()` function in cv2 module to read the image that needs to be scaled.
 
 <img class="common_img" src="../_static/media/chapter_5/section_12/media/image96.png" />
 
@@ -1713,11 +1848,11 @@ The routine "**x_rotation.py**" can be found in "**[5. OpenCV Computer Vision Co
 
 <img class="common_img" src="../_static/media/chapter_5/section_12/media/image99.png" />
 
-cv2.waitKey() is a keyboard binding function. Its time unit is milliseconds (ms). The function will wait n ms set in bracket to check if there is any keyboard input. If there is, the ASCII value of the key is returned. -1 will be returned if there is no keyboard input. Generally we set it to 0, the function will wait for keyboard input endlessly.
+`cv2.waitKey()` is a keyboard binding function. Its time unit is milliseconds (ms). The function will wait n ms set in bracket to check if there is any keyboard input. If there is, the ASCII value of the key is returned. -1 will be returned if there is no keyboard input. Generally we set it to 0, the function will wait for keyboard input endlessly.
 
-cv2.destroyAllWindows() is used to delete the window. If there is no parameter in the bracket, all the windows will be deleted. If you input the specific value of the window, the designated window will be removed.
+`cv2.destroyAllWindows()` is used to delete the window. If there is no parameter in the bracket, all the windows will be deleted. If you input the specific value of the window, the designated window will be removed.
 
-(4) **Rotate Around Y Axis**
+(7) Rotate Around Y Axis
 
 If make the image flip around y axis,
 
@@ -1729,9 +1864,9 @@ Or：
 
 ① Map2 remains unchanged
 
-② map2 = "**total number of column** - **1** - **current column number**"
+② map2 = "total number of column - 1 - current column number"
 
-① **Operation Steps**
+(8) Operation Steps
 
 Before operation, please copy the routine "**Remap**" in "**[5. OpenCV Computer Vision Course->5.2 Basic Course->5.2. 8 Image Processing --- Geometric Transformation->Routine Code](https://drive.google.com/drive/folders/15R1Tm3S4D0VMIm59xVef1YZMumzpkdvn?usp=sharing)**" to the shared folder.
 
@@ -1754,13 +1889,13 @@ cd /mnt/hgfs/Share/Remap/
 python3 copy_all.py
 ```
 
-② **Program Outcome**
+(9) Program Outcome
 
 The final output image is as follow.
 
 <img class="common_img" src="../_static/media/chapter_5/section_12/media/image105.jpeg" />
 
-③ **Program Analysis**
+(10) Program Analysis
 
 The routine "**y_rotation.py**" can be found in "**[5. OpenCV Computer Vision Course->5.2 Basic Course->5.2.8 Image Processing---Geometric Transformation->Routine Code](https://drive.google.com/drive/folders/1gXZBxAakvGOHBCHmVQCu1WvmUXokL4zY?usp=sharing)**" .
 
@@ -1786,13 +1921,13 @@ The routine "**y_rotation.py**" can be found in "**[5. OpenCV Computer Vision Co
 
 <img class="common_img" src="../_static/media/chapter_5/section_12/media/image111.png" />
 
-cv2.waitKey() is a keyboard binding function. Its time unit is milliseconds (ms).
+`cv2.waitKey()` is a keyboard binding function. Its time unit is milliseconds (ms).
 
 The function will wait n ms set in bracket to check if there is any keyboard input. If there is, the ASCII value of the key is returned. -1 will be returned if there is no keyboard input. Generally we set it to 0, the function will wait for keyboard input endlessly.
 
-cv2.destroyAllWindows() is used to delete the window. If there is no parameter in the bracket, all the windows will be deleted. If you input the specific value of the window, the designated window will be removed.
+`cv2.destroyAllWindows()` is used to delete the window. If there is no parameter in the bracket, all the windows will be deleted. If you input the specific value of the window, the designated window will be removed.
 
-(5) **Rotate Around XY Axis**
+(11) Rotate Around XY Axis
 
 If make the image rotate around x axis and y axis,
 
@@ -1806,14 +1941,13 @@ Or：
 
 ② map2= "**total number of row** - **1** - **current row number**"
 
-① **Operation Steps**
+(12) Operation Steps
 
 Before operation, please copy the routine "**Remap**" in "4.OpenCV-\>Lesson 8 Image Processing --- Geometric Transformation-\>Routine Code" to the shared folder.
 
 > [!Note]
 > 
 > **Note: the input command should be case sensitive and the keywords can be complemented by "Tab" key.**
-> 
 
 * Open virtual machine and start the system. Click <img src="../_static/media/chapter_5/section_12/media/image113.jpeg" />, and then <img src="../_static/media/chapter_5/section_12/media/image115.png" /> or press "**Ctrl+Alt+T**" to open command line terminal.
 
@@ -1829,13 +1963,13 @@ cd /mnt/hgfs/Share/Remap/
 python3 xy_rotation.py
 ```
 
-② **Program Outcome**
+(13) Program Outcome
 
 The final output picture is as follow.
 
 <img class="common_img" src="../_static/media/chapter_5/section_12/media/image117.jpeg" />
 
-③ **Program Analysis**
+(14) Program Analysis
 
 The routine "**xy_rotation.py**" can be found in "[5. OpenCV Computer Vision Course->5.2 Basic Course->5.2.8 Image Processing---Geometric Transformation-\>Routine Code](https://drive.google.com/drive/folders/1gXZBxAakvGOHBCHmVQCu1WvmUXokL4zY?usp=sharing)" .
 
@@ -1845,7 +1979,7 @@ The routine "**xy_rotation.py**" can be found in "[5. OpenCV Computer Vision Cou
 
 <img class="common_img" src="../_static/media/chapter_5/section_12/media/image119.png" />
 
-* Then call **imread()** function in cv2 module to read the image that needs to be scaled.
+* Then call `imread()` function in cv2 module to read the image that needs to be scaled.
 
 <img class="common_img" src="../_static/media/chapter_5/section_12/media/image120.png" />
 
@@ -1861,17 +1995,17 @@ The routine "**xy_rotation.py**" can be found in "[5. OpenCV Computer Vision Cou
 
 <img class="common_img" src="../_static/media/chapter_5/section_12/media/image123.png" />
 
-cv2.waitKey() is a keyboard binding function. Its time unit is milliseconds (ms). The function will wait n ms set in bracket to check if there is any keyboard input. If there is, the ASCII value of the key is returned. -1 will be returned if there is no keyboard input. Generally we set it to 0, the function will wait for keyboard input endlessly.
+`cv2.waitKey()` is a keyboard binding function. Its time unit is milliseconds (ms). The function will wait n ms set in bracket to check if there is any keyboard input. If there is, the ASCII value of the key is returned. -1 will be returned if there is no keyboard input. Generally we set it to 0, the function will wait for keyboard input endlessly.
 
-cv2.destroyAllWindows() is used to delete the window. If there is no parameter
+`cv2.destroyAllWindows()` is used to delete the window. If there is no parameter
 
 in the bracket, all the windows will be deleted. If you input the specific value of the window, the designated window will be removed.
 
-(6) **Compress Image**
+(15) Compress Image
 
 Compressing image is to compress the original image by half.
 
-① **Operation Steps**
+(16) Operation Steps
 
 Before operation, please copy the routine "**Scale**" in "**[5. OpenCV Computer Vision Course->5.2 Basic Course->5.2.8 Image Processing--- Geometric Transformation->Routine Code](https://drive.google.com/drive/folders/1gXZBxAakvGOHBCHmVQCu1WvmUXokL4zY?usp=sharing)**" to the shared folder.
 
@@ -1894,11 +2028,11 @@ cd /mnt/hgfs/Share/Remap/
 python3 half_size.py
 ```
 
-② **Program Outcome**
+(17) Program Outcome
 
 <img class="common_img" src="../_static/media/chapter_5/section_12/media/image129.jpeg" />
 
-③ **Program Analysis**
+(18) Program Analysis
 
 The routine "**half_size.py**" can be found in "**[5. OpenCV Computer Vision Course->5.2 Basic Course->5.2.8 Image Processing---Geometric Transformation->Routine Code](https://drive.google.com/drive/folders/1gXZBxAakvGOHBCHmVQCu1WvmUXokL4zY?usp=sharing)**" .
 
@@ -1908,7 +2042,7 @@ The routine "**half_size.py**" can be found in "**[5. OpenCV Computer Vision Cou
 
 <img class="common_img" src="../_static/media/chapter_5/section_12/media/image131.png" />
 
-* Then call **imread()** function in cv2 module to read the image.
+* Then call `imread()` function in cv2 module to read the image.
 
 <img class="common_img" src="../_static/media/chapter_5/section_12/media/image132.png" />
 
@@ -1924,7 +2058,7 @@ The routine "**half_size.py**" can be found in "**[5. OpenCV Computer Vision Cou
 
 <img class="common_img" src="../_static/media/chapter_5/section_12/media/image135.png" />
 
-cv2.waitKey() is a keyboard binding function. Its time unit is milliseconds (ms). The function will wait n ms set in bracket to check if there is any
+`cv2.waitKey()` is a keyboard binding function. Its time unit is milliseconds (ms). The function will wait n ms set in bracket to check if there is any
 
 keyboard input. If there is, the ASCII value of the key is returned. -1 will be
 
@@ -1940,7 +2074,7 @@ cv2.destroyAllWindows() is used to delete the window. If there is no parameter i
 
 During collecting, processing and transferring, the digital image will be disturbed by different noises, which leads to low-quality image, obscure image and disappeared image feature. And image smoothing is to improve the image by removing noise, and salt-and-pepper noise as well as Gauss noise are common.
 
-(1) **Salt-and-pepper Noise**
+(1) Salt-and-pepper Noise
 
 Salt-and-pepper noise is also known as pulse noise which is white dots and black dots appearing randomly, like there are black pixels in bright area and white pixels in dark area.
 
@@ -1948,7 +2082,7 @@ At left is the original picture and the right is the picture with salt-and-peppe
 
 <img class="common_img" src="../_static/media/chapter_5/section_13/media/image2.png" />
 
-① **Gauss Noise**
+Gauss Noise
 
 Gauss noise is a term from signal processing theory denoting a kind of signal noise that has a probability density function (pdf) equal to that of the normal distribution (which is also known as the Gaussian distribution).
 
@@ -1958,13 +2092,13 @@ At left is the original picture and the right is the picture with Gauss noise.
 
 <img class="common_img" src="../_static/media/chapter_5/section_13/media/image3.jpeg" />
 
-(2) **Image Smoothing**
+(2) Image Smoothing
 
 From the perspective of signal, image smoothing is to filter the high frequency part of the signal and reserve the low frequency part.
 
 Based on filter, filtering can be divided into mean filtering, Gaussian filtering and median filtering.
 
-① **Mean Filtering**
+① Mean Filtering
 
 The idea of mean filtering is simply to take the mean of all the pixels of the image that is assign the mean of all the pixels in the unit of a square to the center pixel.
 
@@ -1980,7 +2114,7 @@ Replace the original center pixel value by " 122" as the picture (b) shown.
 
 The algorithm of the mean filtering is simple and its calculation speed is fast. However, the details of the image are destroyed during removing noise resulting in low definition.
 
-② **Gauss Filtering**
+② Gauss Filtering
 
 The weighted mean is calculated by multiplying each value by the corresponding weight, adding the sum, and then dividing the sum by the number of the values.
 
@@ -1996,7 +2130,7 @@ Replace the original center pixel value by " 122" as the picture (c) shown.
 
 <img class="common_img" src="../_static/media/chapter_5/section_13/media/image5.png" />
 
-③ **Median Filtering**
+③ Median Filtering
 
 The median is the middle value when a data set is ordered from least to greatest.
 
@@ -2045,23 +2179,23 @@ The routine "**filtering.py**" can be found in "[5. OpenCV Computer Vision Cours
 
 <img class="common_img" src="../_static/media/chapter_5/section_13/media/image13.jpeg" />
 
-(1) **Image Processing**
+(1) Image Processing
 
-① **Import Module**
+① Import Module
 
 Firstly, import the required module through import statement.
 
 <img class="common_img" src="../_static/media/chapter_5/section_13/media/image14.png" />
 
-② **Read Images**
+② Read Images
 
-Then call **imread()** function in cv2 module to read the image that needs to be filtered.
+Then call `imread()` function in cv2 module to read the image that needs to be filtered.
 
 <img class="common_img" src="../_static/media/chapter_5/section_13/media/image15.png" />
 
 In the bracket is the image name.
 
-③ **Mean Filtering**
+③ Mean Filtering
 
 Call blur() function in cv2 module to perform mean filtering on the specific image.
 
@@ -2073,11 +2207,11 @@ The format of blur() function is as follow.
 cv2.blur(scr, ksize)
 ```
 
-The first parameter "**scr**" is the input image.
+The first parameter `scr` is the input image.
 
-The second parameter "**ksize**" is the size of convolution kernel.
+The second parameter `ksize` is the size of convolution kernel.
 
-④ **Gauss Filtering**
+④ Gauss Filtering
 
 Call GaussianBlur() function in cv2 module to perform Gauss filtering on the specific image.
 
@@ -2089,19 +2223,19 @@ The format of GaussianBlur() function is as follow.
 cv2.GaussianBlur(src, ksize, sigmaX, sigmaY, borderType)
 ```
 
-The first parameter "**scr**" is the input image.
+The first parameter `src` is the input image.
 
-The second parameter "**ksize**" is the size of Gaussian convolution kernel.
+The second parameter `ksize` is the size of Gaussian convolution kernel.
 
 Both the height and width of the convolution kernel must be positive number and odd number.
 
-The third parameter "**sigmaX**" is the horizontal standard deviation of Gaussian kernel.
+The third parameter `sigmaX` is the horizontal standard deviation of Gaussian kernel.
 
-The fourth parameter "**sigmaY**" is the vertical standard deviation of Gaussian kernel, **0** by default.
+The fourth parameter `sigmaY` is the vertical standard deviation of Gaussian kernel, **0** by default.
 
-The fifth parameter "**borderType**" is the type of border filling.
+The fifth parameter `borderType` is the type of border filling.
 
-⑤ **Median Filtering**
+⑤ Median Filtering
 
 Call medianBlur() function in cv2 module to perform median filtering on the specific image.
 
@@ -2117,9 +2251,9 @@ The first parameter "**scr**" is the input image.
 
 The second parameter "**ksize**" is the size of the convolution kernel.
 
-(2) **Image Display**
+(2) Image Display
 
-① **Create Custom Image**
+① Create Custom Image
 
 Call figure() function in matplotlib.pyplot module to create a custom image for displaying the final output image.
 
@@ -2131,35 +2265,35 @@ The format of the figure() function is as follow.
 matplotlib.pyplot.figure(num=None, figsize=None, dpi=None, facecolor=None, edgecolor=None, frameon=True, FigureClass=<class 'matplotlib.figure.Figure'>, clear=False, **kwargs)
 ```
 
-The first parameter "**num**" is the only identifier of the image i.e. the serial number of the picture (number) or the name (string).
+The first parameter `num` is the only identifier of the image i.e. the serial number of the picture (number) or the name (string).
 
-The second parameter "**figsize**" is the width and height of the image in inch.
+The second parameter `figsize` is the width and height of the image in inch.
 
-The third parameter "**dpi**" is the resolution of the image i.e. the number of pixels by inch
+The third parameter `dpi` is the resolution of the image i.e. the number of pixels by inch
 
-The fourth parameter "**facecolor**" is the background color.
+The fourth parameter `facecolor` is the background color.
 
-The fifth parameter "**edgecolor**" is the frame color
+The fifth parameter `edgecolor` is the frame color
 
-The sixth parameter "**frameon**" determines whether to draw the picture, and it is "**True**" by default.
+The sixth parameter `frameon` determines whether to draw the picture, and it is `True` by default.
 
-The seventh parameter "**FigureClass**" is used to select the custom figure when generating the image
+The seventh parameter `FigureClass` is used to select the custom figure when generating the image
 
-The eighth parameter "**clear**" determines whether to clear all the original images.
+The eighth parameter `clear` determines whether to clear all the original images.
 
-The ninth parameter "**\*\*kwargs**" represents other properties of the image.
+The ninth parameter `kwargs` represents other properties of the image.
 
-② **Modify matplotlib Configuration**
+② Modify matplotlib Configuration
 
 matplotlib is plotting library of Python. User can access and modify
 
-matplotlib configuration options through parameter dictionary "**rcParams**".
+matplotlib configuration options through parameter dictionary `rcParams`.
 
 <img class="common_img" src="../_static/media/chapter_5/section_13/media/image18.png" />
 
 The codes above are used to manipulate the display of the normal characters.
 
-③ **Set the Parameter of Image Display**
+③ Set the Parameter of Image Display
 
 Call subplot(), imshow() and title() functions in matplotlib.pyplot modules to designate the position, color and headline of the subplot in the Figure.
 
@@ -2171,9 +2305,9 @@ Call subplot(), imshow() and title() functions in matplotlib.pyplot modules to d
 matplotlib.pyplot.subplot(nrows, ncols, index, **kwargs)
 ```
 
-The first parameter "**nrows**" and the second parameter "**ncols**" respectively are the number of row and column of subplot.
+The first parameter `nrows` and the second parameter `ncols` respectively are the number of row and column of subplot.
 
-The third parameter "**index**" is the index position. Index starts at 1 in the upper left corner and increases to the right.
+The third parameter `index` is the index position. Index starts at 1 in the upper left corner and increases to the right.
 
 When both the row and column are less than " **10**", these two values can be abbreviated to an integer. For example, the meaning of "subplot(1, 4, 1)" and "subplot(141)" are the same, both representing the image is divided into one row and four columns, and the subplot is in the first place i.e. 1st row, 1st column.
 
@@ -2183,9 +2317,9 @@ When both the row and column are less than " **10**", these two values can be ab
 matplotlib.pyplot.imshow(X, cmap=None)
 ```
 
-The first parameter "**X**" is the image data.
+The first parameter `X` is the image data.
 
-The second parameter "**cmap**" is the colormap, RGB(A) color space by default.
+The second parameter `cmap` is the colormap, RGB(A) color space by default.
 
 3） title() function is used to set the title of the subplot. The parameter in the bracket is the name of the subplot and the function format is as follow.
 
@@ -2194,21 +2328,21 @@ matplotlib.pyplot.title(label, fontdict=None, loc=None, pad=None, *
 y=None, **kwargs)
 ```
 
-The first parameter "**label**" is the title composed of string.
+The first parameter `label` is the title composed of string.
 
-The second parameter "**fontdict**" is the property of the font, and the current parameter refers to dictionary.
+The second parameter `fontdict` is the property of the font, and the current parameter refers to dictionary.
 
-The third parameter "**loc**" is the position of the title. It can be "**left**" , "**center**"
+The third parameter `loc` is the position of the title. It can be `left` , `center`
 
-or "**right**", and "**center**" by default.
+or `right`, and `center` by default.
 
-The fourth parameter "**pad**" is the padding distance (inside margin) between the tile and the subplot, "**6.0**" by default.
+The fourth parameter `pad` is the padding distance (inside margin) between the tile and the subplot, "**6.0**" by default.
 
 The fifth parameter "**y**" is the vertical distance between the title and the subplot, and the unit is the percentage of the height of the subplot. The default value is "None", that is, the position of the title is automatically determined to avoid overlapping with other elements. "**1.0**" means the title is at the top of the subplot.
 
-The sixth parameter "**\*\*kwargs**" is the text object keyword property, which is used to determine the appearance of the text, such as font, text color, etc.
+The sixth parameter `**kwargs` is the text object keyword property, which is used to determine the appearance of the text, such as font, text color, etc.
 
-(4) **SetAxis Tick**
+(4) SetAxis Tick
 
 Call xticks() and yticks() function in matplotlib.pyplot module to set the tick and tag of X and Y axis. As the coordinate axis is not required in image display in this routine, the list is set as none that is the coordinate axis will not be displayed.
 
@@ -2222,15 +2356,15 @@ xticks(ticks=None, labels=None, **kwargs)
 
 When the parameter is none, the function will return the current tick and tag of X axis. Otherwise the function is used to set the current tick and label of X axis.
 
-The first parameter "**ticks**" is a list of the positions of the X-axis ticks. If the list is empty, the X-axis ticks will be cleared.
+The first parameter `ticks` is a list of the positions of the X-axis ticks. If the list is empty, the X-axis ticks will be cleared.
 
-The second parameter "**labels**" is the label of X-axis tick. Only when parameter "ticks" is not none, can this parameter be passed.
+The second parameter `labels` is the label of X-axis tick. Only when parameter "ticks" is not none, can this parameter be passed.
 
-The third parameter "**\*\*kwargs**" is used to control the appearance of the tick and label.
+The third parameter `**kwargs` is used to control the appearance of the tick and label.
 
 The format of yticks() is the same as that of xticks(). The difference lies in the controlled object.
 
-(5) **Display Image**
+(5) Display Image
 
 Call show() function in matplotlib.pyplot module to display the image on the window.
 
@@ -2264,11 +2398,11 @@ Canny Edge Detection is a popular edge detection algorithm. It was developed by 
 
 Reduction, Finding Gradient Magnitude and Direction of the Image, Non-maximum Suppression and Hysteresis Threshold ing.
 
-(1) **Noise Reduction**
+(1) Noise Reduction
 
 Since edge detection is susceptible to noise in the image, first step is to remove the noise in the image. For detailed operation, please refer to the file in "**[5. OpenCV Computer Vision Course->5.2 Basic Course->5.2.9 Image Processing---Smoothing](#anchor_5_2_9)**" .
 
-(2) **Finding Gradient Magnitude and Direction of the Image**
+(2) Finding Gradient Magnitude and Direction of the Image
 
 In math, gradient is a vector, indicating that the directional derivative of the function at a certain point reaches the maximum along this direction, that is, the function changes the fastest along the direction at this point, and the rate of change is the greatest.
 
@@ -2286,7 +2420,7 @@ The formula for calculating the gradient direction is as follows
 
 <img class="common_img" src="../_static/media/chapter_5/section_14/media/image4.png" />
 
-(3) **Non-Maximum Suppression**
+(3) Non-Maximum Suppression
 
 Non-Maximum Suppression (NMS) is that reserve local maximum and suppress all the values apart from local maximum. In simple terms, all the pixels of the image will be detected. If the gradient intensity of a point is greater than the pixels in the positive and negative directions of its gradient direction, the point is retained; otherwise, the point is suppressed.
 
@@ -2294,7 +2428,7 @@ Canny edge detection algorithm perform non-maximum suppression along the gradien
 
 (4) Hysteresis Threshold ing
 
-This stage decides which are really edges. For this, we need two threshold values, "**minVal**" and "**maxVal**". Any edges with intensity gradient more than maxVal are sure to be edges and those below minVal are sure to be non-edges. Those who lie between these two thresholds are classified edges or non-edges based on their connectivity. If they are connected to "sure-edge" pixels, they are considered to be part of edges. Otherwise, they are also discarded.
+This stage decides which are really edges. For this, we need two threshold values, "**minVal**" and `maxval`. Any edges with intensity gradient more than maxVal are sure to be edges and those below minVal are sure to be non-edges. Those who lie between these two thresholds are classified edges or non-edges based on their connectivity. If they are connected to "sure-edge" pixels, they are considered to be part of edges. Otherwise, they are also discarded.
 
 * **Operation Steps**
 
@@ -2333,49 +2467,49 @@ The routine "**edge_detection.py**" can be found in "**[5. OpenCV Computer Visio
 
 <img class="common_img" src="../_static/media/chapter_5/section_14/media/image11.jpeg" />
 
-(1) **Image Processing**
+(1) Image Processing
 
-① **Import Module**
+① Import Module
 
 Firstly, import the required module through import statement.
 
 <img class="common_img" src="../_static/media/chapter_5/section_14/media/image12.png" />
 
-② **Read Image**
+② Read Image
 
-Call **imread()** function in cv2 module to read the image
+Call `imread()` function in cv2 module to read the image
 
 <img class="common_img" src="../_static/media/chapter_5/section_14/media/image13.png" />
 
 The parameter in the bracket is the name of the image.
 
-③ **Set Threshold**
+③ Set Threshold
 
 Set two thresholds to determine the final edge.
 
 <img class="common_img" src="../_static/media/chapter_5/section_14/media/image14.png" />
 
-④ **Edge Detection**
+④ Edge Detection
 
 Call Canny() function in cv2 module to perform edge detection on the specific image.
 
 <img class="common_img" src="../_static/media/chapter_5/section_14/media/image15.png" />
 
-The format of Canny() function is as follow.
+The format of `Canny()`function is as follow.
 
 ```py
 Canny( image, threshold 1, threshold2)
 ```
 
-The first parameter "**image**" is the input image.
+The first parameter `image` is the input image.
 
-The second parameter "**threshold1**" is the low threshold "**minVal**"
+The second parameter `threshold1` is the low threshold `minVal`
 
-The third parameter "**threshold2**" is high threshold "**maxVal**" .
+The third parameter `threshold2` is high threshold `maxVal` .
 
-(2) **Image Display**
+(2) Image Display
 
-① **Create Custom Figure**
+① Create Custom Figure
 
 Call figure() function in matplotlib.pyplot module to create a custom figure for displaying the final output image.
 
@@ -2389,35 +2523,35 @@ edgecolor=None, frameon=True, FigureClass=<class
 'matplotlib.figure.Figure'>, clear=False, **kwargs)
 ```
 
-The first parameter "**num**" is the only identifier of the image i.e. the serial number of the picture (number) or the name (string).
+The first parameter `num` is the only identifier of the image i.e. the serial number of the picture (number) or the name (string).
 
-The second parameter "**figsize**" is the width and height of the image in inch.
+The second parameter `figsize` is the width and height of the image in inch.
 
-The third parameter "**dpi**" is the resolution of the image i.e. the number of pixels by inch
+The third parameter `dpi` is the resolution of the image i.e. the number of pixels by inch
 
-The fourth parameter "**facecolor**" is the background color.
+The fourth parameter `facecolor` is the background color.
 
-The fifth parameter "**edgecolor**" is the frame color
+The fifth parameter `edgecolor` is the frame color
 
-The sixth parameter "**frameon**" determines whether to draw the picture, and it is "**True**" by default.
+The sixth parameter `frameon` determines whether to draw the picture, and it is `True` by default.
 
-The seventh parameter "**FigureClass**" is used to select the custom figure when generating the image
+The seventh parameter `FigureClass` is used to select the custom figure when generating the image
 
-The eighth parameter "**clear**" determines whether to clear all the original images.
+The eighth parameter `clear` determines whether to clear all the original images.
 
-The ninth parameter "**\*\*kwargs**" represents other properties of the image.
+The ninth parameter `**kwargs` represents other properties of the image.
 
-② **Modify matplotlib Configuration**
+② Modify matplotlib Configuration
 
 matplotlib is plotting library of Python. User can access and modify
 
-matplotlib configuration options through parameter dictionary "**rcParams**".
+matplotlib configuration options through parameter dictionary `rcParams`.
 
 <img class="common_img" src="../_static/media/chapter_5/section_14/media/image17.png" />
 
 The codes above are used to manipulate the display of the normal characters.
 
-③ **Set the Parameter of Image Display**
+③ Set the Parameter of Image Display
 
 Call subplot(), imshow() and title() functions in matplotlib.pyplot modules to designate the position, color and headline of the subplot in the Figure.
 
@@ -2429,9 +2563,9 @@ Call subplot(), imshow() and title() functions in matplotlib.pyplot modules to d
 subplot(nrows, ncols, index, **kwargs)
 ```
 
-The first parameter "**nrows**" and the second parameter "**ncols**" respectively are the number of row and column of subplot.
+The first parameter `nrows` and the second parameter `ncols` respectively are the number of row and column of subplot.
 
-The third parameter "**index**" is the index position. Index starts at 1 in the upper left corner and increases to the right.
+The third parameter `index` is the index position. Index starts at 1 in the upper left corner and increases to the right.
 
 When both the row and column are less than " **10**", these two values can be abbreviated to an integer. For example, the meaning of "subplot(1, 2, 1)" and "subplot(121)" are the same, both representing the image is divided into one row and 2 columns, and the subplot is in the first place i.e. 1st row, 1st column.
 
@@ -2443,7 +2577,7 @@ imshow(X, cmap=None)
 
 The first parameter "**X**" is the image data.
 
-The second parameter "**cmap**" is the colormap, RGB(A) color space by default.
+The second parameter `cmap` is the colormap, RGB(A) color space by default.
 
 * title() function is used to set the title of the subplot. The parameter in the bracket is the name of the subplot and the function format is as follow.
 
@@ -2463,7 +2597,7 @@ The fifth parameter "y" is the vertical distance between the title and the subpl
 
 The sixth parameter "\*\*kwargs" is the text object keyword property, which is used to determine the appearance of the text, such as font, text color, etc.
 
-④ **SetAxis Tick**
+④ SetAxis Tick
 
 Call xticks() and yticks() function in matplotlib.pyplot module to set the tick and tag of X and Y axis. As the coordinate axis is not required in image display in this routine, the list is set as none that is the coordinate axis will not be displayed.
 
@@ -2477,15 +2611,15 @@ xticks(ticks=None, labels=None, **kwargs)
 
 When the parameter is none, the function will return the current tick and tag of X axis. Otherwise the function is used to set the current tick and label of X axis.
 
-The first parameter "**ticks**" is a list of the positions of the X-axis ticks. If the list is empty, the X-axis ticks will be cleared.
+The first parameter `ticks` is a list of the positions of the X-axis ticks. If the list is empty, the X-axis ticks will be cleared.
 
-The second parameter "**labels**" is the label of X-axis tick. Only when parameter "ticks" is not none, can this parameter be passed.
+The second parameter `labels` is the label of X-axis tick. Only when parameter "ticks" is not none, can this parameter be passed.
 
-The third parameter "**\*\*kwargs**" is used to control the appearance of the tick and label.
+The third parameter `**kwargs` is used to control the appearance of the tick and label.
 
 The format of yticks() is the same as that of xticks(). The difference lies in the controlled object.
 
-⑤ **Display Image**
+⑤ Display Image
 
 Call show() function in matplotlib.pyplot module to display the image on the window.
 
@@ -2505,15 +2639,15 @@ The basic idea of morphology is to use a special structural element to measure o
 
 * **Morphological Transformation**
 
-(1) **Erosion and Dilation**
+(1) Erosion and Dilation
 
 Both erosion and dilation are the basic and important morphological operation, and also the foundations of multiple advanced morphological processing. Many morphological algorithms are composed of these two.
 
-① **Structuring Element**
+① Structuring Element
 
 Structuring element is required in erosion and dilation. A two-dimensional structuring element can be seen as a two-dimensional matrix element which is "**0**" or " **1**" .
 
-② **Erosion**
+② Erosion
 
 Erosion works to remove small and meaningless object, and the whole process is divided into three steps.
 
@@ -2529,7 +2663,7 @@ Erosion works to remove small and meaningless object, and the whole process is d
 
 <img class="common_img" src="../_static/media/chapter_5/section_15/media/image4.jpeg" />
 
-③ **Dilation**
+③ Dilation
 
 Dilation can enlarge the edge of the image and pad the edge of the target object or non-target pixel. The operations are divided into three steps.
 
@@ -2545,27 +2679,27 @@ Dilation can enlarge the edge of the image and pad the edge of the target object
 
 <img class="common_img" src="../_static/media/chapter_5/section_15/media/image6.jpeg" />
 
-(2) **Opening and Closing**
+(2) Opening and Closing
 
 In opening and closing, erosion and dilation are executed in sequence.
 
-① **Open Operation**
+① Open Operation
 
 Opening indicates that erosion is executed first and dilation follows. It is useful in separating objects, removing small area, removing highlight under dark background.
 
-② **Close Operation**
+② Close Operation
 
 In closing, dilation is executed first and erosion follows. It plays an
 
 important role in eliminating holes, that is, filling closed areas and deleting dark areas under a bright background.
 
-(3) **Top Hat and Bottom Hat**
+(3) Top Hat and Bottom Hat
 
-① **Top Hat Operation**
+① Top Hat Operation
 
 It is the difference between input image and the image after opening (Top hat operation= input image - image after opening), and it can obtain areas with brighter gray in the original image
 
-② **Bottom Hat Operation (Black Hat)**
+② Bottom Hat Operation (Black Hat)
 
 It is the difference between input image and the image after closing (Top hat operation= input image - image after closing), and it can obtain areas with darker gray in the original image
 
@@ -2582,7 +2716,7 @@ Before operation, please copy the routine "**example_org.jpg**" in "[5. OpenCV C
 
 (1) Open virtual machine and start the system. Click <img src="../_static/media/chapter_5/section_15/media/image8.jpeg" />, and then <img src="../_static/media/chapter_5/section_15/media/image10.png"/>
 
-or press "**Ctrl+Alt+T**" to open command line terminal.
+**or** press "**Ctrl+Alt+T**" to open command line terminal.
 
 (2) Input command "**cd /mnt/hgfs/Share/**" and press Enter to enter the shared folder.
 
@@ -2608,23 +2742,23 @@ The routine "**morphology_operations.py**" can be found in "[5. OpenCV Computer 
 
 <img class="common_img" src="../_static/media/chapter_5/section_15/media/image14.jpeg" />
 
-(1) **Image Processing**
+(1) Image Processing
 
-① **Import Module**
+① Import Module
 
 Firstly, import the required module through import statement.
 
 <img class="common_img" src="../_static/media/chapter_5/section_15/media/image15.png" />
 
-② **Read the Image**
+② Read the Image
 
-Then call **imread()** function in cv2 module to read the pending image.
+Then call `imread()` function in cv2 module to read the pending image.
 
 <img class="common_img" src="../_static/media/chapter_5/section_15/media/image16.png" />
 
 The parameter in the bracket is the name of the image
 
-③ **Create Nuclear Structure**
+③ Create Nuclear Structure
 
 Call ones() function in numpy module to create the nuclear structure i.e.
 
@@ -2638,13 +2772,13 @@ The format of ones() function is as follow.
 np.ones(shape, dtype=None, order='C')
 ```
 
-The first parameter "**shape**" is a integer or integer tuple used to define the size of the array. If it designates the variable of the integer, one--dimensional array will be returned. If it designate integer tuple, the array in given shape will be returned.
+The first parameter `shape` is a integer or integer tuple used to define the size of the array. If it designates the variable of the integer, one--dimensional array will be returned. If it designate integer tuple, the array in given shape will be returned.
 
-The second parameter "**dtype**" refers to the data type of the array, "**float**" by default.
+The second parameter `dtype` refers to the data type of the array, `float` by default.
 
-The third parameter "**order**" is used to designate the storing order of the returned array elements in storage.
+The third parameter `order` is used to designate the storing order of the returned array elements in storage.
 
-④ **Erosion and Dilation**
+④ Erosion and Dilation
 
 Call erode() and dilate() function in cv2 module to perform erosion and dilation on the specific image.
 
@@ -2656,15 +2790,15 @@ The format of erode() function is as follow.
 cv2.erode(src, kernel, iteration)
 ```
 
-The first parameter "**src**" is the input image.
+The first parameter `src` is the input image.
 
-The second parameter "**kernel**" is the size of the kernel.
+The second parameter `kernel` is the size of the kernel.
 
 The third parameter is the umber of iteration.
 
 The meaning of the parameter in dilate() function is the same as that of erode() function.
 
-⑤ **Open Operation and Close Operation**
+⑤ Open Operation and Close Operation
 
 Call morphologyEx() function in cv2 module to perform open operation, close operation, top hat operation and bottom hat operation on the specific image.
 
@@ -2676,9 +2810,9 @@ The format of morphologyEx() function is as follow.
 cv2.morphologyEx(img, op, kernel)
 ```
 
-The first parameter "**img**" indicates the input image
+The first parameter `img` indicates the input image
 
-The second parameter "**op**"represents the operation type.
+The second parameter `op` represents the operation type.
 
 |   Operation Type   |        Meaning         |
 | :----------------: | :--------------------: |
@@ -2690,9 +2824,9 @@ The second parameter "**op**"represents the operation type.
 
 The third parameter indicates the size of the frame.
 
-(2) **Image Display**
+(2) Image Display
 
-① **Create Custom Figure**
+① Create Custom Figure
 
 Call figure() function in matplotlib.pyplot module to create a custom figure for displaying the final output image.
 
@@ -2704,35 +2838,35 @@ The format of the figure() function is as follow.
 matplotlib.pyplot.figure(num=None, figsize=None, dpi=None, facecolor=None, edgecolor=None, frameon=True, FigureClass=<class 'matplotlib.figure.Figure'>, clear=False, **kwargs)
 ```
 
-The first parameter "**num**" is the only identifier of the image i.e. the serial number of the picture (number) or the name (string).
+The first parameter `num` is the only identifier of the image i.e. the serial number of the picture (number) or the name (string).
 
-The second parameter "**figsize**" is the width and height of the image in inch.
+The second parameter `figsize` is the width and height of the image in inch.
 
-The third parameter "**dpi**" is the resolution of the image i.e. the number of pixels by inch
+The third parameter `dpi` is the resolution of the image i.e. the number of pixels by inch
 
-The fourth parameter "**facecolor**" is the background color.
+The fourth parameter `facecolor` is the background color.
 
-The fifth parameter "**edgecolor**" is the frame color
+The fifth parameter `edgecolor` is the frame color.
 
-The sixth parameter "**frameon**" determines whether to draw the picture, and it is "**True**" by default.
+The sixth parameter `frameon` determines whether to draw the picture, and it is `True` by default.
 
-The seventh parameter "**FigureClass**" is used to select the custom figure when generating the image
+The seventh parameter `FigureClass` is used to select the custom figure when generating the image
 
-The eighth parameter "**clear**" determines whether to clear all the original images.
+The eighth parameter `clear` determines whether to clear all the original images.
 
-The ninth parameter "**\*\*kwargs**" represents other properties of the image.
+The ninth parameter `**kwargs` represents other properties of the image.
 
 ② Modify matplotlib Configuration
 
 matplotlib is plotting library of Python. User can access and modify
 
-matplotlib configuration options through parameter dictionary "**rcParams**".
+matplotlib configuration options through parameter dictionary `rcParams`.
 
 <img class="common_img" src="../_static/media/chapter_5/section_15/media/image20.png" />
 
 The codes above are used to manipulate the display of the normal characters.
 
-③ **Set the Parameter of Image Display**
+③ Set the Parameter of Image Display
 
 Call subplot(), imshow() and title() functions in matplotlib.pyplot modules to designate the position, color and headline of the subplot in the Figure.
 
@@ -2744,13 +2878,13 @@ Call subplot(), imshow() and title() functions in matplotlib.pyplot modules to d
 matplotlib.pyplot.subplot(nrows, ncols, index, **kwargs)
 ```
 
-The first parameter "**nrows**" and the second parameter "**ncols**"
+The first parameter `nrows` and the second parameter `ncols`
 
 respectively are the number of row and column of subplot.
 
-The third parameter "**index**" is the index position. Index starts at 1 in the upper left corner and increases to the right.
+The third parameter `index` is the index position. Index starts at 1 in the upper left corner and increases to the right.
 
-When both the row and column are less than " **10**", these two values can be abbreviated to an integer. For example, the meaning of "**subplot(3, 3, 1)**" and "**subplot(331)**" are the same, both representing the image is divided into three rows and three columns, and the subplot is in the first place i.e. 1st row, 1st column.
+When both the row and column are less than " **10**", these two values can be abbreviated to an integer. For example, the meaning of `subplot(3, 3, 1)` and `subplot(331)` are the same, both representing the image is divided into three rows and three columns, and the subplot is in the first place i.e. 1st row, 1st column.
 
 * imshow() function is used to set the color of subplot, and its format is as follow.
 
@@ -2760,7 +2894,7 @@ matplotlib.pyplot.imshow(X, cmap=None)
 
 The first parameter "**X**" is the image data.
 
-The second parameter "**cmap**" is the colormap, RGB(A) color space by default.
+The second parameter `cmap` is the colormap, RGB(A) color space by default.
 
 * title() function is used to set the title of the subplot. The parameter in the bracket is the name of the subplot and the function format is as follow.
 
@@ -2769,15 +2903,15 @@ matplotlib.pyplot.title(label, fontdict=None, loc=None, pad=None, *
 y=None, **kwargs)
 ```
 
-The first parameter "**label**" is the title composed of string.
+The first parameter `label` is the title composed of string.
 
-The second parameter "**fontdict**" is the property of the font, and the current parameter refers to dictionary.
+The second parameter `fontdict` is the property of the font, and the current parameter refers to dictionary.
 
-The third parameter "**loc**" is the position of the title. It can be "**left**", "**center**"
+The third parameter `loc` is the position of the title. It can be `left`, `center`
 
-or "right", and "center" by default.
+or `right`, and `center` by default.
 
-The fourth parameter "**pad**" is the padding distance (inside margin) between the tile and the subplot, "**6.0**" by default.
+The fourth parameter `pad` is the padding distance (inside margin) between the tile and the subplot, "**6.0**" by default.
 
 The fifth parameter "**y**" is the vertical distance between the title and the
 
@@ -2785,9 +2919,9 @@ subplot, and the unit is the percentage of the height of the subplot. The defaul
 
 avoid overlapping with other elements. "**1.0**" means the title is at the top of the subplot.
 
-The sixth parameter "**\\kwargs**" is the text object keyword property, which is used to determine the appearance of the text, such as font, text color, etc.
+The sixth parameter `**kwargs` is the text object keyword property, which is used to determine the appearance of the text, such as font, text color, etc.
 
-④ **Set Axis Tick**
+④ Set Axis Tick
 
 Call xticks() and yticks() function in matplotlib.pyplot module to set the tick and tag of X and Y axis. As the coordinate axis is not required in image display in this routine, the list is set as none that is the coordinate axis will not be displayed.
 
@@ -2799,15 +2933,15 @@ The format of xticks() function is as follow.
 matplotlib.pyplot.xticks(ticks=None, labels=None, **kwargs)
 ```
 
-The first parameter "**ticks**" is a list of the positions of the X-axis ticks. If the list is empty, the X-axis ticks will be cleared.
+The first parameter `ticks` is a list of the positions of the X-axis ticks. If the list is empty, the X-axis ticks will be cleared.
 
-The second parameter "**labels**" is the label of X-axis tick. Only when parameter "ticks" is not none, can this parameter be passed.
+The second parameter `labels` is the label of X-axis tick. Only when parameter "ticks" is not none, can this parameter be passed.
 
-The third parameter "**\\kwargs**" is used to control the appearance of the tick and label.
+The third parameter `lkwargs` is used to control the appearance of the tick and label.
 
 The format of yticks() is the same as that of xticks(). The difference lies in the controlled object.
 
-⑤ **Display Image**
+⑤ Display Image
 
 Call show() function in matplotlib.pyplot module to display the image on the window.
 
@@ -2835,13 +2969,14 @@ including Global Threshold ing, Adaptive Threshold ing and Otsu Threshold ing
 
 Global threshold ing will process the whole image according to the set threshold.
 
-(1) **Operation Steps**
+(1) Operation Steps
 
 > [!Note]
-> 
+>
 > * **Before operation, please copy the routine "threshold_demo.py" and sample picture "**test.jpg**" in "[5. OpenCV Computer Vision Course->5.2 Basic Course->5.2.12 Image Processing --- Thresholding-\>Routine Code](https://drive.google.com/drive/folders/15R1Tm3S4D0VMIm59xVef1YZMumzpkdvn?usp=sharing)" to the shared folder.**
 > * **The input command should be case sensitive and the keywords can be complemented by "Tab" key.**
-> 
+>
+
 ① Open virtual machine and start the system. Click <img src="../_static/media/chapter_5/section_16/media/image2.png" />, and then <img src="../_static/media/chapter_5/section_16/media/image4.png" /> or press "**Ctrl+Alt+T**" to open command line terminal.
 
 ② Input command "**cd /mnt/hgfs/share/**" and press Enter to enter the shared folder.
@@ -2856,7 +2991,7 @@ cd /mnt/hgfs/share/
 python3 threshold_demo.py
 ```
 
-(2) **Program Outcome**
+(2) Program Outcome
 
 |                                                              |                                                              |
 | ------------------------------------------------------------ | ------------------------------------------------------------ |
@@ -2864,7 +2999,7 @@ python3 threshold_demo.py
 
 The final output picture is as shown above.
 
-(3) **Code Analysis**
+(3) Code Analysis
 
 The routine "**threshold_demo.py**" can be found in "**[5. OpenCV Computer Vision Course->5.2 Basic Course->5.2.12 Image Processing --- Thresholding-\>Routine Code](https://drive.google.com/drive/folders/15R1Tm3S4D0VMIm59xVef1YZMumzpkdvn?usp=sharing)**" .
 
@@ -2884,15 +3019,15 @@ The routine "**threshold_demo.py**" can be found in "**[5. OpenCV Computer Visio
 threshold(src, thresh, maxval, type)
 ```
 
-① The first parameter "**src**" is the pending image.
+① The first parameter `src` is the pending image.
 
-② The second parameter "**thresh**" is the set threshold.
+② The second parameter `thresh` is the set threshold.
 
-③ The third parameter "**maxval**" will be set only when the type is
+③ The third parameter `maxval` will be set only when the type is
 
-"**THRESH_BINARY**" or "**THRESH_BINARY_INV**" . It refers to the new value assigned when the gray values of the picture pixels are greater (smaller) than the threshold
+`THRESH_BINARY` or `THRESH_BINARY_INV` . It refers to the new value assigned when the gray values of the picture pixels are greater (smaller) than the threshold
 
-④ The fourth parameter "**type**" represents the type of threshold ing.
+④ The fourth parameter `type` represents the type of threshold ing.
 
 * cv2.THRESH_BINARY: the part greater than threshold is set as maxval, otherwise 0.
 
@@ -2914,7 +3049,7 @@ threshold(src, thresh, maxval, type)
 
 Adaptive threshold ing is the method where the threshold value is calculated for smaller regions to process the image.
 
-(1) **Operation Steps**
+(1) Operation Steps
 
 > [!Note]
 > 
@@ -2936,7 +3071,7 @@ cd /mnt/hgfs/share/
 python3 adaptiveThreshold_demo.py
 ```
 
-(2) **Program Outcome**
+(2) Program Outcome
 
 |                                                              |                                                              |
 | ------------------------------------------------------------ | ------------------------------------------------------------ |
@@ -2944,7 +3079,7 @@ python3 adaptiveThreshold_demo.py
 
 The final output image is as above.
 
-(3) **Code Analysis**
+(3) Code Analysis
 
 For a picture with balanced color, its threshold is usually set as 127.
 
@@ -2968,21 +3103,21 @@ The routine "**adaptiveThreshold_demo.py**" can be found in "**[5. OpenCV Comput
 adaptiveThreshold(src, maxValue, adaptiveMethod, thresholdType, blockSize, C)
 ```
 
-① The first parameter "**src**" refers to the pending image.
+① The first parameter `src` refers to the pending image.
 
-② The second parameter "**maxValue**" will be set only when the type is "cv2.THRESH_BINARY" or "cv2.THRESH_BINARY_INV" . It refers to the new value assigned when the gray values of the picture pixels are greater (smaller) than the threshold
+② The second parameter `maxValue` will be set only when the type is "cv2.THRESH_BINARY" or "cv2.THRESH_BINARY_INV" . It refers to the new value assigned when the gray values of the picture pixels are greater (smaller) than the threshold
 
-③ The third parameter "**adaptiveMethod**" decides how the adaptive threshold value is calculated. And the specific methods are as follow.
+③ The third parameter `adaptiveMethod` decides how the adaptive threshold value is calculated. And the specific methods are as follow.
 
 * cv2.ADAPTIVE_THRESH_MEAN_C: set the weight value of all pixels in the neighborhood as the same.
 
 * cv2.ADAPTIVE_THRESH_GAUSSIAN_C: Obtain the weight value of all the pixels in the neighborhood through Gaussian formula. The weight value is associated with the distance between pixels in each neighbor and target pixel. The shorter the distance, the greater the weight value. The longer the distance, the smaller the weight value.
 
-④ The fourth parameter "**thresholdType**" indicates the type of the
+④ The fourth parameter `thresholdType` indicates the type of the
 
-threshold ing, which is combined with **maxValue** to use. This parameter only can be set as **cv2.THRESH_BINARY** or **cv2.THRESH_BINARY_INV**.
+threshold ing, which is combined with **maxValue** to use. This parameter only can be set as `cv2.THRESH_BINARY` or `cv2.THRESH_BINARY_INV`.
 
-⑤ The fifth parameter "**blockSize**" represents the size of the neighbour area. It is generally set as 3, 5, 7, ect.
+⑤ The fifth parameter `blockSize` represents the size of the neighbour area. It is generally set as 3, 5, 7, ect.
 
 ⑥ The sixth parameter "**C**" is a constant. The threshold is mean or weight value minus this constant.
 
@@ -2996,7 +3131,7 @@ threshold ing, which is combined with **maxValue** to use. This parameter only c
 
 Appropriate threshold will be automatically calculated.
 
-(1) **Operation Steps**
+(1) Operation Steps
 
 > [!Note]
 > 
@@ -3018,7 +3153,7 @@ cd /mnt/hgfs/share/
 python3 Otsu_demo.py
 ```
 
-(2) **Program Outcome**
+(2) Program Outcome
 
 <img src="../_static/media/chapter_5/section_16/media/image27.jpeg"/>
 
@@ -3026,7 +3161,7 @@ python3 Otsu_demo.py
 
 The final output picture is as above.
 
-(3) **Code Analysis**
+(3) Code Analysis
 
 The Otsu threshold ing, also known as the maximum inter-class variance method, is a method where the inter-class variance is calculated by assigning pixels into two or more classes. When the variance reaches the maximum value, the class dividing line i.e. the gray value is used as the image segmentation threshold.
 
@@ -3036,11 +3171,9 @@ The routine "**Otsu_demo.py**" can be found in "**[5. OpenCV Computer Vision Cou
 
 Otsu threshold ing is to pass a parameter "**cv2.THRESH_OTSU**" in the parameter type of **threshold** function, so as to realize Otsu threshold segmentation.
 
-**In cv2.threshold(img, 0, 255,**
+In `cv2.threshold(img, 0, 255,cv2.THRESH_BINARY+cv2.THRESH_OTSU)`，parameter thresh needs to set as 0, and parameter type should be set as
 
-**cv2.THRESH_BINARY+cv2.THRESH_OTSU)**，parameter thresh needs to set as 0, and parameter type should be set as
-
-"**cv2.THRESH_BINARY+cv2.THRESH_OTSU**"
+`cv2.THRESH_BINARY+cv2.THRESH_OTSU`
 
 ### 5.2.13 Image Processing---Contour Introduction and Feature
 
@@ -3054,7 +3187,7 @@ For higher accuracy, binaryzation will be performed first. After the binary imag
 
 After the object is found, search for the contour points and draw the contour.
 
-(1) **Operation Steps**
+(1) Operation Steps
 
 > [!Note]
 > 
@@ -3076,13 +3209,13 @@ cd /mnt/hgfs/share/
 python3 contours_demo.py
 ```
 
-(2) **Program Outcome**
+(2) Program Outcome
 
 <img class="common_img" src="../_static/media/chapter_5/section_17/media/image7.jpeg" />
 
 The final output picture is as above.
 
-(3) **Code Analysis**
+(3) Code Analysis
 
 The routine "**contours_demo.py**" can be found in "**[5. OpenCV Computer Vision Course->5.2 Basic Course->5.2.13 Image Processing --- Contour Introduction and Feature-\>Routine Code](https://drive.google.com/drive/folders/1RQ83IHUOkKzb9RbGf57BVaX2x9K84ahh?usp=sharing)**" .
 
@@ -3098,17 +3231,17 @@ The routine "**contours_demo.py**" can be found in "**[5. OpenCV Computer Vision
 
 **Thresholding:** use threshold function to execute. The specific format and parameters are as follow.
 
-**threshold(src, thresh, maxval, type)**
+`threshold(src, thresh, maxval, type)`
 
-① The first parameter "**src**" is the pending image.
+① The first parameter `src` is the pending image.
 
-② The second parameter "**thresh**" is the set threshold.
+② The second parameter `thresh` is the set threshold.
 
-③ The third parameter "**maxval**" will be set only when the type is
+③ The third parameter `maxval` will be set only when the type is
 
-"**THRESH_BINARY**" or "**THRESH_BINARY_INV**" . It refers to the new value assigned when the gray values of the picture pixels are greater (smaller) than the threshold
+`THRESH_BINARY` or `THRESH_BINARY_INV` . It refers to the new value assigned when the gray values of the picture pixels are greater (smaller) than the threshold
 
-④ The fourth parameter "**type**" represents the type of threshold ing. cv2.THRESH_BINARY indicates the part greater than threshold is set as maxval, otherwise 0
+④ The fourth parameter `type` represents the type of threshold ing. cv2.THRESH_BINARY indicates the part greater than threshold is set as maxval, otherwise 0
 
 <img class="common_img" src="../_static/media/chapter_5/section_17/media/image10.png" />
 
@@ -3118,9 +3251,9 @@ The routine "**contours_demo.py**" can be found in "**[5. OpenCV Computer Vision
 findContours(img,mode,method)
 ```
 
-* The first parameter "**img**" represents the pending picture.
+* The first parameter `img` represents the pending picture.
 
-* The second parameter "**mode**" represents the detection mode of the contour.
+* The second parameter `mode` represents the detection mode of the contour.
 
 RETR_EXTERNAL = 0: only the outermost contour will be detected
 
@@ -3130,7 +3263,7 @@ RETR_CCOMP = 2，detect all the contour and divide them into two layers
 
 RETR_TREE = 3 ，Detect layer by layer from right to left according to the tree-shaped storage contour
 
-* The third parameter "**method**" stands for the method used to search the contour. The specific method is as follow.
+* The third parameter `method` stands for the method used to search the contour. The specific method is as follow.
 
 CHAIN_APPROX_NONE, Preserve all the dots on the contour
 
@@ -3149,33 +3282,33 @@ CHAIN_APPROX_SIMPLE: Compress the horizontal, vertical and oblique part that is 
 wContours(image, contours, contourIdx, color, thickness)
 ```
 
-① The first parameter "**image**" represents the image whose contour will be drawn.
+① The first parameter `image` represents the image whose contour will be drawn.
 
-② The second parameter "**contours**" represents the coordinate of all contours are found.
+② The second parameter `contours` represents the coordinate of all contours are found.
 
-③ The third parameter "**contoursIdx**" indicates the serial number of the contour drawing. -1 means that all the contours will be drawn.
+③ The third parameter `contoursIdx` indicates the serial number of the contour drawing. -1 means that all the contours will be drawn.
 
-④ The fourth parameter "**color**" refers to the color of the contour.
+④ The fourth parameter `color` refers to the color of the contour.
 
-⑤he fifth parameter "**thickness**" represents the width of the contour. -1 means that the contour will be padded.
+⑤he fifth parameter `thickness` represents the width of the contour. -1 means that the contour will be padded.
 
 * **Contour Feature Moment**
 
 Feature moment is global feature of a contour and a picture. The moment contains the geometric features in different types of the corresponding objects. There are three types of moments, including spatial moment, central moment and normalized central moment
 
-(1) Spatial moment: it is also called geometric moment about the area and perimeter of the image, including zero-order moment: m00, first-order moment: m10, m01, second-order moment: m20, m11, m02, third-order moment: m30, m21, m12, m03
+* Spatial moment: it is also called geometric moment about the area and perimeter of the image, including zero-order moment: m00, first-order moment: m10, m01, second-order moment: m20, m11, m02, third-order moment: m30, m21, m12, m03
 
-(2) entral moment: For the higher--order image, the moment will vary with the position, which can be fixed by central moment. The invariance of translation can be obtained by subtracting the mean value, so we can compare whether two objects at different positions are consistent, that is, the central moment features translation invariance.
+*  entral moment: For the higher--order image, the moment will vary with the position, which can be fixed by central moment. The invariance of translation can be obtained by subtracting the mean value, so we can compare whether two objects at different positions are consistent, that is, the central moment features translation invariance.
 
 It includes two-order central moments: mu20, mu11 and mu02, as well as three-order central moment: mu30, mu21, mu12 and mu03.
 
-(3) Normalized central moment: Apart from translation, some pictures will be scaled. Even though the image is scaled, its features can be detected.
+* Normalized central moment: Apart from translation, some pictures will be scaled. Even though the image is scaled, its features can be detected.
 
 Normalized central moment obtain the scale invariance by dividing by the dimension of the object.
 
 It includes two-order Hu moment: nu20, nu11 and nu02, and three-order Hu moment: nu30, nu21, nu12 and nu03. Following, based on the obtained contour, calculate the feature moment, area and perimeter of the contour.
 
-(1) **Operation Steps**
+(1) Operation Steps
 
 > [!Note]
 > 
@@ -3197,13 +3330,13 @@ cd /mnt/hgfs/share/
 python3 moments_demo.py
 ```
 
-(2) **Program Outcome**
+(2) Program Outcome
 
 <img class="common_img" src="../_static/media/chapter_5/section_17/media/image17.jpeg" />
 
 The unit of the area and perimeter is pixel. The outermost contour of the image will be calculated
 
-(3) **Code Analysis**
+(3) Code Analysis
 
 The routine "**moments_demo.py**" can be found in "**[5. OpenCV Computer Vision Course->5.2 Basic Course->5.2.13 Image Processing --- Contour Introduction and Feature-\>Routine Code](https://drive.google.com/drive/folders/1RQ83IHUOkKzb9RbGf57BVaX2x9K84ahh?usp=sharing)**" .
 
@@ -3219,13 +3352,13 @@ The routine "**moments_demo.py**" can be found in "**[5. OpenCV Computer Vision 
 moments(array,binaryImage)
 ```
 
-① The first parameter "**array**" is the contour point.
+① The first parameter `array` is the contour point.
 
-② The second parameter "**binaryImage**" is set as False by default. If it is True, all non-zero pixels will be treated as 1, which is equivalent to image binaryzation.
+② The second parameter `binaryImage` is set as False by default. If it is True, all non-zero pixels will be treated as 1, which is equivalent to image binaryzation.
 
 <img class="common_img" src="../_static/media/chapter_5/section_17/media/image20.png" />
 
-Area calculation: adopt **countourArea** function to calculate the area, and its format and parameters are as follow.
+Area calculation: adopt `countourArea` function to calculate the area, and its format and parameters are as follow.
 
 **countourArea(contour):** "**contour**" is a contour in the contour list.
 
@@ -3235,17 +3368,17 @@ Perimeter calculation: employ **arcLength** function to calculate the perimeter,
 
 **arcLength(curve,closed)**
 
-* The first parameter "**curve**" represents the contour.
+* The first parameter `curve` represents the contour.
 
-* The second parameter "**closed**" decide whether the contour is closed or not. If it is closed, set is as **True**, otherwise False.
+* The second parameter `closed` decide whether the contour is closed or not. If it is closed, set is as **True**, otherwise False.
 
 <img class="common_img" src="../_static/media/chapter_5/section_17/media/image22.png" />
 
 * **Polygon Approximation**
 
-The searched "contours" maybe too complex and not smooth,
+The searched `contours` maybe too complex and not smooth,
 
-approxPolyDP function can be adopted to appropriately approximate the polygon curve, which is polygon approximation.
+`approxPolyDP` function can be adopted to appropriately approximate the polygon curve, which is polygon approximation.
 
 This function uses polygons to approximate the contour, utilizing the
 
@@ -3253,7 +3386,7 @@ Douglas-Peucker algorithm (DP). The principle of the DP algorithm is simple. Its
 
 Next, analyze the object contour with polygon approximation.
 
-(1) **Operation Steps**
+(1) Operation Steps
 
 > [!Note]
 > 
@@ -3275,13 +3408,13 @@ cd /mnt/hgfs/share/
 python3 approx_demo.py
 ```
 
-(2) **Program Outcome**
+(2) Program Outcome
 
 <img class="common_img" src="../_static/media/chapter_5/section_17/media/image28.png" />
 
 The contour after polygon approximation will try to fit the figure as much as possible.
 
-(3) **Code Analysis**
+(3) Code Analysis
 
 The routine "**approx_demo.py**" can be found in "**[5. OpenCV Computer Vision Course->5.2 Basic Course->5.2.13 Image Processing---Contour Introduction and Feature-\>Routine Code](https://drive.google.com/drive/folders/1RQ83IHUOkKzb9RbGf57BVaX2x9K84ahh?usp=sharing)**" .
 
@@ -3297,13 +3430,13 @@ The routine "**approx_demo.py**" can be found in "**[5. OpenCV Computer Vision C
 apporxPolyDP(curve, epsilon, closed)
 ```
 
-1\) The first parameter "**curve**" is the contour to be searched.
+1\) The first parameter `curve` is the contour to be searched.
 
-2\) The second parameter "**epsilon**" indicates accuracy. The smaller the number, the lower the accuracy and the more consistent with the
+2\) The second parameter `epsilon` indicates accuracy. The smaller the number, the lower the accuracy and the more consistent with the
 
 pattern contour.
 
-3\) The third parameter "**closed**" decide whether the contour is closed or not. If it is closed, set is as **True**, otherwise False.
+3\) The third parameter `closed` decide whether the contour is closed or not. If it is closed, set is as **True**, otherwise False.
 
 <img class="common_img" src="../_static/media/chapter_5/section_17/media/image31.png" />
 
@@ -3317,7 +3450,7 @@ contour. Every part of the convex hull is convex, that is, the line connecting a
 
 Next, analyze the object contour through contour convex hull.
 
-(1) **Operation Steps**
+(1) Operation Steps
 
 > [!Note]
 > 
@@ -3339,13 +3472,13 @@ cd /mnt/hgfs/share/
 python3 hull_demo.py
 ```
 
-(2) **Program Outcome**
+(2) Program Outcome
 
 <img class="common_img" src="../_static/media/chapter_5/section_17/media/image37.png" />
 
 The convex hull will connect the vertices of the contour.
 
-(3) **Code Analysis**
+(3) Code Analysis
 
 The routine "**hull_demo.py**" can be found in "**[5. OpenCV Computer Vision Course->5.2 Basic Course->5.2.13 Image Processing---Contour Introduction and Feature-\>Routine Code](https://drive.google.com/drive/folders/1RQ83IHUOkKzb9RbGf57BVaX2x9K84ahh?usp=sharing)**"
 
@@ -3357,9 +3490,9 @@ The routine "**hull_demo.py**" can be found in "**[5. OpenCV Computer Vision Cou
 convexHull(points, clockwise,)
 ```
 
-① The first parameter "**points**" is the contour to be searched.
+① The first parameter `points` is the contour to be searched.
 
-② The second parameter "**clockwise**" refers to the drawing direction. When it is True, the convex hull will be draw clockwise. When it is False, the convex hull will be drawn counterclockwise.
+② The second parameter `clockwise` refers to the drawing direction. When it is True, the convex hull will be draw clockwise. When it is False, the convex hull will be drawn counterclockwise.
 
 <img class="common_img" src="../_static/media/chapter_5/section_17/media/image39.png" />
 
@@ -3373,7 +3506,7 @@ The bounding rectangle is divided into the minimum bounding rectangle with rotat
 
 Next, draw the regular bounding rectangle and minimum bounding rectangle.
 
-(1) **Operation Steps**
+(1) Operation Steps
 
 > [!Note]
 > 
@@ -3395,19 +3528,19 @@ cd /mnt/hgfs/share/
 python3 rect_demo.py
 ```
 
-(2) **Program Outcome**
+(2) Program Outcome
 
 <img class="common_img" src="../_static/media/chapter_5/section_17/media/image45.png" />
 
 The green one is the regular bounding rectangle, and the blue one is the minimum bounding rectangle.
 
-(3) **Code Analysis**
+(3) Code Analysis
 
 The routine "**rect_demo.py**" can be found in "**[5. OpenCV Computer Vision Course->5.2 Basic Course->5.2.13 Image Processing---Contour Introduction and Feature-\>Routine Code](https://drive.google.com/drive/folders/1RQ83IHUOkKzb9RbGf57BVaX2x9K84ahh?usp=sharing)**"
 
 <img class="common_img" src="../_static/media/chapter_5/section_17/media/image46.png" />
 
-**Acquire minimum bounding rectangle:** adopt **minAreaRect** function to get the minimum bounding rectangle. And the function format and parameters are as follow.
+**Acquire minimum bounding rectangle:** adopt `minAreaRect` function to get the minimum bounding rectangle. And the function format and parameters are as follow.
 
 **minAreaRect( points ): "points"** refers to contour, and the returned value
 
@@ -3415,27 +3548,27 @@ contains the starting coordinate, width, height and angle.
 
 <img class="common_img" src="../_static/media/chapter_5/section_17/media/image47.png" />
 
-**Obtain the regular bounding rectangle:** use "**boundingRect"** function to realize. The function format and parameters are as follow.
+**Obtain the regular bounding rectangle:** use `boundingRect` function to realize. The function format and parameters are as follow.
 
-**boundingRect（array):** "**array**" refers to contour and the returned value "**Rect**" contains the starting coordinate, width and height.
+`boundingRect（array)`: `array` refers to contour and the returned value `Rect` contains the starting coordinate, width and height.
 
 <img class="common_img" src="../_static/media/chapter_5/section_17/media/image48.png" />
 
 **Get the vertex coordinate of the minimum bounding rectangle:**
 
-**boxPoints** function will be employed. The function format and parameters are as follow.
+`boxPoints` function will be employed. The function format and parameters are as follow.
 
-**boxPoints(rect):** refers to the rectangle whose vertex coordinate needs to be obtained. Its data type belongs to floating point number.
+`boxPoints(rect)`: refers to the rectangle whose vertex coordinate needs to be obtained. Its data type belongs to floating point number.
 
 <img class="common_img" src="../_static/media/chapter_5/section_17/media/image49.png" />
 
-**Number rounding:** use **int0** function to execute. The function format and parameters are as follow.
+`Number rounding`: use **int0** function to execute. The function format and parameters are as follow.
 
-**int0(date):** "date" is the data to be rounded.
+`int0(date)`: "date" is the data to be rounded.
 
 <img class="common_img" src="../_static/media/chapter_5/section_17/media/image50.png" />
 
-**Draw rectangle:** rectangle function will be adopted to draw the rectangle.
+`Draw rectangle`: rectangle function will be adopted to draw the rectangle.
 
 The function format and parameters are as follow.
 
@@ -3443,15 +3576,15 @@ The function format and parameters are as follow.
 rectangle(src,pt1,pt2,color,thickness)
 ```
 
-① The first parameter "**src**" refers to the image to draw the contour.
+① The first parameter `src` refers to the image to draw the contour.
 
-② The second parameter "**pt1**" represents one of the vertices of the rectangle.
+② The second parameter `pt1` represents one of the vertices of the rectangle.
 
-③ The third parameter "**pt2**" refers to the diagonal vertices of pt1
+③ The third parameter `pt2` refers to the diagonal vertices of pt1
 
-④ The fourth parameter "**color**" represents the color of the rectangle.
+④ The fourth parameter `color` represents the color of the rectangle.
 
-⑤ The fifth parameter "**thickness**" represents the width of the drawn rectangle. "-1" indicates padding rectangle.
+⑤ The fifth parameter `thickness` represents the width of the drawn rectangle. "-1" indicates padding rectangle.
 
 <img class="common_img" src="../_static/media/chapter_5/section_17/media/image51.png" />
 
@@ -3469,7 +3602,7 @@ Each feature descriptor in one set of features is matched with the nearest featu
 
 Next, use brute force matching to match the features of the two images.
 
-(1) **Operation Steps**
+(1) Operation Steps
 
 > [!Note]
 > 
@@ -3491,13 +3624,13 @@ cd /mnt/hgfs/share/
 python3 bf_demo.py
 ```
 
-(2) **Program Outcome**
+(2) Program Outcome
 
 <img class="common_img" src="../_static/media/chapter_5/section_18/media/image7.png" />
 
 Take out one part of the original image, and then match features between these two images.
 
-(3) **Code Analysis**
+(3) Code Analysis
 
 The routine "**bf_demo.py**" can be found in "**[5. OpenCV Computer Vision Course->5.2 Basic Course->5.2.14 Image Processing --- Feature Matching-\>Routine Code](https://drive.google.com/drive/folders/1O6lCcndS21gZvN6T8qsxtjONa8ErKjtv?usp=sharing)**" .
 
@@ -3515,9 +3648,9 @@ The routine "**bf_demo.py**" can be found in "**[5. OpenCV Computer Vision Cours
 
 detectAndCompute(src,mask)
 
-① The first parameter "**src**" is the image to process the threshold.
+① The first parameter `src` is the image to process the threshold.
 
-② The second parameter "**mask**" is the image in which the object is black and the rest is white. If the mask is not required, set the parameter as None.
+② The second parameter `mask` is the image in which the object is black and the rest is white. If the mask is not required, set the parameter as None.
 
 <img class="common_img" src="../_static/media/chapter_5/section_18/media/image10.png" />
 
@@ -3525,9 +3658,9 @@ detectAndCompute(src,mask)
 
 **static Ptr\<BFMatcher\> create( int normType , bool crossCheck )**
 
-① The first parameter "**normType**" can be set as NORM_L1, NORM_L2, NORM_HAMMING or NORM_HAMMING2. The HOG descriptors of SIFT and SURF correspond to the Euclidean distances L1 and L2; the BRIEF descriptors of ORB and BRISK correspond to the Hamming distance HAMMING; HAMMING2 corresponds to the ORB algorithm when WTA_K = 3 or 4.
+① The first parameter `normType` can be set as NORM_L1, NORM_L2, NORM_HAMMING or NORM_HAMMING2. The HOG descriptors of SIFT and SURF correspond to the Euclidean distances L1 and L2; the BRIEF descriptors of ORB and BRISK correspond to the Hamming distance HAMMING; HAMMING2 corresponds to the ORB algorithm when WTA_K = 3 or 4.
 
-② **Euclidean distance:** it is defined as the distance between two points in n-dimensional space.
+② Euclidean distance: it is defined as the distance between two points in n-dimensional space.
 
 <img class="common_img" src="../_static/media/chapter_5/section_18/media/image11.jpeg" />
 
@@ -3545,29 +3678,29 @@ group A and the y point in group B are the best matching points for each other, 
 
 **match(queryDescriptors,trainDescriptors)**
 
-① The first parameter "**queryDescriptors**" is the image feature vector to be matched.
+① The first parameter `queryDescriptors` is the image feature vector to be matched.
 
-② The second parameter "**trainDescriptors**" is the image feature vector that needs to be matched.
+② The second parameter `trainDescriptors` is the image feature vector that needs to be matched.
 
 <img class="common_img" src="../_static/media/chapter_5/section_18/media/image14.png" />
 
 **Draw matches: drawMatches** function will used. The specific format and parameters are as follow.
 
-**drawMatches(src1,kp1,src2,kp2,match,matchesMask,flags)**
+`drawMatches(src1,kp1,src2,kp2,match,matchesMask,flags)`
 
-① The first parameter "**src1**" is the matching image 1.
+① The first parameter `src1` is the matching image 1.
 
-② The second parameter "**kp1**" is the feature of image 1.
+② The second parameter `kp1` is the feature of image 1.
 
-③ The third parameter "**src2**" is the matching image 2.
+③ The third parameter `src2` is the matching image 2.
 
-④ The fourth parameter "**kp2**" is the feature of the image 2.
+④ The fourth parameter `kp2` is the feature of the image 2.
 
-⑤ The fifth parameter "**match**" is the set of matching points to be drawn.
+⑤ The fifth parameter `match` is the set of matching points to be drawn.
 
-⑥ The sixth parameter "**matchesMask**" determines which images to draw. If it is set as None, all the images will be drawn.
+⑥ The sixth parameter `matchesMask` determines which images to draw. If it is set as None, all the images will be drawn.
 
-⑦ The seventh parameter "**flags**" represents the drawing flag. 0 indicates that all the features will be drawn, and 2 indicates that only the matched
+⑦ The seventh parameter `flags` represents the drawing flag. 0 indicates that all the features will be drawn, and 2 indicates that only the matched
 
 feature will be drawn. 4 stands for the drawing styles.
 
@@ -3589,7 +3722,7 @@ The nearest neighbor matching operator FlannBased Matcher based on the FLANN lib
 
 Next, adopt nearest neighbor matching to match the features of the two images.
 
-(1) **Operation Steps**
+(1) Operation Steps
 
 > [!Note]
 > 
@@ -3611,11 +3744,11 @@ cd /mnt/hgfs/share/
 python3 flann_demo.py
 ```
 
-(2) **Program Outcome**
+(2) Program Outcome
 
 <img class="common_img" src="../_static/media/chapter_5/section_18/media/image22.png" />
 
-(3) **Code Analysis**
+(3) Code Analysis
 
 The routine "**flann_demo.py**" can be found in "**[5. OpenCV Computer Vision Course->5.2 Basic Course->5.2.14 Image Processing---Feature Matching-\>Routine Code](https://drive.google.com/drive/folders/1O6lCcndS21gZvN6T8qsxtjONa8ErKjtv?usp=sharing)**" .
 
@@ -3625,9 +3758,9 @@ The routine "**flann_demo.py**" can be found in "**[5. OpenCV Computer Vision Co
 
 FlannBased Matcher（IndexParams,SearchParams）(The two parameters in the bracket refers to the type of the dictionary)
 
-① The first parameter "**IndexParams**" the algorithm designated to use.
+① The first parameter `IndexParams` the algorithm designated to use.
 
-② The second parameter "**SearchParams**" is the number of times the tree in the specified index should be traversed recursively. Higher values
+② The second parameter `SearchParams` is the number of times the tree in the specified index should be traversed recursively. Higher values
 
 provide better accuracy, but also take more time.
 
@@ -3635,7 +3768,7 @@ provide better accuracy, but also take more time.
 
 Nearest neighbor matching: knnMathch function will be used, And the function format and parameters are as follow.
 
-knnMathch(**queryDescriptors,trainDescriptors,k**)
+`knnMathch(queryDescriptors,trainDescriptors,k)`
 
 The first two parameters are consistent with match, and "k" is the best number of matches to be returned.)
 
@@ -3645,13 +3778,13 @@ The first two parameters are consistent with match, and "k" is the best number o
 
 * **Corner Introduction**
 
-(1) **Corner Definition**
+(1) Corner Definition
 
 The corner is defined as the intersection of two edges, or a feature with two main directions in the neighborhood. In general, corner is the point on the edge curve with maximum curvature, or the point with large variation in
 
 intensity in the image.
 
-(2) **Detection Idea**
+(2) Detection Idea
 
 Define a tiny local window in the image, then move this window in all directions, which will leads to three results, including flat areas, edges and corners.
 
@@ -3667,17 +3800,17 @@ Define a tiny local window in the image, then move this window in all directions
 
 <img class="common_img" src="../_static/media/chapter_5/section_19/media/image4.png" />
 
-(3) **Harris Corner Detection Formula**
+(3) Harris Corner Detection Formula
 
 <img class="common_img" src="../_static/media/chapter_5/section_19/media/image5.jpeg" />
 
 And：
 
-① **det(M)= λ1 λ2**。
+① det(M)= λ1 λ2。
 
-② **trace(M)= λ1+ λ2**。
+② trace(M)= λ1+ λ2。
 
-③ **λ1 and λ2 are the feature values of the moment M.** 
+③ λ1 and λ2 are the feature values of the moment M. 
 
 The region type can be judged based on these features:
 
@@ -3721,47 +3854,47 @@ The routine "**corners_demo.py**" can be found in "**[5. OpenCV Computer Vision 
 
 <img class="common_img" src="../_static/media/chapter_5/section_19/media/image12.jpeg" />
 
-(1) **Import Module:** Import cv2 and nmupy module.
+(1) Import Module: Import cv2 and nmupy module.
 
 <img class="common_img" src="../_static/media/chapter_5/section_19/media/image13.png" />
 
-(2) **Create corner detection function：harris(image)：the parameter in the bracket is the image that needs to process**
+(2) Create corner detection function：`harris(image)：`the parameter in the bracket is the image that needs to process
 
-(3) **color space conversion**：**cvtColor(src,mode)**
+(3) color space conversion：`cvtColor(src,mode)`
 
-The first parameter "**src**" refers to the image to convert.
+The first parameter `src` refers to the image to convert.
 
-The second parameter "**mode**" is the conversion mode of the color space.
+The second parameter `mode` is the conversion mode of the color space.
 
 <img class="common_img" src="../_static/media/chapter_5/section_19/media/image14.png" />
 
-(4) Corner Detection：**cornerHarris(src,blockSize,apertureSize,k)** The first parameter "**src**" is the image for detection.
+(4) Corner Detection：`cornerHarris(src,blockSize,apertureSize,k)` The first parameter `src` is the image for detection.
 
-The second parameter "**blockSize**" is the size of the domain pixel. The third parameter "**apertureSize**" is the size of the used window. The fourth parameter "**k**" is a free parameter ranging \[0.04 ，0.06\].
+The second parameter `blockSize` is the size of the domain pixel. The third parameter `apertureSize` is the size of the used window. The fourth parameter "**k**" is a free parameter ranging \[0.04 ，0.06\].
 
 <img class="common_img" src="../_static/media/chapter_5/section_19/media/image15.png" />
 
-(5) **Acquire the array of the same type：empty(shape,dtype)**
+(5) Acquire the array of the same type：`empty(shape,dtype)`
 
-The first parameter "**shape**" represents the shape of the returned array defined by the integer or a tuple of integers.
+The first parameter `shape` represents the shape of the returned array defined by the integer or a tuple of integers.
 
 The second parameter "dtype" refers to the data type defining the type of the returned array.
 
 <img class="common_img" src="../_static/media/chapter_5/section_19/media/image16.png" />
 
-(6) **Normalization:** Normalization is to process the data and then limit within the required range. The size of the output image of Harris corner
+(6) Normalization: Normalization is to process the data and then limit within the required range. The size of the output image of Harris corner
 
 detection after normalization is the same as the original image. Pixel value of each point corresponds to the probability that the point is corner. The greater the value, the more likely it is a corner.
 
-**Function format: normalize(src,dst,alpha,beta,normType)**
+Function format: `normalize(src,dst,alpha,beta,normType)`
 
-The first parameter "**src**" is the input array.
+The first parameter `src` is the input array.
 
-The second parameter "**dst**" is the output array after processing. The third parameter "**alpha**" is the minimum value of normalization
+The second parameter `dst` is the output array after processing. The third parameter `alpha` is the minimum value of normalization
 
-The fourth parameter "**beta**" is the maximum value of normalization
+The fourth parameter `beta` is the maximum value of normalization
 
-The fifth parameter "**normType**" indicates the types of normalization as below.
+The fifth parameter `normType` indicates the types of normalization as below.
 
 ① NORM_MINMAX: The value of the array is translated or scaled to a specified range. Linearly normalized is commonly used.
 
@@ -3773,24 +3906,24 @@ The fifth parameter "**normType**" indicates the types of normalization as below
 
 <img class="common_img" src="../_static/media/chapter_5/section_19/media/image17.png" />
 
-(7) **Circle the corner：**use a loop to traverse the normalized image array and draw a circle in the corner area.
+(7) Circle the corner：use a loop to traverse the normalized image array and draw a circle in the corner area.
 
-**Function format**：**circle(src,point,radius,color,thickness)** The first parameter "**src**" is the image to be drawn.
+Function format：`circle(src,point,radius,color,thickness)` The first parameter `src` is the image to be drawn.
 
-The second parameter "**point**" is the center of the drawn circle The third parameter "**radius**" refers to the radius of the circle
+The second parameter `point` is the center of the drawn circle The third parameter `radius` refers to the radius of the circle
 
-The fourth parameter "**color**" is the set color
+The fourth parameter `color` is the set color
 
-The fifth parameter "**thickness**" refers to the line thickness of the circle. When it is negative number, it is solid circle.
+The fifth parameter `thickness` refers to the line thickness of the circle. When it is negative number, it is solid circle.
 
 <img class="common_img" src="../_static/media/chapter_5/section_19/media/image18.png" />
 
-(8) **Read image, process image, display image and close the window:**
+(8) Read image, process image, display image and close the window:
 
-**Read image:** Use imread(image) function to read the image, and the parameter in the bracket is the name of the picture
+Read image: Use `imread(image)` function to read the image, and the parameter in the bracket is the name of the picture
 
-**Process image:** call harris(image) function to process the image and the image parameters will be passed in.
+Process image: call `harris(image)` function to process the image and the image parameters will be passed in.
 
-**Display image:** employ **imshow(title,src)** function to display the output image. The parameters in the bracket are the title of window and the displayed image.
+Display image: employ `imshow(title,src)` function to display the output image. The parameters in the bracket are the title of window and the displayed image.
 
-**Close window:** Adopt waitKey function to wait for the key to be pressed, and then call **destroyAllWindows** function to close the display window.
+Close window: Adopt waitKey function to wait for the key to be pressed, and then call `destroyAllWindows` function to close the display window.

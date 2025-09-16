@@ -129,6 +129,12 @@ If you're not accustomed to command-line control and the official system image b
 
 (1) After connecting via SSH, enter the "**sudo raspi-config**" command and press Enter to open the Raspberry Pi 5 configuration window.
 
+```
+sudo raspi-config
+```
+
+
+
 <img class="common_img" src="../_static/media/chapter_2/section_2/media/image17.png"  />
 
 (2) In this interface, use the up and down arrow keys to navigate, press Enter to confirm selections, and press Esc to return to the previous level. Locate "**Interface Options**" and press Enter to access the relevant settings interface.
@@ -422,6 +428,12 @@ The network configuration methods for Raspberry Pi 5 encompass three modes: Acce
 
 (1) Use shortcut '**Ctrl+Alt+T**' to open the command-line terminal. Execute the command '**sudo vim /etc/NetworkManager/system-connections/pi5.nmconnection**', then hit Enter key to create and edit **pi5.nmconnection** file.
 
+```
+sudo vim /etc/NetworkManager/system-connections/pi5.nmconnection
+```
+
+
+
 <img class="common_img" src="../_static/media/chapter_2/section_7/media/image2.png"  />
 
 (2) Input the following code.
@@ -433,6 +445,12 @@ The network configuration methods for Raspberry Pi 5 encompass three modes: Acce
 <img class="common_img" src="../_static/media/chapter_2/section_7/media/image4.png"  />
 
 (4) Execute the command '**sudo systemctl restart NetworkManager**' to restart the network configuration.
+
+```
+sudo systemctl restart NetworkManager
+```
+
+
 
 <img class="common_img" src="../_static/media/chapter_2/section_7/media/image5.png"  />
 
@@ -446,6 +464,10 @@ sudo reboot
 
 (1) Use short-cut '**Ctrl+Alt+T**' to open the command-line terminal, and execute the command '**sudo vim /etc/NetworkManager/system-connections/hiwonder.nmconnection**', then hit Enter key to create and edit the hiwonder.nmconnection file.
 
+```
+sudo vim /etc/NetworkManager/system-connections/hiwonder.nmconnection
+```
+
 <img class="common_img" src="../_static/media/chapter_2/section_7/media/image7.png"  />
 
 (2) Enter the following code.
@@ -457,6 +479,10 @@ sudo reboot
 <img class="common_img" src="../_static/media/chapter_2/section_7/media/image4.png"  />
 
 (4) Run the command '**sudo systemctl restart NetworkManager**' to restart the network configuration file.
+
+```
+sudo systemctl restart NetworkManager
+```
 
 <img class="common_img" src="../_static/media/chapter_2/section_7/media/image5.png"  />
 
@@ -470,6 +496,10 @@ sudo reboot
 
 (1) Press "**Ctrl+Alt+T**" to open the command line terminal. Enter the command "**sudo vim /etc/NetworkManager/system-connections/hiwonder.nmconnection**" and then press Enter to create and edit the **hiwonder.nmconnection** file.
 
+```
+sudo vim /etc/NetworkManager/system-connections/hiwonder.nmconnection
+```
+
 <img class="common_img" src="../_static/media/chapter_2/section_7/media/image9.png"  />
 
 (2) Enter the following code.
@@ -481,6 +511,12 @@ sudo reboot
 <img class="common_img" src="../_static/media/chapter_2/section_7/media/image11.png"  />
 
 (4) Type the command '**sudo /etc/init.d/networking restart**' to relaunch the network configuration file.
+
+```
+sudo /etc/init.d/networking restart
+```
+
+
 
 <img class="common_img" src="../_static/media/chapter_2/section_7/media/image12.png"  />
 
@@ -680,6 +716,10 @@ To set the screen sleep, users can change the file '**lightdm.conf**'.
 
 (1) Use short-cut '**Ctrl+Alt+T**' to open the command-line terminal. Then run the command '**sudo nano /etc/lightdm/lightdm.conf' to access the 'lightdm.conf**' file.
 
+```
+sudo nano /etc/lightdm/lightdm.conf' to access the 'lightdm.conf
+```
+
 <img class="common_img" src="../_static/media/chapter_2/section_9/media/image4.png"  />
 
 (2) Remove the comment symbol "**\#**" before "**xserver-command=X**" and modify it to "**xserver-command=X -s 0 -dpms**". Here, the "**-s**" parameter sets the screen saver to not start, and "**-dpms**" disables power management.
@@ -702,6 +742,10 @@ The simplest way to play audio and video on Raspberry Pi 5 is to use the pre-ins
 
 The VLC application is readily available in the Raspberry Pi OS repository and can be easily installed using the "**apt install**" command. To do so, press "**Ctrl+Alt+T**" to open the command line terminal, then type "**sudo apt install -y vlc**" to update the local package cache. During the update process, you'll be prompted to confirm the changes. Simply type "**Y**" and press Enter, then wait for the update to finish.
 
+```
+sudo apt install -y vlc
+```
+
 <img class="common_img" src="../_static/media/chapter_2/section_10/media/image2.png"  />
 
 Take playing demo.mp4 file as example. The table below outlines commonly used commands.
@@ -718,6 +762,10 @@ Take playing demo.mp4 file as example. The table below outlines commonly used co
 (1) Initiate VLC through command
 
 Use short-cut '**Ctrl+Alt+T**' to open the command-line terminal, then run the command '**vlc /home/pi/demo.mp4**' to play the video file '**demo.mp4**'. This file is saved to '**/home/pi**'.
+
+```
+vlc /home/pi/demo.mp4
+```
 
 <img class="common_img" src="../_static/media/chapter_2/section_10/media/image3.png"  />
 
@@ -739,11 +787,19 @@ The Raspberry Pi obtains real-time temperature data by reading system files. CPU
 
 Press "**Ctrl+Alt+T**" to open the command line terminal, then type "**vcgencmd measure_temp**" and press Enter. "**vcgencmd**" is the command used in Raspberry Pi to check hardware status. Upon pressing Enter, the CPU temperature will be displayed directly. Based on the output information, we can determine that the current temperature of the Raspberry Pi 5 CPU is 60.9℃.
 
+```
+vcgencmd measure_temp
+```
+
 <img class="common_img" src="../_static/media/chapter_2/section_11/media/image2.png"  />
 
 ### 2.11.2 Read temp File
 
 Press "**Ctrl+Alt+T**" to open the command line terminal, then type "**cat /sys/class/thermal/thermal_zone0/temp**" and press Enter to directly view the CPU temperature. The returned value (60050) divided by 1000 gives the current temperature of the CPU, which is 60.05°C.
+
+```
+cat /sys/class/thermal/thermal_zone0/temp
+```
 
 <img class="common_img" src="../_static/media/chapter_2/section_11/media/image3.png"  />
 
@@ -791,13 +847,25 @@ By default, the Raspberry Pi automatically mounts some popular file systems, suc
 
 (2) Press '**Ctrl+Alt+T**' to open the command-line terminal, then execute the command '**sudo fdisk -l**' to check the connected devices and their corresponding mount points, such as '**/dev/ram0**' or '**/dev/ram1**', which indicate the mounting points of the disks.
 
+```
+sudo fdisk -l
+```
+
 <img class="common_img" src="../_static/media/chapter_2/section_13/media/image3.png"  />
 
 (3) Run the command '**sudo mkdir /home/pi/test**', and create the mounting point to the directory '**/home/pi/test**'.
 
+```
+sudo mkdir /home/pi/test
+```
+
 <img class="common_img" src="../_static/media/chapter_2/section_13/media/image4.png"  />
 
 (4) Execute the command '**sudo mount /dev/sda2 /home/pi/test**' to mount the external device '**/dev/sda2**' to the previously created mount point '**/home/pi/test**'. Afterward, the external device will be mounted to the specified path.
+
+```
+sudo mount /dev/sda2 /home/pi/test
+```
 
 <img class="common_img" src="../_static/media/chapter_2/section_13/media/image5.png"  />
 
@@ -843,6 +911,10 @@ FSWebcam is a command line tool designed for Linux systems, offering an open-sou
 
 (2) Execute the command '**sudo usermod -a -G video pi**' to grant user permissions to the video group.
 
+```
+sudo usermod -a -G video pi
+```
+
 <img class="common_img" src="../_static/media/chapter_2/section_15/media/image4.png"  />
 
 (3) Type 'groups' to check whether users are added to the video group.
@@ -852,6 +924,10 @@ FSWebcam is a command line tool designed for Linux systems, offering an open-sou
 ### 2.15.2 USB Camera Testing
 
 Press '**Ctrl+Alt+T**' to open the command-line terminal, then execute the command '**fswebcam /dev/video0 /home/pi/img1.jpg**' to capture pictures, and pictures are named as '**img1.jpg**' and stored to the directory '**/home/pi**'. (**'/dev/video0'** is the default device file path for video devices in Linux systems. Typically, it represents the first detected video device.)
+
+```
+fswebcam /dev/video0 /home/pi/img1.jpg
+```
 
 <img class="common_img" src="../_static/media/chapter_2/section_15/media/image6.png"  />
 
@@ -925,9 +1001,21 @@ sudo apt-get install kpartx
 
 (2) Enter the '**df -h**' command (with a space between df and -h) to check the actual space used by the Raspberry Pi, and then determine the size of the generated file. Simply examine the remaining space of the root directory here, and you'll see that 5.5G has been utilized.
 
+```
+df -h
+```
+
+
+
 <img class="common_img" src="../_static/media/chapter_2/section_17/media/image5.png"   />
 
 (3) Enter the '**sudo nano backup.sh**' command in any location (e.g., under home/pi) to create a script file named '**backup.sh**'. Paste the following content into the empty space.
+
+```
+sudo nano backup.sh
+```
+
+
 
 ```
 #!/bin/sh
@@ -945,6 +1033,10 @@ partRoot="\${device}p2"
 (4) Once the copying is finished, press '**Ctrl+X**'. You'll be prompted to confirm whether to save. Press '**Y**' to confirm, then press '**Enter**' to exit.
 
 (5) After exiting, enter the '**sudo chmod 777 backup.sh**' command to grant permissions to the file so that all users can read, write, and execute.
+
+```
+sudo chmod 777 backup.sh
+```
 
 <img class="common_img" src="../_static/media/chapter_2/section_17/media/image6.png"   />
 

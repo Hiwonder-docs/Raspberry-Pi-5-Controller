@@ -28,11 +28,11 @@ ROS2 is the second generation of Robot Operating System, an upgraded version of 
 
 ### 8.1.3 Difference Between RO2 and ROS1
 
-(1) **Platform**
+(1) Platform
 
 ROS1 currently only supports running on Linux systems, commonly set up and used on Ubuntu. Meanwhile, ROS2 can currently be set up and used on Ubuntu, Windows and even embedded development boards, making its platform more extensive.
 
-(2) **language** 
+(2) language 
 
 ① C++
 
@@ -41,13 +41,13 @@ The core of ROS1 is based on C++03, while ROS2 extensively utilizes C++11.
 ② Python  
 ROS1 primarily uses Python 2, whereas ROS2 requires Python version 3.5 or higher, with Humble specifically requiring Python version 3.6.
 
-(3) **Middleware** 
+(3) Middleware 
 
 In ROS1, it is necessary to start roscore before initiating, which acts as master node managing communication between all nodes. However, in ROS2, there is no equivalent to roscore; instead, there is only an abstract intermediate interface for data transmission. Currently, all implements of this interface are based on the DDS (Data Distribution Service) standard. This allows ROS2 to provide various high-quality QoS service strategies, improving communication in different network environments.
 
 <img class="common_img" src="../_static/media/chapter_9/section_1/media/image2.png"   />
 
-(4) **Compilation Command** 
+(4) Compilation Command 
 
 The compilation command for ROS1 is "**catkin_make**," while for ROS2, the compilation command is "**colcon build.**"
 
@@ -70,19 +70,19 @@ If any further development learning is required, please refer to the official tu
 docker pull ros:humble
 ```
 
-(1) After the image is downloaded, enter the command "**docker run -it --network=host -d -v=/dev:/dev -v /tmp/.X11-unix:/tmp/.X11-unix --name humble -e DISPLAY=\${DISPLAY} --restart=always ros:humble /bin/bash**" in the terminal to run the container and specify the name as "humble".
+(2) After the image is downloaded, enter the command "**docker run -it --network=host -d -v=/dev:/dev -v /tmp/.X11-unix:/tmp/.X11-unix --name humble -e DISPLAY=\${DISPLAY} --restart=always ros:humble /bin/bash**" in the terminal to run the container and specify the name as "humble".
 
 ```bash
 docker run -it --network=host -d -v=/dev:/dev -v /tmp/.X11-unix:/tmp/.X11-unix --name humble -e DISPLAY=\${DISPLAY} --restart=always ros:humble /bin/bash
 ```
 
-(1) Enter "**xhost +**" to start the access control for X Sever.
+(3) Enter "**xhost +**" to start the access control for X Sever.
 
 ```bash
 xhost +
 ```
 
-(2) Enter "**docker ps**" to view the ID of the newly created container.
+(4) Enter "**docker ps**" to view the ID of the newly created container.
 
 ```bash
 docker ps
@@ -90,43 +90,43 @@ docker ps
 
 <img class="common_img" src="../_static/media/chapter_9/section_2/media/image5.png"  />
 
-(3) Enter the command "**docker exec -it 55ce /bin/bash**" to enter the container (the container's ID can be abbreviated as long as it uniquely identifies the container).
+(5) Enter the command "**docker exec -it 55ce /bin/bash**" to enter the container (the container's ID can be abbreviated as long as it uniquely identifies the container).
 
 ```bash
 docker exec -it 55ce /bin/bash
 ```
 
-(4) Enter the command "**useradd -m -s /bin/bash ubuntu**" to create a new user.
+(6) Enter the command "**useradd -m -s /bin/bash ubuntu**" to create a new user.
 
 ```bash
 useradd -m -s /bin/bash ubuntu
 ```
 
-(5) In the terminal, enter "**passwd ubuntu**" to set the password for "ubuntu". Here, "ubuntu" is set as the password, you will prompted to re-enter the password.
+(7) In the terminal, enter "**passwd ubuntu**" to set the password for "ubuntu". Here, "ubuntu" is set as the password, you will prompted to re-enter the password.
 
 ```bash
 passwd ubuntu
 ```
 
-(6) Enter "**usermod -aG sudo ubuntu**" to add the new user "ubuntu" to the sudo group, granting it the superuser permission.
+(8) Enter "**usermod -aG sudo ubuntu**" to add the new user "ubuntu" to the sudo group, granting it the superuser permission.
 
 ```bash
 usermod -aG sudo ubuntu
 ```
 
-(7) Enter "**sudo apt-get update -y && sudo apt-get upgrade -y**" to update the list of available software packages and upgrade the installed software packages on the system.
+(9) Enter "**sudo apt-get update -y && sudo apt-get upgrade -y**" to update the list of available software packages and upgrade the installed software packages on the system.
 
 ```bash
 sudo apt-get update -y && sudo apt-get upgrade -y
 ```
 
-(8) Enter "**sudo apt-get install vim -y**" to install Vim text editor.
+(10) Enter "**sudo apt-get install vim -y**" to install Vim text editor.
 
 ```bash
 sudo apt-get install vim -y
 ```
 
-(9) Enter "**sudo apt-get install ros-humble-desktop-full -y**"to install the complete desktop environment of ROS Humble version.
+(11) Enter "**sudo apt-get install ros-humble-desktop-full -y**"to install the complete desktop environment of ROS Humble version.
 
 ```bash
 sudo apt-get install ros-humble-desktop-full -y
@@ -723,13 +723,13 @@ According to the realization result, the logic progress for the program is shown
 
 Create a node named HelloWorldNode, and print "**Hello World**" to the node's log every 0.5 seconds in the main loop of the node. During program execution, the ROS2 Python interface is initialized first, then a node instance is created and its main loop is run. When the program is interrupted, the node object is destroyed, and the ROS2 Python interface is shut down.
 
-(1) **Main function**
+(1) Main function
 
 <img class="common_img" src="../_static/media/chapter_9/section_7/media/image13.png"  />
 
 First, invoke the rclpy.init() function to initialize ROS2 Python interface. Then instantiate the HelloWorkdNode file. Finally, execute the node.run() function.
 
-(2) **HelloWorldNode Class**
+(2) HelloWorldNode Class
 
 <img class="common_img" src="../_static/media/chapter_9/section_7/media/image14.png"  />
 
@@ -786,45 +786,63 @@ vim topic_pub.py
 ```py
 import rclpy
 from rclpy.node import Node
+
 from std_msgs.msg import String
-# Define a NinimalPublisher class inhering from the Node.
+
+# 定义一个继承自Node的MinimalPublisher类(Define a MinimalPublisher class that inherits from Node)
 class MinimalPublisher(Node):
-# The initialization method of the Class
-def \_\_init\_\_(self):
-# Call the initialize method of the Node class to set the node name as "minimal_publisher".
-super().\_\_init\_\_('minimal_publisher')
-# Create a publisher to publish messages of String type to "topic", with a queue size of 10.
-self.publisher\_ = self.create_publisher(String, 'topic', 10)
-# Create a timer to trigger the time_callback method every 0.5 seconds.
-timer_period = 0.5 \# second
-self.timer = self.create_timer(timer_period, self.timer_callback)
-# Counter, used to generate numbers in the message
-self.i = 0
-# Define timer callback function
-def timer_callback(self):
-# Create a message of type String
-msg = String()
-# Set the message data as "Hello World: number"
-msg.data = 'Hello World: %d' % self.i
-# Publish message
-self.publisher\_.publish(msg)
-# Increment the counter
-self.i += 1
-# Main function
+
+    # 类的初始化方法(Class initialization method)
+    def __init__(self):
+        # 调用Node类的初始化方法，设置节点名称为'minimal_publisher'(Call Node class initialization method, set node name to 'minimal_publisher')
+        super().__init__('minimal_publisher')
+
+        # 创建一个发布者，发布String类型消息到'topic'，队列大小为10(Create a publisher that publishes String type messages to 'topic' with queue size 10)
+        self.publisher_ = self.create_publisher(String, 'topic', 10)
+
+        # 创建一个定时器，每0.5秒触发一次timer_callback方法(Create a timer that triggers timer_callback method every 0.5 seconds)
+        timer_period = 0.5  # 秒(seconds)
+        self.timer = self.create_timer(timer_period, self.timer_callback)
+
+        # 计数器，用于生成消息中的数字(Counter for generating numbers in messages)
+        self.i = 0
+
+    # 定义定时器回调函数(Define timer callback function)
+    def timer_callback(self):
+        # 创建一个String类型的消息(Create a String type message)
+        msg = String()
+
+        # 设置消息数据为'Hello World: 数字'(Set message data to 'Hello World: number')
+        msg.data = 'Hello World: %d' % self.i
+
+        # 发布消息(Publish message)
+        self.publisher_.publish(msg)
+
+        # 计数器自增(Increment counter)
+        self.i += 1
+
+
+# 主函数(Main function)
 def main(args=None):
-# Initialize ROS2 node
-rclpy.init(args=args)
-# Create MinimalPublisher object
-minimal_publisher = MinimalPublisher()
-# Enter the event loop of ROS2 node
-rclpy.spin(minimal_publisher)
-# Destroy node object
-minimal_publisher.destroy_node()
-# Shut down ROS2 node
-rclpy.shutdown()
-# If this script is the main program, main function is executed.
-if \_\_name\_\_ == '\_\_main\_\_':
-main()
+    # 初始化ROS 2节点(Initialize ROS 2 node)
+    rclpy.init(args=args)
+
+    # 创建MinimalPublisher对象(Create MinimalPublisher object)
+    minimal_publisher = MinimalPublisher()
+
+    # 进入ROS 2节点的事件循环(Enter ROS 2 node event loop)
+    rclpy.spin(minimal_publisher)
+
+    # 销毁节点对象(Destroy node object)
+    minimal_publisher.destroy_node()
+
+    # 关闭ROS 2节点(Shutdown ROS 2 node)
+    rclpy.shutdown()
+
+
+# 如果该脚本是主程序，则执行main函数(If this script is the main program, execute main function)
+if __name__ == '__main__':
+    main()
 ```
 
 ```bash
@@ -848,34 +866,45 @@ vim topic_sub.py
 ```py
 import rclpy
 from rclpy.node import Node
+
 from std_msgs.msg import String
-# Define a NinimalPublisher class inhering from the Node.
+
+# 定义一个继承自Node的MinimalSubscriber类(Define a MinimalSubscriber class that inherits from Node)
 class MinimalSubscriber(Node):
-# The initialization method of the Class
-def \_\_init\_\_(self):
-# Call the initialization method of the Node class
-super().\_\_init\_\_('minimal_subscriber')
-# Create a subscriber to subscribe to the messages of String type on the "topic", Set the callback function to listener_callback and the queue size to 10.
-self.subscription = self.create_subscription(String, 'topic', self.listener_callback, 10)
-# Define message callback function
-def listener_callback(self, msg):
-# Get the logger and print the received message.
-self.get_logger().info('I heard: "%s"' % msg.data)
-# Main function
+
+    # 类的初始化方法(Class initialization method)
+    def __init__(self):
+        # 调用Node类的初始化方法(Call Node class initialization method)
+        super().__init__('minimal_subscriber')
+        
+        # 创建一个订阅者，订阅名为'topic'的String类型消息，回调函数为listener_callback，队列大小为10(Create a subscriber that subscribes to String type messages named 'topic', callback function is listener_callback, queue size is 10)
+        self.subscription = self.create_subscription(String, 'topic', self.listener_callback, 10)
+
+    # 定义消息回调函数(Define message callback function)
+    def listener_callback(self, msg):
+        # 获取日志记录器并打印收到的消息(Get logger and print received message)
+        self.get_logger().info('I heard: "%s"' % msg.data)
+
+# 主函数(Main function)
 def main(args=None):
-# Initialize ROS2 node
-rclpy.init(args=args)
-# Create MinimalSubscriber object
-minimal_subscriber = MinimalSubscriber()
-# Enter the event loop of ROS2 node
-rclpy.spin(minimal_subscriber)
-# Destroy node object
-minimal_subscriber.destroy_node()
-# Shut down ROS2 node
-rclpy.shutdown()
-# If this script is the main program, the main function is executed.
-if \_\_name\_\_ == '\_\_main\_\_':
-main()
+    # 初始化ROS 2节点(Initialize ROS 2 node)
+    rclpy.init(args=args)
+
+    # 创建MinimalSubscriber对象(Create MinimalSubscriber object)
+    minimal_subscriber = MinimalSubscriber()
+
+    # 进入ROS 2节点的事件循环(Enter ROS 2 node event loop)
+    rclpy.spin(minimal_subscriber)
+
+    # 销毁节点对象(Destroy node object)
+    minimal_subscriber.destroy_node()
+    
+    # 关闭ROS 2节点(Shutdown ROS 2 node)
+    rclpy.shutdown()
+
+# 如果该脚本是主程序，则执行main函数(If this script is the main program, execute main function)
+if __name__ == '__main__':
+    main()
 ```
 
 ```bash
@@ -906,9 +935,10 @@ vim setup.py
 
 (3) Press "**i**" to enter the editing mode, and then enter the following code to the corresponding position.
 
+```
 'topic_pub = topic_demo.topic_pub:main',
-
 'topic_sub = topic_demo.topic_sub:main'
+```
 
 <img class="common_img" src="../_static/media/chapter_9/section_8/media/image15.png"  />
 
@@ -956,7 +986,7 @@ ros2 run topic_demo topic_sub
 
 ### 8.8.5 Program Analysis
 
-(1) **Publish Topic**
+(1) Publish Topic
 
 According to the realization result, the logic progress for the program is shown as pictured:
 
@@ -964,19 +994,69 @@ According to the realization result, the logic progress for the program is shown
 
 Create a publisher named as minimal_publisher. This publisher publishes a message with an incremental number every to the "**topic**" topic every 0.5 seconds. During program execution, ROS 2 node is initialized first. Then, a MinimalPublisher object is created, and the program enters the ROS 2 node's event loop. When the program is interrupted, the node object is destroyed, and the ROS 2 node is shut down.
 
-① **Main Function**
+① Main Function
 
-<img class="common_img" src="../_static/media/chapter_9/section_8/media/image24.png"  />
+```python
+def main(args=None):
+    # 初始化ROS 2节点(Initialize ROS 2 node)
+    rclpy.init(args=args)
+
+    # 创建MinimalPublisher对象(Create MinimalPublisher object)
+    minimal_publisher = MinimalPublisher()
+
+    # 进入ROS 2节点的事件循环(Enter ROS 2 node event loop)
+    rclpy.spin(minimal_publisher)
+
+    # 销毁节点对象(Destroy node object)
+    minimal_publisher.destroy_node()
+
+    # 关闭ROS 2节点(Shutdown ROS 2 node)
+    rclpy.shutdown()
+```
 
 First, invoke the rclpy.init() function to initialize ROS2 Python interface. Then instantiate the MinimalPublisher() file. Finally, execute the minimal_publisher within the event loop of the ROS2 node.
 
 ② MinimalPublisher Class
 
-<img class="common_img" src="../_static/media/chapter_9/section_8/media/image25.png"  />
+```python
+# 定义一个继承自Node的MinimalPublisher类(Define a MinimalPublisher class that inherits from Node)
+class MinimalPublisher(Node):
+
+    # 类的初始化方法(Class initialization method)
+    def __init__(self):
+        # 调用Node类的初始化方法，设置节点名称为'minimal_publisher'(Call Node class initialization method, set node name to 'minimal_publisher')
+        super().__init__('minimal_publisher')
+
+        # 创建一个发布者，发布String类型消息到'topic'，队列大小为10(Create a publisher that publishes String type messages to 'topic' with queue size 10)
+        self.publisher_ = self.create_publisher(String, 'topic', 10)
+
+        # 创建一个定时器，每0.5秒触发一次timer_callback方法(Create a timer that triggers timer_callback method every 0.5 seconds)
+        timer_period = 0.5  # 秒(seconds)
+        self.timer = self.create_timer(timer_period, self.timer_callback)
+
+        # 计数器，用于生成消息中的数字(Counter for generating numbers in messages)
+        self.i = 0
+
+    # 定义定时器回调函数(Define timer callback function)
+    def timer_callback(self):
+        # 创建一个String类型的消息(Create a String type message)
+        msg = String()
+
+        # 设置消息数据为'Hello World: 数字'(Set message data to 'Hello World: number')
+        msg.data = 'Hello World: %d' % self.i
+
+        # 发布消息(Publish message)
+        self.publisher_.publish(msg)
+
+        # 计数器自增(Increment counter)
+        self.i += 1
+```
+
+
 
 First, create a node named minimal_publisher, then create a publisher named "**publisher\_**". The timier_callback() callback function prints a message with an incremental number to the node's log at intervals of 0.5 second.
 
-(2) **Subscribe to Topic**
+(2) Subscribe to Topic
 
 According to the realization result, the logic progress for the program is shown as pictured:
 
@@ -984,15 +1064,48 @@ According to the realization result, the logic progress for the program is shown
 
 Create a subscriber named as minimal_sublisher. This subscriber prints the subscribed messages to logger. During program execution, ROS 2 node is initialized first. Then, a MinimalPublisher object is created, and the program enters the ROS 2 node's event loop. When the program is interrupted, the node object is destroyed, and the ROS 2 node is shut down.
 
-① **Main Function**
+① Main Function
 
-<img class="common_img" src="../_static/media/chapter_9/section_8/media/image27.png"  />
+```python
+# 主函数(Main function)
+def main(args=None):
+    # 初始化ROS 2节点(Initialize ROS 2 node)
+    rclpy.init(args=args)
+
+    # 创建MinimalPublisher对象(Create MinimalPublisher object)
+    minimal_publisher = MinimalPublisher()
+
+    # 进入ROS 2节点的事件循环(Enter ROS 2 node event loop)
+    rclpy.spin(minimal_publisher)
+
+    # 销毁节点对象(Destroy node object)
+    minimal_publisher.destroy_node()
+
+    # 关闭ROS 2节点(Shutdown ROS 2 node)
+    rclpy.shutdown()
+```
 
 First, invoke the rclpy.init() function to initialize ROS2 Python interface. Then instantiate the MinimalPublisher() file. Finally, execute the minimal_publisher within the event loop of the ROS2 node.
 
 ② MinimalSublisher Class
 
-<img class="common_img" src="../_static/media/chapter_9/section_8/media/image28.png"  />
+```python
+# 定义一个继承自Node的MinimalSubscriber类(Define a MinimalSubscriber class that inherits from Node)
+class MinimalSubscriber(Node):
+
+    # 类的初始化方法(Class initialization method)
+    def __init__(self):
+        # 调用Node类的初始化方法(Call Node class initialization method)
+        super().__init__('minimal_subscriber')
+        
+        # 创建一个订阅者，订阅名为'topic'的String类型消息，回调函数为listener_callback，队列大小为10(Create a subscriber that subscribes to String type messages named 'topic', callback function is listener_callback, queue size is 10)
+        self.subscription = self.create_subscription(String, 'topic', self.listener_callback, 10)
+
+    # 定义消息回调函数(Define message callback function)    
+    def listener_callback(self, msg):
+        # 获取日志记录器并打印收到的消息(Get logger and print received message)
+        self.get_logger().info('I heard: "%s"' % msg.data)
+```
 
 First create a node named minimal_sublisher. Then create a subscriber named subscription. In the listener_callback() callback function, the received message content is printed to the logger.
 
@@ -1060,9 +1173,9 @@ rosidl_generate_interfaces( \${PROJECT_NAME}
 (8) Enter the command "**vim package.xml**" again to open the file using the Vim text editor. If you need to make modifications, press "**i**" to enter insert mode. Once you've finished editing, press "**Esc**", then type "**:wq**" to save and exit.
 
 ```xml
-\<build_depend\>rosidl_default_generators\</build_depend\>
-\<exec_depend\>rosidl_default_runtime\</exec_depend\>
-\<member_of_group\>rosidl_interface_packages\</member_of_group\>
+<build_depend>rosidl_default_generators</build_depend>
+<exec_depend>rosidl_default_runtime</exec_depend>
+<member_of_group>rosidl_interface_packages</member_of_group>
 ```
 
 <img class="common_img" src="../_static/media/chapter_9/section_8/media/image40.png"  />
@@ -1087,7 +1200,7 @@ This communication mechanism is common in our daily life. For example, when we b
 
 ### 8.9.2 Create Interface 
 
-(1) Click <img src="../_static/media/chapter_9/section_9/media/image3.png"  /> and select "**System Tools -\>Terminator**" in sequence.
+(1) Click <img src="../_static/media/chapter_9/section_9/media/image3.png"  /> and select "**System Tools -\>Terminator in sequence.
 
 <img class="common_img" src="../_static/media/chapter_9/section_9/media/image4.png"  />
 
@@ -1146,7 +1259,7 @@ rosidl_generate_interfaces( \${PROJECT_NAME}
 
 * **Create Server**
 
-(1) Click <img src="../_static/media/chapter_9/section_9/media/image3.png"  /> and select "**System Tools -\>Terminator**" in sequence.
+(1) Click <img src="../_static/media/chapter_9/section_9/media/image3.png"  /> and select "**System Tools -\>Terminator in sequence.
 
 <img class="common_img" src="../_static/media/chapter_9/section_9/media/image4.png"  />
 
@@ -1176,35 +1289,46 @@ vim service_server.py
 import rclpy
 from rclpy.node import Node
 from demo_interfaces.srv import AddInts
-# Define a MinimalService class inhering from the Node.
+
+# 定义一个继承自Node的MinimalService类(Define a MinimalService class that inherits from Node)
 class MinimalService(Node):
-# The initialization method of the Class
-def \_\_init\_\_(self):
-# Call the initialize method of the Node class to set the node name as "minimal_service"
-super().\_\_init\_\_('minimal_service')
-# Create a service that provides a service of type AddInts. Set the service name as 'add_two_ints', and the callback function as 'add_two_ints_callback'.
-self.srv = self.create_service(AddInts, 'add_two_ints', self.add_two_ints_callback)
-# Define service callback function
-def add_two_ints_callback(self, request, response):
-# Log the received requests num1 and num2 in the logs.
-self.get_logger().info('Incoming request\nnum1: %d num2: %d' % (request.num1, request.num2))
-# Calculate and set the respond field 'sum'.
-response.sum = request.num1 + request.num2
-# Return respond
-return response
-# Main function
+
+    # 类的初始化方法(Class initialization method)
+    def __init__(self):
+        # 调用Node类的初始化方法，设置节点名称为'minimal_service'(Call Node class initialization method, set node name to 'minimal_service')
+        super().__init__('minimal_service')
+
+        # 创建一个服务，提供AddInts类型的服务，服务名称为'add_two_ints'，回调函数为add_two_ints_callback(Create a service that provides AddInts type service, service name is 'add_two_ints', callback function is add_two_ints_callback)
+        self.srv = self.create_service(AddInts, 'add_two_ints', self.add_two_ints_callback)
+
+    # 定义服务回调函数(Define service callback function)
+    def add_two_ints_callback(self, request, response):
+        # 在日志中记录接收到的请求的num1和num2(Log the received request's num1 and num2)
+        self.get_logger().info('Incoming request\nnum1: %d num2: %d' % (request.num1, request.num2))
+        
+        # 计算并设置响应的sum字段(Calculate and set the sum field of the response)
+        response.sum = request.num1 + request.num2
+
+        # 返回响应(Return response)
+        return response
+
+# 主函数(Main function)
 def main():
-# Initialize ROS2 node
-rclpy.init()
-# Create MinimalService object
-minimal_service = MinimalService()
-# Enter the event loop of ROS2 node
-rclpy.spin(minimal_service)
-# Shut down ROS2 node
-rclpy.shutdown()
-# If this script is the main program, main function is executed.
-if \_\_name\_\_ == '\_\_main\_\_':
-main()
+    # 初始化ROS 2节点(Initialize ROS 2 node)
+    rclpy.init()
+
+    # 创建MinimalService对象(Create MinimalService object)
+    minimal_service = MinimalService()
+
+    # 进入ROS 2节点的事件循环(Enter ROS 2 node event loop)
+    rclpy.spin(minimal_service)
+
+    # 关闭ROS 2节点(Shutdown ROS 2 node)
+    rclpy.shutdown()
+
+# 如果该脚本是主程序，则执行main函数(If this script is the main program, execute main function)
+if __name__ == '__main__':
+    main()
 ```
 
 ```bash
@@ -1231,55 +1355,72 @@ import rclpy
 from rclpy.node import Node
 from rclpy.logging import get_logger
 from demo_interfaces.srv import AddInts
-# Define a MinimalClient class inhering from the Node.
+
+# 定义一个继承自Node的MinimalClient类(Define a MinimalClient class that inherits from Node)
 class MinimalClient(Node):
-# The initialization method of the Class
-def \_\_init\_\_(self):
-# Call the initialization method of the Node class. Set the node name as "minimal_client"
-super().\_\_init\_\_('minimal_client')
-# Create a server and connect to the **AddInts** service named as "add_two_ints".
-self.cli = self.create_client(AddInts, 'add_two_ints')
-# Wait for the service connection, with a maximum wait time of 1 second.
-while not self.cli.wait_for_service(timeout_sec=1.0):
-self.get_logger().info('service is connecting...')
-# Send service request method
-def send_request(self):
-# Create an Addlnts request object.
-request = AddInts.Request()
-# Get two integers from the command-line arguments and set them into the request object.
-request.num1 = int(sys.argv\[1\])
-request.num2 = int(sys.argv\[2\])
-# Asynchronously call the service and retrieve a Future object.
-self.future = self.cli.call_async(request)
-# Main function
+
+    # 类的初始化方法(Class initialization method)
+    def __init__(self):
+        # 调用Node类的初始化方法，设置节点名称为'minimal_client'(Call Node class initialization method, set node name to 'minimal_client')
+        super().__init__('minimal_client')
+
+        # 创建一个服务客户端，连接到名为'add_two_ints'的AddInts服务(Create a service client that connects to AddInts service named 'add_two_ints')
+        self.cli = self.create_client(AddInts, 'add_two_ints')
+
+        # 等待服务连接，最多等待1秒(Wait for service connection, wait up to 1 second)
+        while not self.cli.wait_for_service(timeout_sec=1.0):
+            self.get_logger().info('service is connecting...')
+
+    # 发送服务请求的方法(Method to send service request)
+    def send_request(self):
+        # 创建一个AddInts请求对象(Create an AddInts request object)
+        request = AddInts.Request()
+
+        # 从命令行参数中获取两个整数，并设置到请求对象中(Get two integers from command line arguments and set them to the request object)
+        request.num1 = int(sys.argv[1])
+        request.num2 = int(sys.argv[2])
+
+        # 异步调用服务，并获取一个Future对象(Asynchronously call the service and get a Future object)
+        self.future = self.cli.call_async(request)
+
+# 主函数(Main function)
 def main():
-# Check if the command-line augments contain two integers.
-if len(sys.argv) != 3:
-get_logger("rclpy").error("Please provide two integers")
-return
-# Initialize ROS2 node
-rclpy.init()
-# Create MinimalClient object
-minimal_client = MinimalClient()
-# Send service request
-minimal_client.send_request()
-# Block and wait for the service call to complete.
-rclpy.spin_until_future_complete(minimal_client, minimal_client.future)
-try:
-# Retrieve the respond from the service call.
-response = minimal_client.future.result()
-# Print the respond results
-minimal_client.get_logger().info("Request result：sum = %d" % response.sum)
-except Exception:
-# Print error message if the request fails
-minimal_client.get_logger().error("Request Fail")
-# Destroy node object
-minimal_client.destroy_node()
-# Shut down ROS2 node
-rclpy.shutdown()
-# If this script is the main program, the main function is executed.
-if \_\_name\_\_ == '\_\_main\_\_':
-main()
+    # 检查命令行参数是否包含两个整数(Check if command line arguments contain two integers)
+    if len(sys.argv) != 3:
+        get_logger("rclpy").error("请提供两个整数值")
+        return
+
+    # 初始化ROS 2节点(Initialize ROS 2 node)
+    rclpy.init()
+
+    # 创建MinimalClient对象(Create MinimalClient object)
+    minimal_client = MinimalClient()
+
+    # 发送服务请求(Send service request)
+    minimal_client.send_request()
+
+    # 阻塞等待服务调用完成(Block and wait for service call completion)
+    rclpy.spin_until_future_complete(minimal_client, minimal_client.future)
+
+    try:
+        # 获取服务调用的响应(Get the response from service call)
+        response = minimal_client.future.result()
+        
+        # 打印响应结果(Print response result)
+        minimal_client.get_logger().info("请求结果：sum = %d" % response.sum)
+    except Exception:
+        # 打印请求失败的错误信息(Print error message for failed request)
+        minimal_client.get_logger().error("请求失败")
+
+    # 销毁节点对象(Destroy node object)
+    minimal_client.destroy_node()
+    
+    # 关闭ROS 2节点(Shutdown ROS 2 node)
+    rclpy.shutdown()
+
+# 如果该脚本是主程序，则执行main函数(If this script is the main program, execute main function)
+if __name__ == '__main__':
+    main()
 ```
 
 ```bash
@@ -1372,17 +1513,53 @@ According to the realization result, the logic progress for the program is shown
 
 <img class="common_img" src="../_static/media/chapter_9/section_9/media/image31.png"   />
 
-Create a server named "**minimal_service**" which will receive requests, perform calculations on them, and respond with the result. During program execution, ROS 2 node is initialized first. Then, a MinimalPublisher object is created, and the program enters the ROS 2 node's event loop. When the program is interrupted, the node object is destroyed, and the ROS 2 node is shut down.
+Create a server named `minimal_service` which will receive requests, perform calculations on them, and respond with the result. During program execution, ROS 2 node is initialized first. Then, a `MinimalPublisher` object is created, and the program enters the ROS 2 node's event loop. When the program is interrupted, the node object is destroyed, and the ROS 2 node is shut down.
 
-(1) **Main Function**
+(1) Main Function
 
-<img class="common_img" src="../_static/media/chapter_9/section_9/media/image32.png"  />
+```python
+# 主函数(Main function)
+def main():
+    # 初始化ROS 2节点(Initialize ROS 2 node)
+    rclpy.init()
 
-First, invoke the **rclpy.init()** function to initialize ROS2 Python interface. Then instantiate the **MinimalService()**. Finally, execute the **minimal_service** within the event loop of the ROS2 node.
+    # 创建MinimalService对象(Create MinimalService object)
+    minimal_service = MinimalService()
 
-(2) **MinimalService Class**
+    # 进入ROS 2节点的事件循环(Enter ROS 2 node event loop)
+    rclpy.spin(minimal_service)
 
-<img class="common_img" src="../_static/media/chapter_9/section_9/media/image33.png"  />
+    # 关闭ROS 2节点(Shutdown ROS 2 node)
+    rclpy.shutdown()
+```
+
+First, invoke the `rclpy.init()` function to initialize ROS2 Python interface. Then instantiate the `MinimalService()`. Finally, execute the `minimal_service` within the event loop of the ROS2 node.
+
+(2) MinimalService Class
+
+```python
+# 定义一个继承自Node的MinimalService类(Define a MinimalService class that inherits from Node)
+class MinimalService(Node):
+
+    # 类的初始化方法(Class initialization method)
+    def __init__(self):
+        # 调用Node类的初始化方法，设置节点名称为'minimal_service'(Call Node class initialization method, set node name to 'minimal_service')
+        super().__init__('minimal_service')
+
+        # 创建一个服务，提供AddInts类型的服务，服务名称为'add_two_ints'，回调函数为add_two_ints_callback(Create a service that provides AddInts type service, service name is 'add_two_ints', callback function is add_two_ints_callback)
+        self.srv = self.create_service(AddInts, 'add_two_ints', self.add_two_ints_callback)
+
+    # 定义服务回调函数(Define service callback function)
+    def add_two_ints_callback(self, request, response):
+        # 在日志中记录接收到的请求的num1和num2(Log the received request's num1 and num2)
+        self.get_logger().info('Incoming request\nnum1: %d num2: %d' % (request.num1, request.num2))
+        
+        # 计算并设置响应的sum字段(Calculate and set the sum field of the response)
+        response.sum = request.num1 + request.num2
+
+        # 返回响应(Return response)
+        return response
+```
 
 First, a node named minimal_service is created. Then, a service is created to provide a service of type AddInts, with the service name 'add_two_ints'. Inside the add_two_ints_callback() callback function, the two data from the request are received, processed for calculation, and the result of the calculation is responded back.
 
@@ -1392,19 +1569,81 @@ According to the realization result, the logic progress for the program is shown
 
 <img class="common_img" src="../_static/media/chapter_9/section_9/media/image34.png"   />
 
-A client named "**minimal_client**" is created, which connects to the AddInts service named '**add_two_ints**'. It sends the two requested data. During program execution, it initializes the ROS2 node, creates a MinimalClient object, sends the service request, prints the response result, and upon interruption, it destroys the node object and closes the ROS 2 node.
+A client named `minimal_client` is created, which connects to the AddInts service named '**add_two_ints**'. It sends the two requested data. During program execution, it initializes the ROS2 node, creates a MinimalClient object, sends the service request, prints the response result, and upon interruption, it destroys the node object and closes the ROS 2 node.
 
-(1) **Main Function**
+(1) Main Function
 
-<img class="common_img" src="../_static/media/chapter_9/section_9/media/image35.png"  />
+```python
+# 主函数(Main function)
+def main():
+    # 检查命令行参数是否包含两个整数(Check if command line arguments contain two integers)
+    if len(sys.argv) != 3:
+        get_logger("rclpy").error("请提供两个整数值")
+        return
+
+    # 初始化ROS 2节点(Initialize ROS 2 node)
+    rclpy.init()
+
+    # 创建MinimalClient对象(Create MinimalClient object)
+    minimal_client = MinimalClient()
+
+    # 发送服务请求(Send service request)
+    minimal_client.send_request()
+
+    # 阻塞等待服务调用完成(Block and wait for service call completion)
+    rclpy.spin_until_future_complete(minimal_client, minimal_client.future)
+
+    try:
+        # 获取服务调用的响应(Get the response from service call)
+        response = minimal_client.future.result()
+        
+        # 打印响应结果(Print response result)
+        minimal_client.get_logger().info("请求结果：sum = %d" % response.sum)
+    except Exception:
+        # 打印请求失败的错误信息(Print error message for failed request)
+        minimal_client.get_logger().error("请求失败")
+
+    # 销毁节点对象(Destroy node object)
+    minimal_client.destroy_node()
+    
+    # 关闭ROS 2节点(Shutdown ROS 2 node)
+    rclpy.shutdown()
+```
 
 First, invoke the rclpy.init() function to initialize ROS2 Python interface. Then instantiate the MinimalClient() file and send the service request. Finally, process the respond data.
 
-(2) **MinimalClient Class**
+(2) MinimalClient Class
 
-<img class="common_img" src="../_static/media/chapter_9/section_9/media/image36.png"  />
+```python
+# 定义一个继承自Node的MinimalClient类(Define a MinimalClient class that inherits from Node)
+class MinimalClient(Node):
 
-First, a node named "**minimal_client**" is created. Then, a service client is created to connect to the AddInts service named "**add_two_ints**". In the send_request() function, the two command-line augments are used as the data for the request object, and the request is sent.
+    # 类的初始化方法(Class initialization method)
+    def __init__(self):
+        # 调用Node类的初始化方法，设置节点名称为'minimal_client'(Call Node class initialization method, set node name to 'minimal_client')
+        super().__init__('minimal_client')
+
+        # 创建一个服务客户端，连接到名为'add_two_ints'的AddInts服务(Create a service client that connects to AddInts service named 'add_two_ints')
+        self.cli = self.create_client(AddInts, 'add_two_ints')
+
+        # 等待服务连接，最多等待1秒(Wait for service connection, wait up to 1 second)
+        while not self.cli.wait_for_service(timeout_sec=1.0):
+            self.get_logger().info('service is connecting...')
+
+    # 发送服务请求的方法(Method to send service request)
+    def send_request(self):
+        # 创建一个AddInts请求对象(Create an AddInts request object)
+        request = AddInts.Request()
+
+        # 从命令行参数中获取两个整数，并设置到请求对象中(Get two integers from command line arguments and set them to the request object)
+        request.num1 = int(sys.argv[1])
+        request.num2 = int(sys.argv[2])
+
+        # 异步调用服务，并获取一个Future对象(Asynchronously call the service and get a Future object)
+        self.future = self.cli.call_async(request)
+```
+
+First, a node named `minimal_client` is created. Then, a service client is created to connect to the AddInts service named `add_two_ints`. In the send_request() function, the two command-line augments are used as the data for the request object, and the request is sent.
 
 ## 8.10 ROS2 Action
 
@@ -1512,47 +1751,55 @@ vim action_server.py
 ```
 
 ```py
-import rclpy # Import rclpy module
-from rclpy.node import Node # Import Node class
-from rclpy.action import ActionServer # Import ActionServer class
-from demo_interfaces.action import FileDownload # Import FileDownload action interface
-import random # Import random module
-class FileDownloadActionServer(Node): # Define a FileDownloadActionServer class inhering from the Node.
-def \_\_init\_\_(self):
-super().\_\_init\_\_('file_download_action_server') # Invoke the constructor of the parent function to initialize node
-self.\_action_server = ActionServer(
-self,
-FileDownload, # Use FileDownload action interface
-'file_download', # Define the action name as file_download
-self.execute_callback) # Set the callback function to execute_callback
-def execute_callback(self, goal_handle):
-# The callback function executed by the server
-self.get_logger().info(f'Start file download for {goal_handle.request.file_size} bytes...') # Print the log for the start of the download file
-feedback_msg = FileDownload.Feedback() # Create an object of type Feedback message
-current_size = 0 # Initialize the current file size of the download to 0
-while current_size \< goal_handle.request.file_size:
-increment_size = random.randint(1, 10) # Simulate randomly increasing the download size.
-current_size += increment_size # Update the current download file size
-if current_size \> goal_handle.request.file_size:
-current_size = goal_handle.request.file_size
-completion_percentage = (current_size / goal_handle.request.file_size) \* 100 # Calculate the download progress percentage
-feedback_msg.completion_percentage = completion_percentage # Update the download progress within Feedback message
-self.get_logger().info(f'Publishing feedback: {completion_percentage:.2f}% downloaded') # Print the feedback message
-goal_handle.publish_feedback(feedback_msg) # Publish a feedback message
-rclpy.spin_once(self, timeout_sec=1.0) # Simulate the passage of the time.
-goal_handle.succeed() # Indicates the goal is completed
-result = FileDownload.Result() # Create an object of type Result message.
-result.current_size = current_size # Set current file size of Result message
-self.get_logger().info('File download completed！') # Print a log for the completed file download
-return result # Return results
+import rclpy  # 导入rclpy模块(Import rclpy module)
+from rclpy.node import Node  # 导入Node类(Import Node class)
+from rclpy.action import ActionServer  # 导入ActionServer类(Import ActionServer class)
+from demo_interfaces.action import FileDownload  # 导入FileDownload action接口(Import FileDownload action interface)
+import random  # 导入random模块(Import random module)
+
+class FileDownloadActionServer(Node):  # 定义一个继承自Node类的FileDownloadActionServer类(Define a FileDownloadActionServer class that inherits from Node class)
+    def __init__(self):
+        super().__init__('file_download_action_server')  # 调用父类构造函数初始化节点(Call parent class constructor to initialize node)
+        self._action_server = ActionServer(
+            self,
+            FileDownload,  # 使用FileDownload action接口(Use FileDownload action interface)
+            'file_download',  # 定义action的名称为file_download(Define action name as file_download)
+            self.execute_callback)  # 设置回调函数为execute_callback(Set callback function as execute_callback)
+
+    def execute_callback(self, goal_handle):
+        # 服务器端执行的回调函数(Server-side execution callback function)
+
+        self.get_logger().info(f'Start file download for {goal_handle.request.file_size} bytes...')  # 打印开始下载的日志(Print log for starting download)
+        feedback_msg = FileDownload.Feedback()  # 创建Feedback消息类型的对象(Create Feedback message type object)
+
+        current_size = 0  # 初始化当前下载的文件大小为0(Initialize current downloaded file size to 0)
+        while current_size < goal_handle.request.file_size:
+            increment_size = random.randint(1, 10)  # 模拟随机增加下载大小(Simulate random increment in download size)
+            current_size += increment_size  # 更新当前下载的文件大小(Update current downloaded file size)
+            if current_size > goal_handle.request.file_size:
+                current_size = goal_handle.request.file_size
+            completion_percentage = (current_size / goal_handle.request.file_size) * 100  # 计算下载进度百分比(Calculate download progress percentage)
+
+            feedback_msg.completion_percentage = completion_percentage  # 更新Feedback消息的下载进度(Update download progress in Feedback message)
+            self.get_logger().info(f'Publishing feedback: {completion_percentage:.2f}% downloaded')  # 打印发布的反馈消息(Print published feedback message)
+            goal_handle.publish_feedback(feedback_msg)  # 发布反馈消息(Publish feedback message)
+            rclpy.spin_once(self, timeout_sec=1.0)  # 模拟时间的流逝(Simulate time passage)
+
+        goal_handle.succeed()  # 指示目标已完成(Indicate goal completion)
+        result = FileDownload.Result()  # 创建Result消息类型的对象(Create Result message type object)
+        result.current_size = current_size  # 设置Result消息的当前文件大小(Set current file size in Result message)
+        self.get_logger().info('File download completed！')  # 打印文件下载完成的日志(Print log for file download completion)
+        return result  # 返回结果(Return result)
+
 def main(args=None):
-rclpy.init(args=args) # Initialize ROS node
-server = FileDownloadActionServer() # Create FileDownloadActionServer object
-rclpy.spin(server) # Enter a main loop
-server.destroy_node() # Destroy the node
-rclpy.shutdown() # ROS Shut down ROS
-if \_\_name\_\_ == '\_\_main\_\_':
-main()
+    rclpy.init(args=args)  # 初始化ROS节点(Initialize ROS node)
+    server = FileDownloadActionServer()  # 创建FileDownloadActionServer对象(Create FileDownloadActionServer object)
+    rclpy.spin(server)  # 进入主循环(Enter main loop)
+    server.destroy_node()  # 销毁节点(Destroy node)
+    rclpy.shutdown()  # 关闭ROS(Shutdown ROS)
+
+if __name__ == '__main__':
+    main()
 ```
 
 ```bash
@@ -1574,43 +1821,54 @@ vim action_client.py
 ```
 
 ```py
-import rclpy # Import rclpy module
-from rclpy.node import Node # Import Node class
-from rclpy.action import ActionClient # Import ActionClient class
-from demo_interfaces.action import FileDownload # Import FileDownload action interface
-class FileDownloadActionClient(Node): # Define a FileDownloadActionClien class inhering for the Node class
-def \_\_init\_\_(self):
-super().\_\_init\_\_('file_download_action_client') # Invoke the constructor of the parent function to initialize node
-self.\_action_client = ActionClient(self, FileDownload, 'file_download') # Create ActionClient object
-def send_goal(self, file_size):
-goal_msg = FileDownload.Goal() # Create an object of Type Goal message
-goal_msg.file_size = file_size # Set file size
-self.get_logger().info(f'Sending file download goal for {file_size} bytes') # Print a log indicating the target is sent
-self.\_action_client.wait_for_server() # Wait for the server to be available.
-self.future = self.\_action_client.send_goal_async(goal_msg, feedback_callback=self.feedback_callback) # Send an asynchronous request for a goal,
-self.future.add_done_callback(self.goal_response_callback) #Add a callback function to handle the response after sending a goal request
-def goal_response_callback(self,future):
-goal_handle = future.result() # Get goal handle
-if not goal_handle.accepted:
-self.get_logger().info("Goal rejected") # Print a log indicating the goal is rejected
-return
-self.get_logger().info("Goal accepted") # Print a log indicating the goal is accept
-self.\_get_result_future = goal_handle.get_result_async() #
-Retrieve an asynchronous request for a goal,
-self.\_get_result_future.add_done_callback(self.get_result_callback) # Add the callback function to retrieve the results
-def get_result_callback(self,future):
-self.get_logger().info("File download completed successfully.") # Print a log indicating the file download is successful.
-def feedback_callback(self, feedback_msg):
-self.get_logger().info(f'Received feedback: {feedback_msg.feedback.completion_percentage:.2f}% downloaded') # Print the retrieved feedback information.
+import rclpy  # 导入rclpy模块(Import rclpy module)
+from rclpy.node import Node  # 导入Node类(Import Node class)
+from rclpy.action import ActionClient  # 导入ActionClient类(Import ActionClient class)
+from demo_interfaces.action import FileDownload  # 导入FileDownload action接口(Import FileDownload action interface)
+
+class FileDownloadActionClient(Node):  # 定义一个继承自Node类的FileDownloadActionClient类(Define a FileDownloadActionClient class that inherits from Node class)
+    def __init__(self):
+        super().__init__('file_download_action_client')  # 调用父类构造函数初始化节点(Call parent class constructor to initialize node)
+        self._action_client = ActionClient(self, FileDownload, 'file_download')  # 创建ActionClient对象(Create ActionClient object)
+
+    def send_goal(self, file_size):
+        goal_msg = FileDownload.Goal()  # 创建Goal消息类型的对象(Create Goal message type object)
+        goal_msg.file_size = file_size  # 设置文件大小(Set file size)
+
+        self.get_logger().info(f'Sending file download goal for {file_size} bytes')  # 打印发送目标的日志(Print log for sending goal)
+
+        self._action_client.wait_for_server()  # 等待服务器可用(Wait for server to be available)
+        self.future = self._action_client.send_goal_async(goal_msg, feedback_callback=self.feedback_callback)  # 发送目标异步请求(Send goal async request)
+        
+        self.future.add_done_callback(self.goal_response_callback)  # 添加目标响应回调函数(Add goal response callback function)
+
+    def goal_response_callback(self,future):
+        goal_handle = future.result()  # 获取目标句柄(Get goal handle)
+        if not goal_handle.accepted:
+            self.get_logger().info("Goal rejected")  # 打印目标被拒绝的日志(Print log for goal rejection)
+            return
+        self.get_logger().info("Goal accepted")  # 打印目标被接受的日志(Print log for goal acceptance)
+        self._get_result_future = goal_handle.get_result_async()  # 获取目标结果异步请求(Get goal result async request)
+        self._get_result_future.add_done_callback(self.get_result_callback)  # 添加获取结果的回调函数(Add get result callback function)
+        
+    def get_result_callback(self,future):
+        self.get_logger().info("File download completed successfully.")  # 打印文件下载成功完成的日志(Print log for successful file download completion)
+
+    def feedback_callback(self, feedback_msg):
+        self.get_logger().info(f'Received feedback: {feedback_msg.feedback.completion_percentage:.2f}% downloaded')  # 打印接收到的反馈消息(Print received feedback message)
+
 def main(args=None):
-rclpy.init(args=args) # Initialize ROS2 node
-client = FileDownloadActionClient() # Create FileDownloadActionClient object
-result = client.send_goal(100) # Send goal
-rclpy.spin(client) # Enter main loop
-client.destroy_node() # Destroy node
-rclpy.shutdown() # Shut down ROS
-if \_\_name\_\_ == '\_\_main\_\_':
-main()
+    rclpy.init(args=args)  # 初始化ROS节点(Initialize ROS node)
+    client = FileDownloadActionClient()  # 创建FileDownloadActionClient对象(Create FileDownloadActionClient object)
+
+    result = client.send_goal(100)  # 发送目标(Send goal)
+
+    rclpy.spin(client)  # 进入主循环(Enter main loop)
+    client.destroy_node()  # 销毁节点(Destroy node)
+    rclpy.shutdown()  # 关闭ROS(Shutdown ROS)
+
+if __name__ == '__main__':
+    main()
 ```
 
 ```bash
@@ -1700,17 +1958,58 @@ According to the realization result, the logic progress for the program is shown
 
 <img class="common_img" src="../_static/media/chapter_9/section_10/media/image31.png"   />
 
-First, define a node named FileDownloadActionServer to construct an ActionServer of the FileDownload action type to provide task services. This execution callback function within ActionSeriver is responsible for simulating the process of executing real download tasks. It randomly increases the download progress to simulate file download while continuously publishing download feedback to the client through the goak_handle object. After the task is completed, the task status is set to success, and the download result is returned.
+First, define a node named `FileDownloadActionServer` to construct an `ActionServer` of the FileDownload action type to provide task services. This execution callback function within ActionSeriver is responsible for simulating the process of executing real download tasks. It randomly increases the download progress to simulate file download while continuously publishing download feedback to the client through the goak_handle object. After the task is completed, the task status is set to success, and the download result is returned.
 
-(1) **Main Function**
+(1) Main Function
 
-<img class="common_img" src="../_static/media/chapter_9/section_10/media/image32.png"  />
+```python
+def main(args=None):
+    rclpy.init(args=args)  # 初始化ROS节点(Initialize ROS node)
+    server = FileDownloadActionServer()  # 创建FileDownloadActionServer对象(Create FileDownloadActionServer object)
+    rclpy.spin(server)  # 进入主循环(Enter main loop)
+    server.destroy_node()  # 销毁节点(Destroy node)
+    rclpy.shutdown()  # 关闭ROS(Shutdown ROS)
+```
 
-First, invoke the **rclpy.init()** function to initialize ROS2 Python interface. Then instantiate the FileDownloadActionServer(). Finally, execute the server within the event loop of the ROS2 node.
+First, invoke the `rclpy.init()` function to initialize ROS2 Python interface. Then instantiate the `FileDownloadActionServer()`. Finally, execute the server within the event loop of the ROS2 node.
 
-(2) **FileDownloadActionServer Class**
+(2) FileDownloadActionServer Class
 
-<img class="common_img" src="../_static/media/chapter_9/section_10/media/image33.png"  />
+```python
+class FileDownloadActionServer(Node):  # 定义一个继承自Node类的FileDownloadActionServer类(Define a FileDownloadActionServer class that inherits from Node class)
+    def __init__(self):
+        super().__init__('file_download_action_server')  # 调用父类构造函数初始化节点(Call parent class constructor to initialize node)
+        self._action_server = ActionServer(
+            self,
+            FileDownload,  # 使用FileDownload action接口(Use FileDownload action interface)
+            'file_download',  # 定义action的名称为file_download(Define action name as file_download)
+            self.execute_callback)  # 设置回调函数为execute_callback(Set callback function as execute_callback)
+
+    def execute_callback(self, goal_handle):
+        # 服务器端执行的回调函数(Server-side execution callback function)
+
+        self.get_logger().info(f'Start file download for {goal_handle.request.file_size} bytes...')  # 打印开始下载的日志(Print log for starting download)
+        feedback_msg = FileDownload.Feedback()  # 创建Feedback消息类型的对象(Create Feedback message type object)
+
+        current_size = 0  # 初始化当前下载的文件大小为0(Initialize current downloaded file size to 0)
+        while current_size < goal_handle.request.file_size:
+            increment_size = random.randint(1, 10)  # 模拟随机增加下载大小(Simulate random increment in download size)
+            current_size += increment_size  # 更新当前下载的文件大小(Update current downloaded file size)
+            if current_size > goal_handle.request.file_size:
+                current_size = goal_handle.request.file_size
+            completion_percentage = (current_size / goal_handle.request.file_size) * 100  # 计算下载进度百分比(Calculate download progress percentage)
+
+            feedback_msg.completion_percentage = completion_percentage  # 更新Feedback消息的下载进度(Update download progress in Feedback message)
+            self.get_logger().info(f'Publishing feedback: {completion_percentage:.2f}% downloaded')  # 打印发布的反馈消息(Print published feedback message)
+            goal_handle.publish_feedback(feedback_msg)  # 发布反馈消息(Publish feedback message)
+            rclpy.spin_once(self, timeout_sec=1.0)  # 模拟时间的流逝(Simulate time passage)
+
+        goal_handle.succeed()  # 指示目标已完成(Indicate goal completion)
+        result = FileDownload.Result()  # 创建Result消息类型的对象(Create Result message type object)
+        result.current_size = current_size  # 设置Result消息的当前文件大小(Set current file size in Result message)
+        self.get_logger().info('File download completed！')  # 打印文件下载完成的日志(Print log for file download completion)
+        return result  # 返回结果(Return result)
+```
 
 This callback function is invoked to execute the file download task. Within this function, a while loop is used to simulate the real-time file download process by randomly increasing the current download amount. During the download process, it continuously publishes the current download progress as feedback information through the goal_handle object. Once the task download is completed, it uses the goal_handle to set the task status to success and returns the final download result.
 
@@ -1720,19 +2019,61 @@ According to the realization result, the logic progress for the program is shown
 
 <img class="common_img" src="../_static/media/chapter_9/section_10/media/image34.png"   />
 
-A FileDownloadActionClien class is defined, which creates an ActionClient object in the constructor and configures it for file download task type. The client provides a send_goal method to send the target file size as the action Goal. Additionally, it registers three callback functions to handle Goal status responses, task process feedback, and the final task. In the main function, an instance of the client is created, send_goal is called to send the download task, and rclpy.spin() to obtain the full process of task execution status changes.
+A `FileDownloadActionClien` class is defined, which creates an `ActionClient` object in the constructor and configures it for file download task type. The client provides a send_goal method to send the target file size as the action Goal. Additionally, it registers three callback functions to handle Goal status responses, task process feedback, and the final task. In the main function, an instance of the client is created, send_goal is called to send the download task, and `rclpy.spin()` to obtain the full process of task execution status changes.
 
-(1) **Main Function**
+(1) Main Function
 
-<img class="common_img" src="../_static/media/chapter_9/section_10/media/image35.png"  />
+```python
+def main(args=None):
+    rclpy.init(args=args)  # 初始化ROS节点(Initialize ROS node)
+    client = FileDownloadActionClient()  # 创建FileDownloadActionClient对象(Create FileDownloadActionClient object)
 
-First, invoke the **rclpy.init()** function to initialize ROS2 Python interface. Then instantiate the **FileDownloadActionClient()**. Finally, execute the client within the event loop of the ROS2 node.
+    result = client.send_goal(100)  # 发送目标(Send goal)
 
-(2) **FileDownloadActionClient Class**
+    rclpy.spin(client)  # 进入主循环(Enter main loop)
+    client.destroy_node()  # 销毁节点(Destroy node)
+    rclpy.shutdown()  # 关闭ROS(Shutdown ROS)
+```
 
-<img class="common_img" src="../_static/media/chapter_9/section_10/media/image36.png"  />
+First, invoke the `rclpy.init()` function to initialize ROS2 Python interface. Then instantiate the `FileDownloadActionClient()`. Finally, execute the client within the event loop of the ROS2 node.
 
-A ActionClient object is created to communicate with the task service. The client provides a send_goal method to send the download target, and registers three callback functions to handle the status changes "**feedback**" at the different stages of the task. After sending the Goal, the send_goal method adds callback functions through the future object to wait for the ActionServer's response. These three callback functions are used to obtain the Goal reception result, update the task progress, and obtain the completion result, covering the entire lifecycle of the task.
+(2) FileDownloadActionClient Class
+
+```python
+class FileDownloadActionClient(Node):  # 定义一个继承自Node类的FileDownloadActionClient类(Define a FileDownloadActionClient class that inherits from Node class)
+    def __init__(self):
+        super().__init__('file_download_action_client')  # 调用父类构造函数初始化节点(Call parent class constructor to initialize node)
+        self._action_client = ActionClient(self, FileDownload, 'file_download')  # 创建ActionClient对象(Create ActionClient object)
+
+    def send_goal(self, file_size):
+        goal_msg = FileDownload.Goal()  # 创建Goal消息类型的对象(Create Goal message type object)
+        goal_msg.file_size = file_size  # 设置文件大小(Set file size)
+
+        self.get_logger().info(f'Sending file download goal for {file_size} bytes')  # 打印发送目标的日志(Print log for sending goal)
+
+        self._action_client.wait_for_server()  # 等待服务器可用(Wait for server to be available)
+        self.future = self._action_client.send_goal_async(goal_msg, feedback_callback=self.feedback_callback)  # 发送目标异步请求(Send goal async request)
+        
+        self.future.add_done_callback(self.goal_response_callback)  # 添加目标响应回调函数(Add goal response callback function)
+
+    def goal_response_callback(self,future):
+        goal_handle = future.result()  # 获取目标句柄(Get goal handle)
+        if not goal_handle.accepted:
+            self.get_logger().info("Goal rejected")  # 打印目标被拒绝的日志(Print log for goal rejection)
+            return
+        self.get_logger().info("Goal accepted")  # 打印目标被接受的日志(Print log for goal acceptance)
+        self._get_result_future = goal_handle.get_result_async()  # 获取目标结果异步请求(Get goal result async request)
+        self._get_result_future.add_done_callback(self.get_result_callback)  # 添加获取结果的回调函数(Add get result callback function)
+        
+    def get_result_callback(self,future):
+        self.get_logger().info("File download completed successfully.")  # 打印文件下载成功完成的日志(Print log for successful file download completion)
+
+    def feedback_callback(self, feedback_msg):
+        self.get_logger().info(f'Received feedback: {feedback_msg.feedback.completion_percentage:.2f}% downloaded')  # 打印接收到的反馈消息(Print received feedback message)
+
+```
+
+A `ActionClient` object is created to communicate with the task service. The client provides a send_goal method to send the download target, and registers three callback functions to handle the status changes `feedback` at the different stages of the task. After sending the Goal, the send_goal method adds callback functions through the future object to wait for the `ActionServer's` response. These three callback functions are used to obtain the Goal reception result, update the task progress, and obtain the completion result, covering the entire lifecycle of the task.
 
 ## 8.11 ROS2 Communication Interface
 
@@ -1752,7 +2093,7 @@ ROS has three commonly used communication mechanisms, namely topics, services, a
 
 In the Lesson 8 ROS Topic, Lesson 9 Service Instruction, and Lesson 10 ROS Action, the custom interface package named demo_interfaces. Within this package, three custom interfaces are created, which are String.msg, FileDownload.action, and AddInts.srv.
 
-(1) Click <img src="../_static/media/chapter_9/section_11/media/image3.png"  /> and select "**System Tools -\>Terminator**" in sequence.
+(1) Click <img src="../_static/media/chapter_9/section_11/media/image3.png"  /> and select "**System Tools -\>Terminator in sequence.
 
 <img class="common_img" src="../_static/media/chapter_9/section_11/media/image4.png"  />
 
@@ -1799,7 +2140,7 @@ Let's fist get to know param parameter commands. The detailed instruction is as 
 
 ### 8.12.3 Create A Parameter Example
 
-(1) Click <img src="../_static/media/chapter_9/section_12/media/image2.png"  /> and select "**System Tools -\>Terminator**" in sequence.
+(1) Click <img src="../_static/media/chapter_9/section_12/media/image2.png"  /> and select "**System Tools -\>Terminator in sequence.
 
 <img class="common_img" src="../_static/media/chapter_9/section_12/media/image3.png"  />
 
@@ -1830,30 +2171,38 @@ vim param_demo.py
 ```
 
 ```py
-import rclpy # Import rclpy module
-from rclpy.node import Node # Import Node class
-from rclpy.parameter import Parameter # Import Parameter class
-class MinimalParam(Node): # Define the MinimalParam class inhering from the Node class
-def __init__(self):
-super().__init__('minimal_param_node') # Call the constructor of the parent class to initialize the node.
-self.declare_parameter('my_parameter', 'hiwonder') # Declare a parameter named "my_parameter" and set its default value to "hiwonder".
-self.timer = self.create_timer(1, self.timer_callback) # Create a time, set the callback function as timer_callback, with an interval of 1 second.
-def timer_callback(self):
-my_param = self.get_parameter('my_parameter').get_parameter_value().string_value #Retrieve the value of parameter 'my_parameter', and convert it to a string.
-self.get_logger().info('Hello %s!' % my_param) # Print the log message with parameter values
-my_new_param = Parameter( # Create a new parameter object
-'my_parameter', # The parameter name is 'my_parameter'.
-rclpy.Parameter.Type.STRING, # The parameter type is string
-'hiwonder' # The parameter value is 'hiwonder'
-)
-all_new_parameters = [my_new_param] # Place the new parameter object into the list.
-self.set_parameters(all_new_parameters) # Set node's parameter value as new parameter value.
+import rclpy  # 导入rclpy模块(Import rclpy module)
+from rclpy.node import Node  # 导入Node类(Import Node class)
+from rclpy.parameter import Parameter  # 导入Parameter类(Import Parameter class)
+
+class MinimalParam(Node):  # 定义一个继承自Node类的MinimalParam类(Define a MinimalParam class that inherits from Node class)
+    def __init__(self):
+        super().__init__('minimal_param_node')  # 调用父类构造函数初始化节点(Call parent class constructor to initialize node)
+
+        self.declare_parameter('my_parameter', 'hiwonder')  # 声明一个名为'my_parameter'的参数，并设置默认值为'hiwonder'(Declare a parameter named 'my_parameter' with default value 'hiwonder')
+
+        self.timer = self.create_timer(1, self.timer_callback)  # 创建定时器，设置回调函数为timer_callback，时间间隔为1秒(Create timer with callback function timer_callback, interval 1 second)
+
+    def timer_callback(self):
+        my_param = self.get_parameter('my_parameter').get_parameter_value().string_value  # 获取参数'my_parameter'的值，并转换为字符串(Get parameter 'my_parameter' value and convert to string)
+
+        self.get_logger().info('Hello %s!' % my_param)  # 打印带有参数值的日志消息(Print log message with parameter value)
+
+        my_new_param = Parameter(  # 创建一个新的参数对象(Create a new parameter object)
+            'my_parameter',  # 参数名称为'my_parameter'(Parameter name is 'my_parameter')
+            rclpy.Parameter.Type.STRING,  # 参数类型为字符串(Parameter type is string)
+            'hiwonder'  # 参数值为'hiwonder'(Parameter value is 'hiwonder')
+        )
+        all_new_parameters = [my_new_param]  # 将新的参数对象放入列表中(Put new parameter object into list)
+        self.set_parameters(all_new_parameters)  # 设置节点的参数值为新的参数值(Set node parameter values to new parameter values)
+
 def main():
-rclpy.init() # Initialize ROS node
-node = MinimalParam() # Create MinimalParam object
-rclpy.spin(node) # Enter main loop
+    rclpy.init()  # 初始化ROS节点(Initialize ROS node)
+    node = MinimalParam()  # 创建MinimalParam对象(Create MinimalParam object)
+    rclpy.spin(node)  # 进入主循环(Enter main loop)
+
 if __name__ == '__main__':
-main()
+    main()
 ```
 
 ```bash
@@ -1912,19 +2261,46 @@ According to the realization result, the logic progress for the program is shown
 
 <img class="common_img" src="../_static/media/chapter_9/section_12/media/image17.jpeg"   />
 
-Create a MinimalParam class, declare a string parameter "**my_parameter**" in the constructor, and create a timer with a 1-second interval. The timer callback function is called every 1 second. Inside the callback, it first retrieves the current value of the parameter, then prints a log, creates a new parameter object, sets a new value, and finally calls the set_parameters function to modify the parameter value in the parameter server.
+Create a MinimalParam class, declare a string parameter `my_parameter` in the constructor, and create a timer with a 1-second interval. The timer callback function is called every 1 second. Inside the callback, it first retrieves the current value of the parameter, then prints a log, creates a new parameter object, sets a new value, and finally calls the set_parameters function to modify the parameter value in the parameter server.
 
 * **Main Function**
 
-<img class="common_img" src="../_static/media/chapter_9/section_12/media/image18.png"  />
+```
+def main():
+    rclpy.init()  # 初始化ROS节点(Initialize ROS node)
+    node = MinimalParam()  # 创建MinimalParam对象(Create MinimalParam object)
+    rclpy.spin(node)  # 进入主循环(Enter main loop)
+```
 
 First, invoke the **rclpy.init()** function to initialize ROS2 Python interface. Then instantiate the **MinimalParam**. Finally, execute the node.run() function**.**
 
 * **MinimalParam Class**
 
-<img class="common_img" src="../_static/media/chapter_9/section_12/media/image19.png"  />  
+```python
+class MinimalParam(Node):  # 定义一个继承自Node类的MinimalParam类(Define a MinimalParam class that inherits from Node class)
+    def __init__(self):
+        super().__init__('minimal_param_node')  # 调用父类构造函数初始化节点(Call parent class constructor to initialize node)
 
-First, a string parameter named "**my_parameter**" is declared, and a timer with a 1-second period is created. The timer callback function, timer_callback, is called every second. It first retrieves the current value of the "**my_parameter**" parameter and then prints a log output. Next, the callback function creates a new parameter object with the same name but with a value of "hiwonder". Afterward, it calls the set_parameters function to modify the parameter value.
+        self.declare_parameter('my_parameter', 'hiwonder')  # 声明一个名为'my_parameter'的参数，并设置默认值为'hiwonder'(Declare a parameter named 'my_parameter' with default value 'hiwonder')
+
+        self.timer = self.create_timer(1, self.timer_callback)  # 创建定时器，设置回调函数为timer_callback，时间间隔为1秒(Create timer with callback function timer_callback, interval 1 second)
+
+    def timer_callback(self):
+        my_param = self.get_parameter('my_parameter').get_parameter_value().string_value  # 获取参数'my_parameter'的值，并转换为字符串(Get parameter 'my_parameter' value and convert to string)
+
+        self.get_logger().info('Hello %s!' % my_param)  # 打印带有参数值的日志消息(Print log message with parameter value)
+
+        my_new_param = Parameter(  # 创建一个新的参数对象(Create a new parameter object)
+            'my_parameter',  # 参数名称为'my_parameter'(Parameter name is 'my_parameter')
+            rclpy.Parameter.Type.STRING,  # 参数类型为字符串(Parameter type is string)
+            'hiwonder'  # 参数值为'hiwonder'(Parameter value is 'hiwonder')
+        )
+        all_new_parameters = [my_new_param]  # 将新的参数对象放入列表中(Put new parameter object into list)
+        self.set_parameters(all_new_parameters)  # 设置节点的参数值为新的参数值(Set node parameter values to new parameter values)
+  
+```
+
+First, a string parameter named `my_parameter` is declared, and a timer with a 1-second period is created. The timer callback function, timer_callback, is called every second. It first retrieves the current value of the `my_parameter` parameter and then prints a log output. Next, the callback function creates a new parameter object with the same name but with a value of "hiwonder". Afterward, it calls the set_parameters function to modify the parameter value.
 
 ## 8.13 Distributed Communication Instruction
 
@@ -1968,7 +2344,7 @@ source ~/.bashrc
 
 Add the statement "**export ROS_DOMAIN_ID=25**" to the barshrc files of other terminals to assign them to the same group (i.e., domain ID 25), enabling distributed communication. If different domain IDs are assigned, communication between them will not be possible.
 
-(5) **Comparison of ROS1 and ROS in Distributed Communication Mechanisms.**
+(5) Comparison of ROS1 and ROS in Distributed Communication Mechanisms.
 
 The distributed Communication Mechanism of ROS1:
 
@@ -2042,6 +2418,10 @@ QoS is a network transmission strategy where applications specify the required q
 
 (2) Enter the command "**ros2 topic pub /chatter std_msgs/msg/Int32 "data: 42" --qos-reliability best_effort**" to publish a topic named "/chatter" using the message type "**std_msgs/msg/Int32**", sending an integer message with the data 42. Through adding the option of "--qos-reliability best_effort", the publisher specifies the use of best effort reliability.
 
+```
+ros2 topic pub /chatter std_msgs/msg/Int32 "data: 42" --qos-reliability best_effort
+```
+
 <img class="common_img" src="../_static/media/chapter_9/section_14/media/image6.png"  />
 
 (3) Right click on a blank area to select "**Split Vertically**" to create a new terminal window.
@@ -2050,9 +2430,21 @@ QoS is a network transmission strategy where applications specify the required q
 
 (4) Enter the command "**ros2 topic echo /chatter --qos-reliability reliable**" to subscribe to a topic named "**/chatter**" and print the received messages. If the publisher uses the reliable QoS policy for publishing while the subscriber uses the best effort policy for subscribing, data communication cannot be achieve. Only when the publisher and receiver use the same QoS policy can the correct correct transmission of data be ensured.
 
+```
+ros2 topic echo /chatter --qos-reliability reliable
+```
+
+
+
 <img class="common_img" src="../_static/media/chapter_9/section_14/media/image8.png"  />
 
 (5) Enter the command "**ros2 topic echo /chatter --qos-reliability best_effort**" and subscribe to a topic named "**/chatter**" and print the received messages. By adding the "**--qos-reliability reliable**" option, modify it to the same "best_effort" in order to achieve data transmission
+
+```
+ros2 topic echo /chatter --qos-reliability best_effort
+```
+
+
 
 <img class="common_img" src="../_static/media/chapter_9/section_14/media/image9.png"  />
 
@@ -2089,37 +2481,45 @@ vim DDS_qos_pub.py
 ```
 
 ```py
-import rclpy # Import rclpy module
-from rclpy.node import Node # Import Node class
-from std_msgs.msg import String # Import the String message type.
-from rclpy.qos import QoSProfile, QoSReliabilityPolicy, QoSHistoryPolicy
-#Import the QoSProfile, QoSReliabilityPolicy and QoSHistoryPolicy classes
-class MinimalPublisher(Node): # Define the MinimalPublisher class inhering from the Node class
-def __init__(self):
-super().__init__('minimal_publisher') # Call the parent constructor to initialize the node.
-qos_profile = QoSProfile( # Create the QoSProfile object
-reliability=QoSReliabilityPolicy.RELIABLE, # Set reliability policy as RELIABLE
-history=QoSHistoryPolicy.KEEP_LAST, # Set history policy as KEEP_LAST
-depth=1 # Set the depth to 1
-)
-self.publishe _ = self.create_publisher(String, 'topic', qos_profile) # Create publisher object
-timer_period = 0.5 # Set the the timer callback interval to 0.5 seconds
-self.timer = self.create_timer(timer_period, self.timer_callback) #
-Create timer and set the callback function as timer_callback
-self.i = 0
-def timer_callback(self):
-msg = String() # Create the object of the String message type
-msg.data = 'Hello World: %d' % self.i # Set the message data
-self.publisher_.publish(msg) # Publish message
-self.i += 1 # Increment the counter
+import rclpy  # 导入rclpy模块(Import rclpy module)
+from rclpy.node import Node  # 导入Node类(Import Node class)
+
+from std_msgs.msg import String  # 导入String消息类型(Import String message type)
+from rclpy.qos import QoSProfile, QoSReliabilityPolicy, QoSHistoryPolicy  # 导入QoSProfile和QoSReliabilityPolicy、QoSHistoryPolicy类(Import QoSProfile, QoSReliabilityPolicy, QoSHistoryPolicy classes)
+
+class MinimalPublisher(Node):  # 定义一个继承自Node类的MinimalPublisher类(Define a MinimalPublisher class that inherits from Node class)
+
+    def __init__(self):
+        super().__init__('minimal_publisher')  # 调用父类构造函数初始化节点(Call parent class constructor to initialize node)
+        qos_profile = QoSProfile(  # 创建QoSProfile对象(Create QoSProfile object)
+            reliability=QoSReliabilityPolicy.RELIABLE,  # 设置可靠性策略为RELIABLE(Set reliability policy to RELIABLE)
+            history=QoSHistoryPolicy.KEEP_LAST,  # 设置历史策略为KEEP_LAST(Set history policy to KEEP_LAST)
+            depth=1  # 设置深度为1(Set depth to 1)
+        )
+        self.publisher_ = self.create_publisher(String, 'topic', qos_profile)  # 创建发布者对象(Create publisher object)
+        timer_period = 0.5  # 设置定时器回调的时间间隔为0.5秒(Set timer callback interval to 0.5 seconds)
+        self.timer = self.create_timer(timer_period, self.timer_callback)  # 创建定时器，设置回调函数为timer_callback(Create timer and set callback function to timer_callback)
+        self.i = 0
+
+    def timer_callback(self):
+        msg = String()  # 创建String消息类型的对象(Create String message type object)
+        msg.data = 'Hello World: %d' % self.i  # 设置消息的数据(Set message data)
+        self.publisher_.publish(msg)  # 发布消息(Publish message)
+        self.i += 1  # 自增计数器(Increment counter)
+
+
 def main(args=None):
-rclpy.init(args=args) # Initialize ROS node
-minimal_publisher = MinimalPublisher() # Create MinimalPublisher object
-rclpy.spin(minimal_publisher) # Enter the main loop
-minimal_publisher.destroy_node() # Destroy node
-rclpy.shutdown() # Shut down ROS
+    rclpy.init(args=args)  # 初始化ROS节点(Initialize ROS node)
+
+    minimal_publisher = MinimalPublisher()  # 创建MinimalPublisher对象(Create MinimalPublisher object)
+
+    rclpy.spin(minimal_publisher)  # 进入主循环(Enter main loop)
+
+    minimal_publisher.destroy_node()  # 销毁节点(Destroy node)
+    rclpy.shutdown()  # 关闭ROS(Shutdown ROS)
+
 if __name__ == '__main__':
-main()
+    main()
 ```
 
 ```bash
@@ -2141,30 +2541,39 @@ vim DDS_qos_sub.py
 ```
 
 ```py
-import rclpy # Import rclpy
-from rclpy.node import Node # Import Node class
-from std_msgs.msg import String # Import String message type
-from rclpy.qos import QoSProfile, QoSReliabilityPolicy, QoSHistoryPolicy \#
-Import the QoSProfile, QoSReliabilityPolicy and QoSHistoryPolicy classes
-class MinimalSubscriber(Node): # Define the MinimalSubscriber class inhering from the Node class
-def __init__(self):
-super().__init__('minimal_subscriber') # Call the parent constructor to initialize the node.
-qos_profile = QoSProfile( # Create QoSProfile object
-reliability=QoSReliabilityPolicy.RELIABLE, #Set the reliability policy as RELIABLE
-history=QoSHistoryPolicy.KEEP_LAST, # Set the history policy as KEEP_LAST
-depth=1 # Set the depth to 1
-)
-self.subscription = self.create_subscription(String, 'topic', self.listener_callback, qos_profile) # Set the subscriber object and set the callback function as listener_callback
-def listener_callback(self, msg):
-self.get_logger().info('I heard: "%s"' % msg.data) # Print the received message
+import rclpy  # 导入rclpy模块(Import rclpy module)
+from rclpy.node import Node  # 导入Node类(Import Node class)
+
+from std_msgs.msg import String  # 导入String消息类型(Import String message type)
+from rclpy.qos import QoSProfile, QoSReliabilityPolicy, QoSHistoryPolicy  # 导入QoSProfile和QoSReliabilityPolicy、QoSHistoryPolicy类(Import QoSProfile, QoSReliabilityPolicy, QoSHistoryPolicy classes)
+
+class MinimalSubscriber(Node):  # 定义一个继承自Node类的MinimalSubscriber类(Define a MinimalSubscriber class that inherits from Node class)
+
+    def __init__(self):
+        super().__init__('minimal_subscriber')  # 调用父类构造函数初始化节点(Call parent class constructor to initialize node)
+        qos_profile = QoSProfile(  # 创建QoSProfile对象(Create QoSProfile object)
+            reliability=QoSReliabilityPolicy.RELIABLE,  # 设置可靠性策略为RELIABLE(Set reliability policy to RELIABLE)
+            history=QoSHistoryPolicy.KEEP_LAST,  # 设置历史策略为KEEP_LAST(Set history policy to KEEP_LAST)
+            depth=1  # 设置深度为1(Set depth to 1)
+        )
+        self.subscription = self.create_subscription(String, 'topic', self.listener_callback, qos_profile)  # 创建订阅者对象，并设置回调函数为listener_callback(Create subscriber object and set callback function to listener_callback)
+
+    def listener_callback(self, msg):
+        self.get_logger().info('I heard: "%s"' % msg.data)  # 打印接收到的消息内容(Print received message content)
+
+
 def main(args=None):
-rclpy.init(args=args) # Initialize ROS node
-minimal_subscriber = MinimalSubscriber() # Create MinimalSubscriber object
-rclpy.spin(minimal_subscriber) # Enter the main loop
-minimal_subscriber.destroy_node() # Destroy node
-rclpy.shutdown() # Shut down ROS
+    rclpy.init(args=args)  # 初始化ROS节点(Initialize ROS node)
+
+    minimal_subscriber = MinimalSubscriber()  # 创建MinimalSubscriber对象(Create MinimalSubscriber object)
+
+    rclpy.spin(minimal_subscriber)  # 进入主循环(Enter main loop)
+
+    minimal_subscriber.destroy_node()  # 销毁节点(Destroy node)
+    rclpy.shutdown()  # 关闭ROS(Shutdown ROS)
+
 if __name__ == '__main__':
-main()
+    main()
 ```
 
 ```bash
@@ -2254,16 +2663,47 @@ The main function first initializes the ROS node environment, then creates an in
 
 (1) Main Function
 
-<img class="common_img" src="../_static/media/chapter_9/section_14/media/image28.png"  />
+```python
+def main(args=None):
+    rclpy.init(args=args)  # 初始化ROS节点(Initialize ROS node)
+
+    minimal_publisher = MinimalPublisher()  # 创建MinimalPublisher对象(Create MinimalPublisher object)
+
+    rclpy.spin(minimal_publisher)  # 进入主循环(Enter main loop)
+
+    minimal_publisher.destroy_node()  # 销毁节点(Destroy node)
+    rclpy.shutdown()  # 关闭ROS(Shutdown ROS)
+```
 
 First, invoke the rclpy.init() function to initialize ROS2 Python interface. Then instantiate the MinimalPublisher() file. Finally, execute the minimal_publisher within the event loop of the ROS2 node.
 
 (2) MinimalPublisher Class
 
-<img class="common_img" src="../_static/media/chapter_9/section_14/media/image29.png"  />  
-Firstly, a MinimalPublisher node class is created to achieve cyclic publishing in ROS 2 reliable mode. In the constructor init(), a QoSProfile object is created to configure the publishing quality to reliable mode. Then, the publisher\_ object is initialized using the QoSProfile. The constructor also sets the timer period to 0.5s and creates a timer object. The counter i is initialized to 0. The timer callback function timer_callback is defined, where a String message object msg is first constructed. The current value of the counter i is then written into the message content using string formatting. Finally, this message is published using the publisher\_ object defined earlier, and the counter i is incremented by 1.
+```python
+class MinimalPublisher(Node):  # 定义一个继承自Node类的MinimalPublisher类(Define a MinimalPublisher class that inherits from Node class)
 
-(2) **Subscribe to Topic**
+    def __init__(self):
+        super().__init__('minimal_publisher')  # 调用父类构造函数初始化节点(Call parent class constructor to initialize node)
+        qos_profile = QoSProfile(  # 创建QoSProfile对象(Create QoSProfile object)
+            reliability=QoSReliabilityPolicy.RELIABLE,  # 设置可靠性策略为RELIABLE(Set reliability policy to RELIABLE)
+            history=QoSHistoryPolicy.KEEP_LAST,  # 设置历史策略为KEEP_LAST(Set history policy to KEEP_LAST)
+            depth=1  # 设置深度为1(Set depth to 1)
+        )
+        self.publisher_ = self.create_publisher(String, 'topic', qos_profile)  # 创建发布者对象(Create publisher object)
+        timer_period = 0.5  # 设置定时器回调的时间间隔为0.5秒(Set timer callback interval to 0.5 seconds)
+        self.timer = self.create_timer(timer_period, self.timer_callback)  # 创建定时器，设置回调函数为timer_callback(Create timer and set callback function to timer_callback)
+        self.i = 0
+
+    def timer_callback(self):
+        msg = String()  # 创建String消息类型的对象(Create String message type object)
+        msg.data = 'Hello World: %d' % self.i  # 设置消息的数据(Set message data)
+        self.publisher_.publish(msg)  # 发布消息(Publish message)
+        self.i += 1  # 自增计数器(Increment counter)
+```
+
+Firstly, a `MinimalPublisher` node class is created to achieve cyclic publishing in ROS 2 reliable mode. In the constructor `init()`, a `QoSProfile` object is created to configure the publishing quality to reliable mode. Then, the publisher\_ object is initialized using the QoSProfile. The constructor also sets the timer period to 0.5s and creates a timer object. The counter i is initialized to 0. The timer callback function timer_callback is defined, where a String message object msg is first constructed. The current value of the counter i is then written into the message content using string formatting. Finally, this message is published using the publisher\_ object defined earlier, and the counter i is incremented by 1.
+
+(3) Subscribe to Topic
 
 According to the realization result, the logic progress for the program is shown as pictured:
 
@@ -2271,16 +2711,41 @@ According to the realization result, the logic progress for the program is shown
 
 A MinimalSubscriber node class is created to realize the reliable mode subscription in ROS2. In its constructor, it first utilizes a QosProfile object to configure the subscription quality, setting reliability to RELIABLE, retaining the most recent message in history, and setting the buffer depth to 1. Then, creates a subscriber object using the QoSProfile object, subscribes to the topic, and specifies the callback function. The callback function, listener_callback, simply prints the received message content. The main function initializes the node, creates an instance of the subscriber, enters the main loop to drive the callback function, and releases node resources. Through the configuration of QoSProfile, the subscriber ensures that the callback function receives the most recent correct message.
 
-(1) **Main Function**
+(4) Main Function
 
-<img class="common_img" src="../_static/media/chapter_9/section_14/media/image31.png"  />
+```python
+def main(args=None):
+    rclpy.init(args=args)  # 初始化ROS节点(Initialize ROS node)
+
+    minimal_subscriber = MinimalSubscriber()  # 创建MinimalSubscriber对象(Create MinimalSubscriber object)
+
+    rclpy.spin(minimal_subscriber)  # 进入主循环(Enter main loop)
+
+    minimal_subscriber.destroy_node()  # 销毁节点(Destroy node)
+    rclpy.shutdown()  # 关闭ROS(Shutdown ROS)
+```
 
 First, invoke the rclpy.init() function to initialize ROS2 Python interface. Then instantiate the MinimalSublisher() file. Finally, execute the minimal_sublisher within the event loop of the ROS2 node.
 
-(2) **MinimalSubscriber Class**
+(5) MinimalSubscriber Class
 
-<img class="common_img" src="../_static/media/chapter_9/section_14/media/image32.png"  />  
-A MinimalSubscriber node class is first created to implement reliable subscription functionality in ROS2. In its constructor init(), a QoSProfile object is initially created to configure the subscription quality to reliable mode (RELIABLE, KEEP_LAST, etc.). Then, using the QoSProfile object and the specified callback function, a subscription object is created to subscribe to a topic and specify the callback function. The subscription callback function listener_callback is defined to simply print the received message content msg.
+```python
+class MinimalSubscriber(Node):  # 定义一个继承自Node类的MinimalSubscriber类(Define a MinimalSubscriber class that inherits from Node class)
+
+    def __init__(self):
+        super().__init__('minimal_subscriber')  # 调用父类构造函数初始化节点(Call parent class constructor to initialize node)
+        qos_profile = QoSProfile(  # 创建QoSProfile对象(Create QoSProfile object)
+            reliability=QoSReliabilityPolicy.RELIABLE,  # 设置可靠性策略为RELIABLE(Set reliability policy to RELIABLE)
+            history=QoSHistoryPolicy.KEEP_LAST,  # 设置历史策略为KEEP_LAST(Set history policy to KEEP_LAST)
+            depth=1  # 设置深度为1(Set depth to 1)
+        )
+        self.subscription = self.create_subscription(String, 'topic', self.listener_callback, qos_profile)  # 创建订阅者对象，并设置回调函数为listener_callback(Create subscriber object and set callback function to listener_callback)
+
+    def listener_callback(self, msg):
+        self.get_logger().info('I heard: "%s"' % msg.data)  # 打印接收到的消息内容(Print received message content)
+```
+
+A `MinimalSubscriber` node class is first created to implement reliable subscription functionality in ROS2. In its constructor `init()`, a QoSProfile object is initially created to configure the subscription quality to reliable mode (RELIABLE, KEEP_LAST, etc.). Then, using the QoSProfile object and the specified callback function, a subscription object is created to subscribe to a topic and specify the callback function. The subscription callback function listener_callback is defined to simply print the received message content msg.
 
 ## 8.15 ROS2 Launch Multiple Node Startup and Configuration Script
 
@@ -2297,12 +2762,12 @@ When writing ROS2 launch files in Python, the main focus is on abstracting each 
 
 ```py
 def generate_launch_description():
-return LaunchDescription(\[
-action_1,
-action_2,
-...
-action_n
-\])
+	return LaunchDescription([
+		action_1,
+		action_2,
+		...
+		action_n
+	])
 ```
 
 ### 8.15.2 Single Node Launch File
@@ -2350,15 +2815,16 @@ vim single_node.launch.py
 ```
 
 ```py
-from launch import LaunchDescription \# The description file for launch file
-from launch_ros.actions import Node \# The description class for node startup
-def generate_launch_description(): \# Automatically generate launch file function
-return LaunchDescription(\[ \# Return launch file description information
-Node( \# Configure the startup of a node
-package='hello_world_demo', \# The package where the node is located
-executable='hello_world', \# Node executable files
-),
-\])
+from launch import LaunchDescription           # launch文件的描述类(Launch file description class)
+from launch_ros.actions import Node            # 节点启动的描述类(Node startup description class)
+
+def generate_launch_description():             # 自动生成launch文件的函数(Automatically generate launch file function)
+    return LaunchDescription([                 # 返回launch文件的描述信息(Return launch file description information)
+        Node(                                  # 配置一个节点的启动(Configure a node startup)
+            package='hello_world_demo',        # 节点所在的功能包(Package where the node is located)
+            executable='hello_world',          # 节点的可执行文件(Node executable file)
+        ),
+    ])
 ```
 
 ```bash
@@ -2393,7 +2859,7 @@ vim setup.py
 from setuptools import find_packages, setup
 import os
 from glob import glob
-(os.path.join('share', package_name, 'launch'), glob(os.path.join('launch', '\*.launch.py'))),
+(os.path.join('share', package_name, 'launch'), glob(os.path.join('launch', '*.launch.py'))),
 ```
 
 <img class="common_img" src="../_static/media/chapter_9/section_15/media/image14.png"  />
@@ -2453,18 +2919,20 @@ vim multi_node.launch.py
 ```
 
 ```py
-from launch import LaunchDescription # The description file for launch file
-from launch_ros.actions import Node # The description class for node startup
-def generate_launch_description(): # Automatically generate launch file function
-return LaunchDescription([ # Return launch file description information
-Node( # Configure the startup of a node
-package='topic_demo', # The package where the node is located
-executable='topic_pub', # Node executable files
-),
-Node( # Configure the startup of a node
-package='topic_demo', # The package where the node is located
-executable='topic_sub', # Node executable files ),
-\])
+from launch import LaunchDescription           # launch文件的描述类(Launch file description class)
+from launch_ros.actions import Node            # 节点启动的描述类(Node startup description class)
+
+def generate_launch_description():             # 自动生成launch文件的函数(Automatically generate launch file function)
+    return LaunchDescription([                 # 返回launch文件的描述信息(Return launch file description information)
+        Node(                                  # 配置一个节点的启动(Configure a node startup)
+            package='topic_demo',              # 节点所在的功能包(Package where the node is located)
+            executable='topic_pub',            # 节点的可执行文件(Node executable file)
+        ),
+        Node(                                  # 配置一个节点的启动(Configure a node startup)
+            package='topic_demo',              # 节点所在的功能包(Package where the node is located)
+            executable='topic_sub',            # 节点的可执行文件名(Node executable file name)
+        ),
+    ])
 ```
 
 ```bash
@@ -2532,16 +3000,17 @@ vim remapping.launch.py
 ```
 
 ```py
-from launch import LaunchDescription # The description file for launch file
-from launch_ros.actions import Node # The description class for node startup
-def generate_launch_description(): # Automatically generate launch file function
-return LaunchDescription([ # Return launch file description information
-Node( # Configure the startup of a node
-package='topic_demo', # The package where the node is located
-executable='topic_pub', # The package where the node is located
-remappings=[("/topic","topic_pub")]
-),
-])
+from launch import LaunchDescription           # launch文件的描述类(Launch file description class)
+from launch_ros.actions import Node            # 节点启动的描述类(Node startup description class)
+
+def generate_launch_description():             # 自动生成launch文件的函数(Automatically generate launch file function)
+    return LaunchDescription([                 # 返回launch文件的描述信息(Return launch file description information)
+        Node(                                  # 配置一个节点的启动(Configure a node startup)
+            package='topic_demo',          # 节点所在的功能包(Package where the node is located)
+            executable='topic_pub', # 节点的可执行文件(Node executable file)
+            remappings=[("/topic","topic_pub")] # 话题重映射(Topic remapping)
+        ),
+    ])
 ```
 
 ```bash
@@ -2611,35 +3080,39 @@ vim param.launch.py
 ```
 
 ```py
-from launch import LaunchDescription # The description file for launch file
-from launch.actions import DeclareLaunchArgument # Declaration of the Argument Class Used Inside the Launch File
+from launch import LaunchDescription                   # launch文件的描述类(Launch file description class)
+from launch.actions import DeclareLaunchArgument       # 声明launch文件内使用的Argument类(Declare Argument class used in launch file)
 from launch.substitutions import LaunchConfiguration, TextSubstitution
-from launch_ros.actions import Node # The Description Class for Node Launch
-def generate_launch_description(): # Automatically generate launch file function
-background_r_launch_arg = DeclareLaunchArgument(
-'background_r', default_value=TextSubstitution(text='0') # Create a parameter (arg) inside a Launch file named background_r
-)
-background_g_launch_arg = DeclareLaunchArgument(
-'background_g', default_value=TextSubstitution(text='120') # Create a parameter (arg) inside a Launch file named background_r
-)
-background_b_launch_arg = DeclareLaunchArgument(
-'background_b', default_value=TextSubstitution(text='90') # Create a parameter (arg) inside a Launch file named background_r
-)
-return LaunchDescription([ # Return the Description Information of the Launch File
-background_r_launch_arg, # Invoke the Parameter (arg) Created Above
-background_g_launch_arg,
-background_b_launch_arg,
-Node( # Configure the startup of a node
-package='turtlesim',
-executable='turtlesim_node', # Configure the startup of a node
-name='sim', # Rename the node
-parameters=[{ # ROS parameter list
-'background_r': LaunchConfiguration('background_r'), # Create parameter background_r
-'background_g': LaunchConfiguration('background_g'), # Create parameter background_g
-'background_b': LaunchConfiguration('background_b'), # Create parameter background_b
-}]
-),
-])
+
+from launch_ros.actions import Node                    # 节点启动的描述类(Node startup description class)
+
+
+def generate_launch_description():                     # 自动生成launch文件的函数(Automatically generate launch file function)
+   background_r_launch_arg = DeclareLaunchArgument(
+      'background_r', default_value=TextSubstitution(text='0')     # 创建一个Launch文件内参数（arg）background_r(Create a Launch file parameter (arg) background_r)
+   )
+   background_g_launch_arg = DeclareLaunchArgument(
+      'background_g', default_value=TextSubstitution(text='120')    # 创建一个Launch文件内参数（arg）background_g(Create a Launch file parameter (arg) background_g)
+   )
+   background_b_launch_arg = DeclareLaunchArgument(
+      'background_b', default_value=TextSubstitution(text='90')   # 创建一个Launch文件内参数（arg）background_b(Create a Launch file parameter (arg) background_b)
+   )
+
+   return LaunchDescription([                                      # 返回launch文件的描述信息(Return launch file description information)
+      background_r_launch_arg,                                     # 调用以上创建的参数（arg）(Call the parameters (arg) created above)
+      background_g_launch_arg,
+      background_b_launch_arg,
+      Node(                                                        # 配置一个节点的启动(Configure a node startup)
+         package='turtlesim',
+         executable='turtlesim_node',                              # 节点所在的功能包(Package where the node is located)
+         name='sim',                                               # 对节点重新命名(Rename the node)
+         parameters=[{                                             # ROS参数列表(ROS parameter list)
+            'background_r': LaunchConfiguration('background_r'),   # 创建参数background_r(Create parameter background_r)
+            'background_g': LaunchConfiguration('background_g'),   # 创建参数background_g(Create parameter background_g)
+            'background_b': LaunchConfiguration('background_b'),   # 创建参数background_b(Create parameter background_b)
+         }]
+      ),
+   ])
 ```
 
 ```bash
@@ -2684,7 +3157,7 @@ ros2 launch launch_demo param.launch.py
 
 * **Program Analysis**
 
-Through DeclareLaunchArgument, three parameters, background_r, g, and b, were declared, with default values set for these parameters. Then, the launch task of the turtlesim node was described through Node, injecting these three parameters into the node parameters using LaunchConfiguration. This generates a launch file with parameter definitions. By using the launch file, you can dynamically set the background color parameter to control the background color of the turtle simulator.
+Through `DeclareLaunchArgument`, three parameters, background_r, g, and b, were declared, with default values set for these parameters. Then, the launch task of the `turtlesim` node was described through Node, injecting these three parameters into the node parameters using `LaunchConfiguration`. This generates a launch file with parameter definitions. By using the launch file, you can dynamically set the background color parameter to control the background color of the turtle simulator.
 
 <img class="common_img" src="../_static/media/chapter_9/section_15/media/image35.png"  />
 
@@ -2706,24 +3179,29 @@ vim param_yaml.launch.py
 
 ```py
 import os
-from ament_index_python.packages import get_package_share_directory # Method for Querying Package Path
-from launch import LaunchDescription # The Description Class for Node Launch
-from launch_ros.actions import Node # The Description Class for Node Launch
-def generate_launch_description(): # Automatically generate launch file function
-config = os.path.join( # Find the Full Path of the Parameter File
-get_package_share_directory('launch_demo'),
-'config',
-'turtlesim.yaml'
-)
-return LaunchDescription([ # Return the Description Information of the Launch File
-Node( # Configure the startup of a node
-package='turtlesim', # The package where the node is located
-executable='turtlesim_node', # Executable File Name of the Node
-namespace='turtlesim2', # Namespace of the Node
-name='sim', # Rename the node
-parameters=[config] # Load parameter file
-)
-])
+
+from ament_index_python.packages import get_package_share_directory  # 查询功能包路径的方法(Method to query package path)
+
+from launch import LaunchDescription   # launch文件的描述类(Launch file description class)
+from launch_ros.actions import Node    # 节点启动的描述类(Node startup description class)
+
+
+def generate_launch_description():     # 自动生成launch文件的函数(Automatically generate launch file function)
+   config = os.path.join(              # 找到参数文件的完整路径(Find the complete path of the parameter file)
+      get_package_share_directory('launch_demo'),
+      'config',
+      'turtlesim.yaml'
+      )
+
+   return LaunchDescription([          # 返回launch文件的描述信息(Return launch file description information)
+      Node(                            # 配置一个节点的启动(Configure a node startup)
+         package='turtlesim',          # 节点所在的功能包(Package where the node is located)
+         executable='turtlesim_node',  # 节点的可执行文件名(Node executable file name)
+         namespace='turtlesim2',       # 节点所在的命名空间(Namespace where the node is located)
+         name='sim',                   # 对节点重新命名(Rename the node)
+         parameters=[config]           # 加载参数文件(Load parameter file)
+      )
+   ])
 ```
 
 ```bash
@@ -2818,21 +3296,25 @@ vim launch_include.launch.py
 
 ```py
 import os
-from ament_index_python.packages import get_package_share_directory # Method for Querying Package Path
-from launch import LaunchDescription # The Description Class for Node Launch
-from launch.actions import IncludeLaunchDescription # The Description Class for Node Launch
+
+from ament_index_python.packages import get_package_share_directory  # 查询功能包路径的方法(Method to query package path)
+
+from launch import LaunchDescription                 # launch文件的描述类(Launch file description class)
+from launch.actions import IncludeLaunchDescription  # 节点启动的描述类(Node startup description class)
 from launch.launch_description_sources import PythonLaunchDescriptionSource
-from launch.actions import GroupAction # Execution Actions in Launch File
-from launch_ros.actions import PushRosNamespace # ROS Namespace Configuration
-def generate_launch_description(): # Function for Automatic Generation of Launch Files
-hello_world = IncludeLaunchDescription( # Include Another Launch File from a Specified Path
-PythonLaunchDescriptionSource([os.path.join(
-get_package_share_directory('launch_demo'), 'launch'),
-'/single_node.launch.py'])
-)
-return LaunchDescription([ # Return the Description Information of the Launch File
-hello_world
-\])
+from launch.actions import GroupAction               # launch文件中的执行动作(Execution action in launch file)
+from launch_ros.actions import PushRosNamespace      # ROS命名空间配置(ROS namespace configuration)
+
+def generate_launch_description():                   # 自动生成launch文件的函数(Automatically generate launch file function)
+   hello_world = IncludeLaunchDescription(        # 包含指定路径下的另外一个launch文件(Include another launch file from specified path)
+      PythonLaunchDescriptionSource([os.path.join(
+         get_package_share_directory('launch_demo'), 'launch'),
+         '/single_node.launch.py'])
+      )
+
+   return LaunchDescription([                        # 返回launch文件的描述信息(Return launch file description information)
+      hello_world
+   ])
 ```
 
 ```bash
@@ -2873,9 +3355,9 @@ ros2 launch launch_demo launch_include.launch.py
 
 <img class="common_img" src="../_static/media/chapter_9/section_15/media/image44.png"  />
 
-* Program Analysis
+* **Program Analysis**
 
-Using the IncludeLaunchDescription action, another launch file described by single_node.launch.py from the specified path is imported, and this task is added to the LaunchDescription object for return. This generates a main launch file to include and run the node tasks defined in the child launch file.
+Using the `IncludeLaunchDescription` action, another launch file described by single_node.launch.py from the specified path is imported, and this task is added to the `LaunchDescription` object for return. This generates a main launch file to include and run the node tasks defined in the child launch file.
 
 <img class="common_img" src="../_static/media/chapter_9/section_15/media/image45.png"  />
 
@@ -2964,34 +3446,39 @@ vim static_tf_broadcaster.py
 ```py
 #!/usr/bin/env python3
 # -*- coding: utf-8 -*-
-import rclpy # ROS2 Python interface libraries
-from rclpy.node import Node # ROS2 node class
-from geometry_msgs.msg import TransformStamped # Coordinate transformation message
-import tf_transformations # TF coordinate transformation library
-from tf2_ros.static_transform_broadcaster import StaticTransformBroadcaster # TF static coordinate frame broadcaster class
+
+import rclpy                                                                 # ROS2 Python接口库(ROS2 Python interface library)
+from rclpy.node import Node                                                  # ROS2 节点类(ROS2 Node class)
+from geometry_msgs.msg import TransformStamped                               # 坐标变换消息(Coordinate transformation message)
+import tf_transformations                                                    # TF坐标变换库(TF coordinate transformation library)
+from tf2_ros.static_transform_broadcaster import StaticTransformBroadcaster  # TF静态坐标系广播器类(TF static coordinate system broadcaster class)
+
 class StaticTFBroadcaster(Node):
-def __init__(self, name):
-super().__init__(name) # ROS2 node parent class initialization
-self.tf_broadcaster = StaticTransformBroadcaster(self) # Create a TF broadcaster object
-static_transformStamped = TransformStamped() # Create a coordinate transformation message object
-static_transformStamped.header.stamp = self.get_clock().now().to_msg() # Set the timestamp of a coordinate transformation message
-static_transformStamped.header.frame_id = 'world' # Set the source coordinate frame of a coordinate transformation
-static_transformStamped.child_frame_id = 'house' # Set the target coordinate frame of a coordinate transformation
-static_transformStamped.transform.translation.x = 10.0 # Set the translation along the X, Y and Z axes in a coordinate transformation
-static_transformStamped.transform.translation.y = 5.0
-static_transformStamped.transform.translation.z = 0.0
-quat = tf_transformations.quaternion_from_euler(0.0, 0.0, 0.0) # Converting Euler angles to quaternions（roll, pitch, yaw）
-static_transformStamped.transform.rotation.x = quat[0] # Set the rotation (quaternion) along the X, Y, and Z axes in a coordinate transformation
-static_transformStamped.transform.rotation.y = quat[1]
-static_transformStamped.transform.rotation.z = quat[2]
-static_transformStamped.transform.rotation.w = quat[3]
-self.tf_broadcaster.sendTransform(static_transformStamped) # Broadcasting static coordinate transformation. The relative position between two coordinate frames remains unchanged after broadcasting .
+    def __init__(self, name):
+        super().__init__(name)                                                  # ROS2节点父类初始化(ROS2 node parent class initialization)
+        self.tf_broadcaster = StaticTransformBroadcaster(self)                  # 创建一个TF广播器对象(Create a TF broadcaster object)
+
+        static_transformStamped = TransformStamped()                            # 创建一个坐标变换的消息对象(Create a coordinate transformation message object)
+        static_transformStamped.header.stamp = self.get_clock().now().to_msg()  # 设置坐标变换消息的时间戳(Set timestamp for coordinate transformation message)
+        static_transformStamped.header.frame_id = 'world'                       # 设置一个坐标变换的源坐标系(Set source coordinate system for coordinate transformation)
+        static_transformStamped.child_frame_id  = 'house'                       # 设置一个坐标变换的目标坐标系(Set target coordinate system for coordinate transformation)
+        static_transformStamped.transform.translation.x = 10.0                  # 设置坐标变换中的X、Y、Z向的平移(Set X, Y, Z translation in coordinate transformation)
+        static_transformStamped.transform.translation.y = 5.0                    
+        static_transformStamped.transform.translation.z = 0.0
+        quat = tf_transformations.quaternion_from_euler(0.0, 0.0, 0.0)          # 将欧拉角转换为四元数（roll, pitch, yaw）(Convert Euler angles to quaternion (roll, pitch, yaw))
+        static_transformStamped.transform.rotation.x = quat[0]                  # 设置坐标变换中的X、Y、Z向的旋转（四元数）(Set X, Y, Z rotation in coordinate transformation (quaternion))
+        static_transformStamped.transform.rotation.y = quat[1]
+        static_transformStamped.transform.rotation.z = quat[2]
+        static_transformStamped.transform.rotation.w = quat[3]
+
+        self.tf_broadcaster.sendTransform(static_transformStamped)              # 广播静态坐标变换，广播后两个坐标系的位置关系保持不变(Broadcast static coordinate transformation, position relationship between two coordinate systems remains unchanged after broadcasting)
+
 def main(args=None):
-rclpy.init(args=args) # ROS2 Python interface initialization
-node = StaticTFBroadcaster("static_tf_broadcaster") # Create ROS2 node object and initialize it.
-rclpy.spin(node) # Wait for ROS2 to exit in a loop
-node.destroy_node() # Destroy node object
-rclpy.shutdown()
+    rclpy.init(args=args)                                # ROS2 Python接口初始化(ROS2 Python interface initialization)
+    node = StaticTFBroadcaster("static_tf_broadcaster")  # 创建ROS2节点对象并进行初始化(Create ROS2 node object and initialize)
+    rclpy.spin(node)                                     # 循环等待ROS2退出(Loop and wait for ROS2 exit)
+    node.destroy_node()                                  # 销毁节点对象(Destroy node object)
+    rclpy.shutdown()
 ```
 
 ```bash
@@ -3015,46 +3502,57 @@ vim tf_listener.py
 ```py
 #!/usr/bin/env python3
 # -*- coding: utf-8 -*-
-import rclpy # ROS2 Python interface libraries
-from rclpy.node import Node # ROS2 node class
-import tf_transformations # TF coordinate transformation library
-from tf2_ros import TransformException # The exception classes for left-side transformations in TF
-from tf2_ros.buffer import Buffer # The buffer class for storing coordinate transformation information
-from tf2_ros.transform_listener import TransformListener # The listener class for monitoring coordinate transformations.
+
+
+import rclpy                                              # ROS2 Python接口库(ROS2 Python interface library)
+from rclpy.node import Node                               # ROS2 节点类(ROS2 Node class)
+import tf_transformations                                 # TF坐标变换库(TF coordinate transformation library)
+from tf2_ros import TransformException                    # TF左边变换的异常类(TF coordinate transformation exception class)
+from tf2_ros.buffer import Buffer                         # 存储坐标变换信息的缓冲类(Buffer class for storing coordinate transformation information)
+from tf2_ros.transform_listener import TransformListener  # 监听坐标变换的监听器类(Listener class for monitoring coordinate transformations)
+
 class TFListener(Node):
-def __init__(self, name):
-super().__init__(name) # ROS2 node parent class initialization
-self.declare_parameter('source_frame', 'world') # Create the parameters for the name of source coordinate frame
-self.source_frame = self.get_parameter( # Prioritize the externally set parameter value, otherwise, use the default value.
-'source_frame').get_parameter_value().string_value
-self.declare_parameter('target_frame', 'home') # Create the parameters for the name of a target coordinate frame.
-self.target_frame = self.get_parameter( # Prioritize the externally set parameter value, otherwise, use the default value.
-'target_frame').get_parameter_value().string_value
-self.tf_buffer = Buffer() # Create the buffer area for storing coordinate transformation information
-self.tf_listener = TransformListener(self.tf_buffer, self) # Create a listener for coordinate transformations
-self.timer = self.create_timer(1.0, self.on_timer) # Create a fixed-rate timer for processing coordinate information
-def on_timer(self):
-try:
-now = rclpy.time.Time() # Obtain the current time of ROS system
-trans = self.tf_buffer.lookup_transform( #
-Monitor the coordinate transformation from a source frame to a target frame at the current time.
-self.target_frame,
-self.source_frame,
-now)
-except TransformException as ex: # If the coordinate transformation retrieval fails, enter the exception reporting.
-self.get_logger().info(
-f'Could not transform {self.target_frame} to {self.source_frame}: {ex}')
-return
-pos = trans.transform.translation # Retrieve the position information
-quat = trans.transform.rotation # Obtain orientation information (quaternion)
-euler = tf_transformations.euler_from_quaternion([quat.x, quat.y, quat.z, quat.w])
-self.get_logger().info('Get %s --> %s transform: [%f, %f, %f] [%f, %f, %f]'
-% (self.source_frame, self.target_frame, pos.x, pos.y, pos.z, euler[0], euler[1], euler[2]))
+
+    def __init__(self, name):
+        super().__init__(name)                                      # ROS2节点父类初始化(ROS2 node parent class initialization)
+
+        self.declare_parameter('source_frame', 'world')             # 创建一个源坐标系名的参数(Create a parameter for source coordinate system name)
+        self.source_frame = self.get_parameter(                     # 优先使用外部设置的参数值，否则用默认值(Prioritize externally set parameter values, otherwise use default values)
+            'source_frame').get_parameter_value().string_value
+
+        self.declare_parameter('target_frame', 'home')             # 创建一个目标坐标系名的参数(Create a parameter for target coordinate system name)
+        self.target_frame = self.get_parameter(                     # 优先使用外部设置的参数值，否则用默认值(Prioritize externally set parameter values, otherwise use default values)
+            'target_frame').get_parameter_value().string_value
+
+        self.tf_buffer = Buffer()                                   # 创建保存坐标变换信息的缓冲区(Create buffer for storing coordinate transformation information)
+        self.tf_listener = TransformListener(self.tf_buffer, self)  # 创建坐标变换的监听器(Create coordinate transformation listener)
+
+        self.timer = self.create_timer(1.0, self.on_timer)          # 创建一个固定周期的定时器，处理坐标信息(Create a fixed-period timer to handle coordinate information)
+
+    def on_timer(self):
+        try:
+            now = rclpy.time.Time()                                 # 获取ROS系统的当前时间(Get current time of ROS system)
+            trans = self.tf_buffer.lookup_transform(                # 监听当前时刻源坐标系到目标坐标系的坐标变换(Monitor coordinate transformation from source to target coordinate system at current time)
+                self.target_frame,
+                self.source_frame,
+                now)
+        except TransformException as ex:                            # 如果坐标变换获取失败，进入异常报告(If coordinate transformation acquisition fails, enter exception report)
+            self.get_logger().info(
+                f'Could not transform {self.target_frame} to {self.source_frame}: {ex}')
+            return
+        
+        pos  = trans.transform.translation                          # 获取位置信息(Get position information)
+        quat = trans.transform.rotation                             # 获取姿态信息（四元数）(Get attitude information (quaternion))
+        euler = tf_transformations.euler_from_quaternion([quat.x, quat.y, quat.z, quat.w])
+        self.get_logger().info('Get %s --> %s transform: [%f, %f, %f] [%f, %f, %f]' 
+          % (self.source_frame, self.target_frame, pos.x, pos.y, pos.z, euler[0], euler[1], euler[2]))
+
 def main(args=None):
-rclpy.init(args=args) # ROS2 Python interface initialization node = TFListener("tf_listener") # Create ROS node object and initialize it
-rclpy.spin(node) # Wait ROS2 to exit in a loop
-node.destroy_node() # Destroy node object
-rclpy.shutdown() # Close ROS2 Python interface
+    rclpy.init(args=args)                       # ROS2 Python接口初始化(ROS2 Python interface initialization)
+    node = TFListener("tf_listener")            # 创建ROS2节点对象并进行初始化(Create ROS2 node object and initialize)
+    rclpy.spin(node)                            # 循环等待ROS2退出(Loop and wait for ROS2 exit)
+    node.destroy_node()                         # 销毁节点对象(Destroy node object)
+    rclpy.shutdown()                            # 关闭ROS2 Python接口(Shutdown ROS2 Python interface)
 ```
 
 ```bash
@@ -3177,54 +3675,56 @@ vim turtle_tf_broadcaster.py
 ```py
 #!/usr/bin/env python3
 # -*- coding: utf-8 -*-
-import rclpy                                       # ROS2 Python inteface 
-from rclpy.node import Node                        # ROS2 node class
-from geometry_msgs.msg import TransformStamped     # Coordinate transformation information
-import tf_transformations                          # coordinate transformation library
-from tf2_ros import TransformBroadcaster           # TF coordinate transformation broadcaster
-from turtlesim.msg import Pose                     # Turtlesim turtle position message
+
+
+
+import rclpy                                       # ROS2 Python接口库(ROS2 Python interface library)
+from rclpy.node import Node                        # ROS2 节点类(ROS2 Node class)
+from geometry_msgs.msg import TransformStamped     # 坐标变换消息(Coordinate transformation message)
+import tf_transformations                          # TF坐标变换库(TF coordinate transformation library)
+from tf2_ros import TransformBroadcaster           # TF坐标变换广播器(TF coordinate transformation broadcaster)
+from turtlesim.msg import Pose                     # turtlesim小海龟位置消息(turtlesim turtle position message)
+
 class TurtleTFBroadcaster(Node):
 
     def __init__(self, name):
-        super().__init__(name)                                # 
-        ROS2node parent class initialization
+        super().__init__(name)                                # ROS2节点父类初始化(ROS2 node parent class initialization)
 
-        self.declare_parameter('turtlename', 'turtle')        # Create a parameters for the name of turtle
-        self.turtlename = self.get_parameter(                 # Prioritize the externally set parameter value, otherwise, use the default value. 
+        self.declare_parameter('turtlename', 'turtle')        # 创建一个海龟名称的参数(Create a parameter for turtle name)
+        self.turtlename = self.get_parameter(                 # 优先使用外部设置的参数值，否则用默认值(Prioritize externally set parameter values, otherwise use default values)
             'turtlename').get_parameter_value().string_value
 
-        self.tf_broadcaster = TransformBroadcaster(self)      # Create a TF coordinate transformation broadcast object and initialize it.
+        self.tf_broadcaster = TransformBroadcaster(self)      # 创建一个TF坐标变换的广播对象并初始化(Create and initialize a TF coordinate transformation broadcaster object)
 
-        self.subscription = self.create_subscription(         # Create a subscriber and subscribe to the position information of the turtle.
+        self.subscription = self.create_subscription(         # 创建一个订阅者，订阅海龟的位置消息(Create a subscriber to subscribe to turtle position messages)
             Pose,
-            f'/{self.turtlename}/pose',                       # Utilize the turtle name obtained from the parameter.
+            f'/{self.turtlename}/pose',                       # 使用参数中获取到的海龟名称(Use turtle name obtained from parameters)
             self.turtle_pose_callback, 1)
-        def turtle_pose_callback(self, msg):                              # Create a callback function to handle turtle position messages and transform them into coordinate transformations.
-        transform = TransformStamped()                                # Create a coordinate transformation message object
 
-        transform.header.stamp = self.get_clock().now().to_msg()      # Set the timestamp of the coordinate transformation message
-        transform.header.frame_id = 'world'                           # Set the source coordinate frame of a coordinate transformation
-        transform.child_frame_id = self.turtlename                    # Set the target coordinate of a coordinate transformation
+    def turtle_pose_callback(self, msg):                              # 创建一个处理海龟位置消息的回调函数，将位置消息转变成坐标变换(Create a callback function to handle turtle position messages, converting position messages to coordinate transformations)
+        transform = TransformStamped()                                # 创建一个坐标变换的消息对象(Create a coordinate transformation message object)
 
-        transform.transform.translation.x = msg.x                     # Set the translation along the X, Y, and Z axes in the coordinate transformation.
+        transform.header.stamp = self.get_clock().now().to_msg()      # 设置坐标变换消息的时间戳(Set timestamp for coordinate transformation message)
+        transform.header.frame_id = 'world'                           # 设置一个坐标变换的源坐标系(Set source coordinate system for coordinate transformation)
+        transform.child_frame_id = self.turtlename                    # 设置一个坐标变换的目标坐标系(Set target coordinate system for coordinate transformation)
+        transform.transform.translation.x = msg.x                     # 设置坐标变换中的X、Y、Z向的平移(Set X, Y, Z translation in coordinate transformation)
         transform.transform.translation.y = msg.y
         transform.transform.translation.z = 0.0
-        q = tf_transformations.quaternion_from_euler(0, 0, msg.theta) # Convert Euler angles to quaternions (roll, pitch, yaw).
-        transform.transform.rotation.x = q[0]                         # Set the rotation (quaternion) along the X, Y, and Z axes in the coordinate transformation.
+        q = tf_transformations.quaternion_from_euler(0, 0, msg.theta) # 将欧拉角转换为四元数（roll, pitch, yaw）(Convert Euler angles to quaternion (roll, pitch, yaw))
+        transform.transform.rotation.x = q[0]                         # 设置坐标变换中的X、Y、Z向的旋转（四元数）(Set X, Y, Z rotation in coordinate transformation (quaternion))
         transform.transform.rotation.y = q[1]
         transform.transform.rotation.z = q[2]
         transform.transform.rotation.w = q[3]
 
         # Send the transformation
-        self.tf_broadcaster.sendTransform(transform)     # Broadcast the coordinate transformation, updating the transformation information promptly after the turtle's position changes.
+        self.tf_broadcaster.sendTransform(transform)     # 广播坐标变换，海龟位置变化后，将及时更新坐标变换信息(Broadcast coordinate transformation, coordinate transformation information will be updated in time after turtle position changes)
 
 def main(args=None):
-    rclpy.init(args=args)                                # ROS2 Python接口初始化
-    node = TurtleTFBroadcaster("turtle_tf_broadcaster")  # Create 
-    ROS2 node object and initialize it
-    rclpy.spin(node)                                     # Loop and wait for ROS 2 to exit.
-    node.destroy_node()                                  # Destroy node object
-    rclpy.shutdown()                                     # Close ROS2 Python interface 
+    rclpy.init(args=args)                                # ROS2 Python接口初始化(ROS2 Python interface initialization)
+    node = TurtleTFBroadcaster("turtle_tf_broadcaster")  # 创建ROS2节点对象并进行初始化(Create ROS2 node object and initialize)
+    rclpy.spin(node)                                     # 循环等待ROS2退出(Loop and wait for ROS2 exit)
+    node.destroy_node()                                  # 销毁节点对象(Destroy node object)
+    rclpy.shutdown()                                     # 关闭ROS2 Python接口(Shutdown ROS2 Python interface)
 ```
 
 ```bash
@@ -3513,7 +4013,7 @@ According to the realization result, the logic progress for the program is shown
 
 We've created the **TurtleTFBroadcaster** node class, which initializes a node object and creates a TF broadcaster. This broadcaster subscribes to the turtle's position messages. In the position callback function, it generates coordinate transformation messages from the world coordinates to the turtle's coordinates based on the received messages. It sets the translation as the position and converts the rotation into quaternions using Euler angles. Through the broadcaster, it continuously propagates the coordinate transformation information in real-time. This allows for dynamically updating the turtle's coordinate transformation relationship in the world coordinates based on its real-time position, providing support for real-time coordinate transformation for subsequent planning, control, and user nodes.
 
-(2) **turtle_following.py**
+(2) turtle_following.py
 
 According to the realization result, the logic progress for the program is shown as pictured:
 
@@ -3636,7 +4136,6 @@ In the URDF model, each link is described using XML content, specifying details 
 >[!Note]
 >
 >**In ROS, the default unit for translation is meters, and for rotation it's radians (not degrees). Therefore, in this context, 3.14 implies movement between -180 degrees and 180 degrees, linear velocity is in m/s, and angular velocity is in rad/s.**
->
 
 ### 8.17.4 Complete Robot Model
 
@@ -3824,7 +4323,7 @@ The interface of Rviz can be primarily divided into five areas: toolbar area, th
 
 <img class="common_img" src="../_static/media/chapter_9/section_19/media/image5.png"   />
 
-(1) **Tool Bar Area**
+(1) Tool Bar Area
 
 <table class="docutils-nobg" border="1">
 <colgroup>
@@ -3877,7 +4376,7 @@ The interface of Rviz can be primarily divided into five areas: toolbar area, th
 </tbody>
 </table>
 
-(2) **Display List**
+(2) Display List
 
 - **Global Options**
 
@@ -3910,7 +4409,7 @@ The interface of Rviz can be primarily divided into five areas: toolbar area, th
 
 * **Write A launch File**
 
-(1) Click on <img src="../_static/media/chapter_9/section_19/media/image2.png"  /> to select "**System Tools -\> Terminator**".
+(1) Click on <img src="../_static/media/chapter_9/section_19/media/image2.png"  /> to select "**System Tools -\> Terminator.
 
 <img class="common_img" src="../_static/media/chapter_9/section_19/media/image3.png"  />
 
@@ -4074,8 +4573,6 @@ arguments=\['-d', get_package_share_directory('urdf_demo') + '/rviz/rviz.rviz'\]
 ```bash
 :wq
 ```
-
-(13) Execute step 3.3 to compile and run, and the modifications will be completed.
 
 ## 8.20 ROS2 RQT Tool Usage Instruction
 
